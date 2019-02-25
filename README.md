@@ -32,7 +32,14 @@ git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text
 git clone https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch
 git clone https://github.com/golang/perf.git %GOPATH%/src/golang.org/x/perf
+git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync
+git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time
+git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug
 git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint/golint
+
+# go get github.com/golang/leveldb
+go get github.com/golang/playground
+go get github.com/golang/example/hello
 ~~~
 
 #### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
