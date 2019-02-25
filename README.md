@@ -18,15 +18,17 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     Path=$GOPATH/bin:$GOROOT/bin:$Path
 
 
-#### ② [标准库文档](https://studygolang.com/pkgdoc)
+#### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
+
+ * [QT跨平台应用框架](https://github.com/therecipe/qt)
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 
-#### ④ [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
+#### ④ [标准库文档](https://studygolang.com/pkgdoc)
 
 #### ⑤ 阅读相关文章
 
- * 高并发
+ * 高性能
     * [高并发架构解决方案](https://studygolang.com/articles/15479)
 
 
