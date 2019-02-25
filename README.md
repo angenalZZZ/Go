@@ -1,7 +1,7 @@
 # Go
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 
-#### ①[搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
+#### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
 
 > Windows - src: %GOPATH%\src - 配置 set:
 
@@ -17,15 +17,14 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GOPATH=$HOME/gopath
     Path=$GOPATH/bin:$GOROOT/bin:$Path
 
-----
 
-#### ②[标准库文档](https://studygolang.com/pkgdoc)
+#### ② [标准库文档](https://studygolang.com/pkgdoc)
 
-#### ③[构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+#### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 
-#### ④[功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
+#### ④ [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
 
-#### ⑤阅读相关文章
+#### ⑤ 阅读相关文章
 
  * 高并发
     * [高并发架构解决方案](https://studygolang.com/articles/15479)
