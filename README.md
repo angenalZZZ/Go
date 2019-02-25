@@ -17,6 +17,16 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GOPATH=$HOME/gopath
     Path=$GOPATH/bin:$GOROOT/bin:$Path
 
+> 安装依赖包
+~~~bash
+# 由于网络问题, 可能要如下安装镜像包
+git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # Go on Mobile
+git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # build and release
+git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # cryptography libraries
+git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # low-level interaction
+git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # Go Tools
+
+~~~
 
 #### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
 
