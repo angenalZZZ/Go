@@ -8,18 +8,18 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GO_INSTALL_DIR=D:\Program
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
-    Path=C:\Users\Administrator\go\bin
+    PATH=C:\Users\Administrator\go\bin
 
 > Linux - src: $GOPATH/src - 配置 export:
 
-    GO_INSTALL_DIR=/usr/local # 可更改为$HOME或其他
+    GO_INSTALL_DIR=/usr/local # 安装位置: 可更改为$HOME或其他
     GOROOT=$GO_INSTALL_DIR/go
     GOPATH=$HOME/gopath
-    Path=$GOPATH/bin:$GOROOT/bin:$Path
+    PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 > 安装依赖包
 ~~~bash
-# 由于网络问题, 可能要如下安装镜像包
+# 先安装镜像包 (由于网络问题)
 git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # Go Tools
 git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # Go on Mobile
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # build and release
@@ -37,6 +37,7 @@ git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time
 git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug
 git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint/golint
 
+# 开始实例
 # go get github.com/golang/leveldb
 go get github.com/golang/playground
 go get github.com/golang/example/hello
