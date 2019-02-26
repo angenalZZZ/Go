@@ -7,7 +7,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    GO_INSTALL_DIR=D:\Program
+    https://studygolang.com/dl/golang/go1.12.windows-amd64.msi
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
