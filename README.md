@@ -2,20 +2,20 @@
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
-    查看配置: go env
-    
+    查看环境配置: go env ; 工作区源码: $GOPATH/src
+
 > Windows - src: %GOPATH%\src - 配置 set:
 
     GO_INSTALL_DIR=D:\Program
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
-    PATH=C:\Users\Administrator\go\bin
+    PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
 
 > Linux - src: $GOPATH/src - 配置 export:
 
-    GO_INSTALL_DIR=/usr/local # 安装位置: 可更改为$HOME或其他
-    GOROOT=$GO_INSTALL_DIR/go
-    GOPATH=$HOME/gopath
+    GO_INSTALL_DIR=/usr/local # 安装位置: 可更改
+    GOROOT=/usr/local/go
+    GOPATH=$HOME/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 > 安装依赖包
