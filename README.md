@@ -2,7 +2,8 @@
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
-    查看环境配置> go env
+    安装版本> go version
+    环境配置> go env
 
 > Windows - src: %GOPATH%\src - 配置 set:
 
