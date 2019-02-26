@@ -23,23 +23,23 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
 > 安装依赖包
 ~~~bash
-# 先安装镜像包 (由于网络问题)
-git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # Go Tools
-git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # Go on Mobile
-git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # build and release
-git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # cryptography libraries
-git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # low-level interaction
-git clone https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # image libraries
-git clone https://github.com/golang/oauth2.git %GOPATH%/src/golang.org/x/oauth2 # OAuth 2.0
-git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour
-git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text
-git clone https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net
-git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch
-git clone https://github.com/golang/perf.git %GOPATH%/src/golang.org/x/perf
-git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync
-git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time
-git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug
-git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint/golint
+# 先安装镜像包 (解决网络问题)
+git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
+git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
+git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
+git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug   # 调试、跟踪
+git clone https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # 图片库
+git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint/golint # 语法检查
+git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # 移动端
+git clone https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net       # 网络库
+git clone https://github.com/golang/oauth2.git %GOPATH%/src/golang.org/x/oauth2 # OAuth 2.0 认证授权
+git clone https://github.com/golang/perf.git %GOPATH%/src/golang.org/x/perf     # 性能测量、存储和分析
+git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     # 并发访问-同步锁
+git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
+git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
+git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
+git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
+git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
 
 # 开始实例
 # go get github.com/golang/leveldb
