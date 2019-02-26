@@ -14,9 +14,11 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
-    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改
+    wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
+    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改 (选项 tar -C)
+    tar -xvzf go1.12.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     GOROOT=/usr/local/go
-    GOPATH=$HOME/go
+    GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 > 安装依赖包
