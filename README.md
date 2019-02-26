@@ -5,16 +5,16 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     安装版本> go version
     环境配置> go env
 
-> Windows - src: %GOPATH%\src - 配置 set:
+> Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
     GO_INSTALL_DIR=D:\Program
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
 
-> Linux - src: $GOPATH/src - 配置 export:
-
-    GO_INSTALL_DIR=/usr/local # 安装位置: 可更改
+> Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
+    
+    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改
     GOROOT=/usr/local/go
     GOPATH=$HOME/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
