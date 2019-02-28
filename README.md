@@ -21,7 +21,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
-> 安装依赖包 [项目依赖-包管理工具govendor](https://github.com/kardianos/govendor)
+> 安装依赖包 [集成工具](https://godoc.org/golang.org/x/tools)、 [项目依赖-包管理工具govendor](https://github.com/kardianos/govendor)
 ~~~bash
 # 安装全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
