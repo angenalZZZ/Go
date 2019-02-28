@@ -46,21 +46,24 @@ go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/golang/leveldb            # 内存数据库
 
-# 开发api 
-cd %GOPATH%/src                                                                 # 项目框架 Gin 
-git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
-git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
-go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 编译api 
-cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
-# 运行api 
-%GOPATH%/src/apiserver/apiserver.exe
-
 ~~~
 
 #### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
 
  * [QT跨平台应用框架](https://github.com/therecipe/qt)
+ * [api后端应用](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d412e51882515961fe1a5)
+
+~~~
+# 开发
+cd %GOPATH%/src                                                                 # 项目框架 Gin 
+git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
+git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
+go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
+# 编译 
+cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
+# 运行
+%GOPATH%/src/apiserver/apiserver.exe
+~~~
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 
