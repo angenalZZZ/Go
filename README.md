@@ -51,8 +51,9 @@ go get github.com/golang/leveldb            # 内存数据库
 #### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
 
  * [QT跨平台应用框架](https://github.com/therecipe/qt)
- * [api后端应用](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d412e51882515961fe1a5)
+ * [其他应用](#)
 
+#### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin 
@@ -64,8 +65,6 @@ cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
-
-#### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 
 #### ④ [标准库文档](https://studygolang.com/pkgdoc)
 
