@@ -23,7 +23,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
 > 安装依赖包
 ~~~bash
-# 先安装镜像包 (解决网络问题)
+# 安装系统镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
 git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
@@ -41,7 +41,13 @@ git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     
 git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
 
-# 开始实例
+# 安装api* Gin依赖镜像包 > cd %GOPATH%/src
+git clone https://github.com/lexkong/vendor
+git clone https://github.com/lexkong/apiserver_demos apiserver
+go get github.com/StackExchange/wmi
+# 编译api* apiserver例子> cd apiserver ; gofmt -w . ; go tool vet . ; go build -v . ; # 复制demo至上级
+
+# 开始实例学习playground
 # go get github.com/golang/leveldb
 go get github.com/golang/playground
 go get github.com/golang/example/hello
