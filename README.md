@@ -23,7 +23,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
 > 安装依赖包 [集成工具](https://godoc.org/golang.org/x/tools)、 [项目依赖-包管理工具govendor](https://github.com/kardianos/govendor)
 ~~~bash
-# 安装全局依赖-镜像包 (解决网络问题)
+# 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
 git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
@@ -41,17 +41,21 @@ git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     
 git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
 
-# 安装api* Gin依赖包 > cd %GOPATH%/src
-git clone https://github.com/lexkong/vendor                                     # 项目依赖 govendor
-git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码 复制^demo至 工作目录
-go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 编译api* apiserver例子> cd apiserver ; gofmt -w . ; go tool vet . ; go build -v .
-# 运行 > apiserver.exe
-
-# 开始playground*
+# 学习playground*
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/golang/leveldb            # 内存数据库
+
+# 开发api 
+cd %GOPATH%/src                                                                 # 项目框架 Gin 
+git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
+git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
+go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
+# 编译api 
+cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
+# 运行api 
+%GOPATH%/src/apiserver/apiserver.exe
+
 ~~~
 
 #### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
