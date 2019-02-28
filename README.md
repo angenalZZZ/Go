@@ -29,7 +29,7 @@ git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   
 git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
 git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug   # 调试、跟踪
 git clone https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # 图片库
-git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint/golint # 语法检查
+git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint     # 语法检查
 git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # 移动端
 git clone https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net       # 网络库
 git clone https://github.com/golang/oauth2.git %GOPATH%/src/golang.org/x/oauth2 # OAuth 2.0 认证授权
@@ -47,14 +47,15 @@ go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
 go get -u -v github.com/golang/lint/golint
 go get -u -v github.com/lukehoban/go-outline
-go get -u -v sourcegraph.com/sqs/goreturns
-go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v github.com/lukehoban/go-find-references
+go get -u -v github.com/sqs/goreturns
 go get -u -v github.com/tpng/gopkgs
+go get -u -v github.com/golang/tools/cmd/gorename
+go get -u -v github.com/golang/tools/cmd/godoc
+go get -u -v github.com/golang/tools/cmd/guru
 go get -u -v github.com/newhook/go-symbols
-go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v github.com/cweill/gotests/...
-go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v github.com/fatih/gomodifytags
+go get -u -v github.com/cweill/gotests/...
 
 # 学习playground*
 go get github.com/golang/playground
