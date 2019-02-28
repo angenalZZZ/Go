@@ -41,6 +41,21 @@ git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     
 git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
 
+# 开发工具-VSCode语言支持
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/rogpeppe/godef
+go get -u -v github.com/zmb3/gogetdoc
+go get -u -v github.com/golang/lint/golint
+go get -u -v github.com/lukehoban/go-outline
+go get -u -v sourcegraph.com/sqs/goreturns
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v github.com/tpng/gopkgs
+go get -u -v github.com/newhook/go-symbols
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v github.com/cweill/gotests/...
+go get -u -v golang.org/x/tools/cmd/godoc
+go get -u -v github.com/fatih/gomodifytags
+
 # 学习playground*
 go get github.com/golang/playground
 go get github.com/golang/example/hello
