@@ -21,9 +21,9 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
-> 安装依赖包
+> 安装依赖包 [项目依赖-包管理工具govendor](https://github.com/kardianos/govendor)
 ~~~bash
-# 安装系统镜像包 (解决网络问题)
+# 安装全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
 git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
@@ -42,10 +42,11 @@ git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
 
 # 安装api* Gin依赖镜像包 > cd %GOPATH%/src
-git clone https://github.com/lexkong/vendor
-git clone https://github.com/lexkong/apiserver_demos apiserver
-go get github.com/StackExchange/wmi
-# 编译api* apiserver例子> cd apiserver ; gofmt -w . ; go tool vet . ; go build -v . ; # 复制demo至上级
+git clone https://github.com/lexkong/vendor                                     # 项目依赖 govendor
+git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码 复制^demo至 工作目录
+go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
+# 编译api* apiserver例子> cd apiserver ; gofmt -w . ; go tool vet . ; go build -v .
+# 运行 > apiserver.exe
 
 # 开始实例学习playground
 # go get github.com/golang/leveldb
