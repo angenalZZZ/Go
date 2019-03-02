@@ -63,7 +63,9 @@ go get -u github.com/kardianos/govendor
   > govendor add +e ; 添加本地$GOPATH包[go get]
   > govendor fetch  ; 获取远程vendor.json包[govendor get]
 go get -u github.com/golang/dep/cmd/dep
-  > dep ensure ; 安装依赖(速度慢)
+  > dep init   ; 初始化项目
+  > dep ensure -add [package] ; 添加一个包
+  > dep ensure ; 安装依赖包(速度慢)
 
 # 学习playground*
 go get github.com/golang/playground
