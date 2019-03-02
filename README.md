@@ -1,8 +1,8 @@
 # Go
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 ~~~
-# ldd 查看hello.exe依赖的库文件
-$ ldd hello ; 不是动态可执行文件 (不像其它编译语言[C:gnu/libc|C++|Java|.Net]依赖系统环境的库文件才能运行)
+# <部署简单:复制后就能直接运行[Go环境也不用装]> 可通过 ldd 查看 hello.exe 依赖的库文件
+$ ldd hello ; 不是动态可执行文件 (不像其它语言C|C++|Java|.Net|Swift...都要依赖系统环境库才能运行)
 ~~~
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
