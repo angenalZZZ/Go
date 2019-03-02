@@ -21,7 +21,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
-> 安装依赖包 [集成工具](https://godoc.org/golang.org/x/tools)、 [项目依赖-包管理工具govendor](https://github.com/kardianos/govendor)
+> 安装依赖包 [集成工具](https://godoc.org/golang.org/x/tools)
 ~~~bash
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
@@ -56,6 +56,14 @@ go get -u -v github.com/golang/tools/cmd/guru
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
+
+# 管理项目依赖包
+go get -u github.com/kardianos/govendor
+  > govendor init   ; 项目依赖vendor目录
+  > govendor add +e ; 添加本地$GOPATH包[go get]
+  > govendor fetch  ; 获取远程vendor.json包[govendor get]
+go get -u github.com/golang/dep/cmd/dep
+  > dep ensure ; 安装依赖(速度慢)
 
 # 学习playground*
 go get github.com/golang/playground
