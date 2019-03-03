@@ -1,5 +1,8 @@
 # Go
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
+
+    [应用&库&工具](https://github.com/avelino/awesome-go)、[中文文档](https://studygolang.com/pkgdoc)
+
  * 通常用于服务器编程，网络编程，分布式系统，内存数据库，云平台等。
  * 1.部署简单 2.静态编译语言(又像动态解释语言) 3.自动回收机制GC 4.语言层面支持高并发 5.丰富的第三方库,并且开源.
 ~~~shell
@@ -81,10 +84,10 @@ go get github.com/golang/leveldb            # 内存数据库
 
 ~~~
 
-#### ② [功能、框架、基础库、应用、工具等](https://github.com/avelino/awesome-go)
+#### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
  * [QT跨平台应用框架](https://github.com/therecipe/qt)
- * [其他应用](#)
+ * [其他应用](https://github.com/avelino/awesome-go)
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
@@ -99,7 +102,7 @@ cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
 
-#### ④ [标准库文档](https://studygolang.com/pkgdoc)
+#### ④ [中文标准库文档](https://studygolang.com/pkgdoc)
 
 #### ⑤ 阅读相关文章
 
