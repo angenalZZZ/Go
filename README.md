@@ -75,6 +75,16 @@ go get -u github.com/golang/dep/cmd/dep
   > dep init   ; 初始化项目
   > dep ensure -add [package] ; 添加一个包
   > dep ensure ; 安装依赖包(速度慢)
+go get -u github.com/sparrc/gdm
+go get -u github.com/Masterminds/glide ;<Mac or Linux> curl https://glide.sh/get | sh
+  > glide --version ; glide help # https://glide.sh
+  > glide create              # Start a new workspace
+  > glide get github.com/foo/bar#^1.2.3 # Get a package, add to glide.yaml; https://glide.sh/docs/glide.yaml
+  > glide install -v          # Install packages and dependencies
+  > glide update              # Update the latest dependency tree
+  > glide list                # See installed packages
+  > glide tree                # See imported packages
+  > go build
 
 # 学习playground*
 go get github.com/golang/playground
@@ -84,6 +94,10 @@ go get github.com/golang/leveldb            # 内存数据库
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
 
 ~~~
+
+> Docker 编译器 Golang + custom build tools
+    docker pull jetbrainsinfra/golang:1.11.5  # build tools: Glide, gdm, go-test-teamcity
+
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
