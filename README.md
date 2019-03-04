@@ -59,8 +59,8 @@ go get -u -v github.com/lukehoban/go-outline
 go get -u -v github.com/lukehoban/go-find-references
 go get -u -v github.com/sqs/goreturns
 go get -u -v github.com/tpng/gopkgs
+go get -u -v github.com/golang/tools/cmd/goimports
 go get -u -v github.com/golang/tools/cmd/gorename
-go get -u -v github.com/golang/tools/cmd/godoc
 go get -u -v github.com/golang/tools/cmd/guru
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/fatih/gomodifytags
@@ -81,6 +81,7 @@ go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123         # shen100
 go get github.com/golang/leveldb            # 内存数据库
+git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
 
 ~~~
 
