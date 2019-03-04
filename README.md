@@ -68,17 +68,17 @@ go get -u -v github.com/cweill/gotests/...
 
 # 管理项目依赖包
 go get -u github.com/kardianos/govendor
-  > govendor init   ; 项目依赖vendor目录
-  > govendor add +e ; 添加本地$GOPATH包[go get]
-  > govendor fetch  ; 获取远程vendor.json包[govendor get]
+  > govendor init             # 项目依赖vendor目录
+  > govendor add +e           # 添加本地$GOPATH包[go get]
+  > govendor fetch            # 获取远程vendor.json包[govendor get]
 go get -u github.com/golang/dep/cmd/dep
-  > dep init   ; 初始化项目
-  > dep ensure -add [package] ; 添加一个包
-  > dep ensure ; 安装依赖包(速度慢)
+  > dep init                  # 初始化项目
+  > dep ensure -add [package] # 添加一个包
+  > dep ensure                # 安装依赖包(速度慢)
 go get -u github.com/sparrc/gdm
-go get -u github.com/Masterminds/glide ;<Mac or Linux> curl https://glide.sh/get | sh
+go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/get | sh
   > glide --version ; glide help # https://glide.sh
-  > glide create              # Start a new workspace
+  > glide create                 # Start a new workspace
   > glide get github.com/foo/bar#^1.2.3 # Get a package, add to glide.yaml; https://glide.sh/docs/glide.yaml
   > glide install -v          # Install packages and dependencies
   > glide update              # Update the latest dependency tree
@@ -96,6 +96,7 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 ~~~
 
 > Docker 编译器 Golang + custom build tools
+
     docker pull jetbrainsinfra/golang:1.11.5  # build tools: Glide, gdm, go-test-teamcity
 
 
