@@ -20,10 +20,6 @@ $ ldd hello # 不依赖库，不像其它语言C|C++|Java|.Net|Swift..依赖系�
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-    # 查看支持的操作系统和对应的平台: 跨平台编译 https://github.com/fatedier/frp/blob/master/README_zh.md
-    go tool dist list #如下: -s -w 去掉编译时的符号&调试信息,缩小程序文件大小; CGO_ENABLED=0 禁用cgo编译,兼容性更好;
-    > CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
-    > CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
@@ -33,6 +29,10 @@ $ ldd hello # 不依赖库，不像其它语言C|C++|Java|.Net|Swift..依赖系�
     GOROOT=/usr/local/go
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+    # <跨平台编译> 查看支持的操作系统和对应的平台: https://github.com/fatedier/frp/blob/master/README_zh.md
+    go tool dist list #如下: -s -w 去掉编译时的符号&调试信息,缩小程序文件大小; CGO_ENABLED=0 禁用cgo编译,兼容性更好;
+    > CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+    > CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 > 安装依赖包 [集成工具](https://godoc.org/golang.org/x/tools)
 ~~~bash
