@@ -101,9 +101,14 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 # 1. pull build tools: Glide, gdm, go-test-teamcity
 docker pull jetbrainsinfra/golang:1.11.5
 # 2. run docker container
-docker run --name golang1115 -itd -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5 bash
+docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
+docker cp golang1115:/go/src/github.com %GOPATH%\src
+docker cp golang1115:/go/src/golang.org %GOPATH%\src
+docker run --name golang1115 -d -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5 bash
 # 3. go build
-$ for GOOS in windows linux; do go build -v -o apiserver-$GOOS-amd64; done > done;
+docker exec -it golang1115 bash # 进入容器后，开始 go build ...
+  $ cd apiserver & go build & ./apiserver                                     # build apiserver for linux
+  $ for GOOS in linux windows; do go build -v -o apiserver-$GOOS-amd64; done  # build apiserver for linux,windows
 ~~~
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
