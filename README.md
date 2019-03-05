@@ -99,6 +99,7 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 
 ~~~shell
 # 1. pull build tools: Glide, gdm, go-test-teamcity
+docker pull golang:1.4.2-cross
 docker pull jetbrainsinfra/golang:1.11.5
 # 2. run docker container
 docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
