@@ -2,10 +2,10 @@ package go_tcp
 
 import (
 	"fmt"
-	"github.com/gobuffalo/envy"
 	"log"
 	"net"
 	"net/http"
+	"os"
 )
 
 /**
@@ -15,7 +15,7 @@ var httpSvr = &http.Server{}
 
 // 后台运行 http Serve Run
 func HttpSvrRun() {
-	httpSvr.Addr = envy.Get("HOST", "") + ":" + envy.Get("POST", "")
+	httpSvr.Addr = os.Getenv("HOST") + ":" + os.Getenv("POST")
 
 	// 服务处理
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
