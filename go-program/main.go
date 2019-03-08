@@ -1,6 +1,7 @@
 package main
 
 import (
+	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/go-args"
 	"angenalZZZ/go-program/go-file"
 	"angenalZZZ/go-program/go-shutdown-hook"
@@ -22,6 +23,9 @@ func main() {
 
 	// 命令行参数
 	go_args.ArgsCheck()
+
+	// 加载配置文件并检查配置项
+	api_config.LoadCheck()
 
 	// 文件管理：创建文件
 	go_file.CreateFile()
