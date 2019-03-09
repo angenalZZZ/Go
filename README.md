@@ -91,14 +91,17 @@ go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/ge
   > glide tree                # See imported packages
   > go build
 
-go mod 一个项目模块的管理<官方建议>
+go get -u golang.org/x/vgo      # 一个项目模块的管理 (用环境变量GO111MODULE开启或关闭模块支持:off,on,auto)
+git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo
   > go help mod <command>       # 帮助
-  > go mod init example.com/app # 生成 go.mod 文件
-  > go mod tidy                 # 根据已有代码import需要的依赖自动生成require语句
+  > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github
+  > go get ./...  # go mod tidy # 根据已有代码import需要的依赖自动生成require语句
+  > go get -u # go get -u=patch # 升级到最新的次要版本,升级到最新的修订版本
   > go list -m                  # 查看当前的依赖和版本
+  > go mod download             # 下载到$GOPATH/pkg/mod共享缓存中
   > go mod edit -fmt            # 格式化 go.mod 文件
   > go mod edit -require=path@version # 添加依赖或修改依赖版本
-  > go mod vendor               # 生成 vendor 文件夹
+  > go mod vendor               # 生成 vendor 文件夹, 下载你代码中引用的库
   > go build -mod=vendor        # 使用 vendor 文件夹
   > go build -mod=readonly      # 防止隐式修改 go.mod
 
