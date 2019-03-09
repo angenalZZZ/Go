@@ -91,8 +91,8 @@ go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/ge
   > glide tree                # See imported packages
   > go build
 
-go get -u golang.org/x/vgo      # 一个项目模块的管理 (用环境变量GO111MODULE开启或关闭模块支持:off,on,auto)
-git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo
+go get -u golang.org/x/vgo      # 一个项目模块的管理 (用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto)
+git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo && go install
   > go help mod <command>       # 帮助
   > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github
   > go get ./...  # go mod tidy # 根据已有代码import需要的依赖自动生成require语句
