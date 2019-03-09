@@ -91,6 +91,17 @@ go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/ge
   > glide tree                # See imported packages
   > go build
 
+go mod 一个项目模块的管理<官方建议>
+  > go help mod <command>       # 帮助
+  > go mod init example.com/app # 生成 go.mod 文件
+  > go mod tidy                 # 根据已有代码import需要的依赖自动生成require语句
+  > go list -m                  # 查看当前的依赖和版本
+  > go mod edit -fmt            # 格式化 go.mod 文件
+  > go mod edit -require=path@version # 添加依赖或修改依赖版本
+  > go mod vendor               # 生成 vendor 文件夹
+  > go build -mod=vendor        # 使用 vendor 文件夹
+  > go build -mod=readonly      # 防止隐式修改 go.mod
+
 # 学习playground*
 go get github.com/golang/playground
 go get github.com/golang/example/hello
