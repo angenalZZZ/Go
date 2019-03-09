@@ -1,9 +1,12 @@
 package api_config
 
 import (
+	//"github.com/chai2010/winsvc"
 	"github.com/gobuffalo/envy"
 	"os"
 )
+
+//var AppPath  string // 当前目录
 
 type Config struct {
 	HOST, POST, AUTH_JWT, JWT_algorithms, JWT_SECRET, REDISCLOUD_URL string
@@ -13,6 +16,7 @@ type Config struct {
 func Load() {
 
 	// *** 文件 .env 编码 必须是 UTF-8 +换行LF ***
+	//AppPath, _ = winsvc.GetAppPath()
 
 	// 检查环境，判断加载的配置文件
 	f, v := ".env.prod", os.Getenv("GO_ENV")

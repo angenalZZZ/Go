@@ -1,6 +1,7 @@
 package go_tcp
 
 import (
+	"context"
 	"log"
 	"net"
 	"net/http"
@@ -29,7 +30,7 @@ func TcpSvrRun() {
 func TcpSvrShutdown() {
 	log.Println("后台服务 tcp: Server exiting..")
 	if tcpSvr != nil {
-		if e := tcpSvr.Shutdown(nil); e != nil {
+		if e := tcpSvr.Shutdown(context.Background()); e != nil {
 			log.Fatal(e)
 		}
 		tcpSvr = nil

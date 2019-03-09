@@ -1,21 +1,23 @@
 package go_tcp
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
 	"net/http"
 	"os"
+	"time"
 )
 
 /**
 后台服务 http: Server
 */
-var httpSvr = &http.Server{}
+var httpSvr *http.Server
 
 // 后台运行 http Serve Run
 func HttpSvrRun() {
-	httpSvr.Addr = os.Getenv("HOST") + ":" + os.Getenv("POST")
+	httpSvr = &http.Server{Addr: os.Getenv("HOST") + ":" + os.Getenv("POST")}
 
 	// 服务处理
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
@@ -24,7 +26,7 @@ func HttpSvrRun() {
 		log.Printf("后台服务 http: %v\n", request.URL.String())
 
 		// 处理请求
-		_, e := fmt.Fprintf(writer, " %+v \n", request.URL)
+		_, e := fmt.Fprintf(writer, " %v %+v \n", time.Now(), request.URL)
 
 		// 跟踪异常
 		if e != nil {
@@ -48,12 +50,10 @@ func HttpSvrRun() {
 
 // 后台运行 http Serve Shutdown
 func HttpSvrShutdown() {
-	log.Println("后台服务 http: Server exiting..")
 	if httpSvr != nil {
-		if e := httpSvr.Shutdown(nil); e != nil {
+		log.Println("后台服务 http: Server stopping..") // Go ^1.8
+		if e := httpSvr.Shutdown(context.Background()); e != nil {
 			log.Fatal(e)
 		}
-		httpSvr = nil
 	}
-	//fmt.Println("-------------------------")
 }
