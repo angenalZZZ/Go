@@ -1,7 +1,7 @@
 # Go
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 
- > [应用&库&工具](https://github.com/avelino/awesome-go)、[中文文档](https://studygolang.com/pkgdoc)
+ > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[Go语言高级编程](https://chai2010.cn/advanced-go-programming-book)
 
  * 通常用于服务器编程，网络编程，分布式系统，内存数据库，云平台等。
  * 1.部署简单 2.静态编译语言(又像动态解释语言) 3.自动回收机制GC 4.语言层面支持高并发 5.丰富的第三方库,并且开源.
@@ -21,6 +21,7 @@ $ ldd hello # 不依赖库，不像其它语言C|C++|Java|.Net|Swift..依赖系�
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
+    # go tool vet -shadow main.go # 检查变量覆盖问题
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
