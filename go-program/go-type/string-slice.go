@@ -11,7 +11,18 @@ type stringS []string
 
 // 检查字符串是文字字面值时才是 UTF8 文本
 func CheckValidString() {
-	println(utf8.ValidString("ABC") == true,
+
+	var s1 = stringS{"1", "2"}
+	var s2 = make([]string, 2)
+	var s3 = [...]string{"1", "2", "3", "4", "5"}
+	var s4 = s3[1:4:5] // 切片: [low:high:max]
+
+	println(s1, s2, s3,
+		s4,      // "2", "3", "4"
+		len(s4), // 4 - 1 len: high-low
+		cap(s4), // 5 - 1 cap: max-low
+		//cap(s1) == cap(s2),
+		utf8.ValidString("ABC") == true,
 		utf8.ValidString("A\\xfeC") == true,
 		utf8.ValidString("A\xfeC") == false,
 		utf8.RuneCountInString("é") == 2, // 两个 rune 的组合
