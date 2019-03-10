@@ -19,10 +19,10 @@ func TcpSvrRun() {
 		println()
 		log.Printf("后台服务 tcp: Server starting.. Addr: %s\n", tcpSvr.Addr)
 		if e = tcpSvr.Serve(l); e != nil {
-			log.Fatal(e)
+			log.Fatal(e) // 中断程序时输出
 		}
 	} else {
-		log.Fatal(e)
+		log.Fatal(e) // 中断程序时输出
 	}
 }
 
@@ -31,9 +31,8 @@ func TcpSvrShutdown() {
 	log.Println("后台服务 tcp: Server exiting..")
 	if tcpSvr != nil {
 		if e := tcpSvr.Shutdown(context.Background()); e != nil {
-			log.Fatal(e)
+			log.Fatal(e) // 中断程序时输出
 		}
 		tcpSvr = nil
 	}
-	//fmt.Println("-------------------------")
 }

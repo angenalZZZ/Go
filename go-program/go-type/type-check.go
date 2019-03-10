@@ -13,7 +13,7 @@ func TypeCheck() {
 
 	//var v1 bool
 	//var v2 byte   // uint8  [true 或 false]
-	//var v3 rune   // uint32 [unicode 编码]
+	//var v3 rune   // uint8, uint16, uint32 [unicode 编码: 1, 2, 4 个字节]
 	//var v4 int    // 32位
 	//var v40 uint  // 64位
 	//var v5 int8   // -128~127
@@ -29,7 +29,7 @@ func TypeCheck() {
 	//var f2 float64 // 小数位数精确到 15 位
 	//var c1 complex64
 	//var c2 complex128
-	//var s1 string
+	//var s1 string  // readonly byte slice
 	//var s2 stringS
 
 	fmt.Println("  格式化p：%v %+v %T %#v make(Slice::Point)")

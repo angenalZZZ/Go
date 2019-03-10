@@ -30,7 +30,7 @@ func HttpSvrRun() {
 
 		// 跟踪异常
 		if e != nil {
-			log.Fatal(e)
+			log.Println(e)
 		}
 	})
 
@@ -41,10 +41,10 @@ func HttpSvrRun() {
 		println()
 		log.Printf("后台服务 http: Server starting.. Addr: %s\n", httpSvr.Addr)
 		if e = httpSvr.Serve(l); e != nil {
-			log.Fatal(e)
+			log.Fatal(e) // 中断程序时输出
 		}
 	} else {
-		log.Fatal(e)
+		log.Fatal(e) // 中断程序时输出
 	}
 }
 
@@ -53,7 +53,7 @@ func HttpSvrShutdown() {
 	if httpSvr != nil {
 		log.Println("后台服务 http: Server stopping..") // Go ^1.8
 		if e := httpSvr.Shutdown(context.Background()); e != nil {
-			log.Fatal(e)
+			log.Fatal(e) // 中断程序时输出
 		}
 	}
 }

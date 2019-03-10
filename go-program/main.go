@@ -7,12 +7,15 @@ import (
 	"angenalZZZ/go-program/go-shutdown-hook"
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
+	"time"
 )
 
 /**
 程序入口函数
 */
 func main() {
+	time.Sleep(time.Nanosecond * 100)
+
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
 	// 监听程序退出2 后台运行 http Serve Shutdown
@@ -34,9 +37,9 @@ func main() {
 	go_file.CreateFile()
 
 	// 后台运行 tcp Serve Run
-	go go_tcp.TcpSvrRun()
+	go go_tcp.TcpSvrRun() // a goroutine
 	// 后台运行 http Serve Run
-	go go_tcp.HttpSvrRun()
+	go go_tcp.HttpSvrRun() // a goroutine
 
 	// 程序退出时
 	go_shutdown_hook.Wait()
