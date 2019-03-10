@@ -21,6 +21,9 @@ func main() {
 	// 类型检查
 	go_type.TypeCheck()
 
+	// 二维数组
+	go_type.TwoImensionalArrays(4, 2)
+
 	// 命令行参数
 	go_args.ArgsCheck()
 
