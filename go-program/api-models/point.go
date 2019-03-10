@@ -4,6 +4,11 @@ package api_models
 
 type Point struct {
 	x, y int
+	IPoint
+}
+
+type IPoint interface {
+	Add(x, y int)
 }
 
 ///////////函数声明和定义///////////
