@@ -4,6 +4,7 @@ import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/go-args"
 	"angenalZZZ/go-program/go-file"
+	"angenalZZZ/go-program/go-opentsdb"
 	"angenalZZZ/go-program/go-shutdown-hook"
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
@@ -35,6 +36,9 @@ func main() {
 
 	// 文件管理：创建文件
 	go_file.CreateFile()
+
+	// 时序数据库 OpenTSDB Client
+	go go_opentsdb.Test()
 
 	// 后台运行 tcp Serve Run
 	go go_tcp.TcpSvrRun() // a goroutine

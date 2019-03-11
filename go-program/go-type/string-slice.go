@@ -1,6 +1,9 @@
 package go_type
 
-import "unicode/utf8"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 ///////////类型声明和定义///////////
 
@@ -17,7 +20,7 @@ func CheckValidString() {
 	var s3 = [...]string{"1", "2", "3", "4", "5"}
 	var s4 = s3[1:4:5] // 切片: [low:high:max]
 
-	println(s1, s2, s3,
+	fmt.Println(s1, s2, s3,
 		s4,      // "2", "3", "4"
 		len(s4), // 4 - 1 len: high-low
 		cap(s4), // 5 - 1 cap: max-low

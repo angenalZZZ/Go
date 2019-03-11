@@ -17,7 +17,7 @@ func TcpSvrRun() {
 	l, e := net.Listen("tcp4", tcpSvr.Addr)
 	if e == nil {
 		println()
-		log.Printf("后台服务 tcp: Server starting.. Addr: %s\n", tcpSvr.Addr)
+		log.Printf("后台服务 tcp: Server starting.. Addr: %s\n\n", tcpSvr.Addr)
 		if e = tcpSvr.Serve(l); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}

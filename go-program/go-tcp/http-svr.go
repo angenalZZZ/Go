@@ -39,7 +39,7 @@ func HttpSvrRun() {
 	l, e := net.Listen("tcp4", httpSvr.Addr)
 	if e == nil {
 		println()
-		log.Printf("后台服务 http: Server starting.. Addr: %s\n", httpSvr.Addr)
+		log.Printf("后台服务 http: Server starting.. Addr: %s\n\n", httpSvr.Addr)
 		if e = httpSvr.Serve(l); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}
