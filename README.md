@@ -113,8 +113,11 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123         # shen100
-go get github.com/golang/leveldb            # 内存数据库
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
+
+# 开发development*
+go get github.com/golang/leveldb            # 内存数据库leveldb
+go get github.com/go-redis/redis            # 类型安全的Redis-client
 
 ~~~
 
