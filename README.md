@@ -22,6 +22,10 @@ $ ldd hello # 不依赖库，不像其它语言C|C++|Java|.Net|Swift..依赖系�
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
     # go tool vet -shadow main.go # 检查变量覆盖问题
+    > go get -d        # Download the packages source, not to install.
+    > go get -u        # Update the named packages and their dependencies.
+    > go get -v        # Verbose progress and debug output.
+    > go get -insecure # Resolving domains using insecure HTTP(No https).
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
