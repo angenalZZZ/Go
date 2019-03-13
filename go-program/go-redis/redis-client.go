@@ -15,7 +15,7 @@ import (
 数据库连接 redis : Client
 */
 var Db *redis.Client
-var opt *redis.Options
+var op *redis.Options
 
 // 初始化Client
 func Init() {
@@ -31,14 +31,14 @@ func Init() {
 	if e != nil {
 		i = 0
 	}
-	opt = &redis.Options{
+	op = &redis.Options{
 		Addr:     os.Getenv("REDIS_ADDR"),
 		Password: os.Getenv("REDIS_PWD"),
 		DB:       i, // default DB: 0
 	}
 
 	// new client
-	Db = redis.NewClient(opt)
+	Db = redis.NewClient(op)
 
 	// check
 	if _, e := Db.Ping().Result(); e != nil {
@@ -57,7 +57,7 @@ func ShutdownClient() {
 // 测试
 func Test() {
 	Init()
-	log.Printf("缓存数据库 Redis Client testing.. Addr: %s\n\n", opt.Addr)
+	log.Printf("缓存数据库 Redis Client testing.. Addr: %s\n\n", op.Addr)
 
 	// redis : Client
 	db := Db

@@ -11,7 +11,7 @@ import (
 )
 
 var Db *client.Client
-var opt *config.OpenTSDBConfig
+var op *config.OpenTSDBConfig
 
 // 初始化Client
 func Init() {
@@ -20,9 +20,9 @@ func Init() {
 	}
 
 	// config
-	opt = &config.OpenTSDBConfig{Host: "127.0.0.1:4242"}
+	op = &config.OpenTSDBConfig{Host: "127.0.0.1:4242"}
 
-	db, e := client.NewClient(*opt)
+	db, e := client.NewClient(*op)
 	if e != nil {
 		log.Fatal(e) // 中断程序时输出
 	}
@@ -45,7 +45,7 @@ func ShutdownClient() {
 // 数据库OpenTSDB : go Test()
 func Test() {
 	Init()
-	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", (*opt).Host)
+	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", (*op).Host)
 
 	db := *Db
 

@@ -4,6 +4,7 @@ import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/go-args"
 	"angenalZZZ/go-program/go-file"
+	"angenalZZZ/go-program/go-leveldb"
 	"angenalZZZ/go-program/go-opentsdb"
 	"angenalZZZ/go-program/go-redis"
 	"angenalZZZ/go-program/go-shutdown-hook"
@@ -22,10 +23,12 @@ func main() {
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
 	// 监听程序退出2 后台运行 http Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
-	// 监听程序退出3 数据库 Redis Client
-	go_shutdown_hook.Add(go_redis.ShutdownClient)
+	// 监听程序退出3 数据库 Leveldb Client
+	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
 	// 监听程序退出4 数据库 OpenTSDB Client
 	go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
+	// 监听程序退出5 数据库 Redis Client
+	go_shutdown_hook.Add(go_redis.ShutdownClient)
 
 	// 类型检查
 	go_type.TypeCheck()
@@ -42,10 +45,12 @@ func main() {
 	// 文件管理：创建文件
 	go_file.CreateFile()
 
-	// 缓存数据库 Redis Client
-	go go_redis.Test()
+	// 内存数据库 Leveldb Client
+	go go_leveldb.Test()
 	// 时序数据库 OpenTSDB Client
 	go go_opentsdb.Test()
+	// 缓存数据库 Redis Client
+	go go_redis.Test()
 
 	// 后台运行 tcp Serve Run
 	go go_tcp.TcpSvrRun() // a goroutine
