@@ -116,8 +116,8 @@ go get github.com/shen100/golang123         # shen100
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
 
 # 开发development*
-go get github.com/go-redis/redis            # 类型安全的Redis-client
-go get github.com/seefan/gossdb/example     # 替代Redis的ssdb http://ssdb.io/zh_cn https://github.com/seefan/gossdb
+go get github.com/go-redis/redis            # 缓存数据库,类型安全的Redis-client
+go get github.com/seefan/gossdb/example     # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb  # 内存数据库leveldb
 
 ~~~
