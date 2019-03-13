@@ -1,6 +1,7 @@
 package go_tcp
 
 import (
+	"angenalZZZ/go-program/api-config"
 	"context"
 	"fmt"
 	"log"
@@ -17,6 +18,10 @@ var httpSvr *http.Server
 
 // 后台运行 http Serve Run
 func HttpSvrRun() {
+	// config
+	api_config.Check("HOST")
+	api_config.Check("POST")
+
 	httpSvr = &http.Server{Addr: os.Getenv("HOST") + ":" + os.Getenv("POST")}
 
 	// 服务处理

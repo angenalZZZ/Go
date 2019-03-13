@@ -5,6 +5,7 @@ import (
 	"angenalZZZ/go-program/go-args"
 	"angenalZZZ/go-program/go-file"
 	"angenalZZZ/go-program/go-opentsdb"
+	"angenalZZZ/go-program/go-redis"
 	"angenalZZZ/go-program/go-shutdown-hook"
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
@@ -37,6 +38,8 @@ func main() {
 	// 文件管理：创建文件
 	go_file.CreateFile()
 
+	// 缓存数据库 Redis Client
+	go go_redis.Test()
 	// 时序数据库 OpenTSDB Client
 	go go_opentsdb.Test()
 

@@ -9,7 +9,7 @@ import (
 //var AppPath  string // 当前目录
 
 type Config struct {
-	HOST, POST, AUTH_JWT, JWT_algorithms, JWT_SECRET, REDISCLOUD_URL string
+	AUTH_JWT, JWT_algorithms, JWT_SECRET string
 }
 
 // 加载配置文件
@@ -42,16 +42,13 @@ func LoadCheck() {
 	Load()
 
 	// 检查配置项目
-	check("HOST")
-	check("POST")
-	check("AUTH_JWT")
-	check("JWT_algorithms")
-	check("JWT_SECRET")
-	check("REDISCLOUD_URL")
+	//Check("AUTH_JWT")
+	//Check("JWT_algorithms")
+	//Check("JWT_SECRET")
 }
 
 // 检查配置项
-func check(key string) {
+func Check(key string) {
 	if _, e := envy.MustGet(key); e != nil {
 		panic(e)
 	} else {
