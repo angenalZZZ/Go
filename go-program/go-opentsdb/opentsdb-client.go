@@ -10,27 +10,44 @@ import (
 	"angenalZZZ/go-program/go-opentsdb/config"
 )
 
+var Db *client.Client
+var opt *config.OpenTSDBConfig
+
+// 初始化Client
+func Init() {
+	if Db != nil {
+		return
+	}
+
+	// config
+	opt = &config.OpenTSDBConfig{Host: "127.0.0.1:4242"}
+
+	db, e := client.NewClient(*opt)
+	if e != nil {
+		log.Fatal(e) // 中断程序时输出
+	}
+
+	// check
+	if e := db.Ping(); e != nil {
+		log.Fatal(e) // 中断程序时输出
+	}
+	Db = &db
+}
+
+// 数据库 OpenTSDB Client close
+func ShutdownClient() {
+	log.Println("时序数据库 OpenTSDB Client Drop caches..")
+	if _, e := (*Db).Dropcaches(); e != nil {
+		log.Fatal(e) // 中断程序时输出
+	}
+}
+
 // 数据库OpenTSDB : go Test()
 func Test() {
+	Init()
+	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", (*opt).Host)
 
-	// 配置连接OpenTSDB
-	opentsdbCfg := config.OpenTSDBConfig{
-		Host: "127.0.0.1:4242",
-	}
-
-	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", opentsdbCfg.Host)
-
-	tsdbClient, err := client.NewClient(opentsdbCfg)
-	if err != nil {
-		log.Printf("%v\n", err)
-		return
-	}
-
-	//0. Ping
-	if err = tsdbClient.Ping(); err != nil {
-		log.Printf("%v\n", err)
-		return
-	}
+	db := *Db
 
 	//1. POST /api/put
 	log.Println("Begin to test POST /api/put.")
@@ -58,7 +75,7 @@ func Test() {
 		}
 	}
 
-	if resp, err := tsdbClient.Put(cpuDatas, "details"); err != nil {
+	if resp, err := db.Put(cpuDatas, "details"); err != nil {
 		log.Printf("  Error occurs when putting datapoints: %v", err)
 	} else {
 		log.Printf("  %s", resp.String())
@@ -82,7 +99,7 @@ func Test() {
 		subqueries = append(subqueries, subQuery)
 	}
 	queryParam.Queries = subqueries
-	if queryResp, err := tsdbClient.Query(queryParam); err != nil {
+	if queryResp, err := db.Query(queryParam); err != nil {
 		log.Printf("Error occurs when querying: %v", err)
 	} else {
 		log.Printf("%s", queryResp.String())
@@ -105,7 +122,7 @@ func Test() {
 		ResolveNames: true,
 		BackScan:     24,
 	}
-	if queryLastResp, err := tsdbClient.QueryLast(queryLastParam); err != nil {
+	if queryLastResp, err := db.QueryLast(queryLastParam); err != nil {
 		log.Printf("Error occurs when querying last: %v", err)
 	} else {
 		log.Printf("%s", queryLastResp.String())
@@ -115,7 +132,7 @@ func Test() {
 	//2.3 POST /api/query to delete
 	log.Println("Begin to test POST /api/query to delete.")
 	queryParam.Delete = true
-	if queryResp, err := tsdbClient.Query(queryParam); err != nil {
+	if queryResp, err := db.Query(queryParam); err != nil {
 		log.Printf("Error occurs when deleting: %v", err)
 	} else {
 		log.Printf("%s", queryResp.String())
@@ -124,7 +141,7 @@ func Test() {
 	time.Sleep(5 * time.Second)
 	log.Println("Query again which shoud return null.")
 	queryParam.Delete = false
-	if queryResp, err := tsdbClient.Query(queryParam); err != nil {
+	if queryResp, err := db.Query(queryParam); err != nil {
 		log.Printf("Error occurs when quering: %v", err)
 	} else {
 		log.Printf("%s", queryResp.String())
@@ -133,7 +150,7 @@ func Test() {
 
 	//3. GET /api/aggregators
 	log.Println("Begin to test GET /api/aggregators.")
-	aggreResp, err := tsdbClient.Aggregators()
+	aggreResp, err := db.Aggregators()
 	if err != nil {
 		log.Printf("Error occurs when acquiring aggregators: %v", err)
 	} else {
@@ -143,7 +160,7 @@ func Test() {
 
 	//4. GET /api/config
 	log.Println("Begin to test GET /api/config.")
-	configResp, err := tsdbClient.Config()
+	configResp, err := db.Config()
 	if err != nil {
 		log.Printf("Error occurs when acquiring config info: %v", err)
 	} else {
@@ -153,7 +170,7 @@ func Test() {
 
 	//5. Get /api/serializers
 	log.Println("Begin to test GET /api/serializers.")
-	serilResp, err := tsdbClient.Serializers()
+	serilResp, err := db.Serializers()
 	if err != nil {
 		log.Printf("Error occurs when acquiring serializers info: %v", err)
 	} else {
@@ -163,7 +180,7 @@ func Test() {
 
 	//6. Get /api/stats
 	log.Println("Begin to test GET /api/stats.")
-	statsResp, err := tsdbClient.Stats()
+	statsResp, err := db.Stats()
 	if err != nil {
 		log.Printf("Error occurs when acquiring stats info: %v", err)
 	} else {
@@ -179,7 +196,7 @@ func Test() {
 			Type: typeItem,
 		}
 		log.Printf("  Send suggest param: %s", sugParam.String())
-		sugResp, err := tsdbClient.Suggest(sugParam)
+		sugResp, err := db.Suggest(sugParam)
 		if err != nil {
 			log.Printf("  Error occurs when acquiring suggest info: %v\n", err)
 		} else {
@@ -190,7 +207,7 @@ func Test() {
 
 	//8. Get /api/version
 	log.Println("Begin to test GET /api/version.")
-	versionResp, err := tsdbClient.Version()
+	versionResp, err := db.Version()
 	if err != nil {
 		log.Printf("Error occurs when acquiring version info: %v", err)
 	} else {
@@ -200,7 +217,7 @@ func Test() {
 
 	//9. Get /api/dropcaches
 	log.Println("Begin to test GET /api/dropcaches.")
-	dropResp, err := tsdbClient.Dropcaches()
+	dropResp, err := db.Dropcaches()
 	if err != nil {
 		log.Printf("Error occurs when acquiring dropcaches info: %v", err)
 	} else {
@@ -222,7 +239,7 @@ func Test() {
 		Notes:       "These would be details about the event, the description is just a summary",
 		Custom:      custom,
 	}
-	if queryAnnoResp, err := tsdbClient.UpdateAnnotation(anno); err != nil {
+	if queryAnnoResp, err := db.UpdateAnnotation(anno); err != nil {
 		log.Printf("Error occurs when posting annotation info: %v", err)
 	} else {
 		log.Printf("%s", queryAnnoResp.String())
@@ -234,7 +251,7 @@ func Test() {
 	queryAnnoMap := make(map[string]interface{}, 0)
 	queryAnnoMap[client.AnQueryStartTime] = addedST
 	queryAnnoMap[client.AnQueryTSUid] = addedTsuid
-	if queryAnnoResp, err := tsdbClient.QueryAnnotation(queryAnnoMap); err != nil {
+	if queryAnnoResp, err := db.QueryAnnotation(queryAnnoMap); err != nil {
 		log.Printf("Error occurs when acquiring annotation info: %v", err)
 	} else {
 		log.Printf("%s", queryAnnoResp.String())
@@ -243,7 +260,7 @@ func Test() {
 
 	//12. GET /api/annotation
 	log.Println("Begin to test DELETE /api/annotation.")
-	if queryAnnoResp, err := tsdbClient.DeleteAnnotation(anno); err != nil {
+	if queryAnnoResp, err := db.DeleteAnnotation(anno); err != nil {
 		log.Printf("Error occurs when deleting annotation info: %v", err)
 	} else {
 		log.Printf("%s", queryAnnoResp.String())
@@ -268,7 +285,7 @@ func Test() {
 		}
 		anns = append(anns, anno)
 	}
-	if bulkAnnoResp, err := tsdbClient.BulkUpdateAnnotations(anns); err != nil {
+	if bulkAnnoResp, err := db.BulkUpdateAnnotations(anns); err != nil {
 		log.Printf("Error occurs when posting bulk annotation info: %v", err)
 	} else {
 		log.Printf("%s", bulkAnnoResp.String())
@@ -282,7 +299,7 @@ func Test() {
 		Tsuids:    addedTsuids,
 		Global:    false,
 	}
-	if bulkAnnoResp, err := tsdbClient.BulkDeleteAnnotations(bulkAnnoDelete); err != nil {
+	if bulkAnnoResp, err := db.BulkDeleteAnnotations(bulkAnnoDelete); err != nil {
 		log.Printf("Error occurs when deleting bulk annotation info: %v", err)
 	} else {
 		log.Printf("%s", bulkAnnoResp.String())
@@ -294,7 +311,7 @@ func Test() {
 	metaQueryParam := make(map[string]string, 0)
 	metaQueryParam["type"] = client.TypeMetrics
 	metaQueryParam["uid"] = "00003A"
-	if resp, err := tsdbClient.QueryUIDMetaData(metaQueryParam); err != nil {
+	if resp, err := db.QueryUIDMetaData(metaQueryParam); err != nil {
 		log.Printf("Error occurs when querying uidmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -309,7 +326,7 @@ func Test() {
 		Type:        "metric",
 		DisplayName: "System CPU Time",
 	}
-	if resp, err := tsdbClient.UpdateUIDMetaData(uidMetaData); err != nil {
+	if resp, err := db.UpdateUIDMetaData(uidMetaData); err != nil {
 		log.Printf("Error occurs when posting uidmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -322,7 +339,7 @@ func Test() {
 		Uid:  "00003A",
 		Type: "metric",
 	}
-	if resp, err := tsdbClient.DeleteUIDMetaData(uidMetaData); err != nil {
+	if resp, err := db.DeleteUIDMetaData(uidMetaData); err != nil {
 		log.Printf("Error occurs when deleting uidmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -339,7 +356,7 @@ func Test() {
 		Tagk:   tagk,
 		Tagv:   tagv,
 	}
-	if resp, err := tsdbClient.AssignUID(assignParam); err != nil {
+	if resp, err := db.AssignUID(assignParam); err != nil {
 		log.Printf("Error occurs when assgining uid info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -348,7 +365,7 @@ func Test() {
 
 	//19. GET /api/uid/tsmeta
 	log.Println("Begin to test GET /api/uid/tsmeta.")
-	if resp, err := tsdbClient.QueryTSMetaData("000001000001000001"); err != nil {
+	if resp, err := db.QueryTSMetaData("000001000001000001"); err != nil {
 		log.Printf("Error occurs when querying tsmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -365,7 +382,7 @@ func Test() {
 		DisplayName: "System CPU Time for Webserver 01",
 		Custom:      custom,
 	}
-	if resp, err := tsdbClient.UpdateTSMetaData(tsMetaData); err != nil {
+	if resp, err := db.UpdateTSMetaData(tsMetaData); err != nil {
 		log.Printf("Error occurs when posting tsmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())
@@ -377,7 +394,7 @@ func Test() {
 	tsMetaData = client.TSMetaData{
 		Tsuid: "000001000001000001",
 	}
-	if resp, err := tsdbClient.DeleteTSMetaData(tsMetaData); err != nil {
+	if resp, err := db.DeleteTSMetaData(tsMetaData); err != nil {
 		log.Printf("Error occurs when deleting tsmetadata info: %v", err)
 	} else {
 		log.Printf("%s", resp.String())

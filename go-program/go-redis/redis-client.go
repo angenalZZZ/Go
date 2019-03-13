@@ -22,6 +22,7 @@ func Init() {
 	if Db != nil {
 		return
 	}
+
 	// config
 	api_config.Check("REDIS_ADDR")
 	api_config.Check("REDIS_PWD")
@@ -45,9 +46,18 @@ func Init() {
 	}
 }
 
+// 数据库 Redis Client close
+func ShutdownClient() {
+	log.Println("缓存数据库 Redis Client closing..")
+	if e := Db.Close(); e != nil {
+		log.Fatal(e) // 中断程序时输出
+	}
+}
+
 // 测试
 func Test() {
 	Init()
+	log.Printf("缓存数据库 Redis Client testing.. Addr: %s\n\n", opt.Addr)
 
 	// redis : Client
 	db := Db

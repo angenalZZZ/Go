@@ -22,6 +22,10 @@ func main() {
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
 	// 监听程序退出2 后台运行 http Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
+	// 监听程序退出3 数据库 Redis Client
+	go_shutdown_hook.Add(go_redis.ShutdownClient)
+	// 监听程序退出4 数据库 OpenTSDB Client
+	go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
 
 	// 类型检查
 	go_type.TypeCheck()
