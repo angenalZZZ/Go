@@ -6,10 +6,19 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
  * 通常用于服务器编程，网络编程，分布式系统，内存数据库，云平台等。
  * 1.部署简单 2.静态编译语言(又像动态解释语言) 3.自动回收机制GC 4.语言层面支持高并发 5.丰富的第三方库,并且开源.
  * [JetBrains GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)、[liteide](http://liteide.org/cn/)
+
 ~~~shell
-# 1.部署简单：编译成机器码，复制后，别人就能直接用[Go环境也不用装] > 可通过<linux> ldd 查看可执行文件hello依赖的库文件
-$ ldd hello # 不依赖库，不像其它语言C|C++|Java|.Net|Swift..依赖系统环境库才能运行
+# 1.部署简单：编译成机器码(像C一样,不被反编译)复制给别人后，就能直接运行(环境免装)
+#   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
+$   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行
 ~~~
+#### 关键字
+    break      default       func     interface   select
+    case       defer         go       map         struct
+    chan       else          goto     package     switch
+    const      fallthrough   if       range       type
+    continue   for           import   return      var
+
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
