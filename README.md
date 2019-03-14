@@ -5,6 +5,9 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
  * [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)、[liteide](http://liteide.org/cn/)
+
+ > Download: [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
+
 ~~~shell
 # 1.部署简单：编译成机器码(像C一样,不被反编译)复制给别人后，就能直接运行(环境免装)
 #   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
@@ -179,8 +182,6 @@ cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
- > Download: [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
-
 
 #### ④ [中文标准库文档](https://studygolang.com/pkgdoc)
 
