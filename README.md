@@ -12,13 +12,13 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 #   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
 $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行
 ~~~
-#### 关键字
+ > 关键字
     break      default       func     interface   select
     case       defer         go       map         struct
     chan       else          goto     package     switch
     const      fallthrough   if       range       type
     continue   for           import   return      var
-#### 内建的常量、类型和函数
+ > 内建的常量、类型、函数
     常量: true false iota nil
 
     类型: bool byte rune string error
