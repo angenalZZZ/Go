@@ -179,6 +179,8 @@ cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
+ > Download: [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
+
 
 #### ④ [中文标准库文档](https://studygolang.com/pkgdoc)
 
