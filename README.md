@@ -12,19 +12,24 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 #   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
 $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行
 ~~~
- > 关键字
+
+ > `关键字`
+
     break      default       func     interface   select
     case       defer         go       map         struct
     chan       else          goto     package     switch
     const      fallthrough   if       range       type
     continue   for           import   return      var
- > 内建的常量、类型、函数
+
+ > 内建的`常量`、`类型`、`函数`
+
     常量: true false iota nil
 
     类型: bool byte rune string error
           int int8 int16 int32 int64   uint uint8 uint16 uint32 uint64 uintptr   float32 float64  complex64 complex128
 
     函数: make len cap new append copy close delete    complex real imag    panic recover
+
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
     环境配置> go env
