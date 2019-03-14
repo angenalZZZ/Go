@@ -40,4 +40,7 @@ func TypeCheck() {
 	fmt.Println("  格式化p：%v %+v %T %#v make(Slice::Point)")
 	fmt.Printf("  格式化p：%v %+v %T %#v [%d]Point\n", p, p, p, p, cap(p2))
 	fmt.Printf("  格式化i：%c %8.1f %8.2f %8x\n", 65, 12.5, 12.509, 54349)
+
+	// 二维数组
+	TwoImensionalArrays(4, 2)
 }

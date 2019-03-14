@@ -8,6 +8,8 @@ import (
 
 //var AppPath  string // 当前目录
 
+var Env Config
+
 type Config struct {
 	AUTH_JWT, JWT_algorithms, JWT_SECRET string
 }
@@ -42,9 +44,14 @@ func LoadCheck() {
 	Load()
 
 	// 检查配置项目
-	//Check("AUTH_JWT")
-	//Check("JWT_algorithms")
-	//Check("JWT_SECRET")
+	Check("AUTH_JWT")
+	Check("JWT_algorithms")
+	Check("JWT_SECRET")
+	Env = Config{
+		AUTH_JWT:       os.Getenv("AUTH_JWT"),
+		JWT_algorithms: os.Getenv("JWT_algorithms"),
+		JWT_SECRET:     os.Getenv("JWT_SECRET"),
+	}
 }
 
 // 检查配置项

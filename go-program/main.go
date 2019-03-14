@@ -2,7 +2,6 @@ package main
 
 import (
 	"angenalZZZ/go-program/api-config"
-	"angenalZZZ/go-program/go-args"
 	"angenalZZZ/go-program/go-file"
 	"angenalZZZ/go-program/go-leveldb"
 	"angenalZZZ/go-program/go-opentsdb"
@@ -10,53 +9,93 @@ import (
 	"angenalZZZ/go-program/go-shutdown-hook"
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
+	"flag"
 	"time"
 )
+
+/**
+命令行参数
+*/
+var config = flag.Bool("config", true, "check config file .env [yes]")
+
+var typeCheck = flag.Bool("type-check", false, "test Type Check [no]")
+var createFile = flag.Bool("create-file", false, "test Create File [no]")
+
+var tcp = flag.Bool("tcp", false, "open tcp Serve [no]")
+var http = flag.Bool("http", false, "open http Serve [no]")
+var leveldb = flag.Bool("leveldb", true, "test leveldb Client [no]")
+var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client [no]")
+var redis = flag.Bool("redis", false, "test redis Client [no]")
 
 /**
 程序入口函数
 */
 func main() {
+	// 查看命令行参数 -h -help
+	flag.Parse()
 	time.Sleep(time.Nanosecond * 100)
 
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
-	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
+	if *tcp == true {
+		go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
+	}
 	// 监听程序退出2 后台运行 http Serve Shutdown
-	go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
+	if *http == true {
+		go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
+	}
 	// 监听程序退出3 数据库 Leveldb Client
-	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
+	if *leveldb == true {
+		go_shutdown_hook.Add(go_leveldb.ShutdownClient)
+	}
 	// 监听程序退出4 数据库 OpenTSDB Client
-	go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
+	if *opentsdb == true {
+		go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
+	}
 	// 监听程序退出5 数据库 Redis Client
-	go_shutdown_hook.Add(go_redis.ShutdownClient)
+	if *redis == true {
+		go_shutdown_hook.Add(go_redis.ShutdownClient)
+	}
 
 	// 类型检查
-	go_type.TypeCheck()
-
-	// 二维数组
-	go_type.TwoImensionalArrays(4, 2)
+	if *typeCheck == true {
+		go_type.TypeCheck()
+	}
 
 	// 命令行参数
-	go_args.ArgsCheck()
+	//go_args.ArgsCheck()
 
 	// 加载配置文件并检查配置项
-	api_config.LoadCheck()
+	if *config == true {
+		api_config.LoadCheck()
+	}
 
 	// 文件管理：创建文件
-	go_file.CreateFile()
+	if *createFile == true {
+		go_file.CreateFile()
+	}
 
 	// 内存数据库 Leveldb Client
-	go go_leveldb.Test()
+	if *leveldb == true {
+		go go_leveldb.Test()
+	}
 	// 时序数据库 OpenTSDB Client
-	go go_opentsdb.Test()
+	if *opentsdb == true {
+		go go_opentsdb.Test()
+	}
 	// 缓存数据库 Redis Client
-	go go_redis.Test()
+	if *redis == true {
+		go go_redis.Test()
+	}
 
 	// 后台运行 tcp Serve Run
-	go go_tcp.TcpSvrRun() // a goroutine
+	if *tcp == true {
+		go go_tcp.TcpSvrRun()
+	}
 	// 后台运行 http Serve Run
-	go go_tcp.HttpSvrRun() // a goroutine
+	if *http == true {
+		go go_tcp.HttpSvrRun()
+	}
 
-	// 程序退出时
+	// 程序退出时 os.Exit(0)
 	go_shutdown_hook.Wait()
 }
