@@ -7,6 +7,7 @@ import (
 	"angenalZZZ/go-program/go-opentsdb"
 	"angenalZZZ/go-program/go-redis"
 	"angenalZZZ/go-program/go-shutdown-hook"
+	"angenalZZZ/go-program/go-ssdb"
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
 	"flag"
@@ -17,7 +18,6 @@ import (
 命令行参数
 */
 var config = flag.Bool("config", true, "check config file .env [yes]")
-
 var typeCheck = flag.Bool("type-check", false, "test Type Check [no]")
 var createFile = flag.Bool("create-file", false, "test Create File [no]")
 
@@ -26,6 +26,7 @@ var http = flag.Bool("http", false, "open http Serve [no]")
 var leveldb = flag.Bool("leveldb", true, "test leveldb Client [no]")
 var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client [no]")
 var redis = flag.Bool("redis", false, "test redis Client [no]")
+var ssdb = flag.Bool("ssdb", false, "test SSdb Client [no]")
 
 /**
 程序入口函数
@@ -54,6 +55,10 @@ func main() {
 	// 监听程序退出5 数据库 Redis Client
 	if *redis == true {
 		go_shutdown_hook.Add(go_redis.ShutdownClient)
+	}
+	// 监听程序退出6 数据库 SSdb Client
+	if *ssdb == true {
+		go_shutdown_hook.Add(go_ssdb.ShutdownClient)
 	}
 
 	// 类型检查
@@ -85,6 +90,10 @@ func main() {
 	// 缓存数据库 Redis Client
 	if *redis == true {
 		go go_redis.Test()
+	}
+	// 缓存数据库 SSdb Client
+	if *ssdb == true {
+		go go_ssdb.Test()
 	}
 
 	// 后台运行 tcp Serve Run
