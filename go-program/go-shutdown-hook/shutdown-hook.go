@@ -25,7 +25,9 @@ func Add(f func()) {
 }
 
 func Wait() {
-	<-done
+	if isStarted {
+		<-done
+	}
 }
 
 func executeHooks() {

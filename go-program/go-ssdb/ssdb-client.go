@@ -134,14 +134,18 @@ func Test() {
 	func() {
 		// new pool
 		if err := ssdb.Start(op); err != nil {
-			log.Fatal("无法连接到SSdb")
+			log.Printf(" 简单使用 SSdb Start: 无法连接到SSdb")
+		} else {
+			log.Printf(" 简单使用 SSdb Start..  Addr: %s:%d\n", op.Host, op.Port)
 		}
 		defer ssdb.Close()
 
 		// new client
 		c, e := ssdb.Client()
 		if e != nil {
-			log.Fatal("无法获取连接from-SSdb-pool")
+			log.Printf(" 简单使用 SSdb 无法获取连接from-SSdb-pool")
+		} else {
+			log.Printf(" 简单使用 SSdb 获取连接from-SSdb-pool: OK\n")
 		}
 		defer c.Close()
 
@@ -149,12 +153,21 @@ func Test() {
 		c.Set("a", 1)
 		c.Get("a")
 		c.Del("a")
+		log.Printf(" 简单使用 SSdb Set/Get/Del: OK\n")
 
 		//another simple run
 		ssdb.Simple(func(c *gossdb.Client) (e error) {
 			e = c.Set("test", "hello world")
-			_, e = c.Get("test")
-			c.Del("test")
+			if e == nil {
+				if _, e = c.Get("test"); e == nil {
+					if e = c.Del("test"); e == nil {
+						log.Printf(" 简单使用 SSdb /Simple/ Set/Get/Del: OK\n")
+					}
+				}
+			}
+			if e != nil {
+				log.Printf(" 简单使用 SSdb /Simple/ error")
+			}
 			return
 		})
 

@@ -17,16 +17,18 @@ import (
 /**
 命令行参数
 */
-var config = flag.Bool("config", true, "check config file .env [yes]")
-var typeCheck = flag.Bool("type-check", false, "test Type Check [no]")
-var createFile = flag.Bool("create-file", false, "test Create File [no]")
+var config = flag.Bool("config", true, "check config file .env")
 
-var tcp = flag.Bool("tcp", false, "open tcp Serve [no]")
-var http = flag.Bool("http", false, "open http Serve [no]")
-var leveldb = flag.Bool("leveldb", true, "test leveldb Client [no]")
-var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client [no]")
-var redis = flag.Bool("redis", false, "test redis Client [no]")
-var ssdb = flag.Bool("ssdb", false, "test SSdb Client [no]")
+var typeCheck = flag.Bool("type-check", false, "test Type Check")
+var createFile = flag.Bool("create-file", false, "test Create File")
+
+var tcp = flag.Bool("tcp", false, "open tcp Serve")
+var http = flag.Bool("http", false, "open http Serve")
+
+var leveldb = flag.Bool("leveldb", false, "test leveldb Client")
+var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client")
+var redis = flag.Bool("redis", false, "test redis Client")
+var ssdb = flag.Bool("ssdb", false, "test SSdb Client")
 
 /**
 程序入口函数

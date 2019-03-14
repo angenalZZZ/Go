@@ -3,6 +3,7 @@ package api_config
 import (
 	//"github.com/chai2010/winsvc"
 	"github.com/gobuffalo/envy"
+	"log"
 	"os"
 )
 
@@ -39,6 +40,7 @@ func Load() {
 
 // 加载配置文件并检查配置项
 func LoadCheck() {
+	println()
 
 	// 加载配置文件
 	Load()
@@ -52,6 +54,7 @@ func LoadCheck() {
 		JWT_algorithms: os.Getenv("JWT_algorithms"),
 		JWT_SECRET:     os.Getenv("JWT_SECRET"),
 	}
+	log.Printf("加载配置文件并检查配置项: OK\n")
 }
 
 // 检查配置项
