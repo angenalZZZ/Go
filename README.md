@@ -13,7 +13,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
 $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行
 ~~~
 #### 关键字
-    break      default       func     interface   select
+    `break`      `default`       func     interface   select
     case       defer         go       map         struct
     chan       else          goto     package     switch
     const      fallthrough   if       range       type
