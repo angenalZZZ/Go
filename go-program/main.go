@@ -28,6 +28,7 @@ var http = flag.Bool("http", false, "open http Serve")
 var leveldb = flag.Bool("leveldb", false, "test leveldb Client")
 var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client")
 var redis = flag.Bool("redis", false, "test redis Client")
+var redisCli = flag.Bool("redis-cli", false, "test redis Cli")
 var ssdb = flag.Bool("ssdb", false, "test SSdb Client")
 
 /**
@@ -57,6 +58,9 @@ func main() {
 	// 监听程序退出5 数据库 Redis Client
 	if *redis == true {
 		go_shutdown_hook.Add(go_redis.ShutdownClient)
+	}
+	if *redisCli == true {
+		go_shutdown_hook.Add(go_redis.ShutdownCli)
 	}
 	// 监听程序退出6 数据库 SSdb Client
 	if *ssdb == true {
@@ -92,6 +96,9 @@ func main() {
 	// 缓存数据库 Redis Client
 	if *redis == true {
 		go go_redis.Test()
+	}
+	if *redisCli == true {
+		go go_redis.TestCli()
 	}
 	// 缓存数据库 SSdb Client
 	if *ssdb == true {

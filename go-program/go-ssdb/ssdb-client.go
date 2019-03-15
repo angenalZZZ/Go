@@ -8,6 +8,7 @@ import (
 	"github.com/seefan/gossdb/ssdb"
 	"log"
 	"math/rand"
+	"net"
 	"os"
 	"strconv"
 	"strings"
@@ -30,17 +31,14 @@ func Init() {
 	// config
 	api_config.Check("SSDB_ADDR")
 	api_config.Check("SSDB_POOL")
-	addr, pools := strings.Split(os.Getenv("SSDB_ADDR"), ":"), strings.Split(os.Getenv("SSDB_POOL"), ":")
-	if len(addr) != 2 {
-		log.Fatal("SSDB_ADDR 配置异常") // 中断程序时输出
-	}
-	if len(pools) != 3 {
-		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
-	}
-	host := addr[0]
-	port, e := strconv.Atoi(addr[1])
+	host, _port, e := net.SplitHostPort(os.Getenv("SSDB_ADDR"))
+	port, e := strconv.Atoi(_port)
 	if e != nil {
 		log.Fatal("SSDB_ADDR 配置异常") // 中断程序时输出
+	}
+	pools := strings.Split(os.Getenv("SSDB_POOL"), ":")
+	if len(pools) != 3 {
+		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
 	}
 	minPoolSize, e := strconv.Atoi(pools[0])
 	if e != nil {
