@@ -170,12 +170,11 @@ go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb 
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/gocraft/work             # 任务管理器,计划cron-redis-work
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
-go get upper.io/db.v3                      # 数据库sql    *2k  https://github.com/upper/db
-go get github.com/jmoiron/sqlx             # 数据库sql    *5k  extensions go's standard database/sql library.
+go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library.
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle.
 go get github.com/go-kit/kit               # 微服务构建   *13k  standard library for web frameworks...
-go get github.com/xo/xo                    # 命令行工具  xo --help 生成models/ github.com/xo/xo#using-sql-drivers
-go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档 https://goswagger.io/install.html
+go get github.com/xo/xo                    # 命令行工具  xo --help 生成/models/... github.com/xo/xo#using-sql-drivers
+go get github.com/go-swagger/go-swagger/cmd/swagger # Api-Swagger文档生成 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 ~~~
 
