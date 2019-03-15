@@ -138,20 +138,6 @@ go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123         # shen100
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
-
-# 开发development*
-go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
-go get github.com/gomodule/redigo/redis
-go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
-go get github.com/syndtr/goleveldb/leveldb # 内存数据库leveldb
-go get github.com/gocraft/work             # 后台任务管理
-go get github.com/jinzhu/gorm              # 数据库orm    *12k
-go get github.com/go-xorm/xorm             # 数据库orm    *5k
-go get upper.io/db.v3                      # 数据库sql    *2k  https://github.com/upper/db
-go get github.com/go-kit/kit               # 微服务构建   *13k
-go get github.com/istio/istio              # 微服务构建   *16k
-go get github.com/xo/xo                    # 命令行工具: xo --help 生成models https://github.com/xo/xo#using-sql-drivers
-go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档  https://goswagger.io/install.html
 ~~~
 
 > Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
@@ -177,6 +163,20 @@ docker exec -it golang1115 bash
 
  * [QT跨平台应用框架](https://github.com/therecipe/qt)
  * [其他应用](https://github.com/avelino/awesome-go)
+~~~
+go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
+go get github.com/gomodule/redigo/redis
+go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
+go get github.com/syndtr/goleveldb/leveldb # 内存数据库leveldb
+go get github.com/gocraft/work             # 后台任务管理
+go get github.com/jinzhu/gorm              # 数据库orm    *12k
+go get github.com/go-xorm/xorm             # 数据库orm    *5k
+go get upper.io/db.v3                      # 数据库sql    *2k  https://github.com/upper/db
+go get github.com/go-kit/kit               # 微服务构建   *13k
+go get github.com/istio/istio              # 微服务构建   *16k
+go get github.com/xo/xo                    # 命令行工具: xo --help 生成models https://github.com/xo/xo#using-sql-drivers
+go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档  https://goswagger.io/install.html
+~~~
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
@@ -185,8 +185,8 @@ cd %GOPATH%/src                                                                 
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 编译 
-cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v .
+# 构建 
+cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
