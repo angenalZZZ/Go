@@ -165,10 +165,10 @@ docker exec -it golang1115 bash
  * [其他应用](https://github.com/avelino/awesome-go)
 ~~~
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
-go get github.com/gomodule/redigo/redis
+go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
-go get github.com/syndtr/goleveldb/leveldb # 内存数据库leveldb
-go get github.com/gocraft/work             # 任务管理器
+go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+go get github.com/gocraft/work             # 任务管理器,计划cron-redis-work
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 go get upper.io/db.v3                      # 数据库sql    *2k  https://github.com/upper/db
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle.
