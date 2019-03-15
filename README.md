@@ -173,7 +173,7 @@ go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library.
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle.
 go get github.com/go-kit/kit               # 微服务构建   *13k  standard library for web frameworks...
-go get github.com/xo/xo                    # 命令行工具 xo --help 生成models/... github.com/xo/xo#using-sql-drivers
+go get github.com/xo/xo                    # 命令行工具   xo --help  生成models/...
 go get github.com/go-swagger/go-swagger/cmd/swagger # Api-Swagger文档生成 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 ~~~
