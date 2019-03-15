@@ -141,9 +141,11 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 
 # 开发development*
 go get github.com/go-redis/redis            # 缓存数据库,类型安全的Redis-client
+go get github.com/gomodule/redigo/redis
 go get github.com/seefan/gossdb/example     # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb  # 内存数据库leveldb
-
+go get github.com/gocraft/work              # 后台任务管理
+go get upper.io/db.v3                       # 数据库orm
 ~~~
 
 > Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
