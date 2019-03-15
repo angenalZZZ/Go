@@ -137,7 +137,7 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123         # shen100
-git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # Example programs
+git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 ~~~
 
 > Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
@@ -146,7 +146,7 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 # 1. pull build tools: Glide, gdm, go-test-teamcity
 docker pull jetbrainsinfra/golang:1.11.5
 docker pull golang:1.4.2-cross
-docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
 # 2. run docker container
 docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
 docker cp golang1115:/go/src/github.com %GOPATH%\src
@@ -156,7 +156,7 @@ docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src
 docker exec -it golang1115 bash
   $ cd apiserver & go build & ./apiserver                                                # build for linux
   $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
-    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # build for linux & windows
+    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
 ~~~
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
@@ -174,8 +174,8 @@ go get github.com/go-xorm/xorm             # 数据库orm    *5k
 go get upper.io/db.v3                      # 数据库sql    *2k  https://github.com/upper/db
 go get github.com/go-kit/kit               # 微服务构建   *13k
 go get github.com/istio/istio              # 微服务构建   *16k
-go get github.com/xo/xo                    # 命令行工具: xo --help 生成models https://github.com/xo/xo#using-sql-drivers
-go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档  https://goswagger.io/install.html
+go get github.com/xo/xo                    # 命令行工具 xo --help 生成models/ github.com/xo/xo#using-sql-drivers
+go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档 https://goswagger.io/install.html
 ~~~
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
