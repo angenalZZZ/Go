@@ -144,10 +144,11 @@ go get github.com/go-redis/redis            # 缓存数据库,类型安全的Red
 go get github.com/gomodule/redigo/redis
 go get github.com/seefan/gossdb/example     # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb  # 内存数据库leveldb
-go get github.com/gocraft/work              # 后台任务管理
-go get github.com/jinzhu/gorm            # 数据库orm
-go get github.com/go-xorm/xorm
-go get upper.io/db.v3
+go get github.com/gocraft/work              # 后台任务管理  *1k
+go get github.com/jinzhu/gorm               # 数据库orm    *12k
+go get github.com/go-xorm/xorm              # 数据库orm     *5k
+go get upper.io/db.v3                       # 数据库sql     *2k  https://github.com/upper/db
+go get github.com/xo/xo                     # 命令行工具: xo --help (生成/models/...)
 ~~~
 
 > Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
