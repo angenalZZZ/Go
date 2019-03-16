@@ -82,7 +82,8 @@ git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       
 git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
 git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
 git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
-git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 其他
+git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 浏览
+git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
 # 开发工具-VSCode语言支持
 go get -u -v github.com/nsf/gocode
@@ -121,7 +122,7 @@ go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/ge
   > go build
 # vgo 一个项目模块管理工具 (用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) # [默认auto]
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install
-  > go help mod <command>       # 帮助
+  > go help mod <command>       # 帮助 SET GO111MODULE=on
   > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github
   > go get ./...  # go mod tidy # 根据已有代码import需要的依赖自动生成require语句
   > go get -u # go get -u=patch # 升级到最新的次要版本,升级到最新的修订版本
@@ -173,8 +174,8 @@ go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library.
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle.
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
-go get github.com/xo/xo                    # 命令行工具   xo --help  生成 models/...
-go get github.com/go-swagger/go-swagger/cmd/swagger # Api-Swagger文档生成 https://goswagger.io/install.html
+go get github.com/xo/xo                    # 命令行工具   xo --help  [DbFirst]生成 models/*.xo.go
+go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 ~~~
 
