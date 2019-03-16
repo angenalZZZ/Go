@@ -171,11 +171,12 @@ go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb 
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/gocraft/work             # 任务管理器,计划cron-redis-work
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
-go get github.com/lib/pq                   # Postgres
-go get github.com/mattn/go-oci8            # Oracle
-go get github.com/mattn/go-sqlite3         # SQLite
+git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
+go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
+go get github.com/lib/pq                   # Postgres
+go get github.com/mattn/go-sqlite3         # SQLite
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
