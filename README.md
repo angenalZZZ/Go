@@ -188,9 +188,10 @@ go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
 go get github.com/xo/xo                    # 命令行工具   xo --help  [DbFirst]生成 models/*.xo.go
+go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
-go get github.com/yudai/gotty
+go get github.com/yudai/gotty              # 终端扩展服务
 ~~~
 
 #### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
