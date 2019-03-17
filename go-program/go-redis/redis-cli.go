@@ -58,7 +58,7 @@ func InitCli() {
 	// new client
 	Cli = Pool.Get()
 
-	//// check
+	// check
 	if e := Cli.Err(); e != nil {
 		log.Fatal(e) // 中断程序时输出
 	}
