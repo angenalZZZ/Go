@@ -169,7 +169,7 @@ go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
-go get github.com/nsqio/go-nsq             # 消息队列前-后端 https://nsq.io/deployment/docker.html
+go get github.com/nsqio/go-nsq             # 实时消息平台 https://nsq.io/deployment/installing.html
 go get github.com/jasonlvhit/gocron        # cron & timer
 go get github.com/gocraft/work             # work & redis-queue
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
