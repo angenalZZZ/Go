@@ -13,12 +13,8 @@ import (
 */
 var D *nsq.Producer
 
-// 初始化Cli
+// 初始化配置
 func InitProducer() {
-	if D != nil {
-		return
-	}
-
 	// config
 	api_config.Check("NSQD_ADDR") // 单节点1
 	addr := os.Getenv("NSQD_ADDR")

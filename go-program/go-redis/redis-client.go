@@ -17,12 +17,8 @@ import (
 var Db *redis.Client
 var op *redis.Options
 
-// 初始化Client
+// 初始化配置
 func init() {
-	if Db != nil {
-		return
-	}
-
 	// config
 	api_config.Check("REDIS_ADDR")
 	api_config.Check("REDIS_PWD")

@@ -19,12 +19,8 @@ var Db *leveldb.DB
 var op *opt.Options
 var addr string
 
-// 初始化Client
+// 初始化配置
 func init() {
-	if Db != nil {
-		return
-	}
-
 	// config
 	api_config.Check("LEVELDB")
 	addr = os.Getenv("LEVELDB")

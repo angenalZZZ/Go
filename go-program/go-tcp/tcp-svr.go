@@ -12,6 +12,7 @@ import (
 */
 var tcpSvr *http.Server
 
+// 初始化配置
 func init() {
 }
 func initTcpSvr() {

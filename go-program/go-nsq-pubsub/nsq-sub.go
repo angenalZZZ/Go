@@ -13,12 +13,8 @@ import (
 */
 var C *nsq.Consumer
 
-// 初始化Consumer
+// 初始化配置
 func init() {
-	if C != nil {
-		return
-	}
-
 	// config
 	api_config.Check("NSQC_ADDR") // 单节点
 	addr := os.Getenv("NSQC_ADDR")

@@ -13,12 +13,8 @@ import (
 var Db *client.Client
 var op *config.OpenTSDBConfig
 
-// 初始化Client
+// 初始化配置
 func init() {
-	if Db != nil {
-		return
-	}
-
 	// config
 	op = &config.OpenTSDBConfig{Host: "127.0.0.1:4242"}
 }

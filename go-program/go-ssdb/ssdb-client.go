@@ -22,12 +22,8 @@ var Db *gossdb.Client
 var op *conf.Config
 var pool *gossdb.Connectors
 
-// 初始化Client
+// 初始化配置
 func init() {
-	if Db != nil {
-		return
-	}
-
 	// config
 	api_config.Check("SSDB_ADDR")
 	api_config.Check("SSDB_POOL")

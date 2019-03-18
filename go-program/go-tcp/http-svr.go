@@ -16,6 +16,7 @@ import (
 */
 var httpSvr *http.Server
 
+// 初始化配置
 func init() {
 	// config
 	api_config.Check("HOST")

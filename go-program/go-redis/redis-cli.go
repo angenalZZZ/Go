@@ -19,12 +19,8 @@ var CliPoll *redis.Pool
 var cliOpt redis.DialOption
 var cliAddr string
 
-// 初始化Cli
+// 初始化配置
 func init() {
-	if CliPoll != nil {
-		return
-	}
-
 	// config
 	api_config.Check("REDIS_ADDR")
 	api_config.Check("REDIS_PWD")
