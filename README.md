@@ -162,9 +162,9 @@ docker exec -it golang1115 bash
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
- * [QT跨平台应用框架](https://github.com/therecipe/qt)
- * [其他应用](https://github.com/avelino/awesome-go)
+ * [QT跨平台应用框架](https://github.com/therecipe/qt)、[Webview-App](https://github.com/zserge/webview)、[Electron-App](https://github.com/asticode/go-astilectron)、[WebAssembly-App](https://github.com/murlokswarm/app)
 ~~~
+go get github.com/gofrs/uuid
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
@@ -191,7 +191,7 @@ git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
-go get github.com/gin-gonic/gin            # 后端WebApi : gin
+go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
@@ -203,10 +203,10 @@ go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 ~~~
 
-#### ③ [构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
 # 开发
-cd %GOPATH%/src                                                                 # 项目框架 Gin 
+cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
