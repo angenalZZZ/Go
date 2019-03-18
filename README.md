@@ -185,6 +185,8 @@ go get github.com/mattn/go-sqlite3         # SQLite
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
 go get github.com/olivere/elastic          # Elasticsearch 6.0
+go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
+go get willnorris.com/go/imageproxy/cmd/imageproxy # Caching image proxy server & docker & nginx
 git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver && dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
