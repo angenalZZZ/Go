@@ -169,6 +169,8 @@ go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+go get github.com/coocood/freecache        # cache and high concurrent performance
+go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
 go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/jasonlvhit/gocron        # simple cron of timer
@@ -182,9 +184,11 @@ go get github.com/lib/pq                   # Postgres
 go get github.com/mattn/go-sqlite3         # SQLite
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
+go get github.com/olivere/elastic          # Elasticsearch 6.0
 git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver && dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
+git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/gin-gonic/gin            # 后端WebApi : gin
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
