@@ -170,8 +170,9 @@ go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redi
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
-go get github.com/jasonlvhit/gocron        # cron & timer
-go get github.com/gocraft/work             # work & redis-queue
+go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
+go get github.com/jasonlvhit/gocron        # simple cron of timer
+go get github.com/gocraft/work             # do work with redis-queue
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
