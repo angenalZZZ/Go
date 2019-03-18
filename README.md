@@ -174,7 +174,7 @@ go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (si
 go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/jasonlvhit/gocron        # simple cron of timer
-go get github.com/gocraft/work             # do work with redis-queue
+go get github.com/gocraft/work             # do work of redis-queue https://github.com/gocraft/work#run-the-web-ui
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
