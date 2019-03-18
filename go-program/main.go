@@ -6,6 +6,7 @@ import (
 	"angenalZZZ/go-program/go-leveldb"
 	"angenalZZZ/go-program/go-opentsdb"
 	"angenalZZZ/go-program/go-redis"
+	"angenalZZZ/go-program/go-scheduler"
 	"angenalZZZ/go-program/go-shutdown-hook"
 	"angenalZZZ/go-program/go-ssdb"
 	"angenalZZZ/go-program/go-tcp"
@@ -31,6 +32,8 @@ var redis = flag.Bool("redis", false, "test redis Client")
 var redisCli = flag.Bool("redis-cli", false, "test redis Cli")
 var ssdb = flag.Bool("ssdb", false, "test SSdb Client")
 
+var worker = flag.Bool("worker", true, "test Scheduler Worker")
+
 /**
 程序入口函数
 */
@@ -52,6 +55,8 @@ func main() {
 	go_shutdown_hook.Add(go_redis.ShutdownCli)
 	// 监听程序退出6 数据库 SSdb Client
 	go_shutdown_hook.Add(go_ssdb.ShutdownClient)
+	// 监听程序退出7 计划任务 Scheduler Worker
+	go_shutdown_hook.Add(go_scheduler.ShutdownWorker)
 
 	// 加载配置文件并检查配置项
 	if *config == true {
@@ -86,6 +91,11 @@ func main() {
 	// 缓存数据库 SSdb Client
 	if *ssdb == true {
 		go go_ssdb.Test()
+	}
+
+	// 计划任务 Scheduler Worker
+	if *worker == true {
+		go go_scheduler.TestWorker()
 	}
 
 	// 后台运行 tcp Serve Run
