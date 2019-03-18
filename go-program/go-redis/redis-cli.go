@@ -15,12 +15,13 @@ import (
 数据库连接 redis : Client
 */
 var Cli redis.Conn
-var Pool *redis.Pool
+var CliPoll *redis.Pool
+var cliOpt redis.DialOption
 var cliAddr string
 
 // 初始化Cli
-func InitCli() {
-	if Pool != nil {
+func init() {
+	if CliPoll != nil {
 		return
 	}
 
@@ -34,29 +35,35 @@ func InitCli() {
 		i = 0
 	}
 	// client
-	opt := redis.DialClientName("redis-cli")
-	opt = redis.DialUseTLS(false)
+	cliOpt = redis.DialClientName("redis-cli")
+	cliOpt = redis.DialUseTLS(false)
 	// password
 	password := os.Getenv("REDIS_PWD")
 	if len(password) > 0 {
-		opt = redis.DialPassword(password)
+		cliOpt = redis.DialPassword(password)
 	}
 	// db number
 	if i > 0 && i < 16 {
-		opt = redis.DialDatabase(i)
+		cliOpt = redis.DialDatabase(i)
 	}
+}
+func initCli() {
+	if CliPoll != nil {
+		return
+	}
+
 	// managed Pool
-	Pool = &redis.Pool{
+	CliPoll = &redis.Pool{
 		MaxActive: 5,
 		MaxIdle:   5,
 		Wait:      true,
 		Dial: func() (redis.Conn, error) {
-			return redis.Dial("tcp", cliAddr, opt)
+			return redis.Dial("tcp", cliAddr, cliOpt)
 		},
 	}
 
 	// new client
-	Cli = Pool.Get()
+	Cli = CliPoll.Get()
 
 	// check
 	if e := Cli.Err(); e != nil {
@@ -66,14 +73,14 @@ func InitCli() {
 
 // 数据库 Redis Cli close
 func ShutdownCli() {
-	log.Println("缓存数据库 Redis Cli closing..")
-	if Cli != nil {
-		if e := Cli.Close(); e != nil {
-			log.Fatal(e) // 中断程序时输出
+	if CliPoll != nil {
+		//log.Println("缓存数据库 Redis Cli closing..")
+		if Cli != nil {
+			if e := Cli.Close(); e != nil {
+				log.Fatal(e) // 中断程序时输出
+			}
 		}
-	}
-	if Pool != nil {
-		if e := Pool.Close(); e != nil {
+		if e := CliPoll.Close(); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}
 	}
@@ -81,11 +88,11 @@ func ShutdownCli() {
 
 // 测试
 func TestCli() {
-	InitCli()
+	initCli()
 	log.Printf("缓存数据库 Redis Cli testing.. Addr: %s\n\n", cliAddr)
 
 	// redis : new Cli
-	c := Pool.Get()
+	c := CliPoll.Get()
 	defer func() { _ = c.Close() }()
 	rand.Seed(time.Now().UnixNano())
 

@@ -16,14 +16,18 @@ import (
 */
 var httpSvr *http.Server
 
-// 后台运行 http Serve Run
-func HttpSvrRun() {
+func init() {
 	// config
 	api_config.Check("HOST")
 	api_config.Check("POST")
-
+}
+func initHttpSvr() {
 	httpSvr = &http.Server{Addr: os.Getenv("HOST") + ":" + os.Getenv("POST")}
+}
 
+// 后台运行 http Serve Run
+func HttpSvrRun() {
+	initHttpSvr()
 	// 服务处理
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 
@@ -40,7 +44,7 @@ func HttpSvrRun() {
 	})
 
 	// 开始服务
-	//log.Fatal(http.ListenAndServe(httpSvr.Addr, nil))
+	//log.Fatal(http.ListenAndServe(httpSvr.Addr, nil)) // a simple way
 	l, e := net.Listen("tcp4", httpSvr.Addr)
 	if e == nil {
 		println()
@@ -56,7 +60,7 @@ func HttpSvrRun() {
 // 后台运行 http Serve Shutdown
 func HttpSvrShutdown() {
 	if httpSvr != nil {
-		log.Println("后台服务 http: Server stopping..") // Go ^1.8
+		//log.Println("后台服务 http: Server stopping..") // Go ^1.8
 		if e := httpSvr.Shutdown(context.Background()); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}

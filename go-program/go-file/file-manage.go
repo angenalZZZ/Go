@@ -16,7 +16,7 @@ func CreateFile() {
 		fmt.Fprintf(os.Stderr, "  创建tmp文件异常：%+v", e)
 		panic(e) // 无法创建文件时，进程退出code:2
 	} else {
-		fmt.Println("  创建tmp文件成功：" + f.Name())
+		fmt.Printf("  创建tmp文件成功：%s \n", f.Name())
 		var fileContent = "文件内容\r\n内容..."
 		defer os.Remove(f.Name())    // defer 当要退出func main()作用域时执行
 		defer f.Close()              // defer 在作用域内 按倒序执行

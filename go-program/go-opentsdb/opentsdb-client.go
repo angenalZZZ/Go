@@ -14,13 +14,18 @@ var Db *client.Client
 var op *config.OpenTSDBConfig
 
 // 初始化Client
-func Init() {
+func init() {
 	if Db != nil {
 		return
 	}
 
 	// config
 	op = &config.OpenTSDBConfig{Host: "127.0.0.1:4242"}
+}
+func initDb() {
+	if Db != nil {
+		return
+	}
 
 	db, e := client.NewClient(*op)
 	if e != nil {
@@ -36,15 +41,17 @@ func Init() {
 
 // 数据库 OpenTSDB Client close
 func ShutdownClient() {
-	log.Println("时序数据库 OpenTSDB Client Drop caches..")
-	if _, e := (*Db).Dropcaches(); e != nil {
-		log.Fatal(e) // 中断程序时输出
+	if Db != nil {
+		//log.Println("时序数据库 OpenTSDB Client Drop caches..")
+		if _, e := (*Db).Dropcaches(); e != nil {
+			log.Fatal(e) // 中断程序时输出
+		}
 	}
 }
 
 // 数据库OpenTSDB : go Test()
 func Test() {
-	Init()
+	initDb()
 	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", (*op).Host)
 
 	db := *Db

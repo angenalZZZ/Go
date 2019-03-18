@@ -10,10 +10,17 @@ import (
 /**
 后台服务 tcp: Server
 */
-var tcpSvr = &http.Server{Addr: ":8007"}
+var tcpSvr *http.Server
+
+func init() {
+}
+func initTcpSvr() {
+	tcpSvr = &http.Server{Addr: ":8007"}
+}
 
 // 后台运行 tcp Serve Run
 func TcpSvrRun() {
+	initTcpSvr()
 	l, e := net.Listen("tcp4", tcpSvr.Addr)
 	if e == nil {
 		println()
@@ -28,8 +35,8 @@ func TcpSvrRun() {
 
 // 后台运行 tcp Serve Shutdown
 func TcpSvrShutdown() {
-	log.Println("后台服务 tcp: Server exiting..")
 	if tcpSvr != nil {
+		//log.Println("后台服务 tcp: Server exiting..")
 		if e := tcpSvr.Shutdown(context.Background()); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}

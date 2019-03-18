@@ -18,7 +18,7 @@ var Db *redis.Client
 var op *redis.Options
 
 // 初始化Client
-func Init() {
+func init() {
 	if Db != nil {
 		return
 	}
@@ -36,6 +36,11 @@ func Init() {
 		Password: os.Getenv("REDIS_PWD"),
 		DB:       i, // default DB: 0
 	}
+}
+func initDb() {
+	if Db != nil {
+		return
+	}
 
 	// new client
 	Db = redis.NewClient(op)
@@ -48,15 +53,17 @@ func Init() {
 
 // 数据库 Redis Client close
 func ShutdownClient() {
-	log.Println("缓存数据库 Redis Client closing..")
-	if e := Db.Close(); e != nil {
-		log.Fatal(e) // 中断程序时输出
+	if Db != nil {
+		//log.Println("缓存数据库 Redis Client closing..")
+		if e := Db.Close(); e != nil {
+			log.Fatal(e) // 中断程序时输出
+		}
 	}
 }
 
 // 测试
 func Test() {
-	Init()
+	initDb()
 	log.Printf("缓存数据库 Redis Client testing.. Addr: %s\n\n", op.Addr)
 
 	// redis : Client

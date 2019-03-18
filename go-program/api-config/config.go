@@ -7,16 +7,15 @@ import (
 	"os"
 )
 
-//var AppPath  string // 当前目录
-
 var Env Config
 
+// 认证方式 结构设计 [Config:复合类型]
 type Config struct {
 	AUTH_JWT, JWT_algorithms, JWT_SECRET string
 }
 
 // 加载配置文件
-func Load() {
+func init() {
 
 	// *** 文件 .env 编码 必须是 UTF-8 +换行LF ***
 	//AppPath, _ = winsvc.GetAppPath()
@@ -42,9 +41,6 @@ func Load() {
 func LoadCheck() {
 	println()
 
-	// 加载配置文件
-	Load()
-
 	// 检查配置项目
 	Check("AUTH_JWT")
 	Check("JWT_algorithms")
@@ -57,7 +53,7 @@ func LoadCheck() {
 	log.Printf("加载配置文件并检查配置项: OK\n")
 }
 
-// 检查配置项
+// 检查配置项 Must Checked
 func Check(key string) {
 	if _, e := envy.MustGet(key); e != nil {
 		panic(e)

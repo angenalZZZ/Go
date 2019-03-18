@@ -23,7 +23,7 @@ var op *conf.Config
 var pool *gossdb.Connectors
 
 // 初始化Client
-func Init() {
+func init() {
 	if Db != nil {
 		return
 	}
@@ -62,8 +62,14 @@ func Init() {
 		AcquireIncrement: acquireIncrement,
 		Password:         password,
 	}
+}
+func initDb() {
+	if Db != nil {
+		return
+	}
 
 	// new Pool
+	var e error
 	pool, e = gossdb.NewPool(op)
 	if e != nil {
 		log.Fatal(e) // 中断程序时输出
@@ -92,8 +98,8 @@ func NewClient() *gossdb.Client {
 
 // 数据库 SSdb Client close
 func ShutdownClient() {
-	log.Println("缓存数据库 SSdb Client closing..")
 	if Db != nil && pool != nil {
+		//log.Println("缓存数据库 SSdb Client closing..")
 		if e := Db.Close(); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}
@@ -104,7 +110,7 @@ func ShutdownClient() {
 
 // 测试
 func Test() {
-	Init()
+	initDb()
 	log.Printf("缓存数据库 SSdb Client testing.. Addr: %s:%d\n\n", op.Host, op.Port)
 
 	// SSdb : Client

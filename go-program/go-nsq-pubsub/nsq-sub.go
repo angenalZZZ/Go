@@ -9,12 +9,12 @@ import (
 )
 
 /**
-消费者 nsq Producer : Client
+消费者 nsq Consumer : Client
 */
 var C *nsq.Consumer
 
-// 初始化Cli
-func InitConsumer() {
+// 初始化Consumer
+func init() {
 	if C != nil {
 		return
 	}
@@ -31,7 +31,7 @@ func InitConsumer() {
 	if e != nil {
 		log.Fatal(e) // 中断程序时输出
 	}
-	c.AddHandler(nsq.HandlerFunc(handle))
+	c.AddHandler(nsq.HandlerFunc(doPrint))
 	C = c
 
 	// check
@@ -41,7 +41,7 @@ func InitConsumer() {
 }
 
 // handle message
-func handle(m *nsq.Message) error {
+func doPrint(m *nsq.Message) error {
 	// handle the message
 	log.Printf("receive ID:%s,addr:%s,message:%s", m.ID, m.NSQDAddress, m.Body)
 	return nil

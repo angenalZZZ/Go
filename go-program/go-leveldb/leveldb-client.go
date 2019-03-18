@@ -20,7 +20,7 @@ var op *opt.Options
 var addr string
 
 // 初始化Client
-func Init() {
+func init() {
 	if Db != nil {
 		return
 	}
@@ -29,6 +29,11 @@ func Init() {
 	api_config.Check("LEVELDB")
 	addr = os.Getenv("LEVELDB")
 	//op = &opt.Options{}
+}
+func initDb() {
+	if Db != nil {
+		return
+	}
 
 	db, e := leveldb.OpenFile(addr, op)
 	if e != nil {
@@ -39,9 +44,11 @@ func Init() {
 
 // 数据库 Leveldb Client close
 func ShutdownClient() {
-	log.Println("内存数据库 Leveldb Client closing..")
-	if e := Db.Close(); e != nil {
-		log.Fatal(e) // 中断程序时输出
+	if Db != nil {
+		//log.Println("内存数据库 Leveldb Client closing..")
+		if e := Db.Close(); e != nil {
+			log.Fatal(e) // 中断程序时输出
+		}
 	}
 }
 
@@ -95,7 +102,7 @@ func RangeStartWith(prefix string, ro *opt.ReadOptions, iterator func(key, value
 
 ///测试//////////////////////////////////////////////////////////////
 func Test() {
-	Init()
+	initDb()
 	log.Printf("内存数据库 Leveldb Client testing.. Addr: %s\n\n", addr)
 
 	rand.Seed(time.Now().UnixNano())

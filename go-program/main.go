@@ -40,44 +40,27 @@ func main() {
 	time.Sleep(time.Nanosecond * 100)
 
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
-	if *tcp == true {
-		go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
-	}
+	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
 	// 监听程序退出2 后台运行 http Serve Shutdown
-	if *http == true {
-		go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
-	}
+	go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
 	// 监听程序退出3 数据库 Leveldb Client
-	if *leveldb == true {
-		go_shutdown_hook.Add(go_leveldb.ShutdownClient)
-	}
+	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
 	// 监听程序退出4 数据库 OpenTSDB Client
-	if *opentsdb == true {
-		go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
-	}
+	go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
 	// 监听程序退出5 数据库 Redis Client
-	if *redis == true {
-		go_shutdown_hook.Add(go_redis.ShutdownClient)
-	}
-	if *redisCli == true {
-		go_shutdown_hook.Add(go_redis.ShutdownCli)
-	}
+	go_shutdown_hook.Add(go_redis.ShutdownClient)
+	go_shutdown_hook.Add(go_redis.ShutdownCli)
 	// 监听程序退出6 数据库 SSdb Client
-	if *ssdb == true {
-		go_shutdown_hook.Add(go_ssdb.ShutdownClient)
+	go_shutdown_hook.Add(go_ssdb.ShutdownClient)
+
+	// 加载配置文件并检查配置项
+	if *config == true {
+		api_config.LoadCheck()
 	}
 
 	// 类型检查
 	if *typeCheck == true {
 		go_type.TypeCheck()
-	}
-
-	// 命令行参数
-	//go_args.ArgsCheck()
-
-	// 加载配置文件并检查配置项
-	if *config == true {
-		api_config.LoadCheck()
 	}
 
 	// 文件管理：创建文件
@@ -114,6 +97,6 @@ func main() {
 		go go_tcp.HttpSvrRun()
 	}
 
-	// 程序退出时 os.Exit(0)
+	// 程序退出, 正常时 os.Exit(0) | 异常时 os.Exit(1)
 	go_shutdown_hook.Wait()
 }

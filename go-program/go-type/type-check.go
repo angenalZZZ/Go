@@ -7,12 +7,12 @@ import (
 
 // 类型检查
 func TypeCheck() {
-	var p api_models.IPoint = api_models.Point{X: 1, Y: 2}
+	var p api_models.IPoint = &api_models.Point{X: 1, Y: 2}
 	var p2 = make([]api_models.Point, 2)
 	fmt.Println("-------------------------\n类型检查：")
 
-	// type assertion
-	if p0, ok := p.(api_models.Point); ok == true {
+	// type assertion (*指针类型)
+	if p0, ok := p.(*api_models.Point); ok == true {
 		fmt.Printf("  类型断言: %p  %p\n", &p, &p0)
 	}
 
