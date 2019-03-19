@@ -187,7 +187,13 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
 go get github.com/olivere/elastic          # Elasticsearch 6.0
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get willnorris.com/go/imageproxy/cmd/imageproxy # Caching image proxy server & docker & nginx
-git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver && dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
+git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
+  go get github.com/go-stack/stack 
+  go get github.com/golang/snappy
+  go get github.com/google/go-cmp
+  go get github.com/montanaflynn/stats
+  go get github.com/tidwall/pretty
+  dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
