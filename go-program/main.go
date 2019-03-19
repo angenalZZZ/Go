@@ -41,6 +41,7 @@ func main() {
 	// 查看命令行参数 -h -help
 	flag.Parse()
 	time.Sleep(time.Nanosecond * 100)
+	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC) // log使用UTC时间
 
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)

@@ -51,10 +51,13 @@ func init() {
 	}
 	// Worker Config
 	workerConfig = WorkerConfig{
-		concurrency:   1,
-		namespace:     "work",
-		pool:          cliPool,
-		sleepBackoffs: []int64{},
+		concurrency:     1,
+		namespace:       "work",
+		pool:            cliPool,
+		sleepBackoffs:   []int64{},
+		log:             true, // 开启当前上下文的日志输出Context.log
+		manual:          true, // 是否为 手动执行任务
+		drainOnShutdown: true, // 计划任务 close 时, 清理队列
 	}
 }
 
@@ -90,6 +93,10 @@ func initWorkerJobs() {
 // 计划任务 close
 func ShutdownWorker() {
 	if WorkerPool != nil {
+		// 计划任务 close 时, 清理队列
+		if workerConfig.drainOnShutdown {
+			WorkerPool.Drain()
+		}
 		//log.Println("计划任务 Scheduler Worker closing..")
 		WorkerPool.Stop()
 	}
@@ -102,51 +109,60 @@ func TestWorker() {
 	*/
 	initWorkerJobs()
 
+	// 开始按计划执行 Start processing jobs
+	defer WorkerPool.Start()
+
 	/**
 	计划执行任务 Worker Jobs
 	*/
-	// 每3秒  参考: https://godoc.org/github.com/robfig/cron
-	WorkerPool.PeriodicallyEnqueue("@every 3s", "send_email")
-	// 每小时 @hourly
-	WorkerPool.PeriodicallyEnqueue("0 0 * * * *", "export")
-	// 开始按以上计划执行 Start processing jobs
-	WorkerPool.Start()
+	if workerConfig.manual == false {
+		// 每1秒  参考(spec: 秒/分/时/日/月/星期) https://godoc.org/github.com/robfig/cron
+		WorkerPool.PeriodicallyEnqueue("*/1 * * * * *", "send_email")
+		// 每1小时 @hourly
+		WorkerPool.PeriodicallyEnqueue("0 0 * * * *", "export")
+	}
 
 	/**
-	手动执行任务 Worker Jobs with a work.Q{"manual":true}
+	手动执行任务 Worker Jobs
 	*/
-	enqueuer := work.NewEnqueuer(workerConfig.namespace, workerConfig.pool)
-	// 添加任务/发送邮件
-	id, q := UniqueWorkQ(), work.Q{"manual": true, "address": "123456.qq.com", "subject": "some message"}
-	job, e := enqueuer.EnqueueUniqueByKey("send_email", id, q)
-	if e != nil {
-		log.Printf(" job[%s]:[Manual]... Err \n  address: %s\n  subject: %s \n %v \n", job.Name, q["address"], q["subject"], e)
-	} else {
-		log.Printf(" job[%s]:[Manual]... OK \n  address: %s\n  subject: %s \n", job.Name, q["address"], q["subject"])
+	if workerConfig.manual == true {
+		enqueuer := work.NewEnqueuer(workerConfig.namespace, workerConfig.pool)
+		// 添加任务/发送邮件
+		q, id := work.Q{"address": "123456.qq.com", "subject": "some message"}, UniqueWorkQ()
+		job, e := enqueuer.EnqueueUniqueByKey("send_email", q, id)
+		if e != nil {
+			log.Printf(" job[%s]:[Manual]... Err \n  address: %s\n  subject: %s \n %v \n", job.Name, q["address"], q["subject"], e)
+		} else {
+			log.Printf(" job[%s]:[Manual]... OK \n  address: %s\n  subject: %s \n", job.Name, q["address"], q["subject"])
+		}
 	}
 }
 
-// Worker Config
+// 任务配置项 Worker Config
 type WorkerConfig struct {
-	concurrency   uint
-	namespace     string // eg, "myapp-work"
-	pool          *redis.Pool
-	sleepBackoffs []int64
+	concurrency     uint
+	namespace       string // eg, "myapp-work"
+	pool            *redis.Pool
+	sleepBackoffs   []int64
+	log             bool // 开启当前上下文的日志输出Context.log
+	manual          bool // 是否为 手动执行任务
+	drainOnShutdown bool // 计划任务 close 时, 清理队列
 }
 
-// 任务上下文对象
-// Worker Context
+// 任务上下文对象 Worker Context
 type Context struct {
 	customer string
-	manual   bool
+	manual   bool // 是否为 手动执行任务
 }
 
-func (c *Context) print(job *work.Job, method string) {
-	//log.Printf(" job[%s]:%s \n  %+v \n  %+v \n", job.Name, method, c, job)
+func (c *Context) log(job *work.Job, method string) {
+	if workerConfig.log {
+		log.Printf(" job[%s]:%s \n  %+v \n  %+v \n", job.Name, method, c, job)
+	}
 }
 
 func (c *Context) Log(job *work.Job, next work.NextMiddlewareFunc) error {
-	c.print(job, "Log")
+	//c.log(job, "Log")
 	return next()
 }
 
@@ -154,9 +170,7 @@ func (c *Context) FindCustomer(job *work.Job, next work.NextMiddlewareFunc) erro
 	if e := c.Check(job); e != nil {
 		return e
 	}
-
-	c.print(job, "FindCustomer")
-
+	c.log(job, "FindCustomer")
 	return next()
 }
 
@@ -164,40 +178,39 @@ func (c *Context) SendEmail(job *work.Job) error {
 	if e := c.Check(job); e != nil {
 		return e
 	}
-
-	c.print(job, "SendEmail")
+	c.log(job, "SendEmail")
 
 	// Manual Checkin with args and Enqueue
 	if c.manual == true {
+		log.Printf(" job[%s]:Work Start manual. \n", job.Name)
 
 		// Extract arguments
 		address, subject := job.ArgString("address"), job.ArgString("subject")
 		if err := job.ArgError(); err != nil {
+			log.Printf(" job[%s]:Work Error manual. \n  %v \n", job.Name, err)
 			return err
 		}
 
 		// SendEmailTo(addr, subject)
-		log.Printf(" job[%s]:[Manual] End \n  address: %s\n  subject: %s \n", job.Name, address, subject)
+		log.Printf(" job[%s]:Work End manual. \n  %+v \n  address: %s\n  subject: %s \n", job.Name, c, address, subject)
 
 		return nil
 	}
 
 	// Auto Checkin with no args, Worker Pool
-	log.Printf(" job[%s]:[Auto] End one time. \n", job.Name)
+	log.Printf(" job[%s]:Work End one time. \n  %+v \n ", job.Name, c)
 
 	return nil
 }
 
 func (c *Context) Export(job *work.Job) error {
-	//job.Checkin(fmt.Sprintf("CustomerID=%s : export", c.CustomerID))
+	job.Checkin(fmt.Sprintf("customer=%s:export", c.customer))
 	return nil
 }
 
 func (c *Context) Check(job *work.Job) error {
 	// If there's a customer param, set it in the context for future middleware and handlers to use.
-	if _, ok := job.Args["manual"]; ok {
-		c.manual = true
-	}
+	c.manual = workerConfig.manual
 	if _, ok := job.Args["customer"]; ok {
 		c.customer = job.ArgString("customer")
 		if err := job.ArgError(); err != nil {
