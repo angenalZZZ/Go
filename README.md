@@ -204,11 +204,11 @@ go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
-go get github.com/dgrijalva/jwt-go         # jwt 验证
-go get github.com/gbrlsnchs/jwt/v3
-go get github.com/gorilla/sessions         # session & cookie 验证
-go get github.com/dchest/authcookie
-go get github.com/kgretzky/evilginx2
+go get github.com/dgrijalva/jwt-go         # jwt authentication
+go get github.com/gbrlsnchs/jwt/...        # jwt v3
+go get github.com/gorilla/sessions         # session & cookie authentication
+go get github.com/dchest/authcookie        # cookie authentication
+go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
 go get github.com/dchest/captcha           # 验证码|图片|声音
 go get github.com/mojocn/base64Captcha     # 验证码|展示 http://captcha.mojotv.cn
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
