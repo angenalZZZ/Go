@@ -204,8 +204,9 @@ go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
+go get github.com/gbrlsnchs/jwt/v3         # jwt验证
 go get github.com/dchest/captcha           # 验证码|图片|声音
-go get github.com/sdwolfe32/trumail/verifier # 邮箱验证服务
+go get github.com/sdwolfe32/trumail        # 邮箱验证服务
 
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
