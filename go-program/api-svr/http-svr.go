@@ -1,14 +1,13 @@
-package go_tcp
+package api_svr
 
 import (
 	"angenalZZZ/go-program/api-config"
+	"angenalZZZ/go-program/api-svr/img"
 	"context"
-	"fmt"
 	"log"
 	"net"
 	"net/http"
 	"os"
-	"time"
 )
 
 /**
@@ -29,20 +28,28 @@ func initHttpSvr() {
 // 后台运行 http Serve Run
 func HttpSvrRun() {
 	initHttpSvr()
+
+	// 静态资源访问 html,css,js...
+	http.Handle("/", http.FileServer(http.Dir("./static")))
+
+	// 服务处理：验证码
+	http.HandleFunc("/api/captcha/get", img.CaptchaGenerateHandler)
+	http.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
+
 	// 服务处理
-	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-
-		// 跟踪请求
-		log.Printf("后台服务 http: %v\n", request.URL.String())
-
-		// 处理请求
-		_, e := fmt.Fprintf(writer, " %v %+v \n", time.Now(), request.URL)
-
-		// 跟踪异常
-		if e != nil {
-			log.Println(e)
-		}
-	})
+	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	//
+	//	// 跟踪请求
+	//	log.Printf("后台服务 http: %s\n", r.URL)
+	//
+	//	// 处理请求
+	//	_, e := fmt.Fprintf(w, " %v %+v \n", time.Now(), r.URL)
+	//
+	//	// 跟踪异常
+	//	if e != nil {
+	//		log.Println(e)
+	//	}
+	//})
 
 	// 开始服务
 	//log.Fatal(http.ListenAndServe(httpSvr.Addr, nil)) // a simple way
@@ -61,7 +68,7 @@ func HttpSvrRun() {
 // 后台运行 http Serve Shutdown
 func HttpSvrShutdown() {
 	if httpSvr != nil {
-		//log.Println("后台服务 http: Server stopping..") // Go ^1.8
+		log.Println("后台服务 http: Server stopping..") // Go ^1.8
 		if e := httpSvr.Shutdown(context.Background()); e != nil {
 			log.Fatal(e) // 中断程序时输出
 		}

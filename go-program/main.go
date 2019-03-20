@@ -2,6 +2,7 @@ package main
 
 import (
 	"angenalZZZ/go-program/api-config"
+	"angenalZZZ/go-program/api-svr"
 	"angenalZZZ/go-program/go-file"
 	"angenalZZZ/go-program/go-leveldb"
 	"angenalZZZ/go-program/go-opentsdb"
@@ -24,7 +25,7 @@ var typeCheck = flag.Bool("type-check", false, "test Type Check")
 var createFile = flag.Bool("create-file", false, "test Create File")
 
 var tcp = flag.Bool("tcp", false, "open tcp Serve")
-var http = flag.Bool("http", false, "open http Serve")
+var http = flag.Bool("http", true, "open http Serve")
 
 var leveldb = flag.Bool("leveldb", false, "test leveldb Client")
 var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client")
@@ -32,21 +33,22 @@ var redis = flag.Bool("redis", false, "test redis Client")
 var redisCli = flag.Bool("redis-cli", false, "test redis Cli")
 var ssdb = flag.Bool("ssdb", false, "test SSdb Client")
 
-var worker = flag.Bool("worker", true, "test Scheduler Worker")
+var worker = flag.Bool("worker", false, "test Scheduler Worker")
 
 /**
-程序入口函数
+程序初始化
 */
-func main() {
+func init() {
+	// log使用UTC时间
+	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
+
 	// 查看命令行参数 -h -help
 	flag.Parse()
-	time.Sleep(time.Nanosecond * 100)
-	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC) // log使用UTC时间
 
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
 	// 监听程序退出2 后台运行 http Serve Shutdown
-	go_shutdown_hook.Add(go_tcp.HttpSvrShutdown)
+	go_shutdown_hook.Add(api_svr.HttpSvrShutdown)
 	// 监听程序退出3 数据库 Leveldb Client
 	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
 	// 监听程序退出4 数据库 OpenTSDB Client
@@ -58,6 +60,15 @@ func main() {
 	go_shutdown_hook.Add(go_ssdb.ShutdownClient)
 	// 监听程序退出7 计划任务 Scheduler Worker
 	go_shutdown_hook.Add(go_scheduler.ShutdownWorker)
+
+}
+
+/**
+程序入口函数
+*/
+func main() {
+	defer shutdown()
+	time.Sleep(time.Nanosecond * 10)
 
 	// 加载配置文件并检查配置项
 	if *config == true {
@@ -105,9 +116,13 @@ func main() {
 	}
 	// 后台运行 http Serve Run
 	if *http == true {
-		go go_tcp.HttpSvrRun()
+		go api_svr.HttpSvrRun()
 	}
+}
 
-	// 程序退出, 正常时 os.Exit(0) | 异常时 os.Exit(1)
+/**
+程序退出, 正常时 os.Exit(0) | 异常时 os.Exit(1)
+*/
+func shutdown() {
 	go_shutdown_hook.Wait()
 }
