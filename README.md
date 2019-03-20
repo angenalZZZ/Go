@@ -169,12 +169,6 @@ go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
-go get github.com/coocood/freecache        # cache and high concurrent performance
-go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
-go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
-go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
-go get github.com/jasonlvhit/gocron        # simple cron of timer
-go get github.com/gocraft/work             # do work of redis-queue https://github.com/gocraft/work#run-the-web-ui
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
@@ -195,12 +189,24 @@ git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com
   go get github.com/tidwall/pretty
   dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
+
+go get github.com/jasonlvhit/gocron        # simple cron of timer
+go get github.com/gocraft/work             # do work of redis-queue https://github.com/gocraft/work#run-the-web-ui
+go get github.com/coocood/freecache        # cache and high concurrent performance
+go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
+
+go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
+
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
+
 go get github.com/dchest/captcha           # 验证码|图片|声音
+go get github.com/sdwolfe32/trumail/verifier # 邮箱验证服务
+
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
 go get github.com/xo/xo                    # 命令行工具   xo --help  [DbFirst]生成 models/*.xo.go
