@@ -164,7 +164,9 @@ docker exec -it golang1115 bash
 
  * [QT跨平台应用框架](https://github.com/therecipe/qt)、[Webview-App](https://github.com/zserge/webview)、[Electron-App](https://github.com/asticode/go-astilectron)、[WebAssembly-App](https://github.com/murlokswarm/app)
 ~~~
-go get github.com/gofrs/uuid
+go get github.com/gofrs/uuid               # uuid generator
+go get github.com/juju/utils               # General utility functions
+go get github.com/henrylee2cn/goutil
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
