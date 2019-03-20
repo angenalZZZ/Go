@@ -200,6 +200,8 @@ go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (si
 
 go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
+go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
+go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
