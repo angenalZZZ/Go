@@ -1,7 +1,7 @@
 # Go
 Go 是一个开源的编程语言，它能让构造简单、可靠且高效的软件变得容易。
 
- > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[收藏夹](#-功能框架基础库应用工具)
+ > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[$收藏夹$](#-功能框架基础库应用工具)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)、[liteide](http://liteide.org/cn/)
@@ -204,7 +204,8 @@ go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
-go get github.com/gbrlsnchs/jwt/v3         # jwt验证
+go get github.com/gbrlsnchs/jwt/v3         # jwt 验证
+go get github.com/dchest/authcookie        # cookie 验证
 go get github.com/dchest/captcha           # 验证码|图片|声音
 go get github.com/sdwolfe32/trumail        # 邮箱验证服务
 
