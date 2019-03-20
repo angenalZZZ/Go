@@ -182,7 +182,8 @@ go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
 go get github.com/olivere/elastic          # Elasticsearch 6.0
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
-go get willnorris.com/go/imageproxy/cmd/imageproxy # Caching image proxy server & docker & nginx
+go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
+go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
   go get github.com/go-stack/stack 
   go get github.com/golang/snappy
