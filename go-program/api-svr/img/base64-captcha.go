@@ -4,10 +4,28 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/mojocn/base64Captcha"
-	"github.com/satori/go.uuid"
 	"net/http"
 	"strings"
 )
+
+/**
+Build and Run the Demo: nginx config
+server {
+        listen 80;
+        server_name captcha.mojotv.cn;
+        charset utf-8;
+
+        location / {
+            try_files /_not_exists_ @backend;
+        }
+        location @backend {
+           proxy_set_header X-Forwarded-For $remote_addr;
+           pro=xy_set_header Host $http_host;
+           proxy_pass http://127.0.0.1:8008;
+        }
+        access_log  /home/wwwlogs/captcha.mojotv.cn.log;
+}
+*/
 
 // json request body
 type ConfigJsonBody struct {
@@ -33,11 +51,8 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 	if id == "" {
 		id = r.URL.Query().Get("lastCode")
-		if id == "" && (r.Method == "" || r.Method == "GET") {
-			id = uuid.Must(uuid.NewV4()).String()
-		}
 	}
-	if id == "" {
+	if id == "" && r.Method == "POST" {
 		decoder := json.NewDecoder(r.Body)
 		defer r.Body.Close()
 		err := decoder.Decode(&postParameters)
@@ -57,11 +72,12 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 			//VerifyValue: "",
 			ConfigAudio: base64Captcha.ConfigAudio{CaptchaLen: 4, Language: "zh"},
 			ConfigCharacter: base64Captcha.ConfigCharacter{
-				Height:             40,
-				Width:              120,
-				Mode:               2,
-				ComplexOfNoiseText: 0,
-				ComplexOfNoiseDot:  0,
+				Height: 40,
+				Width:  120,
+				//const CaptchaModeNumber:数字,CaptchaModeAlphabet:字母,CaptchaModeArithmetic:算术,CaptchaModeNumberAlphabet:数字字母混合
+				Mode:               base64Captcha.CaptchaModeArithmetic,
+				ComplexOfNoiseText: base64Captcha.CaptchaComplexLower,
+				ComplexOfNoiseDot:  base64Captcha.CaptchaComplexLower,
 				IsUseSimpleFont:    true,
 				IsShowHollowLine:   false,
 				IsShowNoiseDot:     false,
@@ -91,7 +107,6 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	default:
 		config = postParameters.ConfigDigit
 	}
-	// captchaId == id
 	captchaId, instance := base64Captcha.GenerateCaptcha(postParameters.Id, config)
 	base64blob := base64Captcha.CaptchaWriteToBase64Encoding(instance)
 
@@ -116,13 +131,22 @@ func CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
 	body := map[string]interface{}{"code": 1} // response error
 	err := decoder.Decode(&postParameters)
 	if err == nil {
-		//verify the captcha
-		verifyResult := base64Captcha.VerifyCaptcha(postParameters.Id, postParameters.VerifyValue)
+		id, verifyValue := postParameters.Id, postParameters.VerifyValue
+		if id == "" {
+			id = r.URL.Query().Get("id")
+			if id == "" {
+				id = r.URL.Query().Get("lastCode")
+			}
+		}
+		if id != "" || verifyValue != "" {
+			//verify the captcha
+			verifyResult := base64Captcha.VerifyCaptcha(id, verifyValue)
 
-		//set response
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		if verifyResult {
-			body = map[string]interface{}{"code": 0} // response ok
+			//set response
+			w.Header().Set("Content-Type", "application/json; charset=utf-8")
+			if verifyResult {
+				body = map[string]interface{}{"code": 0} // response ok
+			}
 		}
 	}
 	json.NewEncoder(w).Encode(body)
