@@ -211,8 +211,7 @@ go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
-go get github.com/dgrijalva/jwt-go         # jwt authentication
-go get github.com/gbrlsnchs/jwt/...        # jwt v3
+go get github.com/dgrijalva/jwt-go         # jwt authentication https://github.com/dgrijalva/jwt-go/blob/master/example_test.go
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/dchest/authcookie        # cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
