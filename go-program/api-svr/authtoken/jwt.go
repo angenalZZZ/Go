@@ -1,40 +1,40 @@
 package authtoken
 
 import (
-	"angenalZZZ/go-program/api-config"
+	api_config "angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/gbrlsnchs/jwt"
-	"github.com/gofrs/uuid"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	uuid "github.com/satori/go.uuid"
 )
 
 var KID string
-var Audience jwt.Audience
-var hash jwt.Hash
+var Audience string
+var hash *jwt.SigningMethod
 
 type Payload struct {
-	jwt.Payload
-	Valid bool   `json:"valid"`
-	Uid   string `json:"uid"`
+	jwt.StandardClaims
+	Uid string `json:"uid"`
 }
 
 func init() {
 	api_config.LoadCheck()
 
 	KID = "0cb3c5b637d4bf3"
-	Audience = jwt.Audience{"https://jwt.io", "https://fpapi.com"}
+	Audience = "https://jwt.io, https://fpapi.com"
 	switch api_config.JwtConf.JWT_algorithms {
 	case "HS384":
-		hash = jwt.SHA384
+		hash = jwt.SigningMethodHS384
 	case "HS512":
-		hash = jwt.SHA512
+		hash = jwt.SigningMethodHS512
 	default:
-		hash = jwt.SHA256
+		hash = jwt.SigningMethodHS256
 	}
 }
 
@@ -62,26 +62,25 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 
 	// 签发token
 	now := time.Now()
-	p := Payload{
-		Payload: jwt.Payload{
-			Issuer:         "",                                                                           // 签发者
-			Subject:        "",                                                                           // 面向的用户
-			Audience:       Audience,                                                                     // 接收 JWT 的一方
-			ExpirationTime: now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME) * time.Second).Unix(), // 过期时间
-			NotBefore:      now.Unix(),                                                                   // 什么时间之前，该 JWT 都是不可用的
-			IssuedAt:       now.Unix(),                                                                   // JWT 签发时间
-			JWTID:          uuid.Must(uuid.NewV4()).String(),                                             // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
+	claims := Payload{
+		StandardClaims: jwt.StandardClaims{
+			Issuer:    "",                                                                           // 签发者
+			Subject:   "",                                                                           // 面向的用户
+			Audience:  Audience,                                                                     // 接收 JWT 的一方
+			ExpiresAt: now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME) * time.Second).Unix(), // 过期时间
+			NotBefore: now.Unix(),                                                                   // 什么时间之前，该 JWT 都是不可用的
+			IssuedAt:  now.Unix(),                                                                   // JWT 签发时间
+			Id:        uuid.Must(uuid.NewV4()).String(),                                             // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
 		},
-		Valid: valid,
-		Uid:   uid,
+		Uid: uid,
 	}
-	h := jwt.Header{KeyID: KID}
-	hs256 := jwt.NewHMAC(hash, []byte(api_config.JwtConf.JWT_SECRET))
-	token, err := jwt.Sign(h, p, hs256)
+	//h := jwt.Header{KeyID: KID}
+	token := jwt.NewWithClaims(hash, claims)
+	tokens, err := token.SignedString([]byte(api_config.JwtConf.JWT_SECRET))
 	if err != nil {
 		FError(&w, err, true)
 	}
-	FOk(&w, string(token), true)
+	FOk(&w, string(tokens), true)
 }
 
 /**
