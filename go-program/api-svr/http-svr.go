@@ -2,6 +2,7 @@ package api_svr
 
 import (
 	"angenalZZZ/go-program/api-config"
+	"angenalZZZ/go-program/api-svr/authtoken"
 	"angenalZZZ/go-program/api-svr/img"
 	"context"
 	"log"
@@ -35,6 +36,10 @@ func HttpSvrRun() {
 	// 服务处理：验证码
 	http.HandleFunc("/api/captcha/get", img.CaptchaGenerateHandler)
 	http.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
+
+	// 账号信息认证：AUTH JWT
+	http.HandleFunc("/token", authtoken.JwtTokenGenerateHandler)
+	http.HandleFunc("/token/verify", authtoken.JwtVerifyValidateHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -1,6 +1,7 @@
 package img
 
 import (
+	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
 	"fmt"
 	"github.com/mojocn/base64Captcha"
@@ -38,7 +39,7 @@ type ConfigJsonBody struct {
 
 // create http handler
 func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
-	if Cors(&w, r) {
+	if cors.Cors(&w, r, []string{http.MethodGet, http.MethodPost}) {
 		return
 	}
 
@@ -51,7 +52,7 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if id == "" {
 		id = r.URL.Query().Get("lastCode")
 	}
-	if id == "" && r.Method == "POST" {
+	if id == "" && r.Method == http.MethodPost {
 		defer r.Body.Close()
 		if e := json.NewDecoder(r.Body).Decode(&postParameters); e != nil {
 			FError(&w, id, e, outputJson)
@@ -109,7 +110,7 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 
 // verify http handler
 func CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
-	if Cors(&w, r) {
+	if cors.Cors(&w, r, []string{http.MethodPost}) {
 		return
 	}
 
@@ -157,6 +158,7 @@ func FOk(response *http.ResponseWriter, id string, data string, outputJson bool)
 func FError(response *http.ResponseWriter, id string, err error, outputJson bool) {
 	w := *response
 	//set json response
+	w.WriteHeader(http.StatusAccepted)
 	if outputJson == true {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		body := map[string]interface{}{"code": 1, "data": "", "captchaId": id, "msg": fmt.Sprintf("%v", err)}
@@ -164,15 +166,6 @@ func FError(response *http.ResponseWriter, id string, err error, outputJson bool
 	} else {
 		fmt.Fprintf(w, "%v", err)
 	}
-}
-
-// cors request
-func Cors(w *http.ResponseWriter, r *http.Request) bool {
-	if r.Method == "OPTIONS" {
-		fmt.Fprintf(*w, "")
-		return true
-	}
-	return false
 }
 
 // get query captchaType

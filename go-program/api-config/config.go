@@ -5,13 +5,15 @@ import (
 	"github.com/gobuffalo/envy"
 	"log"
 	"os"
+	"strconv"
 )
 
-var Env Config
+var JwtConf *JwtConfig
 
-// 认证方式 结构设计 [Config:复合类型]
-type Config struct {
+// 认证方式 Jwt Config: 复合类型
+type JwtConfig struct {
 	AUTH_JWT, JWT_algorithms, JWT_SECRET string
+	JWT_LIFETIME                         int
 }
 
 // 加载配置文件
@@ -39,18 +41,23 @@ func init() {
 
 // 加载配置文件并检查配置项
 func LoadCheck() {
-	println()
+	if JwtConf == nil {
+		println()
 
-	// 检查配置项目
-	Check("AUTH_JWT")
-	Check("JWT_algorithms")
-	Check("JWT_SECRET")
-	Env = Config{
-		AUTH_JWT:       os.Getenv("AUTH_JWT"),
-		JWT_algorithms: os.Getenv("JWT_algorithms"),
-		JWT_SECRET:     os.Getenv("JWT_SECRET"),
+		// 检查配置项目
+		Check("AUTH_JWT")
+		Check("JWT_algorithms")
+		Check("JWT_SECRET")
+		Check("JWT_LIFETIME")
+		lifetime, _ := strconv.Atoi(os.Getenv("JWT_LIFETIME"))
+		JwtConf = &JwtConfig{
+			AUTH_JWT:       os.Getenv("AUTH_JWT"),
+			JWT_algorithms: os.Getenv("JWT_algorithms"),
+			JWT_SECRET:     os.Getenv("JWT_SECRET"),
+			JWT_LIFETIME:   lifetime,
+		}
+		log.Printf("加载配置文件并检查配置项: OK\n")
 	}
-	log.Printf("加载配置文件并检查配置项: OK\n")
 }
 
 // 检查配置项 Must Checked
