@@ -100,6 +100,7 @@ go get -u -v github.com/golang/tools/cmd/guru
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
+go get -u -v github.com/derekparker/delve/cmd/dlv
 
 # 管理项目依赖包
 go get -u github.com/kardianos/govendor
