@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/mojocn/base64Captcha"
 	"net/http"
-	"strings"
 )
 
 /**
@@ -53,22 +52,15 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 		id = r.URL.Query().Get("lastCode")
 	}
 	if id == "" && r.Method == "POST" {
-		decoder := json.NewDecoder(r.Body)
 		defer r.Body.Close()
-		err := decoder.Decode(&postParameters)
-		if err != nil {
-			FError(&w, id, err, outputJson)
+		if e := json.NewDecoder(r.Body).Decode(&postParameters); e != nil {
+			FError(&w, id, e, outputJson)
 			return
 		}
 	} else {
-		captchaType := r.URL.Query().Get("captchaType")
-		if strings.Contains("digit|character|audio", captchaType) == false {
-			captchaType = "digit"
-		}
-
 		postParameters = ConfigJsonBody{
 			Id:          id,
-			CaptchaType: captchaType,
+			CaptchaType: getCaptchaType(r), //get query captchaType
 			//VerifyValue: "",
 			ConfigAudio: base64Captcha.ConfigAudio{CaptchaLen: 4, Language: "zh"},
 			ConfigCharacter: base64Captcha.ConfigCharacter{
@@ -97,15 +89,12 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//create base64 encoding captcha
-
-	var config interface{}
+	var config interface{} = postParameters.ConfigDigit
 	switch postParameters.CaptchaType {
 	case "audio":
 		config = postParameters.ConfigAudio
 	case "character":
 		config = postParameters.ConfigCharacter
-	default:
-		config = postParameters.ConfigDigit
 	}
 	captchaId, instance := base64Captcha.GenerateCaptcha(postParameters.Id, config)
 	base64blob := base64Captcha.CaptchaWriteToBase64Encoding(instance)
@@ -184,4 +173,20 @@ func Cors(w *http.ResponseWriter, r *http.Request) bool {
 		return true
 	}
 	return false
+}
+
+// get query captchaType
+func getCaptchaType(r *http.Request) (captchaType string) {
+	captchaType = r.URL.Query().Get("captchaType")
+	ok := false
+	switch captchaType {
+	case "audio":
+	case "character":
+	case "digit":
+		ok = true
+	}
+	if ok == false {
+		captchaType = "digit"
+	}
+	return
 }
