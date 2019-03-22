@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -113,6 +114,11 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 
 	//log.Printf(" http.Request.Header: \n  %+v \n", r.Header)
 	tokenString := r.Header.Get("authorization")
+	if tokenString == "" {
+		FError(&w, jwt.NewValidationError("token not empty!", jwt.ValidationErrorMalformed), true)
+		return
+	}
+	tokenString = string(regexp.MustCompile(`\s*$`).ReplaceAll([]byte(tokenString), []byte{}))
 	if i := strings.Index(tokenString, " "); i > 0 {
 		tokenString = tokenString[i+1:]
 	}
