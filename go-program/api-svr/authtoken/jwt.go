@@ -18,7 +18,7 @@ var (
 	KID        string
 	Audience   string
 	alg        jwt.SigningMethod
-	isEs, isRs bool
+	isHs, isRs bool
 )
 
 type PayloadClaims struct {
@@ -31,6 +31,10 @@ func init() {
 
 	KID = "0cb3c5b637d4bf3"
 	Audience = "https://jwt.io, https://fpapi.com"
+
+	isHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
+	isRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
+
 	switch api_config.JwtConf.JWT_algorithms {
 	case "HS384":
 		alg = jwt.SigningMethodHS384
@@ -121,12 +125,11 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 	// parsing token
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 		// validate the alg
-		if isEs {
+		if isHs {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, jwt.NewValidationError(fmt.Sprintf("token alg(%v) err!", token.Header["alg"]), jwt.ValidationErrorSignatureInvalid)
 			}
-		}
-		if isRs {
+		} else if isRs {
 			if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
 				return nil, jwt.NewValidationError(fmt.Sprintf("token alg(%v) err!", token.Header["alg"]), jwt.ValidationErrorSignatureInvalid)
 			}
