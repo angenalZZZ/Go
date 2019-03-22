@@ -4,7 +4,6 @@ import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"regexp"
@@ -12,11 +11,10 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/satori/go.uuid"
+	"github.com/rs/xid"
 )
 
 var (
-	KID        string
 	Audience   string
 	alg        jwt.SigningMethod
 	isHs, isRs bool
@@ -24,30 +22,32 @@ var (
 
 type PayloadClaims struct {
 	jwt.StandardClaims
-	Data string `json:"data"`
+	X string `json:"x"`
 }
 
 func init() {
 	api_config.LoadCheck()
 
-	KID = "0cb3c5b637d4bf3"
-	Audience = "https://jwt.io, https://fpapi.com"
-
-	isHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
-	isRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
+	Audience = "fpapi.com"
 
 	switch api_config.JwtConf.JWT_algorithms {
 	case "HS384":
+		isHs = true
 		alg = jwt.SigningMethodHS384
 	case "HS512":
+		isHs = true
 		alg = jwt.SigningMethodHS512
 	case "RS256":
+		isRs = true
 		alg = jwt.SigningMethodRS256
 	case "RS384":
+		isRs = true
 		alg = jwt.SigningMethodRS384
 	case "RS512":
+		isRs = true
 		alg = jwt.SigningMethodRS512
 	default:
+		isHs = true
 		alg = jwt.SigningMethodHS256
 	}
 }
@@ -71,40 +71,38 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	// 账号信息认证
 	data, valid := accountValidate(r)
 	if valid == false {
-		FError(&w, errors.New("账号信息认证失败"), true)
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	// 签发token
-	id := uuid.Must(uuid.NewV4()).String()
+	id := xid.New().String()
 	now := time.Now()
-	esAt := now.Unix()
-	expAt := now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME) * time.Second).Unix()
+	esAt, expAt := now.Unix(), now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME)*time.Second).Unix()
 	claims := PayloadClaims{
 		StandardClaims: jwt.StandardClaims{
-			Issuer:    "",       // 签发者
-			Subject:   "",       // 面向的用户
-			Audience:  Audience, // 接收 JWT 的一方(域名或应用名)
-			ExpiresAt: expAt,    // 过期时间
-			Id:        id,       // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
-			IssuedAt:  esAt,     // JWT 签发时间
-			NotBefore: esAt,     // 什么时间之前，该 JWT 都是不可用的
+			Issuer:    "api-jwt",    // 签发者
+			Subject:   "auth-token", // 面向的用户
+			Audience:  Audience,     // 接收 JWT 的一方(域名或应用名)
+			ExpiresAt: expAt,        // 过期时间
+			Id:        id,           // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
+			IssuedAt:  esAt,         // JWT 签发时间
+			NotBefore: esAt,         // 什么时间之前，该 JWT 都是不可用的
 		},
-		Data: data,
+		X: data, // 扩展信息
 	}
-	//h := jwt.Header{KeyID: KID}
 	key := []byte(api_config.JwtConf.JWT_SECRET)
 	token := jwt.NewWithClaims(alg, claims)
 	tokenString, err := token.SignedString(key)
 	if err != nil {
-		FError(&w, err, true)
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	FOk(&w, []byte(tokenString), true)
+	w.Write([]byte(tokenString))
 }
 
 /**
-curl -X POST http://localhost:8008/token/verify -H 'Content-Type: application/json' -d '{}' -H 'Authorization: bearer '
+curl -X POST http://localhost:8008/token/verify -H 'Content-Type: application/json' -H 'Authorization: bearer '
 */
 // Verifying and validating a JWT http handler
 func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
@@ -115,16 +113,16 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 	//log.Printf(" http.Request.Header: \n  %+v \n", r.Header)
 	tokenString := r.Header.Get("authorization")
 	if tokenString == "" {
-		FError(&w, jwt.NewValidationError("token not empty!", jwt.ValidationErrorMalformed), true)
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	tokenString = string(regexp.MustCompile(`\s*$`).ReplaceAll([]byte(tokenString), []byte{}))
+	//tokenString = string(regexp.MustCompile(`\s*$`).ReplaceAll([]byte(tokenString), []byte{}))
 	if i := strings.Index(tokenString, " "); i > 0 {
 		tokenString = tokenString[i+1:]
 	}
 	//log.Printf(" http.Request.Header.BearerToken: \n  %+v \n", tokenString)
 	if len(tokenString) < 100 {
-		FError(&w, jwt.NewValidationError("token format err!", jwt.ValidationErrorMalformed), true)
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
@@ -157,43 +155,20 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 				// Couldn't handle this token
 			}
 		}
-		FError(&w, err, true)
+		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 
 	// output token
 	if _, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		FOk(&w, struct {
-			header  map[string]interface{}
-			payload jwt.Claims
-		}{token.Header, token.Claims}, true)
-	} else {
-		FError(&w, jwt.NewValidationError("token err!", jwt.ValidationErrorNotValidYet), true)
-	}
-}
-
-// response ok
-func FOk(response *http.ResponseWriter, token interface{}, outputJson bool) {
-	w := *response
-	if outputJson == true {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		body := map[string]interface{}{"code": 0, "token": token, "msg": "success"}
+		body := struct {
+			Header map[string]interface{} // The first segment of the token
+			Claims jwt.Claims             // The second segment of the token
+			Valid  bool
+		}{token.Header, token.Claims, token.Valid}
 		json.NewEncoder(w).Encode(body)
 	} else {
-		fmt.Fprint(w, token)
-	}
-}
-
-// response error
-func FError(response *http.ResponseWriter, err error, outputJson bool) {
-	w := *response
-	//set json response
-	w.WriteHeader(http.StatusAccepted)
-	if outputJson == true {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		body := map[string]interface{}{"code": 1, "token": "", "msg": fmt.Sprintf("%v", err)}
-		json.NewEncoder(w).Encode(body)
-	} else {
-		fmt.Fprintf(w, "%v", err)
+		w.WriteHeader(http.StatusUnauthorized)
 	}
 }
