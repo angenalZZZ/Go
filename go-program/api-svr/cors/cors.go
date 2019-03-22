@@ -1,7 +1,7 @@
 package cors
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -10,7 +10,7 @@ func Cors(w *http.ResponseWriter, r *http.Request, method []string) (ok bool) {
 	ok = true
 
 	// 跟踪请求
-	fmt.Printf("后台服务 http:Cors %s %s\n", r.Method, r.URL)
+	log.Printf(" http %s %s\n", r.Method, r.URL)
 
 	if r.Method == http.MethodOptions {
 		(*w).WriteHeader(http.StatusOK)
