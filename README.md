@@ -212,6 +212,9 @@ go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
+  > cd %GOPATH%\src\github.com\dgrijalva\jwt-go\cmd\jwt # go build for jwt.exe
+  > echo {"uid":"123456"} | jwt -key ../../test/sample_key -alg RS256 -sign - | jwt -key ../../test/sample_key.pub -alg RS256 -verify -
+  > echo eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmcGFwaS5jb20iLCJleHAiOjE1NTM3NTkxNTksIm5iZiI6MTU1MzE1NDM1OSwiaWF0IjoxNTUzMTU0MzU5LCJqdGkiOiJhOTBjYjg3YjZjMzIiLCJ1aWQiOiIxMjM0NTYifQ.UvojtyZkbHnzpBX0EpzrI-sPuqxic0aLbXHX2YuRAkg | jwt -show -
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/dchest/authcookie        # cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
