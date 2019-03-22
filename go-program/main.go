@@ -13,6 +13,7 @@ import (
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
 	"flag"
+	"runtime"
 	"time"
 )
 
@@ -44,6 +45,10 @@ func init() {
 
 	// 查看命令行参数 -h -help
 	flag.Parse()
+
+	// 设置CPU空闲1个
+	numCpu := runtime.NumCPU()
+	runtime.GOMAXPROCS(numCpu - 1)
 
 	// 监听程序退出1 后台运行 tcp Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
