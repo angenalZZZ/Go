@@ -3,9 +3,11 @@ package authtoken
 import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/cors"
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -14,9 +16,10 @@ import (
 )
 
 var (
-	Audience   string
-	alg        jwt.SigningMethod
-	isHs, isRs bool
+	Audience              string
+	keyData               []byte
+	alg                   jwt.SigningMethod
+	isHs, isRs, keySinged bool
 )
 
 type PayloadClaims struct {
@@ -29,26 +32,14 @@ func init() {
 
 	Audience = "fpapi.com"
 
-	switch api_config.JwtConf.JWT_algorithms {
-	case "HS384":
-		isHs = true
-		alg = jwt.SigningMethodHS384
-	case "HS512":
-		isHs = true
-		alg = jwt.SigningMethodHS512
-	case "RS256":
-		isRs = true
-		alg = jwt.SigningMethodRS256
-	case "RS384":
-		isRs = true
-		alg = jwt.SigningMethodRS384
-	case "RS512":
-		isRs = true
-		alg = jwt.SigningMethodRS512
-	default:
-		isHs = true
-		alg = jwt.SigningMethodHS256
-	}
+	f := os.Getenv("GOPATH") + "/src/angenalZZZ/go-program/jwt_key"
+	keyData, _ = api_config.LoadArgInput(f)
+
+	// get the signing alg
+	alg = jwt.GetSigningMethod(api_config.JwtConf.JWT_algorithms)
+	isHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
+	isRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
+
 }
 
 // 账号信息认证
@@ -139,8 +130,17 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// secret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		secret := []byte(api_config.JwtConf.JWT_SECRET)
-		return secret, nil
+		if keySinged == false {
+			secret := []byte(api_config.JwtConf.JWT_SECRET)
+			return secret, nil
+		}
+
+		if isHs {
+			return jwt.ParseECPublicKeyFromPEM(keyData)
+		} else if isRs {
+			return jwt.ParseRSAPublicKeyFromPEM(keyData)
+		}
+		return keyData, nil
 	})
 
 	// parsing the error types
@@ -170,4 +170,45 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 	}
+}
+
+func SignToken(jsonData []byte) (out []byte, err error) {
+
+	// parse the JSON of the claims
+	var claims jwt.MapClaims
+	if err = json.Unmarshal(jsonData, &claims); err != nil {
+		return
+	}
+
+	// 加载签名 jwt key
+	var key interface{} = keyData[:]
+
+	// create a new token
+	token := jwt.NewWithClaims(alg, claims)
+
+	if isHs {
+		if k, ok := key.([]byte); !ok {
+			return nil, fmt.Errorf("Couldn't convert key data to key")
+		} else {
+			key, err = jwt.ParseECPrivateKeyFromPEM(k)
+			if err != nil {
+				return nil, err
+			}
+		}
+	} else if isRs {
+		if k, ok := key.([]byte); !ok {
+			return nil, fmt.Errorf("Couldn't convert key data to key")
+		} else {
+			key, err = jwt.ParseRSAPrivateKeyFromPEM(k)
+			if err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	if tokenString, e := token.SignedString(key); e != nil {
+		return nil, fmt.Errorf("Error signing token: %v", e)
+	}
+	out = []byte(tokenString)
+	return
 }

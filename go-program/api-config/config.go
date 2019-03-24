@@ -1,6 +1,11 @@
 package api_config
 
 import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"io/ioutil"
+
 	//"github.com/chai2010/winsvc"
 	"github.com/gobuffalo/envy"
 	"log"
@@ -37,6 +42,46 @@ func init() {
 		//	println(v)
 		//}
 	}
+
+}
+
+// 加载输入参数|文件路径
+func LoadArgInput(s string) ([]byte, error) {
+	if s == "" {
+		return nil, fmt.Errorf("no s")
+	} else if s == "+" {
+		return []byte("{}"), nil
+	}
+	var r io.Reader
+	if s == "-" {
+		r = os.Stdin
+	} else {
+		if f, e := os.Open(s); e != nil {
+			return nil, e
+		} else {
+			defer f.Close() // end
+			r = f
+		}
+	}
+	return ioutil.ReadAll(r)
+}
+
+// "+" > {}
+func JsonInput(s string) (v interface{}, e error) {
+	var data []byte
+	if data, e = LoadArgInput(s); e == nil && len(data) > 1 {
+		e = json.Unmarshal(data, v)
+	}
+	return
+}
+
+func JsonOutput(v interface{}, indent bool) (s []byte, e error) {
+	if indent == false {
+		s, e = json.MarshalIndent(v, "", "    ")
+	} else {
+		s, e = json.Marshal(v)
+	}
+	return
 }
 
 // 加载配置文件并检查配置项
@@ -57,6 +102,7 @@ func LoadCheck() {
 			JWT_LIFETIME:   lifetime,
 		}
 		log.Printf("加载配置文件并检查配置项: OK\n")
+
 	}
 }
 
