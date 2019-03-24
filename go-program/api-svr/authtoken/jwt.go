@@ -3,9 +3,9 @@ package authtoken
 import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/cors"
-	"bytes"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -16,10 +16,13 @@ import (
 )
 
 var (
-	Audience              string
-	keyData               []byte
-	alg                   jwt.SigningMethod
-	isHs, isRs, keySinged bool
+	Audience             string
+	tokenAlg             jwt.SigningMethod
+	tokenIsHs, tokenIsRs bool
+
+	signKeyData, signPubData []byte
+	signHasKeyAndPub         bool
+	signIsHs, signIsRs       bool
 )
 
 type PayloadClaims struct {
@@ -30,19 +33,31 @@ type PayloadClaims struct {
 func init() {
 	api_config.LoadCheck()
 
+	if api_config.JwtConf.JWT_Sign.HasKeyAndPub() {
+		p := os.Getenv("GOPATH") + "/src/angenalZZZ/go-program/"
+
+		f1 := p + api_config.JwtConf.JWT_Sign.Key
+		signKeyData, _ = api_config.LoadArgInput(f1)
+
+		f2 := p + api_config.JwtConf.JWT_Sign.Pub
+		signPubData, _ = api_config.LoadArgInput(f2)
+
+		signHasKeyAndPub = len(signKeyData) > 1
+		signIsHs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "HS")
+		signIsRs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "RS")
+	}
+
 	Audience = "fpapi.com"
 
-	f := os.Getenv("GOPATH") + "/src/angenalZZZ/go-program/jwt_key"
-	keyData, _ = api_config.LoadArgInput(f)
-
-	// get the signing alg
-	alg = jwt.GetSigningMethod(api_config.JwtConf.JWT_algorithms)
-	isHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
-	isRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
-
+	// get the signing token alg
+	tokenAlg = jwt.GetSigningMethod(api_config.JwtConf.JWT_algorithms)
+	tokenIsHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
+	tokenIsRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
 }
 
-// 账号信息认证
+/**
+账号信息认证
+*/
 func accountValidate(r *http.Request) (data string, ok bool) {
 	ok = strings.Contains(r.URL.Path, "token")
 	data = r.URL.Query().Get("id")
@@ -82,7 +97,7 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 		X: data, // 扩展信息
 	}
 	key := []byte(api_config.JwtConf.JWT_SECRET)
-	token := jwt.NewWithClaims(alg, claims)
+	token := jwt.NewWithClaims(tokenAlg, claims)
 	tokenString, err := token.SignedString(key)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -118,29 +133,20 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 
 	// parsing token
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		// validate the alg
-		if isHs {
+		// validate the tokenAlg
+		if tokenIsHs {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-				return nil, jwt.NewValidationError(fmt.Sprintf("token alg(%v) err!", token.Header["alg"]), jwt.ValidationErrorSignatureInvalid)
+				return nil, jwt.NewValidationError(fmt.Sprintf("token tokenAlg(%v) err!", token.Header["tokenAlg"]), jwt.ValidationErrorSignatureInvalid)
 			}
-		} else if isRs {
+		} else if tokenIsRs {
 			if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
-				return nil, jwt.NewValidationError(fmt.Sprintf("token alg(%v) err!", token.Header["alg"]), jwt.ValidationErrorSignatureInvalid)
+				return nil, jwt.NewValidationError(fmt.Sprintf("token tokenAlg(%v) err!", token.Header["tokenAlg"]), jwt.ValidationErrorSignatureInvalid)
 			}
 		}
 
 		// secret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		if keySinged == false {
-			secret := []byte(api_config.JwtConf.JWT_SECRET)
-			return secret, nil
-		}
-
-		if isHs {
-			return jwt.ParseECPublicKeyFromPEM(keyData)
-		} else if isRs {
-			return jwt.ParseRSAPublicKeyFromPEM(keyData)
-		}
-		return keyData, nil
+		secret := []byte(api_config.JwtConf.JWT_SECRET)
+		return secret, nil
 	})
 
 	// parsing the error types
@@ -172,43 +178,115 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func SignToken(jsonData []byte) (out []byte, err error) {
-
-	// parse the JSON of the claims
-	var claims jwt.MapClaims
-	if err = json.Unmarshal(jsonData, &claims); err != nil {
+/**
+JSON数据签名生成
+*/
+func JsonSignGenerateHandler(w http.ResponseWriter, r *http.Request) {
+	if cors.Cors(&w, r, []string{http.MethodPost}) {
+		return
+	}
+	if signHasKeyAndPub == false {
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	// 加载签名 jwt key
-	var key interface{} = keyData[:]
+	var err error
+	var key interface{} = signKeyData[:]
+	k, ok := key.([]byte)
+	if !ok {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	//parse request parameters
+	var claims jwt.MapClaims
+	decoder := json.NewDecoder(r.Body)
+	defer r.Body.Close()
+	if err = decoder.Decode(&claims); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	//log.Printf("%v => %+v \n", api_config.JwtConf.JWT_Sign.Alg, claims)
 
 	// create a new token
+	alg := jwt.GetSigningMethod(api_config.JwtConf.JWT_Sign.Alg)
 	token := jwt.NewWithClaims(alg, claims)
 
-	if isHs {
-		if k, ok := key.([]byte); !ok {
-			return nil, fmt.Errorf("Couldn't convert key data to key")
-		} else {
-			key, err = jwt.ParseECPrivateKeyFromPEM(k)
-			if err != nil {
-				return nil, err
-			}
+	if signIsRs {
+		if key, err = jwt.ParseRSAPrivateKeyFromPEM(k); err != nil {
+			w.WriteHeader(http.StatusNoContent)
+			return
 		}
-	} else if isRs {
-		if k, ok := key.([]byte); !ok {
-			return nil, fmt.Errorf("Couldn't convert key data to key")
-		} else {
-			key, err = jwt.ParseRSAPrivateKeyFromPEM(k)
-			if err != nil {
-				return nil, err
-			}
+	} else if signIsHs {
+		if key, err = jwt.ParseECPrivateKeyFromPEM(k); err != nil {
+			w.WriteHeader(http.StatusNoContent)
+			return
 		}
 	}
 
-	if tokenString, e := token.SignedString(key); e != nil {
-		return nil, fmt.Errorf("Error signing token: %v", e)
+	tokenString, e := token.SignedString(key)
+	if e != nil {
+		w.WriteHeader(http.StatusNoContent)
+		return
 	}
-	out = []byte(tokenString)
-	return
+	w.Write([]byte(tokenString))
+}
+
+/**
+JSON数据签名验证
+*/
+func JsonSignValidateHandler(w http.ResponseWriter, r *http.Request) {
+	if cors.Cors(&w, r, []string{http.MethodPost}) {
+		return
+	}
+	if signHasKeyAndPub == false {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	//log.Printf(" http.Request.Header: \n  %+v \n", r.Header)
+	tokenString := r.Header.Get("authorization")
+	if tokenString == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	//tokenString = string(regexp.MustCompile(`\s*$`).ReplaceAll([]byte(tokenString), []byte{}))
+	if i := strings.Index(tokenString, " "); i > 0 {
+		tokenString = tokenString[i+1:]
+	}
+	//log.Printf(" http.Request.Header.BearerToken: \n  %+v \n", tokenString)
+	if len(tokenString) < 100 {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	// parsing token
+	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		if signIsRs {
+			return jwt.ParseRSAPublicKeyFromPEM(signPubData)
+		} else if signIsHs {
+			return jwt.ParseECPublicKeyFromPEM(signPubData)
+		}
+		return signKeyData, nil
+	})
+
+	// parsing the error
+	if err != nil {
+		w.WriteHeader(http.StatusUnauthorized)
+		return
+	}
+
+	// output token
+	if _, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		body := struct {
+			Header map[string]interface{} // The first segment of the token
+			Claims jwt.Claims             // The second segment of the token
+			Valid  bool
+		}{token.Header, token.Claims, token.Valid}
+		json.NewEncoder(w).Encode(body)
+	} else {
+		w.WriteHeader(http.StatusUnauthorized)
+	}
 }

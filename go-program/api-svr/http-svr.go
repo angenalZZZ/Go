@@ -38,8 +38,10 @@ func TestHttpSvrRun() {
 	http.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
 
 	// 账号信息认证：AUTH JWT
-	http.HandleFunc("/token", authtoken.JwtTokenGenerateHandler)
-	http.HandleFunc("/token/verify", authtoken.JwtVerifyValidateHandler)
+	http.HandleFunc("/token/jwt", authtoken.JwtTokenGenerateHandler)
+	http.HandleFunc("/token/jwt/verify", authtoken.JwtVerifyValidateHandler)
+	http.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
+	http.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

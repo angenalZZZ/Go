@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"strings"
 
 	//"github.com/chai2010/winsvc"
 	"github.com/gobuffalo/envy"
@@ -19,6 +20,15 @@ var JwtConf *JwtConfig
 type JwtConfig struct {
 	AUTH_JWT, JWT_algorithms, JWT_SECRET string
 	JWT_LIFETIME                         int
+	JWT_Audience                         string
+	JWT_Sign                             JwtSign
+}
+type JwtSign struct {
+	Key, Pub, Alg string
+}
+
+func (o JwtSign) HasKeyAndPub() bool {
+	return o.Key != "" && o.Pub != "" && o.Alg != ""
 }
 
 // 加载配置文件
@@ -48,7 +58,7 @@ func init() {
 // 加载输入参数|文件路径
 func LoadArgInput(s string) ([]byte, error) {
 	if s == "" {
-		return nil, fmt.Errorf("no s")
+		return nil, fmt.Errorf("no input")
 	} else if s == "+" {
 		return []byte("{}"), nil
 	}
@@ -69,7 +79,7 @@ func LoadArgInput(s string) ([]byte, error) {
 // "+" > {}
 func JsonInput(s string) (v interface{}, e error) {
 	var data []byte
-	if data, e = LoadArgInput(s); e == nil && len(data) > 1 {
+	if data, e = LoadArgInput(s); e == nil {
 		e = json.Unmarshal(data, v)
 	}
 	return
@@ -95,14 +105,21 @@ func LoadCheck() {
 		Check("JWT_SECRET")
 		Check("JWT_LIFETIME")
 		lifetime, _ := strconv.Atoi(os.Getenv("JWT_LIFETIME"))
+		jwtSign := JwtSign{}
+		s := strings.Split(os.Getenv("JWT_Sign"), ",")
+		if len(s) == 3 {
+			jwtSign = JwtSign{s[0], s[1], s[2]}
+		}
 		JwtConf = &JwtConfig{
 			AUTH_JWT:       os.Getenv("AUTH_JWT"),
 			JWT_algorithms: os.Getenv("JWT_algorithms"),
 			JWT_SECRET:     os.Getenv("JWT_SECRET"),
 			JWT_LIFETIME:   lifetime,
+			JWT_Audience:   os.Getenv("JWT_Audience"),
+			JWT_Sign:       jwtSign,
 		}
 		log.Printf("加载配置文件并检查配置项: OK\n")
-
+		//log.Printf("%#v \n", JwtConf)
 	}
 }
 
