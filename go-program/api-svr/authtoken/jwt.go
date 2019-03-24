@@ -5,7 +5,6 @@ import (
 	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -15,21 +14,42 @@ import (
 	"github.com/rs/xid"
 )
 
+/**
+Jwt-Token数据
+*/
 var (
-	Audience             string
+	// 签发者
+	Issuer = "api-jwt"
+	// 面向的用户
+	Subject = "auth-token"
+	// 接收 JWT 的一方(域名或应用名)
+	Audience = "fpapi.com"
+	// the token alg
 	tokenAlg             jwt.SigningMethod
 	tokenIsHs, tokenIsRs bool
-
-	signKeyData, signPubData []byte
-	signHasKeyAndPub         bool
-	signIsHs, signIsRs       bool
 )
 
+/**
+Jwt-JSON数据签名
+*/
+var (
+	// signing key and pub
+	signKeyData, signPubData []byte
+	// the signing key alg
+	signAlg            jwt.SigningMethod
+	signHasKeyAndPub   bool
+	signIsHs, signIsRs bool
+)
+
+/**
+Jwt-Claims数据结构
+*/
 type PayloadClaims struct {
 	jwt.StandardClaims
 	X string `json:"x"`
 }
 
+// 初始化参数
 func init() {
 	api_config.LoadCheck()
 
@@ -42,14 +62,14 @@ func init() {
 		f2 := p + api_config.JwtConf.JWT_Sign.Pub
 		signPubData, _ = api_config.LoadArgInput(f2)
 
+		// get the signing key alg
+		signAlg = jwt.GetSigningMethod(api_config.JwtConf.JWT_Sign.Alg)
 		signHasKeyAndPub = len(signKeyData) > 1
 		signIsHs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "HS")
 		signIsRs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "RS")
 	}
 
-	Audience = "fpapi.com"
-
-	// get the signing token alg
+	// get the token alg
 	tokenAlg = jwt.GetSigningMethod(api_config.JwtConf.JWT_algorithms)
 	tokenIsHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
 	tokenIsRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
@@ -65,9 +85,9 @@ func accountValidate(r *http.Request) (data string, ok bool) {
 }
 
 /**
-curl -X GET http://localhost:8008/token?id=1553155268644
+Jwt-Token数据生成
+curl -X GET http://localhost:8008/token/jwt?id=1553155268644
 */
-// Signing a JWT with public claims http handler
 func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodGet, http.MethodPost}) {
 		return
@@ -86,13 +106,13 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	esAt, expAt := now.Unix(), now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME)*time.Second).Unix()
 	claims := PayloadClaims{
 		StandardClaims: jwt.StandardClaims{
-			Issuer:    "api-jwt",    // 签发者
-			Subject:   "auth-token", // 面向的用户
-			Audience:  Audience,     // 接收 JWT 的一方(域名或应用名)
-			ExpiresAt: expAt,        // 过期时间
-			Id:        id,           // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
-			IssuedAt:  esAt,         // JWT 签发时间
-			NotBefore: esAt,         // 什么时间之前，该 JWT 都是不可用的
+			Issuer:    Issuer,   // 签发者
+			Subject:   Subject,  // 面向的用户
+			Audience:  Audience, // 接收 JWT 的一方(域名或应用名)
+			ExpiresAt: expAt,    // 过期时间
+			Id:        id,       // JWT 的唯一身份标识，主要用来作为一次性 token，从而避免重放攻击
+			IssuedAt:  esAt,     // JWT 签发时间
+			NotBefore: esAt,     // 什么时间之前，该 JWT 都是不可用的
 		},
 		X: data, // 扩展信息
 	}
@@ -107,9 +127,9 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 /**
-curl -X POST http://localhost:8008/token/verify -H 'Content-Type: application/json' -H 'Authorization: bearer '
+Jwt-Token数据验证
+curl -X POST http://localhost:8008/token/jwt/verify -H "Content-Type:application/json" -H "Authorization: Bearer {0}"
 */
-// Verifying and validating a JWT http handler
 func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodPost}) {
 		return
@@ -179,7 +199,8 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 /**
-JSON数据签名生成
+Jwt-JSON数据签名生成
+curl -X POST http://localhost:8008/token/jwt/sign -H "Content-Type:application/json" -d "{\"id\":\"1553155268644\"}"
 */
 func JsonSignGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodPost}) {
@@ -207,11 +228,9 @@ func JsonSignGenerateHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	//log.Printf("%v => %+v \n", api_config.JwtConf.JWT_Sign.Alg, claims)
 
 	// create a new token
-	alg := jwt.GetSigningMethod(api_config.JwtConf.JWT_Sign.Alg)
-	token := jwt.NewWithClaims(alg, claims)
+	token := jwt.NewWithClaims(signAlg, claims)
 
 	if signIsRs {
 		if key, err = jwt.ParseRSAPrivateKeyFromPEM(k); err != nil {
@@ -234,7 +253,8 @@ func JsonSignGenerateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 /**
-JSON数据签名验证
+Jwt-JSON数据签名验证
+curl -X POST http://localhost:8008/token/jwt/sign/verify -H "Content-Type:application/json" -H "Authorization: Bearer {0}"
 */
 func JsonSignValidateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodPost}) {
