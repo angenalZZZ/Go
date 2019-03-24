@@ -19,11 +19,11 @@ Jwt-Token数据
 */
 var (
 	// 签发者
-	Issuer = "api-jwt"
+	Issuer string
 	// 面向的用户
-	Subject = "auth-token"
+	Subject string
 	// 接收 JWT 的一方(域名或应用名)
-	Audience = "fpapi.com"
+	Audience string
 	// the token alg
 	tokenAlg             jwt.SigningMethod
 	tokenIsHs, tokenIsRs bool
@@ -52,6 +52,9 @@ type PayloadClaims struct {
 // 初始化参数
 func init() {
 	api_config.LoadCheck()
+	Issuer = api_config.JwtConf.JWT_Issuer
+	Subject = api_config.JwtConf.JWT_Subject
+	Audience = api_config.JwtConf.JWT_Audience
 
 	if api_config.JwtConf.JWT_Sign.HasKeyAndPub() {
 		p := os.Getenv("GOPATH") + "/src/angenalZZZ/go-program/"

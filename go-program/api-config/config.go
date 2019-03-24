@@ -18,10 +18,10 @@ var JwtConf *JwtConfig
 
 // 认证方式 Jwt Config: 复合类型
 type JwtConfig struct {
-	AUTH_JWT, JWT_algorithms, JWT_SECRET string
-	JWT_LIFETIME                         int
-	JWT_Audience                         string
-	JWT_Sign                             JwtSign
+	AUTH_JWT, JWT_algorithms, JWT_SECRET  string
+	JWT_LIFETIME                          int
+	JWT_Issuer, JWT_Subject, JWT_Audience string
+	JWT_Sign                              JwtSign
 }
 type JwtSign struct {
 	Key, Pub, Alg string
@@ -104,20 +104,30 @@ func LoadCheck() {
 		Check("JWT_algorithms")
 		Check("JWT_SECRET")
 		Check("JWT_LIFETIME")
+		Check("JWT_Issuer")
+		Check("JWT_Subject")
+		Check("JWT_Audience")
+		Check("JWT_Sign")
+
 		lifetime, _ := strconv.Atoi(os.Getenv("JWT_LIFETIME"))
+
 		jwtSign := JwtSign{}
 		s := strings.Split(os.Getenv("JWT_Sign"), ",")
 		if len(s) == 3 {
 			jwtSign = JwtSign{s[0], s[1], s[2]}
 		}
+
 		JwtConf = &JwtConfig{
 			AUTH_JWT:       os.Getenv("AUTH_JWT"),
 			JWT_algorithms: os.Getenv("JWT_algorithms"),
 			JWT_SECRET:     os.Getenv("JWT_SECRET"),
 			JWT_LIFETIME:   lifetime,
+			JWT_Issuer:     os.Getenv("JWT_Issuer"),
+			JWT_Subject:    os.Getenv("JWT_Subject"),
 			JWT_Audience:   os.Getenv("JWT_Audience"),
 			JWT_Sign:       jwtSign,
 		}
+
 		log.Printf("加载配置文件并检查配置项: OK\n")
 		//log.Printf("%#v \n", JwtConf)
 	}
