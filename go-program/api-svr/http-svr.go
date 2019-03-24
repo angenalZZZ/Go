@@ -27,7 +27,7 @@ func initHttpSvr() {
 }
 
 // 后台运行 http Serve Run
-func HttpSvrRun() {
+func TestHttpSvrRun() {
 	initHttpSvr()
 
 	// 静态资源访问 html,css,js...

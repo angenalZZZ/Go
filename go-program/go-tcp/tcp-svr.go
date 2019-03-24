@@ -20,7 +20,7 @@ func initTcpSvr() {
 }
 
 // 后台运行 tcp Serve Run
-func TcpSvrRun() {
+func TestTcpSvrRun() {
 	initTcpSvr()
 	l, e := net.Listen("tcp4", tcpSvr.Addr)
 	if e == nil {

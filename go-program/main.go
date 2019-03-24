@@ -13,6 +13,8 @@ import (
 	"angenalZZZ/go-program/go-tcp"
 	"angenalZZZ/go-program/go-type"
 	"flag"
+	"log"
+	"os"
 	"runtime"
 	"time"
 )
@@ -20,21 +22,23 @@ import (
 /**
 命令行参数
 */
-var config = flag.Bool("config", true, "check config file .env")
+var (
+	flagConfig = flag.Bool("config", true, "check flagConfig file .env")
 
-var typeCheck = flag.Bool("type-check", false, "test Type Check")
-var createFile = flag.Bool("create-file", false, "test Create File")
+	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
+	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
-var tcp = flag.Bool("tcp", false, "open tcp Serve")
-var http = flag.Bool("http", true, "open http Serve")
+	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")
+	flagHttp = flag.Bool("http", true, "open flagHttp Serve")
 
-var leveldb = flag.Bool("leveldb", false, "test leveldb Client")
-var opentsdb = flag.Bool("opentsdb", false, "test opentsdb Client")
-var redis = flag.Bool("redis", false, "test redis Client")
-var redisCli = flag.Bool("redis-cli", false, "test redis Cli")
-var ssdb = flag.Bool("ssdb", false, "test SSdb Client")
+	flagLeveldb  = flag.Bool("leveldb", false, "test flagLeveldb Client")
+	flagOpentsdb = flag.Bool("opentsdb", false, "test flagOpentsdb Client")
+	flagRedis    = flag.Bool("redis", false, "test flagRedis Client")
+	flagRedisCli = flag.Bool("redis-cli", false, "test flagRedis Cli")
+	flagSsdb     = flag.Bool("ssdb", false, "test SSdb Client")
 
-var worker = flag.Bool("worker", false, "test Scheduler Worker")
+	flagWorker = flag.Bool("worker", false, "test Scheduler Worker")
+)
 
 /**
 程序初始化
@@ -43,16 +47,20 @@ func init() {
 	// log使用UTC时间
 	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
 
-	// 查看命令行参数 -h -help
+	// 命令行参数 查看 -h -help
+	flag.Usage = func() {
+		log.Printf(" Usage of %s:\n", os.Args[0])
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 
 	// 设置CPU空闲1个
 	numCpu := runtime.NumCPU()
 	runtime.GOMAXPROCS(numCpu - 1)
 
-	// 监听程序退出1 后台运行 tcp Serve Shutdown
+	// 监听程序退出1 后台运行 flagTcp Serve Shutdown
 	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
-	// 监听程序退出2 后台运行 http Serve Shutdown
+	// 监听程序退出2 后台运行 flagHttp Serve Shutdown
 	go_shutdown_hook.Add(api_svr.HttpSvrShutdown)
 	// 监听程序退出3 数据库 Leveldb Client
 	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
@@ -72,62 +80,74 @@ func init() {
 程序入口函数
 */
 func main() {
-	defer shutdown()
+	defer end()
+
+	//flag.Usage() // 查看程序使用说明
 	time.Sleep(time.Nanosecond * 10)
 
+	start()
+}
+
+/**
+程序开始执行
+*/
+func start() {
+
 	// 加载配置文件并检查配置项
-	if *config == true {
+	if *flagConfig == true {
 		api_config.LoadCheck()
+		time.Sleep(time.Nanosecond * 10)
 	}
 
 	// 类型检查
-	if *typeCheck == true {
-		go_type.TypeCheck()
+	if *flagTypeCheck == true {
+		go go_type.TestTypeCheck()
 	}
 
 	// 文件管理：创建文件
-	if *createFile == true {
-		go_file.CreateFile()
+	if *flagCreateFile == true {
+		go go_file.TestCreateFile()
 	}
 
 	// 内存数据库 Leveldb Client
-	if *leveldb == true {
+	if *flagLeveldb == true {
 		go go_leveldb.Test()
 	}
 	// 时序数据库 OpenTSDB Client
-	if *opentsdb == true {
+	if *flagOpentsdb == true {
 		go go_opentsdb.Test()
 	}
 	// 缓存数据库 Redis Client
-	if *redis == true {
+	if *flagRedis == true {
 		go go_redis.Test()
 	}
-	if *redisCli == true {
+	if *flagRedisCli == true {
 		go go_redis.TestCli()
 	}
 	// 缓存数据库 SSdb Client
-	if *ssdb == true {
+	if *flagSsdb == true {
 		go go_ssdb.Test()
 	}
 
 	// 计划任务 Scheduler Worker
-	if *worker == true {
+	if *flagWorker == true {
 		go go_scheduler.TestWorker()
 	}
 
-	// 后台运行 tcp Serve Run
-	if *tcp == true {
-		go go_tcp.TcpSvrRun()
+	// 后台运行 flagTcp Serve Run
+	if *flagTcp == true {
+		go go_tcp.TestTcpSvrRun()
 	}
-	// 后台运行 http Serve Run
-	if *http == true {
-		go api_svr.HttpSvrRun()
+	// 后台运行 flagHttp Serve Run
+	if *flagHttp == true {
+		go api_svr.TestHttpSvrRun()
 	}
+
 }
 
 /**
 程序退出, 正常时 os.Exit(0) | 异常时 os.Exit(1)
 */
-func shutdown() {
+func end() {
 	go_shutdown_hook.Wait()
 }

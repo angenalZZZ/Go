@@ -7,7 +7,7 @@ import (
 )
 
 // 文件管理：创建文件
-func CreateFile() {
+func TestCreateFile() {
 	fmt.Println("-------------------------\n文件管理：创建文件")
 
 	fName := fmt.Sprintf("%s\\~%d.tmp", os.TempDir(), time.Now().Unix())
