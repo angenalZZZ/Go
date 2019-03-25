@@ -3,6 +3,7 @@ package api_svr
 import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/authtoken"
+	"angenalZZZ/go-program/api-svr/gorm-model"
 	"angenalZZZ/go-program/api-svr/img"
 	"context"
 	"log"
@@ -42,6 +43,9 @@ func TestHttpSvrRun() {
 	http.HandleFunc("/token/jwt/verify", authtoken.JwtVerifyValidateHandler)
 	http.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
 	http.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
+
+	// 数据库 sqlite
+	http.HandleFunc("/sqlite/test", gorm_model.SqliteTestBaseHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
