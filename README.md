@@ -39,7 +39,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{}, 0) 
     异步: ch := make(chan int, 100) // buffered channel with capacity 100
-    管道: ch1, ch2 := make(chan int), make(chan int) // 串连的通道: ch1 <- 1; ch2 <- 2 * <-ch1; result := <-ch2
+    管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result := <-ch2
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
