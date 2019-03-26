@@ -12,8 +12,7 @@ var sqliteDbPath string
 
 func init() {
 	var p = os.Getenv("GOPATH")
-	sqliteDbPath = p + "/src/angenalZZZ/go-program/base.db"
-	//println(sqliteDbPath)
+	sqliteDbPath = p + "/src/angenalZZZ/go-mock/test.db"
 }
 
 // 测试
