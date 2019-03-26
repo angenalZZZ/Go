@@ -45,7 +45,7 @@ func TestHttpSvrRun() {
 	http.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
 	http.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
 
-	// 数据库 mysql
+	// 数据库 mssql、mysql、sqlite
 	//http.HandleFunc("/gorm/mssql/test", mssql.FooTestHandler)
 	http.HandleFunc("/gorm/mysql/test", mysql.FooTestHandler)
 	http.HandleFunc("/gorm/sqlite/test", sqlite.FooTestHandler)

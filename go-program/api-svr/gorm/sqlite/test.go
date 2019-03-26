@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-var sqliteDbPath = ":memory:"
+var sqliteDbPath = ":memory:" // https://github.com/mattn/go-sqlite3
 
 func init() {
 	//var p = os.Getenv("GOPATH")

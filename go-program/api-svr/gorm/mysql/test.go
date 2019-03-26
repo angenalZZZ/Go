@@ -7,10 +7,10 @@ import (
 	"net/http"
 )
 
-var ConnectionString string
+var ConnectionString string // https://github.com/go-sql-driver/mysql
 
 func init() {
-	ConnectionString = "root:123456@/localhost:3306/test?timeout=3s&charset=utf8&parseTime=True&loc=Local"
+	ConnectionString = "root:HGJ766GR767FKJU0@/test?timeout=3s&charset=utf8&parseTime=True&loc=Local"
 }
 
 // 测试
