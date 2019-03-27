@@ -175,10 +175,14 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil
+
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据
+# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
+
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
@@ -201,14 +205,13 @@ git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com
   dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 
-go get github.com/robfig/cron              # a cron library         *4k
+go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
 go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
-# https://github.com/etcd-io/etcdlabs      # labs:分布式可靠键值存储，适用于分布式系统中最关键的数据
-# client: http://play.etcd.io  #  server: https://github.com/etcd-io/etcd/releases
+
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
