@@ -207,7 +207,8 @@ go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
-
+# https://github.com/etcd-io/etcdlabs      # labs:分布式可靠键值存储，适用于分布式系统中最关键的数据
+# client: http://play.etcd.io  #  server: https://github.com/etcd-io/etcd/releases
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
