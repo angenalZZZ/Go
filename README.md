@@ -202,12 +202,13 @@ git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com
 git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 
 go get github.com/robfig/cron              # a cron library         *4k
-go get github.com/jasonlvhit/gocron        # simple cron of timer   *1k
+go get github.com/iamduo/go-workq          # job server and client  *1k
+go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
 
-go get github.com/nsqio/go-nsq             # 实时消息平台 nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
