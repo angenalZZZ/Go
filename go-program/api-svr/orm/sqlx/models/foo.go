@@ -1,6 +1,8 @@
 package models
 
 import (
+	"angenalZZZ/go-program/api-svr/orm"
+
 	"bytes"
 	"database/sql"
 	"fmt"
@@ -16,6 +18,15 @@ type Foo struct {
 	Baz sql.NullString
 }
 
+/**
+表结构 Foo Create
+*/
+const FooScheme = `
+CREATE TABLE IF NOT EXISTS foo (
+    bar int not null,
+    baz text
+);`
+
 // 测试
 func FooTest(w http.ResponseWriter, r *http.Request, dbType, connStr string) {
 	db, err := sqlx.Open(dbType, connStr)
@@ -30,11 +41,7 @@ func FooTest(w http.ResponseWriter, r *http.Request, dbType, connStr string) {
 	// Migrate the schema
 	//db.AutoMigrate(&Foo{})
 	//buf.WriteString(" AutoMigrate\n")
-	db.MustExec(`
-CREATE TABLE IF NOT EXISTS foo (
-    bar int not null,
-    baz text
-);`)
+	db.MustExec(FooScheme)
 
 	// Delete rows
 	if i, _ := db.MustExec(`delete from foo`).RowsAffected(); i > 0 {
@@ -77,7 +84,8 @@ CREATE TABLE IF NOT EXISTS foo (
 
 	// Delete
 	if foo.Bar > 0 {
-		if i, e := db.MustExec(`DELETE FROM foo WHERE bar=?`, foo.Bar).RowsAffected(); i > 0 {
+		res, _ := db.NamedExec(`DELETE FROM foo WHERE bar=:bar`, orm.Q{"bar": foo.Bar}.V())
+		if i, e := res.RowsAffected(); i > 0 {
 			buf.WriteString(" Deleted Ok\n")
 		} else {
 			buf.WriteString(fmt.Sprintf(" Not Deleted\n%v\n", e))
