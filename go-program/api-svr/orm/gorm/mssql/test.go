@@ -1,7 +1,7 @@
 package mssql
 
 import (
-	"angenalZZZ/go-program/api-svr/gorm/models"
+	"angenalZZZ/go-program/api-svr/orm/gorm/models"
 
 	//_ "github.com/denisenkom/go-mssqldb"
 	_ "github.com/jinzhu/gorm/dialects/mssql"

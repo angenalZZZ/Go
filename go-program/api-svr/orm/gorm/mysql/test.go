@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"angenalZZZ/go-program/api-svr/gorm/models"
+	"angenalZZZ/go-program/api-svr/orm/gorm/models"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"net/http"

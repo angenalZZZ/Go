@@ -3,9 +3,10 @@ package api_svr
 import (
 	"angenalZZZ/go-program/api-config"
 	"angenalZZZ/go-program/api-svr/authtoken"
-	"angenalZZZ/go-program/api-svr/gorm/mysql"
-	"angenalZZZ/go-program/api-svr/gorm/sqlite"
 	"angenalZZZ/go-program/api-svr/img"
+	gormMysql "angenalZZZ/go-program/api-svr/orm/gorm/mysql"
+	gormSqlite "angenalZZZ/go-program/api-svr/orm/gorm/sqlite"
+	sqlxSqlite "angenalZZZ/go-program/api-svr/orm/sqlx/sqlite"
 	"context"
 	"log"
 	"net"
@@ -45,20 +46,18 @@ func TestHttpSvrRun() {
 	http.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
 	http.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
 
-	// 数据库 mssql、mysql、sqlite
-	//http.HandleFunc("/gorm/mssql/test", mssql.FooTestHandler)
-	http.HandleFunc("/gorm/mysql/test", mysql.FooTestHandler)
-	http.HandleFunc("/gorm/sqlite/test", sqlite.FooTestHandler)
+	// 数据库 gorm
+	http.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)
+	http.HandleFunc("/gorm/sqlite/test", gormSqlite.FooTestHandler)
+	// 数据库 sqlx
+	http.HandleFunc("/sqlx/sqlite/test", sqlxSqlite.FooTestHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	//
 	//	// 跟踪请求
 	//	log.Printf("后台服务 http: %s\n", r.URL)
-	//
 	//	// 处理请求
 	//	_, e := fmt.Fprintf(w, " %v %+v \n", time.Now(), r.URL)
-	//
 	//	// 跟踪异常
 	//	if e != nil {
 	//		log.Println(e)
