@@ -1,13 +1,13 @@
 package api_svr
 
 import (
-	"angenalZZZ/go-program/api-config"
-	"angenalZZZ/go-program/api-svr/authtoken"
-	"angenalZZZ/go-program/api-svr/img"
-	gormMysql "angenalZZZ/go-program/api-svr/orm/gorm/mysql"
-	gormSqlite "angenalZZZ/go-program/api-svr/orm/gorm/sqlite"
-	sqlxSqlite "angenalZZZ/go-program/api-svr/orm/sqlx/sqlite"
 	"context"
+	"github.com/angenalZZZ/Go/go-program/api-config"
+	"github.com/angenalZZZ/Go/go-program/api-svr/authtoken"
+	"github.com/angenalZZZ/Go/go-program/api-svr/img"
+	gormMysql "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/mysql"
+	gormSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/sqlite"
+	sqlxSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/sqlite"
 	"log"
 	"net"
 	"net/http"

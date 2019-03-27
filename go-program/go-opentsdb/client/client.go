@@ -33,7 +33,7 @@ import (
 	"strings"
 	"time"
 
-	"angenalZZZ/go-program/go-opentsdb/config"
+	"github.com/angenalZZZ/Go/go-program/go-opentsdb/config"
 )
 
 const (

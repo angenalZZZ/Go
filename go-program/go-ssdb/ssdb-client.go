@@ -1,8 +1,8 @@
 package go_ssdb
 
 import (
-	"angenalZZZ/go-program/api-config"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/seefan/gossdb"
 	"github.com/seefan/gossdb/conf"
 	"github.com/seefan/gossdb/ssdb"

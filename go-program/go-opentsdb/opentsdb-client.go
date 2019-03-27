@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"time"
 
-	"angenalZZZ/go-program/go-opentsdb/client"
-	"angenalZZZ/go-program/go-opentsdb/config"
+	"github.com/angenalZZZ/Go/go-program/go-opentsdb/client"
+	"github.com/angenalZZZ/Go/go-program/go-opentsdb/config"
 )
 
 var Db *client.Client

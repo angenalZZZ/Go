@@ -1,8 +1,8 @@
 package go_scheduler
 
 import (
-	"angenalZZZ/go-program/api-config"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/gocraft/work"
 	"github.com/gomodule/redigo/redis"
 	"github.com/satori/go.uuid"

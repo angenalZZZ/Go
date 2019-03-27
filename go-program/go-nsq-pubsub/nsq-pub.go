@@ -1,7 +1,7 @@
 package go_nsq_pubsub
 
 import (
-	"angenalZZZ/go-program/api-config"
+	"github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/nsqio/go-nsq"
 	"log"
 	"os"

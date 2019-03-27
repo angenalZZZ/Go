@@ -1,8 +1,8 @@
 package go_redis
 
 import (
-	"angenalZZZ/go-program/api-config"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/gomodule/redigo/redis"
 	"log"
 	"math/rand"

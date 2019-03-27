@@ -1,7 +1,7 @@
 package models
 
 import (
-	"angenalZZZ/go-program/api-svr/orm"
+	"github.com/angenalZZZ/Go/go-program/api-svr/orm"
 
 	"bytes"
 	"database/sql"

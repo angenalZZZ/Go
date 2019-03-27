@@ -1,7 +1,7 @@
 package sqlite
 
 import (
-	"angenalZZZ/go-program/api-svr/orm/sqlx/models"
+	"github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/models"
 
 	_ "github.com/mattn/go-sqlite3"
 	"net/http"

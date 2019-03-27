@@ -1,8 +1,8 @@
 package go_leveldb
 
 import (
-	"angenalZZZ/go-program/api-config"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 	"github.com/syndtr/goleveldb/leveldb/util"

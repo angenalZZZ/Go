@@ -1,8 +1,8 @@
 package go_type
 
 import (
-	"angenalZZZ/go-program/api-models"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-models"
 )
 
 // 类型检查

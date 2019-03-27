@@ -1,10 +1,10 @@
 package authtoken
 
 import (
-	"angenalZZZ/go-program/api-config"
-	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-config"
+	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 	"net/http"
 	"os"
 	"strings"

@@ -1,9 +1,9 @@
 package img
 
 import (
-	"angenalZZZ/go-program/api-svr/cors"
 	"encoding/json"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 	"github.com/mojocn/base64Captcha"
 	"net/http"
 )
