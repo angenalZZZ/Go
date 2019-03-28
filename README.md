@@ -4,7 +4,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
  > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[^收藏夹$](#-功能框架基础库应用工具)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
- * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[搭建开发环境](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
+ * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
 
  > `下载` [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
 
