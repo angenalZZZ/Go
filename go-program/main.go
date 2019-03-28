@@ -2,21 +2,22 @@ package main
 
 import (
 	"flag"
-	"github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/angenalZZZ/Go/go-program/api-svr"
-	"github.com/angenalZZZ/Go/go-program/go-file"
-	"github.com/angenalZZZ/Go/go-program/go-leveldb"
-	"github.com/angenalZZZ/Go/go-program/go-opentsdb"
-	"github.com/angenalZZZ/Go/go-program/go-redis"
-	"github.com/angenalZZZ/Go/go-program/go-scheduler"
-	"github.com/angenalZZZ/Go/go-program/go-shutdown-hook"
-	"github.com/angenalZZZ/Go/go-program/go-ssdb"
-	"github.com/angenalZZZ/Go/go-program/go-tcp"
-	"github.com/angenalZZZ/Go/go-program/go-type"
 	"log"
 	"os"
 	"runtime"
 	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	api_svr "github.com/angenalZZZ/Go/go-program/api-svr"
+	go_file "github.com/angenalZZZ/Go/go-program/go-file"
+	go_leveldb "github.com/angenalZZZ/Go/go-program/go-leveldb"
+	go_opentsdb "github.com/angenalZZZ/Go/go-program/go-opentsdb"
+	go_redis "github.com/angenalZZZ/Go/go-program/go-redis"
+	go_scheduler "github.com/angenalZZZ/Go/go-program/go-scheduler"
+	go_shutdown_hook "github.com/angenalZZZ/Go/go-program/go-shutdown-hook"
+	go_ssdb "github.com/angenalZZZ/Go/go-program/go-ssdb"
+	go_tcp "github.com/angenalZZZ/Go/go-program/go-tcp"
+	go_type "github.com/angenalZZZ/Go/go-program/go-type"
 )
 
 /**
@@ -25,7 +26,7 @@ import (
 var (
 	flagConfig = flag.Bool("config", true, "check flagConfig file .env")
 
-	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
+	flagTypeCheck  = flag.Bool("type-check", true, "test Type Check")
 	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
 	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")

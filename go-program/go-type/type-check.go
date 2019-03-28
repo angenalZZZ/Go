@@ -2,7 +2,8 @@ package go_type
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-models"
+
+	api_models "github.com/angenalZZZ/Go/go-program/api-models"
 )
 
 // 类型检查
@@ -12,7 +13,7 @@ func TestTypeCheck() {
 	fmt.Println("-------------------------\n类型检查：")
 
 	// type assertion (*指针类型)
-	if p0, ok := p.(*api_models.Point); ok == true {
+	if p0, ok := p.(*api_models.Point); ok {
 		fmt.Printf("  类型断言: %p  %p\n", &p, &p0)
 	}
 
@@ -37,9 +38,12 @@ func TestTypeCheck() {
 	//var s1 string  // readonly byte slice
 	//var s2 stringS
 
-	fmt.Println("  格式化p：%v %+v %T %#v make(Slice::Point)")
+	fmt.Println(`  格式化p：%v %+v %T %#v make(Slice::Point)`)
 	fmt.Printf("  格式化p：%v %+v %T %#v [%d]Point\n", p, p, p, p, cap(p2))
 	fmt.Printf("  格式化i：%c %8.1f %8.2f %8x\n", 65, 12.5, 12.509, 54349)
+
+	// 类型检查 指针
+	PtrTypeCheck()
 
 	// 二维数组
 	TwoImensionalArrays(4, 2)
