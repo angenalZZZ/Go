@@ -190,8 +190,14 @@ go get github.com/go-sql-driver/mysql      # Mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
 go get github.com/lib/pq                   # Postgres
 go get github.com/mattn/go-sqlite3         # SQLite
-go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
+
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
+  go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
+  go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
+  go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
+go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
+  go get github.com/xormplus/xorm            # *xorm增强版*:支持sql模板,动态sql,嵌套事务,配置等 https://github.com/xormplus/xorm#特性
+  
 go get github.com/olivere/elastic          # Elasticsearch 6.0
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
