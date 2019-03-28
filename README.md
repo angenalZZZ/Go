@@ -183,6 +183,8 @@ go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 https://github.com/cloudflare/cfssl#using-the-command-line-tool
+go get github.com/cloudflare/cfssl/cmd/cfssl
+go get github.com/cloudflare/cfssl/cmd/cfssljson
 
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
