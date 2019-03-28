@@ -183,6 +183,7 @@ go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-clien
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据
 # client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
 
+go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
@@ -196,8 +197,9 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
   go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
-  go get github.com/xormplus/xorm            # *xorm增强版*:支持sql模板,动态sql,嵌套事务,配置等 https://github.com/xormplus/xorm#特性
-  
+  go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
+  go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
+
 go get github.com/olivere/elastic          # Elasticsearch 6.0
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
