@@ -67,7 +67,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应的平台: https://github.com/fatedier/frp/blob/master/README_zh.md
-    $ go tool dist list #如下: -s -w 去掉编译时的符号&调试信息,缩小程序文件大小; CGO_ENABLED=0 禁用cgo编译,兼容性更好;
+    $ go tool dist list
+    # 编译命令: -ldflags算定义编译标记,"-s -w"去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0禁用cgo,兼容性好
     $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
@@ -253,8 +254,10 @@ go get github.com/yudai/gotty              # 终端扩展服务
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
 # 开发
-  # gobuild环境 CGO_ENABLED=1;GO_ENV=development #测试 GO_ENV=test
-  # go-tool参数 -i -ldflags "-s -w"
+  # 使用JetBrains/GoLand 
+  # go 全局 配置：GOROOT, GOPATH [ √ Use GOPATH √ Index entire GOPATH ]
+  # go build环境：CGO_ENABLED=1;GO_ENV=development [ development > test > production ]
+  # go tool 参数：-i -ldflags "-s -w"  # 去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0 禁用cgo,兼容性好
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
