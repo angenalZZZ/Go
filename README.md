@@ -60,8 +60,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 ~~~bash
   # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-  # go build环境：CGO_ENABLED=1;GO_ENV=development [ development > test > production ]
-  # go tool 参数：-i -ldflags "-s -w"  # 去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0 禁用cgo,兼容性好
+  # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
+  # go tool 参数：-i -ldflags "-s -w"  # -ldflags 自定义编译标记, "-s -w" 去掉编译时的符号&调试信息,缩小程序大小
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -72,9 +72,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     GOROOT=/usr/local/go
     GOPATH=/home/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
-    # <跨平台编译> 查看支持的操作系统和对应的平台: https://github.com/fatedier/frp/blob/master/README_zh.md
+    # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     $ go tool dist list
-    # 编译命令: -ldflags算定义编译标记,"-s -w"去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0禁用cgo,兼容性好
     $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
