@@ -56,6 +56,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     > go get -u        # Update the named packages and their dependencies.
     > go get -v        # Verbose progress and debug output.
     > go get -insecure # Resolving domains using insecure HTTP(No https).
+    > go get github.com/angenalZZZ/Go/go-program # 获取代码
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
