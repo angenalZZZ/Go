@@ -252,8 +252,8 @@ go get github.com/yudai/gotty              # 终端扩展服务
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
 # 开发
-  # 环境 CGO_ENABLED=1;GO_ENV=development
-  # 参数 -ldflags "-s -w"
+  # gobuild环境 CGO_ENABLED=1;GO_ENV=development #测试 GO_ENV=test
+  # go-tool参数 -i -ldflags "-s -w"
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
