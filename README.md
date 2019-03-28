@@ -4,7 +4,7 @@ Go 是一个开源的编程语言，它能让构造简单、可靠且高效的�
  > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[^收藏夹$](#-功能框架基础库应用工具)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
- * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)、[liteide](http://liteide.org/cn/)
+ * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[搭建开发环境](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
 
  > `下载` [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
 
@@ -57,6 +57,12 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     > go get -v        # Verbose progress and debug output.
     > go get -insecure # Resolving domains using insecure HTTP(No https).
     > go get github.com/angenalZZZ/Go/go-program # 获取代码
+
+~~~bash
+  # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
+  # go build环境：CGO_ENABLED=1;GO_ENV=development [ development > test > production ]
+  # go tool 参数：-i -ldflags "-s -w"  # 去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0 禁用cgo,兼容性好
+~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
     
@@ -254,10 +260,6 @@ go get github.com/yudai/gotty              # 终端扩展服务
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
 ~~~
 # 开发
-  # 使用JetBrains/GoLand 
-  # go 全局 配置：GOROOT, GOPATH [ √ Use GOPATH √ Index entire GOPATH ]
-  # go build环境：CGO_ENABLED=1;GO_ENV=development [ development > test > production ]
-  # go tool 参数：-i -ldflags "-s -w"  # 去掉编译时的符号&调试信息,缩小程序大小; CGO_ENABLED=0 禁用cgo,兼容性好
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
