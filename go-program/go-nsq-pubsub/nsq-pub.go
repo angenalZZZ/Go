@@ -1,11 +1,11 @@
 package go_nsq_pubsub
 
 import (
-	"github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/nsqio/go-nsq"
 	"log"
-	"os"
 	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	"github.com/nsqio/go-nsq"
 )
 
 /**
@@ -16,8 +16,8 @@ var D *nsq.Producer
 // 初始化配置
 func InitProducer() {
 	// config
-	api_config.Check("NSQD_ADDR") // 单节点1
-	addr := os.Getenv("NSQD_ADDR")
+	// 单节点1
+	addr := api_config.Config.Nsq.NsqdAddr
 	config := nsq.NewConfig()
 	config.WriteTimeout = 3 * time.Second
 

@@ -2,13 +2,13 @@ package go_redis
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/gomodule/redigo/redis"
 	"log"
 	"math/rand"
-	"os"
-	"strconv"
 	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 /**
@@ -22,26 +22,17 @@ var cliAddr string
 // 初始化配置
 func init() {
 	// config
-	api_config.Check("REDIS_ADDR")
-	api_config.Check("REDIS_PWD")
-	api_config.Check("REDIS_DB")
-	cliAddr = os.Getenv("REDIS_ADDR")
-	i, e := strconv.Atoi(os.Getenv("REDIS_DB"))
-	if e != nil {
-		i = 0
-	}
+	cliAddr = api_config.Config.RedisCli.Addr
 	// client
 	cliOpt = redis.DialClientName("redis-cli")
 	cliOpt = redis.DialUseTLS(false)
 	// password
-	password := os.Getenv("REDIS_PWD")
+	password := api_config.Config.RedisCli.Pwd
 	if len(password) > 0 {
 		cliOpt = redis.DialPassword(password)
 	}
 	// db number
-	if i > 0 && i < 16 {
-		cliOpt = redis.DialDatabase(i)
-	}
+	cliOpt = redis.DialDatabase(api_config.Config.RedisCli.Db)
 }
 func initCli() {
 	if CliPoll != nil {

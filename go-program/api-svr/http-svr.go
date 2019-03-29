@@ -2,16 +2,16 @@ package api_svr
 
 import (
 	"context"
-	"github.com/angenalZZZ/Go/go-program/api-config"
+	"log"
+	"net"
+	"net/http"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/angenalZZZ/Go/go-program/api-svr/authtoken"
 	"github.com/angenalZZZ/Go/go-program/api-svr/img"
 	gormMysql "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/mysql"
 	gormSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/sqlite"
 	sqlxSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/sqlite"
-	"log"
-	"net"
-	"net/http"
-	"os"
 )
 
 /**
@@ -19,14 +19,8 @@ import (
 */
 var httpSvr *http.Server
 
-// 初始化配置
-func init() {
-	// config
-	api_config.Check("HOST")
-	api_config.Check("POST")
-}
 func initHttpSvr() {
-	httpSvr = &http.Server{Addr: os.Getenv("HOST") + ":" + os.Getenv("POST")}
+	httpSvr = &http.Server{Addr: api_config.Config.HttpSvr.Addr}
 }
 
 // 后台运行 http Serve Run

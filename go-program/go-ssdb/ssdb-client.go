@@ -2,17 +2,14 @@ package go_ssdb
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-config"
+	"log"
+	"math/rand"
+	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/seefan/gossdb"
 	"github.com/seefan/gossdb/conf"
 	"github.com/seefan/gossdb/ssdb"
-	"log"
-	"math/rand"
-	"net"
-	"os"
-	"strconv"
-	"strings"
-	"time"
 )
 
 /**
@@ -25,39 +22,7 @@ var pool *gossdb.Connectors
 // 初始化配置
 func init() {
 	// config
-	api_config.Check("SSDB_ADDR")
-	api_config.Check("SSDB_POOL")
-	host, _port, e := net.SplitHostPort(os.Getenv("SSDB_ADDR"))
-	port, e := strconv.Atoi(_port)
-	if e != nil {
-		log.Fatal("SSDB_ADDR 配置异常") // 中断程序时输出
-	}
-	pools := strings.Split(os.Getenv("SSDB_POOL"), ":")
-	if len(pools) != 3 {
-		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
-	}
-	minPoolSize, e := strconv.Atoi(pools[0])
-	if e != nil {
-		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
-	}
-	maxPoolSize, e := strconv.Atoi(pools[1])
-	if e != nil {
-		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
-	}
-	acquireIncrement, e := strconv.Atoi(pools[2])
-	if e != nil {
-		log.Fatal("SSDB_POOL 配置异常") // 中断程序时输出
-	}
-	password := os.Getenv("SSDB_PWD")
-
-	op = &conf.Config{
-		Host:             host,
-		Port:             port,
-		MinPoolSize:      minPoolSize,
-		MaxPoolSize:      maxPoolSize,
-		AcquireIncrement: acquireIncrement,
-		Password:         password,
-	}
+	op = api_config.Config.SSDBConfig
 }
 func initDb() {
 	if Db != nil {

@@ -2,13 +2,12 @@ package go_redis
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/go-redis/redis"
 	"log"
 	"math/rand"
-	"os"
-	"strconv"
 	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	"github.com/go-redis/redis"
 )
 
 /**
@@ -20,17 +19,10 @@ var op *redis.Options
 // 初始化配置
 func init() {
 	// config
-	api_config.Check("REDIS_ADDR")
-	api_config.Check("REDIS_PWD")
-	api_config.Check("REDIS_DB")
-	i, e := strconv.Atoi(os.Getenv("REDIS_DB"))
-	if e != nil {
-		i = 0
-	}
 	op = &redis.Options{
-		Addr:     os.Getenv("REDIS_ADDR"),
-		Password: os.Getenv("REDIS_PWD"),
-		DB:       i, // default DB: 0
+		Addr:     api_config.Config.RedisCli.Addr,
+		Password: api_config.Config.RedisCli.Pwd,
+		DB:       api_config.Config.RedisCli.Db, // default DB: 0
 	}
 }
 func initDb() {

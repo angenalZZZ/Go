@@ -2,14 +2,15 @@ package go_leveldb
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-config"
+	"log"
+	"math/rand"
+	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 	"github.com/syndtr/goleveldb/leveldb/util"
-	"log"
-	"math/rand"
-	"os"
-	"time"
 )
 
 /**
@@ -22,8 +23,7 @@ var addr string
 // 初始化配置
 func init() {
 	// config
-	api_config.Check("LEVELDB")
-	addr = os.Getenv("LEVELDB")
+	addr = api_config.Config.LevelDb.Addr
 	//op = &opt.Options{}
 }
 func initDb() {

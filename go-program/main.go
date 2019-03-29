@@ -7,7 +7,8 @@ import (
 	"runtime"
 	"time"
 
-	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	_ "github.com/angenalZZZ/Go/go-program/api-config/env"
+
 	api_svr "github.com/angenalZZZ/Go/go-program/api-svr"
 	go_file "github.com/angenalZZZ/Go/go-program/go-file"
 	go_leveldb "github.com/angenalZZZ/Go/go-program/go-leveldb"
@@ -24,9 +25,7 @@ import (
 命令行参数
 */
 var (
-	flagConfig = flag.Bool("config", true, "check flagConfig file .env")
-
-	flagTypeCheck  = flag.Bool("type-check", true, "test Type Check")
+	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
 	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
 	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")
@@ -93,12 +92,6 @@ func main() {
 程序开始执行
 */
 func start() {
-
-	// 加载配置文件并检查配置项
-	if *flagConfig == true {
-		api_config.LoadCheck()
-		time.Sleep(time.Nanosecond * 10)
-	}
 
 	// 类型检查
 	if *flagTypeCheck == true {

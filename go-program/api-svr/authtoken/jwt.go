@@ -3,12 +3,13 @@ package authtoken
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+
+	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/rs/xid"
@@ -51,31 +52,35 @@ type PayloadClaims struct {
 
 // 初始化参数
 func init() {
-	api_config.LoadCheck()
-	Issuer = api_config.JwtConf.JWT_Issuer
-	Subject = api_config.JwtConf.JWT_Subject
-	Audience = api_config.JwtConf.JWT_Audience
 
-	if api_config.JwtConf.JWT_Sign.HasKeyAndPub() {
-		p := os.Getenv("GOPATH") + "/src/angenalZZZ/go-program/"
+	JwtConf := api_config.Config.Jwt
+	//fmt.Printf(" %#v \n", JwtConf)
 
-		f1 := p + api_config.JwtConf.JWT_Sign.Key
-		signKeyData, _ = api_config.LoadArgInput(f1)
+	Issuer = JwtConf.JWT_Issuer
+	Subject = JwtConf.JWT_Subject
+	Audience = JwtConf.JWT_Audience
 
-		f2 := p + api_config.JwtConf.JWT_Sign.Pub
-		signPubData, _ = api_config.LoadArgInput(f2)
+	if JwtConf.JWT_Sign.HasKeyAndPub() {
+		p := os.Getenv("GOPATH") + "/src/github.com/angenalZZZ/Go/go-program/"
+
+		signKeyData, _ = api_config.LoadArgInput(p + JwtConf.JWT_Sign.Key)
+		signPubData, _ = api_config.LoadArgInput(p + JwtConf.JWT_Sign.Pub)
 
 		// get the signing key alg
-		signAlg = jwt.GetSigningMethod(api_config.JwtConf.JWT_Sign.Alg)
+		signAlg = jwt.GetSigningMethod(JwtConf.JWT_Sign.Alg)
 		signHasKeyAndPub = len(signKeyData) > 1
-		signIsHs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "HS")
-		signIsRs = strings.Contains(strings.ToUpper(api_config.JwtConf.JWT_Sign.Key), "RS")
+		signIsHs = strings.Contains(strings.ToUpper(JwtConf.JWT_Sign.Key), "HS")
+		signIsRs = strings.Contains(strings.ToUpper(JwtConf.JWT_Sign.Key), "RS")
+
+		//fmt.Printf("  %v\n  %v\n  %v\n  %v\n  %v\n  %v\n", signKeyData, signPubData, signAlg, signHasKeyAndPub, signIsHs, signIsRs)
 	}
 
 	// get the token alg
-	tokenAlg = jwt.GetSigningMethod(api_config.JwtConf.JWT_algorithms)
-	tokenIsHs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "HS")
-	tokenIsRs = strings.HasPrefix(api_config.JwtConf.JWT_algorithms, "RS")
+	tokenAlg = jwt.GetSigningMethod(JwtConf.JWT_algorithms)
+	tokenIsHs = strings.HasPrefix(JwtConf.JWT_algorithms, "HS")
+	tokenIsRs = strings.HasPrefix(JwtConf.JWT_algorithms, "RS")
+
+	//fmt.Printf("  %v\n  %v\n  %v\n", tokenAlg, tokenIsHs, tokenIsRs)
 }
 
 /**
@@ -106,7 +111,7 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	// 签发token
 	id := xid.New().String()
 	now := time.Now()
-	esAt, expAt := now.Unix(), now.Add(time.Duration(api_config.JwtConf.JWT_LIFETIME)*time.Second).Unix()
+	esAt, expAt := now.Unix(), now.Add(time.Duration(api_config.Config.Jwt.JWT_LIFETIME)*time.Second).Unix()
 	claims := PayloadClaims{
 		StandardClaims: jwt.StandardClaims{
 			Issuer:    Issuer,   // 签发者
@@ -119,7 +124,7 @@ func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
 		},
 		X: data, // 扩展信息
 	}
-	key := []byte(api_config.JwtConf.JWT_SECRET)
+	key := []byte(api_config.Config.Jwt.JWT_SECRET)
 	token := jwt.NewWithClaims(tokenAlg, claims)
 	tokenString, err := token.SignedString(key)
 	if err != nil {
@@ -168,7 +173,7 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// secret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		secret := []byte(api_config.JwtConf.JWT_SECRET)
+		secret := []byte(api_config.Config.Jwt.JWT_SECRET)
 		return secret, nil
 	})
 
