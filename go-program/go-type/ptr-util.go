@@ -13,7 +13,7 @@ func PtrTypeCheck() {
 	a0 := unsafe.Pointer(&a[0])
 	a3 := unsafe.Pointer(uintptr(a0) + 3*unsafe.Sizeof(a[0]))
 	*(*int)(a3) = 4
-	fmt.Printf("  指针：array int: a = %v  %x..%dBytes..%x\n", a, uintptr(a0), (uintptr(a3)-uintptr(a0))/unsafe.Sizeof('字'), uintptr(a3)) // [0 1 2 4]
+	fmt.Printf("  指针：array int: a = %v  %x..%dbytes..%x\n", a, uintptr(a0), (uintptr(a3)-uintptr(a0))/8, uintptr(a3)) // [0 1 2 4] byte=uint8
 
 	// struct Person
 	type Person struct {
