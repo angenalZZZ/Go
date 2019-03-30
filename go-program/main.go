@@ -7,7 +7,8 @@ import (
 	"runtime"
 	"time"
 
-	_ "github.com/angenalZZZ/Go/go-program/api-config/env"
+	//_ "github.com/angenalZZZ/Go/go-program/api-config/env"
+	_ "github.com/angenalZZZ/Go/go-program/api-config/env-yaml"
 
 	api_svr "github.com/angenalZZZ/Go/go-program/api-svr"
 	go_file "github.com/angenalZZZ/Go/go-program/go-file"

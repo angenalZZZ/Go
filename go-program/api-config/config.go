@@ -1,27 +1,19 @@
 package api_config
 
 import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"io/ioutil"
-	"os"
-
 	"github.com/seefan/gossdb/conf"
 )
 
-// 当前配置访问对象
-var (
-	Config *ApiConfigs
-	Check  func(key string) // 检查配置项 Must Checked
-)
+// 当前配置 设置静态变量
+var Config *ApiConfigs
 
-// 当前配置访问对象 需实现的方法
+// 当前配置 需实现的方法
 type IApiConfigs interface {
-	LoadCheck()
+	Load()
 	Check(key string)
 }
 
+// 当前配置 所有变量
 type ApiConfigs struct {
 	// HttpWeb 服务配置
 	HttpSvr *HttpSvrConfig
@@ -40,8 +32,6 @@ type ApiConfigs struct {
 
 	// nsq 实时消息
 	Nsq *NsqConfig
-
-	IApiConfigs
 }
 
 // HttpWeb 服务配置
@@ -83,44 +73,4 @@ type JwtSign struct {
 
 func (o *JwtSign) HasKeyAndPub() bool {
 	return o.Key != "" && o.Pub != "" && o.Alg != ""
-}
-
-// 加载输入参数|文件路径
-func LoadArgInput(s string) ([]byte, error) {
-	if s == "" {
-		return nil, fmt.Errorf("no input")
-	} else if s == "+" {
-		return []byte("{}"), nil
-	}
-	var r io.Reader
-	if s == "-" {
-		r = os.Stdin
-	} else {
-		if f, e := os.Open(s); e != nil {
-			return nil, e
-		} else {
-			defer f.Close() // end
-			r = f
-		}
-	}
-	return ioutil.ReadAll(r)
-}
-
-// "+" > {}
-func JsonParse(s string) (v interface{}, e error) {
-	var data []byte
-	if data, e = LoadArgInput(s); e == nil {
-		e = json.Unmarshal(data, v)
-	}
-	return
-}
-
-// {} > "+"
-func JsonStringify(v interface{}, indent bool) (s []byte, e error) {
-	if indent == false {
-		s, e = json.MarshalIndent(v, "", "    ")
-	} else {
-		s, e = json.Marshal(v)
-	}
-	return
 }

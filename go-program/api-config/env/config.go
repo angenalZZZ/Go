@@ -15,18 +15,24 @@ import (
 	"github.com/gobuffalo/envy"
 )
 
-var config = &ApiConfigs{api_config.ApiConfigs{}}
+var config = &ApiConfigs{} // 当前配置 访问对象
 
 type ApiConfigs struct {
-	api_config.ApiConfigs
+	api_config.ApiConfigs  // 当前配置 所有变量
+	api_config.IApiConfigs // 当前配置 需实现的方法
 }
 
-// 加载配置文件
+// 加载配置文件 插件 github.com/gobuffalo/envy
 func init() {
-	// 设置全局变量
-	api_config.Config = &config.ApiConfigs
-	api_config.Check = config.Check
+	// 加载配置文件并检查配置项
+	config.Load()
 
+	// 当前配置 设置静态变量
+	api_config.Config = &config.ApiConfigs
+}
+
+// 加载配置文件并检查配置项
+func (c *ApiConfigs) Load() {
 	// *** 文件 .env 编码 必须是 UTF-8 +换行LF ***
 	//AppPath, _ = winsvc.GetAppPath()
 
@@ -42,18 +48,8 @@ func init() {
 	// 配置文件错误时，直接退出应用
 	if e := envy.Load(f); e != nil {
 		panic(e)
-	} else if v == "development" {
-		//for _, v := range envy.Environ() {
-		//	println(v)
-		//}
 	}
 
-	// 加载配置文件并检查配置项
-	config.LoadCheck()
-}
-
-// 加载配置文件并检查配置项
-func (c *ApiConfigs) LoadCheck() {
 	println()
 
 	// 检查配置项目
@@ -97,6 +93,7 @@ func (c *ApiConfigs) LoadCheck() {
 		}
 	}
 
+	// Redis 客户端接口
 	if c.RedisCli == nil {
 
 		db, e := strconv.Atoi(os.Getenv("REDIS_DB"))
