@@ -14,7 +14,7 @@ func TestTypeCheck() {
 
 	// type assertion (*指针类型)
 	if p0, ok := p.(*api_models.Point); ok {
-		fmt.Printf("  类型断言: %p  %p\n", &p, &p0)
+		fmt.Printf("  类型断言: %p  %p\n", &p, p0)
 	}
 
 	//var v1 bool
@@ -47,4 +47,7 @@ func TestTypeCheck() {
 
 	// 二维数组
 	TwoImensionalArrays(4, 2)
+
+	// 斐波那契数列
+	FibonacciSequence(10)
 }
