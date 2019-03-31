@@ -1,13 +1,14 @@
 package models
 
 import (
-	"github.com/angenalZZZ/Go/go-program/api-svr/orm"
-
 	"bytes"
 	"database/sql"
 	"fmt"
-	"github.com/jmoiron/sqlx"
 	"net/http"
+
+	go_type "github.com/angenalZZZ/Go/go-program/go-type"
+
+	"github.com/jmoiron/sqlx"
 )
 
 /**
@@ -84,7 +85,7 @@ func FooTest(w http.ResponseWriter, r *http.Request, dbType, connStr string) {
 
 	// Delete
 	if foo.Bar > 0 {
-		res, _ := db.NamedExec(`DELETE FROM foo WHERE bar=:bar`, orm.Q{"bar": foo.Bar}.V())
+		res, _ := db.NamedExec(`DELETE FROM foo WHERE bar=:bar`, go_type.Q{"bar": foo.Bar}.V())
 		if i, e := res.RowsAffected(); i > 0 {
 			buf.WriteString(" Deleted Ok\n")
 		} else {
