@@ -49,5 +49,7 @@ func TestTypeCheck() {
 	TwoImensionalArrays(4, 2)
 
 	// 斐波那契数列
-	FibonacciSequence(10)
+	new(Fibonacci).Sequence(10, func(s []int) {
+		fmt.Printf("  斐波那契数列: %v", s)
+	})
 }
