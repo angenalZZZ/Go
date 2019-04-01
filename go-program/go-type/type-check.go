@@ -2,6 +2,7 @@ package go_type
 
 import (
 	"fmt"
+	"time"
 
 	api_models "github.com/angenalZZZ/Go/go-program/api-models"
 )
@@ -49,7 +50,7 @@ func TestTypeCheck() {
 	TwoImensionalArrays(4, 2)
 
 	// 斐波那契数列
-	new(Fibonacci).Sequence(10, func(s []int) {
+	new(Fibonacci).Sequence(20, 2*time.Second, func(s []int) {
 		fmt.Printf("  斐波那契数列: %v", s)
 	})
 }
