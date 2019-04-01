@@ -1,8 +1,18 @@
 package api_config
 
 import (
+	"log"
+
 	"github.com/seefan/gossdb/conf"
 )
+
+// 应用程序真正入口，常用配置如下
+func init() {
+	// log使用UTC时间
+	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
+	log.SetFlags(log.Ltime)
+	log.SetPrefix("log ")
+}
 
 // 当前配置 设置静态变量
 var Config *ApiConfigs

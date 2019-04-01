@@ -27,7 +27,7 @@ import (
 */
 var (
 	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
-	flagCreateFile = flag.Bool("create-file", false, "test Create File")
+	flagCreateFile = flag.Bool("create-file", true, "test Create File")
 
 	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")
 	flagHttp = flag.Bool("http", true, "open flagHttp Serve")
@@ -45,8 +45,6 @@ var (
 程序初始化
 */
 func init() {
-	// log使用UTC时间
-	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
 
 	// 命令行参数 查看 -h -help
 	flag.Usage = func() {
