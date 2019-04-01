@@ -258,6 +258,7 @@ go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
+go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
 ~~~
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
