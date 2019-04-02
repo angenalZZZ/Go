@@ -1,7 +1,11 @@
 package go_type
 
 import (
+	"bytes"
 	"fmt"
+	"io"
+	"os"
+	"reflect"
 	"time"
 
 	api_models "github.com/angenalZZZ/Go/go-program/api-models"
@@ -17,6 +21,13 @@ func TestTypeCheck() {
 	if p0, ok := p.(*api_models.Point); ok {
 		fmt.Printf("  类型断言: %p  %p\n", &p, p0)
 	}
+	// interface{} 接受任意类型的变量, 不同动态类型的变量不可比较, 只能与nil比较
+	var w io.Writer // zeroValue=nil, 接受实现接口: Write(p []byte) 类型的变量, 下面的动态值决定了接收者类型(*T)的不同
+	fmt.Printf("  接口w io.Writer(type)：%T, (value)：%[1]v \n", w)
+	w = os.Stdout
+	fmt.Printf("  接口w os.Stdout(type)：%T, (value)：%[1]v \n", w)
+	w = new(bytes.Buffer)
+	fmt.Println("  接口w new(bytes.Buffer)(type)：", reflect.TypeOf(w), ", (value)：", w) // %T: reflect.TypeOf(w)
 
 	//var v1 bool
 	//var v2 byte   // uint8  [true 或 false]
