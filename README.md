@@ -191,9 +191,6 @@ go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
-# http://dockone.io/article/667            # 服务发现：Zookeeper vs etcd vs Consul
-# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据
-# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
@@ -236,6 +233,11 @@ go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsql
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
+
+# http://dockone.io/article/667            # 分布式服务发现：Zookeeper vs etcd vs Consul(前者Java开发,后两者均用Go)
+# http://dockone.io/article/2189           # 分布式服务发现和配置管理系统：Docker+Consul+Nginx(高可用、高效服务架构方案)
+# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
+# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
 
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
