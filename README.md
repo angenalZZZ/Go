@@ -191,6 +191,7 @@ go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
 go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+# http://dockone.io/article/667            # 服务发现：Zookeeper vs etcd vs Consul
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据
 # client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
 
