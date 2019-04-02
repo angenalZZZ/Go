@@ -233,7 +233,7 @@ go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsql
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
-
+# {数据中心}{分布式集群架构}
 # http://dockone.io/article/667            # 分布式服务发现：Zookeeper vs etcd vs Consul(前者Java开发,后两者均用Go)
 # http://dockone.io/article/2189           # 分布式服务发现和配置管理系统：Docker+Consul+Nginx(高可用、高效服务架构方案)
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
