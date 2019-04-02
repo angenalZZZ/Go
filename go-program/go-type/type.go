@@ -11,11 +11,19 @@ import (
 	api_models "github.com/angenalZZZ/Go/go-program/api-models"
 )
 
+/**
+命令行参数
+*/
+var temperature = FlagCelsius("t", 20.0, "the temperature")
+
 // 类型检查
 func TestTypeCheck() {
 	var p api_models.IPoint = &api_models.Point{X: 1, Y: 2}
 	var p2 = make([]api_models.Point, 2)
 	fmt.Println("-------------------------\n类型检查：")
+
+	// 命令行参数
+	fmt.Printf("  命令行参数/摄氏温度: %s\n", temperature)
 
 	// type assertion (*指针类型)
 	if p0, ok := p.(*api_models.Point); ok {

@@ -2,9 +2,6 @@ package go_type
 
 import "time"
 
-type Fibonacci struct {
-}
-
 // 斐波那契数列
 func (f *Fibonacci) Sequence(count int, timeout time.Duration, cb func([]int)) {
 	c := make(chan int)       // 通道-循环结果
