@@ -256,7 +256,7 @@ go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
 
-# Consul是google开源的一个使用go语言开发的服务发现、配置管理中心服务。
+# Consul是google开源的一个使用go语言开发的服务发现、配置管理中心服务。https://blog.51cto.com/dgd2010/1730439
 # https://www.jianshu.com/p/28c6bd590ca0   # 现有系统如何集成Consul    (高可用、高效服务架构方案)
 # https://www.jianshu.com/p/9976e874c099   # 分布式服务发现和配置管理系统：Docker+Consul+Nginx
 # http://dockone.io/article/667            # 比较：Zookeeper vs etcd vs Consul (前者Java开发,后两者均用Go)
