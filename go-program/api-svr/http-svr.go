@@ -27,24 +27,27 @@ func initHttpSvr() {
 func TestHttpSvrRun() {
 	initHttpSvr()
 
+	// Use DefaultServeMux
+	svr := http.DefaultServeMux
+
 	// 静态资源访问 html,css,js...
-	http.Handle("/", http.FileServer(http.Dir("./static")))
+	svr.Handle("/", http.FileServer(http.Dir("./static")))
 
 	// 服务处理：验证码
-	http.HandleFunc("/api/captcha/get", img.CaptchaGenerateHandler)
-	http.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
+	svr.HandleFunc("/api/captcha/get", img.CaptchaGenerateHandler)
+	svr.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
 
 	// 账号信息认证：AUTH JWT
-	http.HandleFunc("/token/jwt", authtoken.JwtTokenGenerateHandler)
-	http.HandleFunc("/token/jwt/verify", authtoken.JwtVerifyValidateHandler)
-	http.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
-	http.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
+	svr.HandleFunc("/token/jwt", authtoken.JwtTokenGenerateHandler)
+	svr.HandleFunc("/token/jwt/verify", authtoken.JwtVerifyValidateHandler)
+	svr.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
+	svr.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
 
 	// 数据库 gorm
-	http.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)
-	http.HandleFunc("/gorm/sqlite/test", gormSqlite.FooTestHandler)
+	svr.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)
+	svr.HandleFunc("/gorm/sqlite/test", gormSqlite.FooTestHandler)
 	// 数据库 sqlx
-	http.HandleFunc("/sqlx/sqlite/test", sqlxSqlite.FooTestHandler)
+	svr.HandleFunc("/sqlx/sqlite/test", sqlxSqlite.FooTestHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

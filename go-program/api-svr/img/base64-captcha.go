@@ -3,9 +3,10 @@ package img
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 	"github.com/mojocn/base64Captcha"
-	"net/http"
 )
 
 /**
@@ -27,6 +28,16 @@ server {
 }
 */
 
+// 验证码请求处理类
+type Base64Captcha struct {
+	Output Base64CaptchaOutput
+	http.Handler
+}
+
+// 验证码请求处理输出结果
+type Base64CaptchaOutput struct {
+}
+
 // json request body
 type ConfigJsonBody struct {
 	Id              string
@@ -37,8 +48,12 @@ type ConfigJsonBody struct {
 	ConfigDigit     base64Captcha.ConfigDigit
 }
 
+func (this *Base64Captcha) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+}
+
 // create http handler
-func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
+func (this *Base64Captcha) CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodGet, http.MethodPost}) {
 		return
 	}
@@ -109,7 +124,7 @@ func CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // verify http handler
-func CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
+func (this *Base64Captcha) CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodPost}) {
 		return
 	}
