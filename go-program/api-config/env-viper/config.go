@@ -1,4 +1,4 @@
-package env_yaml
+package env_viper
 
 import (
 	"fmt"

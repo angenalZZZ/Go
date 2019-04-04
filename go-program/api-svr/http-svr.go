@@ -7,8 +7,11 @@ import (
 	"net/http"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
-	"github.com/angenalZZZ/Go/go-program/api-svr/authtoken"
-	"github.com/angenalZZZ/Go/go-program/api-svr/img"
+
+	// 服务处理：验证码
+	_ "github.com/angenalZZZ/Go/go-program/api-svr/img"
+	// 账号信息认证：AUTH JWT
+	_ "github.com/angenalZZZ/Go/go-program/api-svr/authtoken"
 	gormMysql "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/mysql"
 	gormSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/sqlite"
 	sqlxSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/sqlite"
@@ -32,16 +35,6 @@ func TestHttpSvrRun() {
 
 	// 静态资源访问 html,css,js...
 	svr.Handle("/", http.FileServer(http.Dir("./static")))
-
-	// 服务处理：验证码
-	svr.HandleFunc("/api/captcha/get", img.CaptchaGenerateHandler)
-	svr.HandleFunc("/api/captcha/verify", img.CaptchaVerifyHandle)
-
-	// 账号信息认证：AUTH JWT
-	svr.HandleFunc("/token/jwt", authtoken.JwtTokenGenerateHandler)
-	svr.HandleFunc("/token/jwt/verify", authtoken.JwtVerifyValidateHandler)
-	svr.HandleFunc("/token/jwt/sign", authtoken.JsonSignGenerateHandler)
-	svr.HandleFunc("/token/jwt/sign/verify", authtoken.JsonSignValidateHandler)
 
 	// 数据库 gorm
 	svr.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)

@@ -2,8 +2,9 @@ package img
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
+
+	"github.com/angenalZZZ/Go/go-program/api-svr/jsonp"
 
 	"github.com/angenalZZZ/Go/go-program/api-svr/cors"
 	"github.com/mojocn/base64Captcha"
@@ -28,15 +29,8 @@ server {
 }
 */
 
-// 验证码请求处理类
-type Base64Captcha struct {
-	Output Base64CaptchaOutput
-	http.Handler
-}
-
-// 验证码请求处理输出结果
-type Base64CaptchaOutput struct {
-}
+// http上下文: 验证码请求处理类
+type Base64Captcha struct{}
 
 // json request body
 type ConfigJsonBody struct {
@@ -48,18 +42,21 @@ type ConfigJsonBody struct {
 	ConfigDigit     base64Captcha.ConfigDigit
 }
 
-func (this *Base64Captcha) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+var ctx *Base64Captcha
 
+// 初始化HTTP请求处理：验证码
+func init() {
+	ctx = &Base64Captcha{}
+
+	http.HandleFunc("/api/captcha/get", ctx.CaptchaGenerateHandler)
+	http.HandleFunc("/api/captcha/verify", ctx.CaptchaVerifyHandle)
 }
 
 // create http handler
-func (this *Base64Captcha) CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
+func (ctx *Base64Captcha) CaptchaGenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodGet, http.MethodPost}) {
 		return
 	}
-
-	//output format
-	outputJson := r.URL.Query().Get("dataType") == "json"
 
 	//parse request parameters
 	var postParameters ConfigJsonBody
@@ -70,7 +67,7 @@ func (this *Base64Captcha) CaptchaGenerateHandler(w http.ResponseWriter, r *http
 	if id == "" && r.Method == http.MethodPost {
 		defer r.Body.Close()
 		if e := json.NewDecoder(r.Body).Decode(&postParameters); e != nil {
-			FError(&w, id, e, outputJson)
+			jsonp.Error(e).Error(w, r)
 			return
 		}
 	} else {
@@ -120,11 +117,11 @@ func (this *Base64Captcha) CaptchaGenerateHandler(w http.ResponseWriter, r *http
 	//instance.WriteTo(w)
 
 	//set response
-	FOk(&w, captchaId, base64blob, outputJson)
+	jsonp.Success(jsonp.Data{"data": base64blob, "captchaId": captchaId}).OK(w, r)
 }
 
 // verify http handler
-func (this *Base64Captcha) CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
+func (ctx *Base64Captcha) CaptchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(&w, r, []string{http.MethodPost}) {
 		return
 	}
@@ -155,32 +152,6 @@ func (this *Base64Captcha) CaptchaVerifyHandle(w http.ResponseWriter, r *http.Re
 		}
 	}
 	json.NewEncoder(w).Encode(body)
-}
-
-// response ok
-func FOk(response *http.ResponseWriter, id string, data string, outputJson bool) {
-	w := *response
-	if outputJson == true {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		body := map[string]interface{}{"code": 0, "data": data, "captchaId": id, "msg": "success"}
-		json.NewEncoder(w).Encode(body)
-	} else {
-		fmt.Fprint(w, data)
-	}
-}
-
-// response error
-func FError(response *http.ResponseWriter, id string, err error, outputJson bool) {
-	w := *response
-	//set json response
-	w.WriteHeader(http.StatusAccepted)
-	if outputJson == true {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		body := map[string]interface{}{"code": 1, "data": "", "captchaId": id, "msg": fmt.Sprintf("%v", err)}
-		json.NewEncoder(w).Encode(body)
-	} else {
-		fmt.Fprintf(w, "%v", err)
-	}
 }
 
 // get query captchaType

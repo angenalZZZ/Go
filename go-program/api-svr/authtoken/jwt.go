@@ -81,6 +81,12 @@ func init() {
 	tokenIsRs = strings.HasPrefix(JwtConf.JWT_algorithms, "RS")
 
 	//fmt.Printf("  %v\n  %v\n  %v\n", tokenAlg, tokenIsHs, tokenIsRs)
+
+	// 账号信息认证：AUTH JWT
+	http.HandleFunc("/token/jwt", JwtTokenGenerateHandler)
+	http.HandleFunc("/token/jwt/verify", JwtVerifyValidateHandler)
+	http.HandleFunc("/token/jwt/sign", JsonSignGenerateHandler)
+	http.HandleFunc("/token/jwt/sign/verify", JsonSignValidateHandler)
 }
 
 /**

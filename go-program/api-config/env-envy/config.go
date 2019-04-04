@@ -1,4 +1,4 @@
-package env
+package env_envy
 
 import (
 	"log"
