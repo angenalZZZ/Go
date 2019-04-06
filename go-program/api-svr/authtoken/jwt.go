@@ -103,7 +103,7 @@ Jwt-Token数据生成
 curl -X GET http://localhost:8008/token/jwt?id=1553155268644
 */
 func JwtTokenGenerateHandler(w http.ResponseWriter, r *http.Request) {
-	if cors.Cors(&w, r, []string{http.MethodGet, http.MethodPost}) {
+	if cors.Cors(w, r, []string{http.MethodGet, http.MethodPost}) {
 		return
 	}
 
@@ -145,7 +145,7 @@ Jwt-Token数据验证
 curl -X POST http://localhost:8008/token/jwt/verify -H "Content-Type:application/json" -H "Authorization: Bearer {0}"
 */
 func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
-	if cors.Cors(&w, r, []string{http.MethodPost}) {
+	if cors.Cors(w, r, []string{http.MethodPost}) {
 		return
 	}
 
@@ -217,7 +217,7 @@ Jwt-JSON数据签名生成
 curl -X POST http://localhost:8008/token/jwt/sign -H "Content-Type:application/json" -d "{\"id\":\"1553155268644\"}"
 */
 func JsonSignGenerateHandler(w http.ResponseWriter, r *http.Request) {
-	if cors.Cors(&w, r, []string{http.MethodPost}) {
+	if cors.Cors(w, r, []string{http.MethodPost}) {
 		return
 	}
 	if signHasKeyAndPub == false {
@@ -271,7 +271,7 @@ Jwt-JSON数据签名验证
 curl -X POST http://localhost:8008/token/jwt/sign/verify -H "Content-Type:application/json" -H "Authorization: Bearer {0}"
 */
 func JsonSignValidateHandler(w http.ResponseWriter, r *http.Request) {
-	if cors.Cors(&w, r, []string{http.MethodPost}) {
+	if cors.Cors(w, r, []string{http.MethodPost}) {
 		return
 	}
 	if signHasKeyAndPub == false {
