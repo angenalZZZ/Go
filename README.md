@@ -186,6 +186,7 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
+go get github.com/minio/minio-go           # 云存储|对象存储|自建网盘 https://www.min.io
 
 go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
