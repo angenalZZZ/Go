@@ -6,6 +6,7 @@ import (
 	"github.com/minio/minio-go"
 )
 
+// https://docs.min.io/docs/golang-client-api-reference
 var minioClient *minio.Client
 
 type PutObject struct {

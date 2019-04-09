@@ -3,6 +3,10 @@ package minio
 import (
 	"context"
 	"encoding/json"
+	"errors"
+	"fmt"
+	"io/ioutil"
+	"mime"
 	"net/http"
 	"time"
 
@@ -12,7 +16,7 @@ import (
 	"github.com/angenalZZZ/Go/go-program/api-svr/jsonp"
 )
 
-// File Upload
+// File Upload To MinIO
 func Upload(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(w, r, []string{http.MethodPost}) {
 		return
@@ -36,13 +40,86 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	// 获取上传的临时文件-表单提交file&type
+	if filePath, contentType, e := getUploadedTempFile(w, r, 10*1024*1024); e != nil {
+		jsonp.Error(e).Error(w, r)
+		return
+	} else {
+		p.FilePath, p.FileType = filePath, contentType
+	}
+
+	// 保存网盘-超时设置10s
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	if size, e := minioClient.FPutObjectWithContext(ctx, p.BucketName, p.ObjectName, p.FilePath, minio.PutObjectOptions{ContentType: p.FileType}); e != nil {
 		jsonp.Error(e).Error(w, r)
-		return
 	} else {
 		jsonp.Success(jsonp.Data{"data": p.ObjectName, "size": size}).OK(w, r)
 	}
+}
 
+// 获取上传的临时文件-表单提交file&type
+func getUploadedTempFile(w http.ResponseWriter, r *http.Request, maxUploadSize int64) (filePath string, contentType string, err error) {
+	// validate file size
+	r.Body = http.MaxBytesReader(w, r.Body, maxUploadSize)
+	if e := r.ParseMultipartForm(maxUploadSize); e != nil {
+		err = errors.New(fmt.Sprintf("文件大小限制：%dM", maxUploadSize/(1024*1024)))
+		return
+	}
+
+	// parse and validate file and post parameters
+	file, _, e := r.FormFile("file")
+	if e != nil {
+		err = errors.New("未发现文件上传")
+		return
+	}
+	defer file.Close()
+	fileBytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		err = errors.New("无效的文件上传")
+		return
+	}
+
+	// check file type, detect content type only needs the first 512 bytes
+	contentType = http.DetectContentType(fileBytes)
+	switch contentType {
+	case "image/jpeg", "image/jpg":
+	case "image/gif", "image/png":
+	case "application/pdf":
+		break
+	default:
+		err = errors.New("无效的文件类型:" + contentType)
+		return
+	}
+
+	// check post file type, .jpg .gif .png
+	fileType := r.PostFormValue("type")
+	fileEndings, e := mime.ExtensionsByType(fileType)
+	if e != nil {
+		err = errors.New("未发现文件上传类型")
+		return
+	}
+
+	//b := make([]byte, 6)
+	//rand.Read(b)
+	//fileName := fmt.Sprintf("%d%x", time.Now().Unix(), b)
+	//newPath := filepath.Join(os.TempDir(), fileName+fileEndings[0])
+	//fmt.Printf("FileType: %s, File: %s\n", fileType, newPath)
+
+	// write file
+	//newFile, e := os.Create(newPath)
+	//if e != nil {
+	//	err = errors.New("无法创建临时文件")
+	//	return
+	//}
+
+	newFile, e := ioutil.TempFile("", "*"+fileEndings[0])
+	defer newFile.Close() // idempotent, okay to call twice
+	if _, err := newFile.Write(fileBytes); err != nil || newFile.Close() != nil {
+		err = errors.New("无法创建临时文件")
+		return
+	}
+
+	filePath = newFile.Name()
+	return
 }
