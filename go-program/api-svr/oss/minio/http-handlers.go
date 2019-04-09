@@ -1,8 +1,10 @@
 package minio
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/minio/minio-go"
 
@@ -34,7 +36,9 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if size, e := minioClient.FPutObject(p.BucketName, p.ObjectName, p.FilePath, minio.PutObjectOptions{ContentType: p.FileType}); e != nil {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	if size, e := minioClient.FPutObjectWithContext(ctx, p.BucketName, p.ObjectName, p.FilePath, minio.PutObjectOptions{ContentType: p.FileType}); e != nil {
 		jsonp.Error(e).Error(w, r)
 		return
 	} else {

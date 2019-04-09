@@ -17,8 +17,8 @@ func (f *Fibonacci) set(c chan<- int, q <-chan bool, d time.Duration) {
 			x, y = y, x+y
 		case <-time.After(d): // 超时
 		case <-q: // 结束
-			close(c)
-			return // 不使用break,因为它只能跳出select
+			close(c) // Indicate to our routine to exit cleanly upon return.
+			return   // 不使用break,因为它只能跳出select
 		}
 	}
 }
@@ -32,6 +32,6 @@ func (f *Fibonacci) get(n int, c <-chan int, q chan<- bool, cb func([]int)) {
 		}
 	}
 	q <- true
-	close(q)
+	close(q) // Indicate to our routine to exit cleanly upon return.
 	cb(s)
 }
