@@ -190,10 +190,12 @@ go get github.com/minio/minio-go           # 云存储|对象存储|自建网盘
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南: https://docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 
-go get github.com/go-redis/redis           # 缓存数据库,类型安全的Redis-client
-go get github.com/gomodule/redigo/redis    # 缓存数据库,使用原生的Redis-cli
-go get github.com/seefan/gossdb/example    # 缓存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
+go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
+go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
+go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
+go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -q
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
