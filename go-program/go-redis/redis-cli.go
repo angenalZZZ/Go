@@ -6,6 +6,8 @@ import (
 	"math/rand"
 	"time"
 
+	go_type "github.com/angenalZZZ/Go/go-program/go-type"
+
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 
 	"github.com/gomodule/redigo/redis"
@@ -83,9 +85,11 @@ func TestCli() {
 	defer func() { _ = c.Close() }()
 	rand.Seed(time.Now().UnixNano())
 
+	/************ String（字符串）*************/
+
 	// 写入数据 Set
 	key, val := fmt.Sprintf("timestamp%d%d", time.Now().Unix(), rand.Intn(1000)), "hello"
-	if _, e := c.Do("SET", key, val, "EX", 60, "NX"); e != nil {
+	if _, e := c.Do("SET", key, val); e != nil {
 		log.Printf(" redis Set: Err\n [%s] %v\n", key, e)
 	} else {
 		log.Printf(" redis Set: Ok\n [%s] %s\n", key, val)
@@ -108,6 +112,19 @@ func TestCli() {
 	} else {
 		log.Printf(" redis Del: Ok\n [%s]\n", key)
 	}
+
+	/************ Hash（哈希）*************/
+	keyHash, valHash := fmt.Sprintf("hash%d%d", time.Now().Unix(), rand.Intn(1000)), go_type.Q{
+		"a": 1,
+		"b": "2b",
+	}.Slice()
+	_, e = c.Do("HMSET", keyHash, valHash...)
+	if e != nil {
+		log.Printf(" redis HMSET: Err\n [%s]\n", keyHash)
+	} else {
+		log.Printf(" redis HMSET: Ok\n [%s]\n", keyHash)
+	}
+	_, e = c.Do("DEL", keyHash)
 
 	// 写入数据?当key不存在时+过期时间 SET key value EX 10 NX
 	key, val = fmt.Sprintf("timestamp%d%d", time.Now().Unix(), rand.Intn(1000)), "values"

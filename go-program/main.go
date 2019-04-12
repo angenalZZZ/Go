@@ -26,11 +26,11 @@ import (
 命令行参数
 */
 var (
-	flagTypeCheck  = flag.Bool("type-check", true, "test Type Check")
+	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
 	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
 	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")
-	flagHttp = flag.Bool("http", true, "open flagHttp Serve")
+	flagHttp = flag.Bool("http", false, "open flagHttp Serve")
 
 	flagLeveldb  = flag.Bool("leveldb", false, "test flagLeveldb Client")
 	flagOpentsdb = flag.Bool("opentsdb", false, "test flagOpentsdb Client")
