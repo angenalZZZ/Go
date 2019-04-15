@@ -27,6 +27,21 @@ func CheckValidString() {
 		len("é") == 3, len("é") == len("\u0301"))
 }
 
+// bytes 转换为 []string
+func BytesToStrings(buf interface{}) (s []string) {
+	if bu, OK := buf.([]interface{}); OK {
+		i := 0
+		s = make([]string, len(bu))
+		for _, b := range bu {
+			if v, OK := b.([]byte); OK {
+				s[i] = string(v)
+				i++
+			}
+		}
+	}
+	return
+}
+
 // string 类型的值是常量，不可直接更改；遍历请用: range []byte(s)
 func Set(s string, i int, v rune) string {
 	if len(s) <= i || utf8.ValidRune(v) == false {

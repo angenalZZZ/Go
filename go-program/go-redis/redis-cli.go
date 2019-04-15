@@ -6,6 +6,7 @@ import (
 	"time"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
+	go_type "github.com/angenalZZZ/Go/go-program/go-type"
 	"github.com/gomodule/redigo/redis"
 )
 
@@ -76,14 +77,24 @@ func ShutdownCli() {
 
 // 测试
 func TestCli() {
-	log.Println("缓存数据库 Redis Cli initCli..")
+	//log.Println("缓存数据库 Redis Cli initCli..")
 	initCli()
 	log.Printf("缓存数据库 Redis Cli testing.. Addr: %s\n\n", cliAddr)
 
 	// redis : new Cli
 	c := CliPoll.Get()
 	defer func() { _ = c.Close() }()
-	rand.Seed(time.Now().UnixNano())
+	// 时间戳：以秒计
+	//timestamp := time.Now().Unix()
+	// 时间戳：以毫秒计
+	timestampNano := time.Now().UnixNano()
+	rand.Seed(timestampNano)
+	// 查找所有符合给定模式( pattern)的 key
+	if keys, e := c.Do("keys", "*"); e != nil {
+		log.Printf(" redis keys: Err\n %v\n", e)
+	} else {
+		log.Printf(" redis keys: %v\n", go_type.BytesToStrings(keys))
+	}
 
 	/************ String（字符串）*************/
 	TestCli_string(c)
