@@ -90,10 +90,15 @@ func TestCli() {
 	timestampNano := time.Now().UnixNano()
 	rand.Seed(timestampNano)
 	// 查找所有符合给定模式( pattern)的 key
-	if keys, e := c.Do("keys", "*"); e != nil {
+	if keys, e := c.Do("keys", "timestamp*"); e != nil {
 		log.Printf(" redis keys: Err\n %v\n", e)
 	} else {
-		log.Printf(" redis keys: %v\n", go_type.BytesToStrings(keys))
+		ks := go_type.BytesToStrings(keys)
+		log.Printf(" redis keys:   %v\n", ks)
+		for _, k := range ks {
+			t, _ := c.Do("type", k)
+			log.Printf(" redis key:type %s => %v\n", k, t)
+		}
 	}
 
 	/************ String（字符串）*************/

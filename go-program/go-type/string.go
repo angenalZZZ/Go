@@ -2,6 +2,7 @@ package go_type
 
 import (
 	"fmt"
+	"sort"
 	"unicode/utf8"
 )
 
@@ -9,7 +10,6 @@ import (
 
 // 检查字符串是文字字面值时才是 UTF8 文本
 func CheckValidString() {
-
 	var s1 = stringS{"1", "2"}
 	var s2 = make([]string, 2)
 	var s3 = [...]string{"1", "2", "3", "4", "5"}
@@ -28,13 +28,13 @@ func CheckValidString() {
 }
 
 // bytes 转换为 []string
-func BytesToStrings(buf interface{}) (s []string) {
+func BytesToStrings(buf interface{}) (r sort.StringSlice) {
 	if bu, OK := buf.([]interface{}); OK {
 		i := 0
-		s = make([]string, len(bu))
+		r = make([]string, len(bu))
 		for _, b := range bu {
 			if v, OK := b.([]byte); OK {
-				s[i] = string(v)
+				r[i] = string(v)
 				i++
 			}
 		}
@@ -53,21 +53,21 @@ func Set(s string, i int, v rune) string {
 }
 
 // 字符串切片/扩展方法：字符串添加并过滤
-func (s stringS) AppendWithFilter(f func(string) bool) stringS {
-	r := make(stringS, 0)
+func (s stringS) AppendWithFilter(f func(string) bool) (r sort.StringSlice) {
+	r = make([]string, 0)
 	for _, t := range s {
 		if f(t) {
 			r = append(r, t)
 		}
 	}
-	return r
+	return
 }
 
 // 字符串切片/扩展方法：映射处理
-func (s stringS) Map(f func(string) string) stringS {
-	r := make(stringS, len(s))
+func (s stringS) Map(f func(string) string) (r sort.StringSlice) {
+	r = make([]string, len(s))
 	for i, v := range s {
 		r[i] = f(v)
 	}
-	return r
+	return
 }

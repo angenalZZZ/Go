@@ -1,9 +1,11 @@
 package go_type
 
+import "sort"
+
 ///////////header:类型声明和定义///////////
 
 // 字符串切片: 类型 string slice
-type stringS []string
+type stringS sort.StringSlice
 
 // 字典Q → map
 type Q map[string]interface{}
