@@ -29,10 +29,13 @@ func (q Q) Clone() Q {
 
 // slice 拆分为切片
 func (q Q) Slice() (s []interface{}) {
+	i := 0
 	s = make([]interface{}, len(q)*2)
 	for k, v := range q {
-		s = append(s, k)
-		s = append(s, v)
+		s[i] = k
+		i++
+		s[i] = v
+		i++
 	}
 	return
 }

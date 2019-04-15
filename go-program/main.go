@@ -35,7 +35,7 @@ var (
 	flagLeveldb  = flag.Bool("leveldb", false, "test flagLeveldb Client")
 	flagOpentsdb = flag.Bool("opentsdb", false, "test flagOpentsdb Client")
 	flagRedis    = flag.Bool("redis", false, "test flagRedis Client")
-	flagRedisCli = flag.Bool("redis-cli", false, "test flagRedis Cli")
+	flagRedisCli = flag.Bool("redis-cli", true, "test flagRedis Cli")
 	flagSsdb     = flag.Bool("ssdb", false, "test SSdb Client")
 
 	flagWorker = flag.Bool("worker", false, "test Scheduler Worker")
