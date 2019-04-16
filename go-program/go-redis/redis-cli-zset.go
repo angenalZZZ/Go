@@ -30,7 +30,7 @@ func TestCli_zset(c redis.Conn) {
 	if set1, er1 := c.Do("ZRANGEBYSCORE", key, "-inf", "+inf", "WITHSCORES", "LIMIT", 0, 6); er1 != nil {
 		log.Printf(" redis ZRANGEBYSCORE: Err\n [%s] %v\n", key, er1)
 	} else {
-		log.Printf(" redis ZRANGEBYSCORE: Ok\n [%s] %v\n", key, set1)
+		log.Printf(" redis ZRANGEBYSCORE: Ok\n [%s] %s\n", key, set1)
 	}
 
 	// 删除数据 Del
@@ -61,7 +61,7 @@ func TestCli_zset(c redis.Conn) {
 		if set2, er2 := c.Do("ZINTERSTORE", key, 2, "zset01", "zset02", "WEIGHTS", 0, 100, "AGGREGATE", "SUM"); er2 != nil {
 			log.Printf(" redis ZINTERSTORE: Err\n [%s] %v\n", key, er2)
 		} else {
-			log.Printf(" redis ZINTERSTORE: Ok\n [%s] %v\n", key, set2)
+			log.Printf(" redis ZINTERSTORE: Ok\n [%s] %s\n", key, set2)
 		}
 	}
 

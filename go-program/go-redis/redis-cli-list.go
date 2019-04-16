@@ -37,7 +37,7 @@ func TestCli_list(c redis.Conn) {
 	if arr, e := c.Do("SORT", key, "LIMIT", 0, 6, "ASC"); e != nil {
 		log.Printf(" redis Sort: Err\n [%s] %v\n", key, e)
 	} else {
-		log.Printf(" redis Sort: Ok\n [%s] %v\n", key, arr)
+		log.Printf(" redis Sort: Ok\n [%s] %s\n", key, arr)
 	}
 
 	// 删除数据 Del

@@ -6,7 +6,6 @@ import (
 	"time"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
-	go_type "github.com/angenalZZZ/Go/go-program/go-type"
 	"github.com/gomodule/redigo/redis"
 )
 
@@ -89,16 +88,42 @@ func TestCli() {
 	// 时间戳：以毫秒计
 	timestampNano := time.Now().UnixNano()
 	rand.Seed(timestampNano)
-	// 查找所有符合给定模式( pattern)的 key
-	if keys, e := c.Do("keys", "timestamp*"); e != nil {
+	// 查找所有符合给定模式(pattern)的key [当key太多时,不推荐使用]
+	if keys, e := redis.Values(c.Do("keys", "timestamp*")); e != nil {
 		log.Printf(" redis keys: Err\n %v\n", e)
 	} else {
-		ks := go_type.BytesToStrings(keys)
-		log.Printf(" redis keys:   %v\n", ks)
-		for _, k := range ks {
-			t, _ := c.Do("type", k)
-			log.Printf(" redis key:type %s => %v\n", k, t)
+		log.Printf(" redis keys:   %s\n", keys)
+		// 批量获取 数据类型
+		//for _, k := range keys {
+		//	t, _ := c.Do("type", k)
+		//	log.Printf(" redis key:type %s => %v\n", k, t)
+		//}
+		var typePipelinedTransactions = func(keys []interface{}) (result []interface{}, err error) {
+			i := 0
+			for _, k := range keys {
+				_ = c.Send("type", k)
+			}
+			_ = c.Flush()
+			result = make([]interface{}, len(keys))
+			for range keys {
+				r, _ := c.Receive()
+				result[i] = r
+			}
+			return
 		}
+		result, _ := typePipelinedTransactions(keys)
+		log.Printf(" redis key:type %s\n", result)
+		// 批量删除
+		var delPipelinedTransactions = func(keys []interface{}) (result []interface{}, err error) {
+			_ = c.Send("MULTI")
+			for _, k := range keys {
+				_ = c.Send("DEL", k)
+			}
+			result, err = redis.Values(c.Do("EXEC"))
+			return
+		}
+		result, _ = delPipelinedTransactions(keys)
+		log.Println(" redis Del (pipeline transactions):", len(result))
 	}
 
 	/************ String（字符串）*************/
@@ -106,9 +131,6 @@ func TestCli() {
 
 	/************ Hash（哈希）*************/
 	TestCli_hash(c)
-
-	/************ List（列表）*************/
-	TestCli_list(c)
 
 	/************ List（列表）*************/
 	TestCli_list(c)
