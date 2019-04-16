@@ -240,7 +240,7 @@ go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI ma
 go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
-go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | caddyserver.com
+go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
