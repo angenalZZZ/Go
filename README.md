@@ -195,7 +195,7 @@ go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redi
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
-go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -q
+go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
