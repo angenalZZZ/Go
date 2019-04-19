@@ -248,7 +248,7 @@ go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
 go get github.com/dchest/captcha           # 验证码|图片|声音
 go get github.com/mojocn/base64Captcha     # 验证码|展示 http://captcha.mojotv.cn
-go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 https://www.google.com/recaptcha/admin/create # localhost < 密钥 serve: 6Lcw6p4UAAAAAKP-z8GbltwzGcOYYpBDnSqSkyQ- html:6Lcw6p4UAAAAAA-_WY2tdq7LPVnB06dWsLccvPv5 > Domain国内:www.recaptcha.net 国外:www.google.com
+go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 https://www.google.com/recaptcha/admin/create
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  https://github.com/eladnava/mailgen
