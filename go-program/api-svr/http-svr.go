@@ -12,9 +12,11 @@ import (
 	_ "github.com/angenalZZZ/Go/go-program/api-svr/img"
 	// 账号信息认证：AUTH JWT
 	_ "github.com/angenalZZZ/Go/go-program/api-svr/authtoken"
-	gormMysql "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/mysql"
-	gormSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/sqlite"
-	sqlxSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/sqlite"
+	// 云存储|对象存储|自建网盘 MinIO 官网 https://www.min.io
+	_ "github.com/angenalZZZ/Go/go-program/api-svr/oss/minio"
+	//gormMysql "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/mysql"
+	//gormSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/gorm/sqlite"
+	//sqlxSqlite "github.com/angenalZZZ/Go/go-program/api-svr/orm/sqlx/sqlite"
 )
 
 /**
@@ -37,10 +39,10 @@ func TestHttpSvrRun() {
 	svr.Handle("/", http.FileServer(http.Dir("./static")))
 
 	// 数据库 gorm
-	svr.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)
-	svr.HandleFunc("/gorm/sqlite/test", gormSqlite.FooTestHandler)
+	//svr.HandleFunc("/gorm/mysql/test", gormMysql.FooTestHandler)
+	//svr.HandleFunc("/gorm/sqlite/test", gormSqlite.FooTestHandler)
 	// 数据库 sqlx
-	svr.HandleFunc("/sqlx/sqlite/test", sqlxSqlite.FooTestHandler)
+	//svr.HandleFunc("/sqlx/sqlite/test", sqlxSqlite.FooTestHandler)
 
 	// 服务处理
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

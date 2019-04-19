@@ -16,6 +16,12 @@ import (
 	"github.com/angenalZZZ/Go/go-program/api-svr/jsonp"
 )
 
+type PutObject struct {
+	Location               string
+	BucketName, ObjectName string
+	FilePath, FileType     string
+}
+
 // File Upload To MinIO
 func Upload(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(w, r, []string{http.MethodPost}) {

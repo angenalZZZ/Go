@@ -9,18 +9,14 @@ import (
 // https://docs.min.io/docs/golang-client-api-reference
 var minioClient *minio.Client
 
-type PutObject struct {
-	Location               string
-	BucketName, ObjectName string
-	FilePath, FileType     string
-}
+const (
+	endpoint        = "127.0.0.1:9000"
+	accessKeyID     = "MOS5R9S20018WBQCMQ9W"
+	secretAccessKey = "FBsAnunToGHqWzuNb4ku+I8TNegVYXf0iihYTYpJ"
+)
 
 func init() {
-	endpoint := "127.0.0.1:9000"
-	accessKeyID := "MOS5R9S20018WBQCMQ9W"
-	secretAccessKey := "FBsAnunToGHqWzuNb4ku+I8TNegVYXf0iihYTYpJ"
-
-	// Initialize minio client object.
+	// Initialize client
 	if client, err := minio.New(endpoint, accessKeyID, secretAccessKey, false); err != nil {
 		log.Fatalln(err)
 	} else {
