@@ -52,9 +52,11 @@ func TestCli_string(c redis.Conn) {
 	// 读取数据 子字符 GETRANGE key start end
 	// 1.读取首字母｜尾字母
 	func(key string) {
+		// 开始一个事务
 		_ = c.Send("MULTI")
 		_ = c.Send("GETRANGE", key, 0, 0)
 		_ = c.Send("GETRANGE", key, -1, -1)
+		// 触发并执行事务
 		if valSaved, e := redis.Values(c.Do("EXEC")); valSaved == nil {
 			log.Printf(" redis Gets: Nil\n [%s] does not exist\n", key)
 		} else if e != nil {

@@ -54,6 +54,7 @@ func initCli() {
 	if e := Cli.Err(); e != nil {
 		log.Fatal(e) // 中断程序时输出
 	}
+	// 查看服务是否运行
 	if e := Cli.Send("ping"); e != nil {
 		log.Fatal(e) // 中断程序时输出
 	}
