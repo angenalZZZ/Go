@@ -29,13 +29,13 @@ var (
 	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
 	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
-	flagTcp  = flag.Bool("tcp", false, "open flagTcp Serve")
-	flagHttp = flag.Bool("http", false, "open flagHttp Serve")
+	flagTcp  = flag.Bool("tcp", true, "open flagTcp Serve")
+	flagHttp = flag.Bool("http", true, "open flagHttp Serve")
 
 	flagLeveldb  = flag.Bool("leveldb", false, "test flagLeveldb Client")
 	flagOpentsdb = flag.Bool("opentsdb", false, "test flagOpentsdb Client")
 	flagRedis    = flag.Bool("redis", false, "test flagRedis Client")
-	flagRedisCli = flag.Bool("redis-cli", true, "test flagRedis Cli")
+	flagRedisCli = flag.Bool("redis-cli", false, "test flagRedis Cli")
 	flagSsdb     = flag.Bool("ssdb", false, "test SSdb Client")
 
 	flagWorker = flag.Bool("worker", false, "test Scheduler Worker")
