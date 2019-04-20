@@ -66,6 +66,8 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 
 // 获取上传的临时文件-表单提交file&type
 func getUploadedTempFile(w http.ResponseWriter, r *http.Request, maxUploadSize int64) (filePath string, contentType string, err error) {
+	filePath, contentType, err = "", "", nil
+
 	// validate file size
 	r.Body = http.MaxBytesReader(w, r.Body, maxUploadSize)
 	if e := r.ParseMultipartForm(maxUploadSize); e != nil {
@@ -120,12 +122,10 @@ func getUploadedTempFile(w http.ResponseWriter, r *http.Request, maxUploadSize i
 	//}
 
 	newFile, e := ioutil.TempFile("", "*"+fileEndings[0])
+	filePath = newFile.Name()
 	defer newFile.Close() // idempotent, okay to call twice
 	if _, err := newFile.Write(fileBytes); err != nil || newFile.Close() != nil {
 		err = errors.New("无法创建临时文件")
-		return
 	}
-
-	filePath = newFile.Name()
 	return
 }

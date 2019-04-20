@@ -10,18 +10,18 @@ import (
 后台服务 tcp: Server
 */
 var tcpAddr string
-var tcpConn []net.Conn
+var tcpConn = map[string]net.Conn{}
 var tcpListener *net.Listener
 
 // 初始化配置
 func init() {
 	// <多命令窗口> nc 127.0.0.1 8007 > 输入请求内容
-	tcpAddr = "127.0.0.1:8007"
-	//tcpConn = make([]net.Conn, 100)
+	tcpAddr = ":8007" // 选填本地IP
 }
 
 // 后台运行 tcp Serve Run
 func TestTcpSvrRun() {
+	// 监听TCP服务
 	l, e := net.Listen("tcp4", tcpAddr)
 	if e == nil {
 		println()
@@ -29,30 +29,64 @@ func TestTcpSvrRun() {
 		log.Printf("后台服务 tcp: Server starting.. Addr: %s\n", l.Addr())
 
 		for {
-			// 等待用户发出连接请求
+			// 阻塞等待用户发出连接请求后，继续等待下一个用户的连接请求
 			c, e := l.Accept()
 			if e != nil {
-				log.Printf("后台服务 tcp: Accept error: %v\n", e)
-				return
-			} else {
-				tcpConn = append(tcpConn, c)
-				log.Printf("后台服务 tcp: Accept Addr: %s\n", c.RemoteAddr())
-			}
-
-			// 接收用户发出的请求信息 一次最多可输入1024字节
-			buf := make([]byte, 1024)
-			n, e := c.Read(buf)
-			if e != nil {
-				fmt.Printf("后台服务 tcp: Read error: %v\n", e)
+				fmt.Printf("  tcp accept error: %v\n", e)
 				return
 			}
-			for _, c1 := range tcpConn {
-				buf = []byte(fmt.Sprintf(" %s : %s", c1.RemoteAddr(), buf[:n]))
-				_, _ = c1.Write(buf)
-			}
+			// 保存当前用户
+			i := c.RemoteAddr().String()
+			fmt.Printf("  tcp accept Addr: %s\n", i)
+			tcpConn[i] = c
 
-			// 处理和输出用户的请求
-			//fmt.Printf("后台服务 tcp: Get Message\n    > %s\n", string(buf[:n]))
+			// 接收用户发出的请求信息，一次缓冲1024字节l
+			go func(c net.Conn, l int) {
+				// 当前用户进入
+				i := c.RemoteAddr().String()
+				// 当前用户退出
+				defer func(c net.Conn, i string) {
+					delete(tcpConn, i)
+					_ = c.Close()
+				}(c, i)
+
+				for {
+					// 等待当前用户发出请求信息
+					b := make([]byte, l)
+					n, e := c.Read(b)
+					if e != nil {
+						fmt.Printf("  tcp read error: %v\n", e)
+						return
+					}
+
+					// 输出当前用户请求信息给其他客户端
+					h, s, x := make([]string, len(tcpConn)-1), []byte(fmt.Sprintf(" %s : %s", i, b[:n])), 0
+					for k, f := range tcpConn {
+						if i == f.RemoteAddr().String() {
+							continue
+						}
+						_, e = f.Write(s)
+						// 记录其他客户端连接异常
+						if e != nil {
+							h[x], x = k, x+1
+							fmt.Printf("  tcp write error: %v\n", e)
+						}
+					}
+
+					// 关闭其他客户端连接异常
+					for _, j := range h {
+						if j == "" {
+							continue
+						}
+						if f, OK := tcpConn[j]; OK {
+							_ = f.Close()
+							delete(tcpConn, j)
+						}
+					}
+
+					// 处理用户请求
+				}
+			}(c, 1024)
 		}
 	} else {
 		log.Fatal(e) // 中断程序时输出
@@ -62,6 +96,11 @@ func TestTcpSvrRun() {
 // 后台运行 tcp Serve Shutdown
 func TcpSvrShutdown() {
 	if tcpListener != nil {
+		// 关闭客户端连接
+		for _, f := range tcpConn {
+			_ = f.Close()
+		}
+		// 关闭TCP服务
 		log.Println("后台服务 tcp: Server exiting..")
 		if e := (*tcpListener).Close(); e != nil {
 			log.Fatal(e) // 中断程序时输出
