@@ -60,10 +60,12 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 ~~~bash
   # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-    # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
-    # go tool 参数：-i -ldflags "-s -w"   # -ldflags 自定义编译标记: "-s -w" 去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
+   # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
+   # go tool 参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
   go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
   go list -m -u all # 列举依赖模块和依赖更新
+  # 管理项目模块 go mod <command> [arguments] (模块的增删改+下载) | 模块功能概述 go help modules
+  go help mod       # 查看说明
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -96,8 +98,8 @@ git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     
 git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
 git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
 git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
-git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具包
-git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 浏览
+git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具文档
+git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
 # 开发工具-VSCode语言支持
