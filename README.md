@@ -60,8 +60,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 ~~~bash
   # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-  # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
-  # go tool 参数：-i -ldflags "-s -w"   # -ldflags 自定义编译标记: "-s -w" 去掉编译时的符号&调试信息(不能gdb调试了),缩小程序文件大小
+    # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
+    # go tool 参数：-i -ldflags "-s -w"   # -ldflags 自定义编译标记: "-s -w" 去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
+  go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
+  go list -m -u all # 列举依赖模块和依赖更新
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
