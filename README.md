@@ -273,6 +273,18 @@ git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/E
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
 
+go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
+go get github.com/AllenDang/w32            # Windows API wrapper
+go get github.com/lxn/win                  # Windows API wrapper package
+go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
+go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
+# QT跨平台应用框架 Qt binding for Go
+go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
+# Bringing Flutter to Windows, MacOS and Linux - through the power of Go and GLFW.
+# https://github.com/go-flutter-desktop/go-flutter
+go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
+go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 ~~~
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
