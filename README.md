@@ -292,7 +292,7 @@ go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 # 对象存储 OSS、云服务器 ECS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 
-# 腾讯云SDK
+# 腾讯云SDK https://console.cloud.tencent.com/api/explorer
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
 # 云服务器	黑石物理服务器	云硬盘	容器服务 容器实例服务	弹性伸缩	无服务器云函数	批量计算
 # 负载均衡	私有网络	专线接入	云数据库 MySQL 云数据库 Redis	云数据库 MongoDB	数据传输服务 DTS	云数据库 MariaDB
