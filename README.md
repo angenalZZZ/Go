@@ -286,9 +286,10 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 # https://github.com/go-flutter-desktop/go-flutter
 go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
-
-go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk # 阿里云SDK
-# 对象存储 OSS、云服务器 ECS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
+# 阿里云SDK
+go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
+# 对象存储 OSS、云服务器 ECS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
+# 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 ~~~
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
