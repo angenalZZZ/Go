@@ -280,7 +280,7 @@ go get github.com/lxn/walk                 # Windows UI Application Library Kit 
 go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
 go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
 # [申请Let's Encrypt永久免费SSL证书]          https://www.jianshu.com/p/3ae2f024c291
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library
+go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 # [QT跨平台应用框架] Qt binding for Go
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
