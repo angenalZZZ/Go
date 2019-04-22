@@ -287,9 +287,12 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 
+# 云计算
+# 亚马逊 AWS https://www.amazonaws.cn/tools
+
 # 阿里云 SDK https://api.aliyun.com
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
-# 对象存储 OSS、云服务器 ECS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
+# 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 
 # 腾讯云 SDK https://console.cloud.tencent.com/api/explorer
