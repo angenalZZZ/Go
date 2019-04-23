@@ -214,24 +214,23 @@ go get github.com/boltdb/bolt/...          # 原生的 key/value 数据库, 类�
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k https://www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库  *6k
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k https://pingcap.com/docs-cn
-
 go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k https://github.com/influxdata/influxdb
 go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
+go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
+go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
-go get github.com/jinzhu/gorm              # 数据库gorm    *12k http://gorm.io/docs
-go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
-go get github.com/mattes/migrate           # 数据库迁移工具 *2k
-go get github.com/steinbacher/goose/cmd/goose # 数据库迁移工具 *1k
+go get github.com/jinzhu/gorm              # 数据库gorm   *12k http://gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
-go get github.com/go-sql-driver/mysql      # Mysql
+go get github.com/go-sql-driver/mysql      # Mysql     https://github.com/siddontang/go-mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
 go get github.com/lib/pq                   # Postgres  https://github.com/prest/prest
+go get github.com/jackc/pgx                # Postgres  驱动与工具集
+go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
 go get github.com/mattn/go-sqlite3         # SQLite
-
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
@@ -239,11 +238,20 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
 go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
+go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
+go get github.com/mattes/migrate           # 数据库迁移工具 *2k
+go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
+go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
+go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
+go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
-go get github.com/olivere/elastic          # Elasticsearch 6.0
+go get github.com/olivere/elastic          # Elasticsearch 6.0 客户端
+go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
+go get github.com/siesta/neo4j             # Neo4j 客户端 github.com/jmcvetta/neoism
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
+go get labix.org/v2/mgo                    # MongoDB 驱动
 git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
   go get github.com/go-stack/stack 
   go get github.com/golang/snappy
@@ -281,7 +289,6 @@ go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  
 
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
-go get github.com/xo/xo                    # 命令行工具   xo --help  [DbFirst]生成 models/*.xo.go
 go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 https://goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
