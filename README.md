@@ -1,7 +1,7 @@
 # Go
 Go是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫，罗勃·派克及肯·汤普逊于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。
 
- > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[^收藏夹$](#-功能框架基础库应用工具)
+ > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[^收藏夹$](#-功能框架基础库应用工具)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -190,9 +190,16 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|对象存储|自建网盘 https://www.min.io https://docs.min.io/cn
+go get github.com/minio/minio-go           # 云存储|分布式存储|自建网盘 https://www.min.io https://docs.min.io/cn
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南: https://docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
+go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
+go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统
+# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
+# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
+go get github.com/coocood/freecache        # cache and high concurrent performance
+go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
+go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
@@ -235,8 +242,6 @@ go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
 go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
-go get github.com/coocood/freecache        # cache and high concurrent performance
-go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)
 
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
@@ -266,8 +271,6 @@ go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
 
-# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
-# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
