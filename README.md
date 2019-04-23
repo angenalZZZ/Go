@@ -208,7 +208,8 @@ go get github.com/coocood/freecache        # cache and high concurrent performan
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
-go get -u golang.org/x/sys/...             # 跨平台文件系统监控库 https://github.com/fsnotify/fsnotify
+go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
+go get github.com/rjeczalik/notify
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
@@ -307,6 +308,10 @@ go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clien
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  https://github.com/eladnava/mailgen
 
+go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
+go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
+go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3k
+
 go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
 go get github.com/reactivex/rxgo           # 响应式编程
@@ -337,6 +342,8 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 
+# API+SDK'排名'开发者服务平台 https://sdk.cn
+# ------------------------------------------------------------------------------------
 # 云计算
 # 亚马逊 AWS https://www.amazonaws.cn/tools
 
@@ -366,7 +373,20 @@ go get -u github.com/qiniu/api.v7 # 对象存储
 # 应用数据、开放数据API
 # 聚合数据 https://www.juhe.cn
 
-# API+SDK'排名'开发者服务平台 https://sdk.cn
+# 微信公众平台SDK
+# https://github.com/chanxuehong/wechat
+# https://github.com/sidbusy/weixinmp
+# https://github.com/arstd/weixin
+# https://github.com/wizjin/weixin
+# https://github.com/hoperong/RabbitGo
+# https://github.com/Cheney-Su/go_weixin
+# https://github.com/i11cn/go_weixin
+# 微信支付SDK
+# https://github.com/imzjy/wxpay
+# 微信支付／支付宝支付
+# https://github.com/philchia/gopay
+# 微信公众平台/微信企业号/微信商户平台/微信支付
+# https://github.com/philsong/wechat2
 ~~~
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
