@@ -272,11 +272,14 @@ go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
 go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
+go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
+go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
 
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq 框架
 # 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
+# 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
 go get github.com/gorilla/websocket        # WebSocket Serve *8k
