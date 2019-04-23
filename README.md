@@ -223,7 +223,8 @@ go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存�
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库gorm    *12k http://gorm.io/docs
 go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
-go get github.com/steinbacher/goose/cmd/goose # 数据库迁移工具
+go get github.com/mattes/migrate           # 数据库迁移工具 *2k
+go get github.com/steinbacher/goose/cmd/goose # 数据库迁移工具 *1k
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql
