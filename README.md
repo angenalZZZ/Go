@@ -208,17 +208,27 @@ go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redi
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
-go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis
-go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存
+go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
+go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
+go get github.com/boltdb/bolt/...          # 原生的 key/value 数据库, 类似 sqlite *10k
+go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k https://www.cockroachlabs.com/docs/stable
+go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库  *6k
+go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k https://pingcap.com/docs-cn
 
+go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k https://github.com/influxdata/influxdb
+go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
+go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
+go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
-go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
+go get github.com/jinzhu/gorm              # 数据库gorm    *12k http://gorm.io/docs
+go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
+go get github.com/steinbacher/goose/cmd/goose # 数据库迁移工具
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
-go get github.com/lib/pq                   # Postgres
+go get github.com/lib/pq                   # Postgres  https://github.com/prest/prest
 go get github.com/mattn/go-sqlite3         # SQLite
 
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
@@ -255,6 +265,8 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
+
+go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k https://prometheus.io/community
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get github.com/gorilla/sessions         # session & cookie authentication
