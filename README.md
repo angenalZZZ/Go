@@ -290,21 +290,21 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 # 云计算
 # 亚马逊 AWS https://www.amazonaws.cn/tools
 
-# 阿里云 SDK https://api.aliyun.com
+# 阿里云 https://api.aliyun.com
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 # 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 
-# 腾讯云 SDK https://console.cloud.tencent.com/api/explorer
+# 腾讯云 https://console.cloud.tencent.com/api/explorer
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
-# 云服务器	黑石物理服务器	云硬盘	容器服务 容器实例服务	弹性伸缩	无服务器云函数	批量计算
-# 负载均衡	私有网络	专线接入	云数据库 MySQL 云数据库 Redis	云数据库 MongoDB	数据传输服务 DTS	云数据库 MariaDB
-# 分布式数据库 DCDB	云数据库 SQL Server	云数据库 PostgreSQL	内容分发网络 主机安全	Web 漏洞扫描	应用安全	云点播
-# 云直播	智能语音服务	机器翻译	智能钛机器学习 催收机器人	智聆口语评测	腾讯优评	Elasticsearch Service
-# 物联网通信	TBaaS	云监控	迁移服务平台 电子合同服务	计费相关	渠道合作伙伴	人脸核身-云智慧眼
-# 威胁情报云查	样本智能分析平台	数学作业批改	人脸融合 人脸识别	数字版权管理
+# 云服务器 黑石物理服务器 云硬盘 容器服务 容器实例服务 弹性伸缩 无服务器云函数 批量计算
+# 负载均衡 私有网络 专线接入 云数据库 MySQL 云数据库 Redis 云数据库 MongoDB 数据传输服务 DTS 云数据库 MariaDB
+# 分布式数据库 DCDB	云数据库 SQL'Server 云数据库 PostgreSQL 内容分发网络 主机安全 Web漏洞扫描 应用安全 云点播
+# 云直播 智能语音服务 机器翻译 智能钛机器学习 催收机器人 智聆口语评测 腾讯优评 Elasticsearch'Service
+# 物联网通信 TBaaS 云监控 迁移服务平台 电子合同服务 计费相关 渠道合作伙伴 人脸核身'云智慧眼
+# 威胁情报云查 样本智能分析平台 数学作业批改 人脸融合 人脸识别 数字版权管理
 
-# 七牛云 SDK https://developer.qiniu.com/sdk
+# 七牛云 https://developer.qiniu.com/sdk
 go get -u github.com/qiniu/api.v7 # 对象存储
 
 # CDN.内容分发网络
@@ -313,8 +313,10 @@ go get -u github.com/qiniu/api.v7 # 对象存储
 # 实时通信云
 # 野狗 https://www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
 
-# 应用数据云、开放数据API
+# 应用数据、开放数据API
 # 聚合数据 https://www.juhe.cn
+
+# API+SDK'排名'开发者服务平台 https://sdk.cn
 ~~~
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
