@@ -200,6 +200,8 @@ go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
+go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
+go get -u golang.org/x/sys/...             # 跨平台文件系统监控库 https://github.com/fsnotify/fsnotify
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
@@ -207,6 +209,8 @@ go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-clien
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis
+go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存
+
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库orm    *12k http://gorm.io/docs
@@ -276,6 +280,7 @@ git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/E
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
 
+go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/lxn/win                  # Windows API wrapper package
 go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
