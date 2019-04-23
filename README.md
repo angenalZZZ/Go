@@ -120,16 +120,11 @@ go get -u -v github.com/cweill/gotests/...
 go get -u -v github.com/derekparker/delve/cmd/dlv
 
 # 管理项目依赖包
-go get -u github.com/kardianos/govendor
-  > govendor init             # 项目依赖vendor目录
-  > govendor add +e           # 添加本地$GOPATH包[go get]
-  > govendor fetch            # 获取远程vendor.json包[govendor get]
-go get -u github.com/golang/dep/cmd/dep
+go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
   > dep ensure                # 安装依赖包(速度慢)
-go get -u github.com/sparrc/gdm
-go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/get | sh
+go get -u github.com/Masterminds/glide  # 推荐使用 *7k <Mac or Linux> curl https://glide.sh/get | sh
   > glide --version ; glide help # https://glide.sh
   > glide create                 # Start a new workspace
   > glide get github.com/foo/bar#^1.2.3 # Get a package, add to glide.yaml; https://glide.sh/docs/glide.yaml
@@ -138,6 +133,10 @@ go get -u github.com/Masterminds/glide # <Mac or Linux> curl https://glide.sh/ge
   > glide list                # See installed packages
   > glide tree                # See imported packages
   > go build
+go get -u github.com/kardianos/govendor # 推荐使用 *4k
+  > govendor init             # 项目依赖vendor目录
+  > govendor add +e           # 添加本地$GOPATH包[go get]
+  > govendor fetch            # 获取远程vendor.json包[govendor get]
 # vgo 一个项目模块管理工具 (用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) # [默认auto]
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install
   > go help mod <command>       # 帮助 SET GO111MODULE=on
@@ -151,11 +150,18 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go mod vendor               # 生成 vendor 文件夹, 下载你代码中引用的库
   > go build -mod=vendor        # 使用 vendor 文件夹
   > go build -mod=readonly      # 防止隐式修改 go.mod
+go get -u github.com/sparrc/gdm
+
+# 源代码版本管理
+go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 
 # 学习playground*
 go get github.com/golang/playground
 go get github.com/golang/example/hello
-go get github.com/shen100/golang123         # shen100
+go get github.com/shen100/golang123        # 适合初学者
+go get github.com/insionng/zenpress        # 适合学习 cms system
+go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
+go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习                    *42k
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 ~~~
 
@@ -186,6 +192,7 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/PuerkitoBio/goquery      # HTML解析库，像jQuery那样操作DOM   *7k
 
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
@@ -210,7 +217,7 @@ go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb 
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
-go get github.com/boltdb/bolt/...          # 原生的 key/value 数据库, 类似 sqlite *10k
+go get github.com/boltdb/bolt/...          # 原生的 key/value 数据库, 类似 sqlite  *10k
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k https://www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库  *6k
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k https://pingcap.com/docs-cn
@@ -235,7 +242,7 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
   go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
-go get github.com/go-xorm/xorm             # 数据库sql    *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
+go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
 go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
@@ -266,16 +273,26 @@ go get github.com/iamduo/go-workq          # job server and client  *1k
 go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
 
-go get github.com/nsqio/go-nsq             # 实时消息平台nsq.client : nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
+go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq 框架
+# 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
+# https://github.com/oikomi/FishChatServer2
+go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
+go get github.com/gorilla/websocket        # WebSocket Serve *8k
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/gin-gonic/gin            # 后端WebApi : Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr : caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr : echo
-
+go get github.com/codegangsta/gin          # 服务Web站点热启动 > gin -h
+go get github.com/ochinchina/supervisord   # 原生的supervisor > supervisord -c website.conf -d
+go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
+go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > wrk -t16 -c100 -d30s http://127.0.0.1/api
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k https://prometheus.io/community
+# 各大 Go 模板引擎的对比及压力测试 https://github.com/SlinSo/goTemplateBenchmark
+# 小米公司的互联网企业级监控系统 https://book.open-falcon.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get github.com/gorilla/sessions         # session & cookie authentication
@@ -295,6 +312,8 @@ go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
 
+go get -u -v github.com/smallnest/rpcx/... # 分布式RPC服务框架  *3k
+go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
