@@ -209,7 +209,8 @@ go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (si
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
-go get github.com/rjeczalik/notify
+go get github.com/rjeczalik/notify         # 文件系统事件通知库
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
