@@ -295,8 +295,8 @@ go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置�
 go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
-go get github.com/codegangsta/gin          # 服务Web站点热启动 > gin -h
-go get github.com/ochinchina/supervisord   # 原生的supervisor > supervisord -c website.conf -d
+go get github.com/codegangsta/gin          # 站点热启动 > gin -h
+go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > wrk -t16 -c100 -d30s http://127.0.0.1/api
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
