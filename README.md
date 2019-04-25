@@ -192,9 +192,10 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
-go get github.com/PuerkitoBio/goquery      # HTML解析库，像jQuery那样操作DOM   *7k
+go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
+go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
 
-go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS
+go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS    *4k
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
 go get github.com/minio/minio-go           # 云存储|分布式存储|自建网盘 https://www.min.io https://docs.min.io/cn
