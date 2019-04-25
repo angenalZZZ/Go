@@ -83,6 +83,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > 安装依赖包
 ~~~bash
+# 翻墙代理设置 (解决网络问题)
+set http_proxy=http://127.0.0.1:5005     (临时有效)
+set HTTPS_PROXY=http://127.0.0.1:5005    (临时有效)
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
