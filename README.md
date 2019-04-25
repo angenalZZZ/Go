@@ -195,16 +195,16 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
 
-go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage http://play.etcd.io/install#TLS    *4k
+go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|分布式存储|自建网盘 https://www.min.io https://docs.min.io/cn
-go get -d github.com/minio/mc              # 云存储|配置客户端, 指南: https://docs.min.io/cn/minio-client-quickstart-guide.html
+go get github.com/minio/minio-go           # 云存储|分布式存储|自建网盘 | www.min.io docs.min.io/cn
+go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
-# client: http://play.etcd.io              # server: https://github.com/etcd-io/etcd/releases
+# client: http://play.etcd.io              # server | github.com/etcd-io/etcd/releases
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
@@ -216,15 +216,15 @@ go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
-go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb http://ssdb.io/zh_cn
+go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/boltdb/bolt/...          # 原生的 key/value 数据库, 类似 sqlite  *10k
-go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k https://www.cockroachlabs.com/docs/stable
+go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库  *6k
-go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k https://pingcap.com/docs-cn
-go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k https://github.com/influxdata/influxdb
+go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
+go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k | github.com/influxdata/influxdb
 go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
@@ -232,12 +232,12 @@ go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
-go get github.com/jinzhu/gorm              # 数据库gorm   *12k http://gorm.io/docs
+go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
-go get github.com/go-sql-driver/mysql      # Mysql     https://github.com/siddontang/go-mysql
+go get github.com/go-sql-driver/mysql      # Mysql     | github.com/siddontang/go-mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
-go get github.com/lib/pq                   # Postgres  https://github.com/prest/prest
+go get github.com/lib/pq                   # Postgres  | github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres  驱动与工具集
 go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
 go get github.com/mattn/go-sqlite3         # SQLite
@@ -248,7 +248,7 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
 go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
-go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 https://github.com/go-gormigrate/gormigrate
+go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 | github.com/go-gormigrate/gormigrate
 go get github.com/mattes/migrate           # 数据库迁移工具 *2k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
@@ -257,7 +257,7 @@ go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst
 
 go get github.com/olivere/elastic          # Elasticsearch 6.0 客户端
 go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
-go get github.com/siesta/neo4j             # Neo4j 客户端 github.com/jmcvetta/neoism
+go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvetta/neoism
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
@@ -274,53 +274,53 @@ git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
 go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
-go get github.com/gocraft/work             # do work of redis-queue *1k https://github.com/gocraft/work#run-the-web-ui
+go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
 
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
-go get github.com/streadway/amqp           # rabbitmq client tutorials https://www.rabbitmq.com/#getstarted
+go get github.com/streadway/amqp           # rabbitmq client tutorials | www.rabbitmq.com/#getstarted
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq 框架
-go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k http://www.emqtt.com
+go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
 # 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
 go get github.com/gorilla/websocket        # WebSocket Serve *8k
-go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) https://gotify.net
+go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) | gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
-go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | https://github.com/muesli/beehive/blob/master/api/api.go
+go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 go get github.com/codegangsta/gin          # 服务Web站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 原生的supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > wrk -t16 -c100 -d30s http://127.0.0.1/api
-go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k https://prometheus.io/community
-# 各大 Go 模板引擎的对比及压力测试 https://github.com/SlinSo/goTemplateBenchmark
-# 小米公司的互联网企业级监控系统 https://book.open-falcon.org
+go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
+# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
+# 小米公司的互联网企业级监控系统 | book.open-falcon.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
 go get github.com/dchest/captcha           # 验证码|图片|声音
-go get github.com/mojocn/base64Captcha     # 验证码|展示 http://captcha.mojotv.cn
-go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 https://www.google.com/recaptcha/admin/create
+go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
+go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
-go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  https://github.com/eladnava/mailgen
+go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen | github.com/eladnava/mailgen
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3k
 
-go get github.com/gorilla/websocket        # https://github.com/joewalnes/websocketd websocketd.com
-go get github.com/gobwas/ws                # Tiny WebSocket \ https://github.com/socketio/socket.io
+go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
+go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
 go get github.com/reactivex/rxgo           # 响应式编程
-go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 https://goswagger.io/install.html
+go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
@@ -338,7 +338,7 @@ go get github.com/lxn/win                  # Windows API wrapper package
 go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
 go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
 go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
-# [申请Let's Encrypt永久免费SSL证书]          https://www.jianshu.com/p/3ae2f024c291
+# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
 go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 # [QT跨平台应用框架] Qt binding package
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
@@ -347,17 +347,17 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 
-# API+SDK'排名'开发者服务平台 https://sdk.cn
+# API+SDK'排名'开发者服务平台 | sdk.cn
 # ------------------------------------------------------------------------------------
 # 云计算
-# 亚马逊 AWS https://www.amazonaws.cn/tools
+# 亚马逊 AWS | www.amazonaws.cn/tools
 
-# 阿里云 https://api.aliyun.com
+# 阿里云 | api.aliyun.com
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 # 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 
-# 腾讯云 https://console.cloud.tencent.com/api/explorer
+# 腾讯云 | console.cloud.tencent.com/api/explorer
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
 # 云服务器 黑石物理服务器 云硬盘 容器服务 容器实例服务 弹性伸缩 无服务器云函数 批量计算
 # 负载均衡 私有网络 专线接入 云数据库 MySQL 云数据库 Redis 云数据库 MongoDB 数据传输服务 DTS 云数据库 MariaDB
@@ -366,17 +366,17 @@ go get -u github.com/tencentcloud/tencentcloud-sdk-go
 # 物联网通信 TBaaS 云监控 迁移服务平台 电子合同服务 计费相关 渠道合作伙伴 人脸核身'云智慧眼
 # 威胁情报云查 样本智能分析平台 数学作业批改 人脸融合 人脸识别 数字版权管理
 
-# 七牛云 https://developer.qiniu.com/sdk
+# 七牛云 | developer.qiniu.com/sdk
 go get -u github.com/qiniu/api.v7 # 对象存储
 
 # CDN.内容分发网络
-# 又拍云 https://www.upyun.com
+# 又拍云 | www.upyun.com
 
 # 实时通信云
-# 野狗 https://www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
+# 野狗 | www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
 
 # 应用数据、开放数据API
-# 聚合数据 https://www.juhe.cn
+# 聚合数据 | www.juhe.cn
 
 # 微信公众平台SDK
 # https://github.com/chanxuehong/wechat
@@ -413,7 +413,6 @@ cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应�
 
  * 高性能
     * [高并发架构解决方案](https://studygolang.com/articles/15479)
-
 
 ----
 
