@@ -46,7 +46,7 @@ func ShutdownClient() {
 }
 
 // 数据库OpenTSDB : go Test()
-func Test() {
+func Do() {
 	initDb()
 	log.Printf("时序数据库 OpenTSDB Client: Test starting.. Addr: %s\n\n", (*op).Host)
 

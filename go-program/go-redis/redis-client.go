@@ -50,7 +50,7 @@ func ShutdownClient() {
 }
 
 // 测试
-func Test() {
+func Do() {
 	initDb()
 	log.Printf("缓存数据库 Redis Client testing.. Addr: %s\n\n", op.Addr)
 

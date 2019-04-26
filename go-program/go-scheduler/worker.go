@@ -108,7 +108,7 @@ func ShutdownWorker() {
 }
 
 // 测试
-func TestWorker() {
+func DoWorker() {
 	/**
 	初始化 Worker Jobs
 	*/

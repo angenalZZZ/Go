@@ -20,7 +20,7 @@ func init() {
 }
 
 // 后台运行 tcp Serve Run
-func TestTcpSvrRun() {
+func DoTcpSvrRun() {
 	// 监听TCP服务
 	l, e := net.Listen("tcp4", tcpAddr)
 	if e == nil {
@@ -94,7 +94,7 @@ func TestTcpSvrRun() {
 }
 
 // 后台运行 tcp Serve Shutdown
-func TcpSvrShutdown() {
+func ShutdownTcpSvr() {
 	if tcpListener != nil {
 		// 关闭客户端连接
 		for _, f := range tcpConn {

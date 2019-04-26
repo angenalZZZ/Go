@@ -10,7 +10,7 @@ import (
 )
 
 /************ List（列表）*************/
-func TestCli_list(c redis.Conn) {
+func DoCli_list(c redis.Conn) {
 
 	// 写入数据 Set
 	key := fmt.Sprintf("list%d%d", time.Now().Unix(), rand.Intn(1000))

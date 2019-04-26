@@ -10,7 +10,7 @@ import (
 )
 
 // 文件管理：创建文件
-func TestCreateFile() {
+func DoCreateFile() {
 	fmt.Println("-------------------------\n文件管理：创建文件")
 
 	tmpDir, e := ioutil.TempDir(os.TempDir(), "")

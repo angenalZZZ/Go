@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"math"
 	"os"
 	"runtime"
 	"time"
@@ -54,23 +55,23 @@ func init() {
 	flag.Parse()
 
 	// 设置CPU空闲1个
-	numCpu := runtime.NumCPU()
-	runtime.GOMAXPROCS(numCpu - 1)
+	runtime.GOMAXPROCS(int(math.Max(float64(1), float64(runtime.NumCPU()-1))))
 
-	// 监听程序退出1 后台运行 flagTcp Serve Shutdown
-	go_shutdown_hook.Add(go_tcp.TcpSvrShutdown)
-	// 监听程序退出2 后台运行 flagHttp Serve Shutdown
-	go_shutdown_hook.Add(api_svr.HttpSvrShutdown)
-	// 监听程序退出3 数据库 Leveldb Client
+	// 监听程序退出
+	// 1 flagTcp Serve
+	go_shutdown_hook.Add(go_tcp.ShutdownTcpSvr)
+	// 2 flagHttp Serve
+	go_shutdown_hook.Add(api_svr.ShutdownHttpSvr)
+	// 3 Leveldb Client
 	go_shutdown_hook.Add(go_leveldb.ShutdownClient)
-	// 监听程序退出4 数据库 OpenTSDB Client
+	// 4 OpenTSDB Client
 	go_shutdown_hook.Add(go_opentsdb.ShutdownClient)
-	// 监听程序退出5 数据库 Redis Client
+	// 5 Redis Client & Cli
 	go_shutdown_hook.Add(go_redis.ShutdownClient)
 	go_shutdown_hook.Add(go_redis.ShutdownCli)
-	// 监听程序退出6 数据库 SSdb Client
+	// 6 SSdb Client
 	go_shutdown_hook.Add(go_ssdb.ShutdownClient)
-	// 监听程序退出7 计划任务 Scheduler Worker
+	// 7 Scheduler Worker
 	go_shutdown_hook.Add(go_scheduler.ShutdownWorker)
 
 }
@@ -94,46 +95,46 @@ func start() {
 
 	// 类型检查
 	if *flagTypeCheck == true {
-		go go_type.TestTypeCheck()
+		go go_type.DoTypeCheck()
 	}
 
 	// 文件管理：创建文件
 	if *flagCreateFile == true {
-		go go_file.TestCreateFile()
+		go go_file.DoCreateFile()
 	}
 
 	// 内存数据库 Leveldb Client
 	if *flagLeveldb == true {
-		go go_leveldb.Test()
+		go go_leveldb.Do()
 	}
 	// 时序数据库 OpenTSDB Client
 	if *flagOpentsdb == true {
-		go go_opentsdb.Test()
+		go go_opentsdb.Do()
 	}
 	// 缓存数据库 Redis Client
 	if *flagRedis == true {
-		go go_redis.Test()
+		go go_redis.Do()
 	}
 	if *flagRedisCli == true {
-		go go_redis.TestCli()
+		go go_redis.DoCli()
 	}
 	// 缓存数据库 SSdb Client
 	if *flagSsdb == true {
-		go go_ssdb.Test()
+		go go_ssdb.Do()
 	}
 
 	// 计划任务 Scheduler Worker
 	if *flagWorker == true {
-		go go_scheduler.TestWorker()
+		go go_scheduler.DoWorker()
 	}
 
 	// 后台运行 flagTcp Serve Run
 	if *flagTcp == true {
-		go go_tcp.TestTcpSvrRun()
+		go go_tcp.DoTcpSvrRun()
 	}
 	// 后台运行 flagHttp Serve Run
 	if *flagHttp == true {
-		go api_svr.TestHttpSvrRun()
+		go api_svr.DoHttpSvrRun()
 	}
 
 }

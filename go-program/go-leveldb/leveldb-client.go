@@ -97,7 +97,7 @@ func RangeStartWith(prefix string, ro *opt.ReadOptions, iterator func(key, value
 }
 
 ///测试//////////////////////////////////////////////////////////////
-func Test() {
+func Do() {
 	initDb()
 	log.Printf("内存数据库 Leveldb Client testing.. Addr: %s\n\n", addr)
 

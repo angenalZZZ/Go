@@ -12,7 +12,7 @@ import (
 )
 
 /************ Hash（哈希）*************/
-func TestCli_hash(c redis.Conn) {
+func DoCli_hash(c redis.Conn) {
 
 	// 写入数据 Set
 	key, val := fmt.Sprintf("hash%d%d", time.Now().Unix(), rand.Intn(1000)), go_type.Q{

@@ -29,7 +29,7 @@ func initHttpSvr() {
 }
 
 // 后台运行 http Serve Run
-func TestHttpSvrRun() {
+func DoHttpSvrRun() {
 	initHttpSvr()
 
 	// Use DefaultServeMux
@@ -71,7 +71,7 @@ func TestHttpSvrRun() {
 }
 
 // 后台运行 http Serve Shutdown
-func HttpSvrShutdown() {
+func ShutdownHttpSvr() {
 	if httpSvr != nil {
 		log.Println("后台服务 http: Server stopping..") // Go ^1.8
 		if e := httpSvr.Shutdown(context.Background()); e != nil {

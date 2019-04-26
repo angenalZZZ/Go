@@ -70,7 +70,7 @@ func ShutdownClient() {
 }
 
 // 测试
-func Test() {
+func Do() {
 	initDb()
 	log.Printf("缓存数据库 SSdb Client testing.. Addr: %s:%d\n\n", op.Host, op.Port)
 

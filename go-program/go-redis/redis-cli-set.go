@@ -10,7 +10,7 @@ import (
 )
 
 /************ Set（集合）*************/
-func TestCli_set(c redis.Conn) {
+func DoCli_set(c redis.Conn) {
 
 	// 写入数据 Set
 	key, val := fmt.Sprintf("hash%d%d", time.Now().Unix(), rand.Intn(1000)), []string{"a", "b"}

@@ -76,7 +76,7 @@ func ShutdownCli() {
 }
 
 // 测试
-func TestCli() {
+func DoCli() {
 	//log.Println("缓存数据库 Redis Cli initCli..")
 	initCli()
 	log.Printf("缓存数据库 Redis Cli testing.. Addr: %s\n\n", cliAddr)
@@ -128,19 +128,19 @@ func TestCli() {
 	}
 
 	/************ String（字符串）*************/
-	TestCli_string(c)
+	DoCli_string(c)
 
 	/************ Hash（哈希）*************/
-	TestCli_hash(c)
+	DoCli_hash(c)
 
 	/************ List（列表）*************/
-	TestCli_list(c)
+	DoCli_list(c)
 
 	/************ Set（集合）*************/
-	TestCli_set(c)
+	DoCli_set(c)
 
 	/************ ZSet（有序集合）*************/
-	TestCli_zset(c)
+	DoCli_zset(c)
 
 	// 计算: EVAL "return {KEYS[1],ARGV[1]}" 1 "key" "hello"
 	//_, er3 := c.Do("EVAL", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")

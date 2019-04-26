@@ -10,7 +10,7 @@ import (
 )
 
 /************ String（字符串）*************/
-func TestCli_string(c redis.Conn) {
+func DoCli_string(c redis.Conn) {
 
 	// 时间戳：以秒计
 	timestamp := time.Now().Unix()

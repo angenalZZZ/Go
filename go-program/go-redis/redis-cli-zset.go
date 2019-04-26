@@ -10,7 +10,7 @@ import (
 )
 
 /************ ZSet（有序集合）*************/
-func TestCli_zset(c redis.Conn) {
+func DoCli_zset(c redis.Conn) {
 
 	// 写入数据 Set
 
