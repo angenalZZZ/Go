@@ -1,9 +1,10 @@
 package go_redis
 
 import (
-	"log"
 	"math/rand"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/gomodule/redigo/redis"

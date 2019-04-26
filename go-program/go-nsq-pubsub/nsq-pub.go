@@ -1,8 +1,9 @@
 package go_nsq_pubsub
 
 import (
-	"log"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/nsqio/go-nsq"

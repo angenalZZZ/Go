@@ -1,9 +1,10 @@
 package env_envy
 
 import (
-	"log"
 	"net"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/seefan/gossdb/conf"
 

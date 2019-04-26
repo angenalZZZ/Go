@@ -1,8 +1,9 @@
 package cors
 
 import (
-	"log"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // cors request

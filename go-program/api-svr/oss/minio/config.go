@@ -1,7 +1,7 @@
 package minio
 
 import (
-	"log"
+	log "github.com/sirupsen/logrus"
 
 	"github.com/minio/minio-go"
 )

@@ -2,8 +2,9 @@ package go_tcp
 
 import (
 	"fmt"
-	"log"
 	"net"
+
+	log "github.com/sirupsen/logrus"
 )
 
 /**

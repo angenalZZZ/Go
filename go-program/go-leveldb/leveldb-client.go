@@ -2,9 +2,10 @@ package go_leveldb
 
 import (
 	"fmt"
-	"log"
 	"math/rand"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 

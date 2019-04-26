@@ -2,11 +2,12 @@ package main
 
 import (
 	"flag"
-	"log"
 	"math"
 	"os"
 	"runtime"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	//_ "github.com/angenalZZZ/Go/go-program/api-config/env"
 	_ "github.com/angenalZZZ/Go/go-program/api-config/env-viper"

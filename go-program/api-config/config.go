@@ -1,7 +1,9 @@
 package api_config
 
 import (
-	"log"
+	"os"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/seefan/gossdb/conf"
 )
@@ -10,8 +12,11 @@ import (
 func init() {
 	// log使用UTC时间
 	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
-	log.SetFlags(log.Ltime)
-	log.SetPrefix("log ")
+	//log.SetFlags(log.Ltime)
+	//log.SetPrefix("log ")
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.InfoLevel)
+	//log.SetFormatter(new(log.TextFormatter))
 }
 
 // 当前配置 设置静态变量

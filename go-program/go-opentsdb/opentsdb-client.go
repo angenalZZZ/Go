@@ -2,9 +2,10 @@ package go_opentsdb
 
 import (
 	"fmt"
-	"log"
 	"math/rand"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/angenalZZZ/Go/go-program/go-opentsdb/client"
 	"github.com/angenalZZZ/Go/go-program/go-opentsdb/config"

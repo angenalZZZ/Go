@@ -2,10 +2,11 @@ package env_viper
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"os"
 	"strconv"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/seefan/gossdb/conf"
 

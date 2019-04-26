@@ -2,9 +2,10 @@ package go_redis
 
 import (
 	"fmt"
-	"log"
 	"math/rand"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	go_type "github.com/angenalZZZ/Go/go-program/go-type"
 

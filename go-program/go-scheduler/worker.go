@@ -2,8 +2,9 @@ package go_scheduler
 
 import (
 	"fmt"
-	"log"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	api_config "github.com/angenalZZZ/Go/go-program/api-config"
 	"github.com/gocraft/work"
