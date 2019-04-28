@@ -233,6 +233,7 @@ go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时�
 go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
 go get github.com/pilosa/pilosa            # Pilosa大数据+列式存储 | kuanshijiao.com/2017/06/12/pilosa1
 go get github.com/pilosa/go-pilosa         # Pilosa分布式位图索引+实时计算 | www.pilosa.com/docs/latest/installation/#docker
+go get github.com/pilosa/pdk               # Pilosa开发套件+用例示例
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
