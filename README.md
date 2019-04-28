@@ -218,8 +218,9 @@ go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
-go get github.com/sent-hil/bitesized        # 位图计数统计> 统计分析、实时计算
-go get github.com/yannh/redis-dump-go       # 导出导入数据> redis-dump-go -h ; redis-cli --pipe < backup.resp ;第三方工具redis-dump
+go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
+go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp ;第三方工具redis-dump
+go get github.com/pilosa/go-pilosa          # 分布式位图索引+实时计算 | www.pilosa.com/docs/latest/installation/#docker
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
