@@ -220,7 +220,6 @@ go get github.com/go-redis/redis           # 内存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
 go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp ;第三方工具redis-dump
-go get github.com/pilosa/go-pilosa          # 大数据+分布式位图索引+实时计算 | www.pilosa.com/docs/latest/installation/#docker
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
@@ -232,6 +231,8 @@ go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理�
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
 go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k | github.com/influxdata/influxdb
 go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
+go get github.com/pilosa/pilosa            # Pilosa大数据+列式存储 | kuanshijiao.com/2017/06/12/pilosa1
+go get github.com/pilosa/go-pilosa         # Pilosa分布式位图索引+实时计算 | www.pilosa.com/docs/latest/installation/#docker
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
