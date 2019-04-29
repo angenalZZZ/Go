@@ -303,6 +303,7 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
+go get github.com/valyala/fasthttp         # Fast HTTP  *8k
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
