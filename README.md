@@ -314,7 +314,8 @@ go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
-go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | https://casbin.org
+go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
+go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
 go get github.com/dchest/captcha           # 验证码|图片|声音
