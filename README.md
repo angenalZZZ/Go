@@ -309,6 +309,7 @@ go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
+go get github.com/codesenberg/bombardier   # Web性能测试工具 > bombardier -n 16 -c 100 -d 30s -l http://127.0.0.1/api
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > wrk -t16 -c100 -d30s http://127.0.0.1/api
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
