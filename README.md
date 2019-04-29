@@ -285,6 +285,8 @@ go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
+go get github.com/travisjeffery/jocko      # 消息推送服务Kafka: producing/consuming[生产/消费] cluster[代理集群]
+go get github.com/gocelery/gocelery        # 分布式任务队列Celery: client/server www.celeryproject.org
 
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials | www.rabbitmq.com/#getstarted
