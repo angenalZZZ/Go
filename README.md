@@ -257,7 +257,7 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
 go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
-go get gopkg.in/gormigrate.v1              # 数据库gorm 数据库迁移助手 | github.com/go-gormigrate/gormigrate
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
 go get github.com/mattes/migrate           # 数据库迁移工具 *2k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
@@ -314,6 +314,7 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/codesenberg/bombardier   # Web性能测试工具 *1.5k [-n:request(s),-c:connection(s),-d:duration(s)] > bombardier -n 100 -c 100 -d 30s -l [url]
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
