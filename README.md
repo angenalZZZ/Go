@@ -403,7 +403,7 @@ go get -u github.com/qiniu/api.v7 # 对象存储
 # 聚合数据 | www.juhe.cn
 
 # 微信公众平台SDK
-# https://github.com/chanxuehong/wechat
+go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、微信支付 github.com/chanxuehong/wechat 
 # https://github.com/sidbusy/weixinmp
 # https://github.com/arstd/weixin
 # https://github.com/wizjin/weixin
