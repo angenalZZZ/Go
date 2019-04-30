@@ -307,11 +307,14 @@ go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
 go get github.com/valyala/fasthttp         # Fast HTTP  *8k
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
+# 模块化Web框架 *2.7k  go-macaron.com
+git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
-go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting with HTTP servers.
-go get github.com/codesenberg/bombardier   # Web性能测试工具 *1.5k [-n:request(s),-c:connection(s),-d:duration(s)] > bombardier -n 100 -c 100 -d 30s -l [url]
+go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
+go get github.com/codesenberg/bombardier   # Web性能测试工具 *1.5k 
+# [-n:request(s),-c:connection(s),-d:duration(s)] > bombardier -n 100 -c 100 -d 30s -l [url]
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
@@ -319,6 +322,7 @@ go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具gi
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
+# 搜索 50万个 Go 语言项目 | gowalker.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
