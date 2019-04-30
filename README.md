@@ -307,14 +307,14 @@ go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
 go get github.com/valyala/fasthttp         # Fast HTTP  *8k
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
-# 模块化Web框架 *2.7k  go-macaron.com  github.com/Unknwon : Gogs, INI file, 音视频学习教程...
+# 模块化Web框架 *2.7k  go-macaron.com  github.com/Unknwon : Gogs, INI file, 音视频学习教程..
 git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
 go get github.com/codesenberg/bombardier   # Web性能测试工具 *1.5k 
-# [-n:request(s),-c:connection(s),-d:duration(s)] > bombardier -n 100 -c 100 -d 30s -l [url]
+# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
