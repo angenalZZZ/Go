@@ -240,7 +240,8 @@ go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存�
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
-go get github.com/astaxie/beego/orm        # 数据库orm    *19k support mysql,postgres,sqlite3
+go get github.com/astaxie/beego            # HttpWeb-MVC-API框架 beego.me/docs/intro/
+go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,postgres,sqlite3
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
