@@ -18,7 +18,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 # 5.丰富的第三方库,并且开源
 ~~~
 
- > `关键字`
+ > 语法`关键字`
 
     break      default       func     interface   select
     case       defer         go       map         struct
@@ -29,10 +29,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
  > 内建的`常量`、`类型`、`函数`
 
     常量: true false iota nil
-
+    
     类型: bool byte rune string error
           int int8 int16 int32 int64   uint uint8 uint16 uint32 uint64 uintptr   float32 float64  complex64 complex128
-
+    
     函数: make len cap new append copy close delete    complex real imag    panic recover
 
  > 通道`chan`
@@ -40,6 +40,18 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{}, 0) 
     异步: ch := make(chan int, 100) // buffered channel with capacity 100
     管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result := <-ch2
+
+ > 性能优化
+    通过工具排查：
+ 	 ① go tool pprof -alloc_objects   # 生成对象数量
+ 	      go tool pprof -inuse_objects  # 引用对象数量
+ 	      go tool pprof bin/dupsdc        # GC扫描函数占据大量CPU(如runtime.scanobject等)
+    内存管理`GC`的优化：
+          ① 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU.
+    	   利用耗费少量的内存，可优化耗费的CPU.
+    		map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
+    		map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
+    		someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
@@ -69,7 +81,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
-    
+
     wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
     GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改 (选项 tar -C)
     tar -xvzf go1.12.linux-amd64.tar.gz -C $GO_INSTALL_DIR
