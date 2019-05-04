@@ -341,7 +341,10 @@ go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen |
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
-go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3k
+go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
+go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件  *3.8k
+go get -u -v github.com/davyxu/tabtoy      # 高性能便捷电子表格导出器
+go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
 
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
@@ -349,14 +352,19 @@ go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
-go get github.com/asciimoo/wuzz            # 用于http请求的-交互式命令行工具-增强的curl
+go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
+go get github.com/codesenberg/bombardier   # http高性能 | 基准测试工具 > bombardier
 
-go get -u -v github.com/smallnest/rpcx/... # 分布式RPC服务框架  *3k
+go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
+go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
+go get -u -v github.com/smallnest/rpcx/... # 分布式RPC服务      *3k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
-go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建   *13k standard library for web frameworks...
+go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
+go get -d https://github.com/restic/restic # 备份工具 | restic.readthedocs.io
+cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
 
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
@@ -370,7 +378,6 @@ go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME libra
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
 # https://github.com/go-flutter-desktop/go-flutter
-go get github.com/codesenberg/bombardier     # http高性能基准测试工具 > bombardier
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 
 ~~~
