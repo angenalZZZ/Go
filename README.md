@@ -31,27 +31,28 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     常量: true false iota nil
     
     类型: bool byte rune string error
-          int int8 int16 int32 int64   uint uint8 uint16 uint32 uint64 uintptr   float32 float64  complex64 complex128
+          int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64  complex64 complex128
     
     函数: make len cap new append copy close delete    complex real imag    panic recover
 
  > 通道`chan`
 
-    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{}, 0) 
+    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{},0) 
     异步: ch := make(chan int, 100) // buffered channel with capacity 100
-    管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result := <-ch2
+    管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2
 
  > 性能优化
-    通过工具排查：
- 	 ① go tool pprof -alloc_objects   # 生成对象数量
- 	      go tool pprof -inuse_objects  # 引用对象数量
- 	      go tool pprof bin/dupsdc        # GC扫描函数占据大量CPU(如runtime.scanobject等)
-    内存管理`GC`的优化：
-          ① 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU.
-    	   利用耗费少量的内存，可优化耗费的CPU.
-    		map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
-    		map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
-    		someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+~~~
+# 通过工具排查：
+go tool pprof -alloc_objects   # 生成对象数量
+go tool pprof -inuse_objects   # 引用对象数量
+go tool pprof bin/dupsdc       # GC扫描函数占据大量CPU(如runtime.scanobject等)
+# 内存管理`GC`的优化：
+ # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
+map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
+map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
+someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+~~~
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
@@ -176,7 +177,7 @@ go get github.com/golang/example/hello
 go get github.com/shen100/golang123        # 适合初学者
 go get github.com/insionng/zenpress        # 适合学习 cms system
 go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
-go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习                    *42k
+go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 ~~~
@@ -208,6 +209,7 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
@@ -270,9 +272,10 @@ go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go'
 go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,配置等特性...
-git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
+go get github.com/didi/gendry              # 滴滴 开源 SQL Builder 增强-拼接sql
 go get github.com/mattes/migrate           # 数据库迁移工具 *2k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
