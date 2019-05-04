@@ -315,7 +315,8 @@ go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
-go get github.com/codesenberg/bombardier   # Web性能测试工具 *1.5k 
+go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
+go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
@@ -324,7 +325,6 @@ go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具gi
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
-# 搜索 50万个 Go 语言项目 | gowalker.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
@@ -352,8 +352,6 @@ go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
-go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
-go get github.com/codesenberg/bombardier   # http高性能 | 基准测试工具 > bombardier
 
 go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
@@ -385,6 +383,7 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 #### 云平台|公众平台|支付
 ~~~
 # API+SDK'排名'开发者服务平台 | sdk.cn
+# 搜索 50万个 Go 语言项目 | gowalker.org
 # ------------------------------------------------------------------------------------
 # 云计算
 # 亚马逊 AWS | www.amazonaws.cn/tools
