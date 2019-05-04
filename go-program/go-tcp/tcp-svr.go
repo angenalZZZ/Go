@@ -2,6 +2,7 @@ package go_tcp
 
 import (
 	"fmt"
+	"io"
 	"net"
 
 	log "github.com/sirupsen/logrus"
@@ -41,7 +42,7 @@ func DoTcpSvrRun() {
 			fmt.Printf("  tcp accept Addr: %s\n", i)
 			tcpConn[i] = c
 
-			// 接收用户发出的请求信息，一次缓冲1024字节l
+			// 接收用户发出的请求信息，一次缓冲1024字节length
 			go func(c net.Conn, l int) {
 				// 当前用户进入
 				i := c.RemoteAddr().String()
@@ -54,8 +55,13 @@ func DoTcpSvrRun() {
 				for {
 					// 等待当前用户发出请求信息
 					b := make([]byte, l)
-					n, e := c.Read(b)
-					if e != nil {
+					n, e := c.Read(b) // 读取Socket服务的输入
+					//n, e := os.Stdin.Read(b) // 读取键盘的输入
+					if n == 0 {
+						// 关闭异常时
+						if e == io.EOF {
+							return
+						}
 						fmt.Printf("  tcp read error: %v\n", e)
 						return
 					}
