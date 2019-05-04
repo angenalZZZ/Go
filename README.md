@@ -165,6 +165,7 @@ go get github.com/shen100/golang123        # 适合初学者
 go get github.com/insionng/zenpress        # 适合学习 cms system
 go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习                    *42k
+go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 ~~~
 
@@ -240,9 +241,7 @@ go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存�
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
-go get github.com/astaxie/beego            # HTTP框架: API、Web、后端服务，RESTful高度解耦的框架
-   # beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox. beego.me/docs/intro/
-go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,postgres,sqlite3
+go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,postgres,sqlite3...
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
 git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
@@ -305,12 +304,13 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
-go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo
-go get github.com/valyala/fasthttp         # Fast HTTP  *8k
+go get github.com/astaxie/beego            # 后端模块化 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
+                                           # beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox.
+go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo serve
+go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serve
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
-# 模块化Web框架 *2.7k  go-macaron.com  github.com/Unknwon : Gogs, INI file, 音视频学习教程..
-git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1
+git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1 #后端模块化 go-macaron.com
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
