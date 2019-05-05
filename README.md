@@ -163,6 +163,7 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go get ./...  # go mod tidy # 根据已有代码import需要的依赖自动生成require语句
   > go get -u # go get -u=patch # 升级到最新的次要版本,升级到最新的修订版本
   > go list -m                  # 查看当前的依赖和版本
+  > go mod tidy                 # 安装依赖，最后构建 > go build
   > go mod download             # 下载到$GOPATH/pkg/mod/cache共享缓存中
   > go mod edit -fmt            # 格式化 go.mod 文件
   > go mod edit -require=path@version # 添加依赖或修改依赖版本
@@ -209,11 +210,16 @@ docker exec -it golang1115 bash
  * [QT跨平台应用框架](https://github.com/therecipe/qt)、[Webview-App](https://github.com/zserge/webview)、[Electron-App](https://github.com/asticode/go-astilectron)、[WebAssembly-App](https://github.com/murlokswarm/app)
 ~~~
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
+go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
+go get github.com/google/btree             # 数据结构 B-Trees
+go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行设定操作
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
-
+go get github.com/google/go-querystring/query # 转换对象，用于URL参数
+go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
+go get github.com/google/gxui/...          # 原生UI库
 go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
@@ -286,8 +292,8 @@ go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
-go get github.com/olivere/elastic          # Elasticsearch 6.0 客户端
 go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
+go get github.com/olivere/elastic          # Elasticsearch 6.0 客户端
 go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvetta/neoism
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
@@ -326,15 +332,32 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/astaxie/beego            # 后端模块化 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
-                                           # beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox.
+                                          # beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox.
 go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo serve
 go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serve
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1 #后端模块化 go-macaron.com
+# 小米公司的互联网企业级监控系统 | book.open-falcon.org
+# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
+# ------------------------------------------------------------------------------------
+# 测试-跟踪-部署-维护
+go get github.com/google/gousb             # 用于访问USB设备的低级别接口
+go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
+go get github.com/google/pprof             # 用于可视化和分析性能分析数据的工具
+go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
+go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
+go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
+go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
+go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
+go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
+go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
+go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
+go get github.com/grpc-ecosystem/grpc-gateway/... # 读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
+go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量。
 go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
@@ -344,8 +367,6 @@ go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wr
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
-# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
-# 小米公司的互联网企业级监控系统 | book.open-falcon.org
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
@@ -372,7 +393,7 @@ go get github.com/gobwas/ws                # WebSocket | github.com/socketio/soc
 go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
-go get github.com/yudai/gotty              # 终端扩展服务
+go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 
 # 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
@@ -406,8 +427,8 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 
 #### 云平台|公众平台|支付
 ~~~
-# ------------------------------------------------------------------------------------
 # 云计算
+# ------------------------------------------------------------------------------------
 # 亚马逊 AWS | www.amazonaws.cn/tools
 
 # 阿里云 | api.aliyun.com
