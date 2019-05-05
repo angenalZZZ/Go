@@ -338,35 +338,6 @@ go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serv
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1 #后端模块化 go-macaron.com
-# 小米公司的互联网企业级监控系统 | book.open-falcon.org
-# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
-# ------------------------------------------------------------------------------------
-# 测试-跟踪-部署-维护
-go get github.com/google/gousb             # 用于访问USB设备的低级别接口
-go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
-go get github.com/google/pprof             # 用于可视化和分析性能分析数据的工具
-go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
-go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
-go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
-go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
-go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
-go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
-go get github.com/codegangsta/gin          # 站点热启动 > gin -h
-go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
-go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
-go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-go get github.com/grpc-ecosystem/grpc-gateway/... # 读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
-go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
-go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量。
-go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
-go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
-go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
-go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
-git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
-go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
-go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
@@ -422,6 +393,36 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
 # https://github.com/go-flutter-desktop/go-flutter
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
+
+# 小米公司的互联网企业级监控系统 | book.open-falcon.org
+# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
+# ------------------------------------------------------------------------------------
+# 测试-跟踪-部署-维护
+go get github.com/google/gousb             # 用于访问USB设备的低级别接口
+go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
+go get github.com/google/pprof             # 用于可视化和分析性能分析数据的工具
+go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
+go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
+go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
+go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
+go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
+go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
+go get github.com/codegangsta/gin          # 站点热启动 > gin -h
+go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
+go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
+go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
+go get github.com/grpc-ecosystem/grpc-gateway/... # 读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
+go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
+go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量。
+go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
+go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
+go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
+# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
+go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
+go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
+go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 
 ~~~
 
