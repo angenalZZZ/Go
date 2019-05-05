@@ -210,7 +210,6 @@ go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
-go get github.com/golang/protobuf/protoc-gen-go # 使用 gRPC plugin | 先下载 github.com/google/protobuf/releases | 文档 grpc.io/docs/quickstart/go
 go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
@@ -370,17 +369,19 @@ go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | 
 go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展服务
 
-go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
-go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
-go get -u -v github.com/smallnest/rpcx/... # 分布式RPC服务      *3k
+# 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
+go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
+go get github.com/golang/protobuf/protoc-gen-go # 谷歌开源gRPC | 下载 github.com/google/protobuf/releases | 文档 grpc.io/docs/quickstart/go
 go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
-go get -d https://github.com/restic/restic # 备份工具 | restic.readthedocs.io
+go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readthedocs.io
 cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
+go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
+go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
