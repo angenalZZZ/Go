@@ -10,6 +10,11 @@ import (
 
 // 应用程序真正入口，常用配置如下
 func init() {
+	// Validate go binary for go run ...
+	//if _, err := exec.LookPath("go"); err != nil {
+	//	panic(err)
+	//}
+
 	// log使用UTC时间
 	//log.SetFlags(log.Ldate | log.Ltime | log.LUTC)
 	//log.SetFlags(log.Ltime)
