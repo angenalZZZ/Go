@@ -6,6 +6,9 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
 
+ > `开发者`
+    [Gopher-China技术交流大会](https://gopherchina.org)、[搜索50万Go语言项目](https://gowalker.org)、[API+SDK'排名'服务平台](https://sdk.cn)
+
  > `下载` [Go_programming_lang.part1](https://rapidgator.net/file/e8ca89d3d3fbfceefb198469dd63ea24/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part1.rar.html)、[Go_programming_lang.part2](https://rapidgator.net/file/841b5337f413a161c874f0e1b57755ff/Golang_build_RESTful_APIs_with_Golang_(Go_programming_lang)-DEC18.part2.rar.html)
 
 ~~~shell
@@ -53,9 +56,6 @@ map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
 ~~~
-
- > 开发者
-    [Gopher-China技术交流大会](https://gopherchina.org)、[搜索50万Go语言项目](https://gowalker.org)、[API+SDK'排名'服务平台](https://sdk.cn)
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
