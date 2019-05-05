@@ -212,11 +212,13 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
-go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
+go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
+
 go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
+go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
 
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
