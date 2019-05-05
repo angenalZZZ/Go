@@ -229,7 +229,7 @@ go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|分布式存储|自建网盘 | www.min.io docs.min.io/cn
+go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
