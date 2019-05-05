@@ -54,6 +54,9 @@ map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
 ~~~
 
+ > 开发者
+    [Gopher-China技术交流大会](https://gopherchina.org)、[搜索50万Go语言项目](https://gowalker.org)、[API+SDK'排名'服务平台](https://sdk.cn)
+
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
     环境配置> go env
@@ -401,8 +404,6 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 
 #### 云平台|公众平台|支付
 ~~~
-# API+SDK'排名'开发者服务平台 | sdk.cn
-# 搜索 50万个 Go 语言项目 | gowalker.org
 # ------------------------------------------------------------------------------------
 # 云计算
 # 亚马逊 AWS | www.amazonaws.cn/tools
