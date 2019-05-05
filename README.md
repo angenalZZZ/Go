@@ -372,6 +372,7 @@ go get github.com/yudai/gotty              # 终端扩展服务
 go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/smallnest/rpcx/... # 分布式RPC服务      *3k
+go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
