@@ -209,6 +209,7 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
 go get github.com/golang/protobuf/protoc-gen-go # 使用 gRPC plugin | 先下载 github.com/google/protobuf/releases | 文档 grpc.io/docs/quickstart/go
 go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
