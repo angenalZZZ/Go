@@ -23,6 +23,50 @@ type PutObject struct {
 	FilePath, FileType     string
 }
 
+// 获取认证Token
+func WebLogin(w http.ResponseWriter, r *http.Request) {
+	var req *http.Request
+	url := "http://"
+	if ssl {
+		url = "https://"
+	}
+	url += endpoint + "/minio/webrpc"
+	//body := struct{ io.Reader }{strings.NewReader("")}
+
+	req, e := http.NewRequest("POST", url, nil)
+	if e != nil {
+		jsonp.Error(e).Error(w, r)
+		return
+	}
+
+	var resp *http.Response
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("x-amz-date", "20190505T082203Z")
+	resp, e = http.DefaultClient.Do(req)
+	if e != nil {
+		jsonp.Error(e).Error(w, r)
+		return
+	}
+
+	defer resp.Body.Close()
+
+	var buf []byte
+	buf, e = ioutil.ReadAll(resp.Body)
+	if e != nil {
+		jsonp.Error(e).Error(w, r)
+		return
+	}
+
+	data := struct{ result struct{ token string } }{}
+	e = jsonp.Unmarshal(buf, &data)
+	if e != nil {
+		jsonp.Error(e).Error(w, r)
+		return
+	}
+	token := data.result.token
+	jsonp.Success(jsonp.Data{"token": token}).OK(w, r)
+}
+
 // File Upload Http Handle
 func Upload(w http.ResponseWriter, r *http.Request) {
 	if cors.Cors(w, r, []string{http.MethodPost}) {

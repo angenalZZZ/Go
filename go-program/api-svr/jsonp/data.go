@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 // 数据输出
@@ -57,4 +59,13 @@ func (d Data) Error(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusAccepted)
 	//output data
 	json.NewEncoder(w).Encode(d)
+}
+
+// 数据转换
+func Marshal(v interface{}) ([]byte, error) {
+	return jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(v)
+}
+
+func Unmarshal(data []byte, v interface{}) error {
+	return jsoniter.ConfigCompatibleWithStandardLibrary.Unmarshal(data, v)
 }
