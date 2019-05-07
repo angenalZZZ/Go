@@ -182,6 +182,8 @@ go get github.com/golang/example/hello
 go get github.com/shen100/golang123        # 适合初学者
 go get github.com/insionng/zenpress        # 适合学习 cms system
 go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
+go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
+go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
@@ -260,7 +262,7 @@ go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支�
 go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k
 go get github.com/dgraph-io/dgraph/dgraph  # 高性能,分布式位图索引数据库 *10k > docker pull dgraph/dgraph
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
-go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库  *6k
+go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k > docker run -p 9851:9851 tile38/tile38
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
 go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k | github.com/influxdata/influxdb
 go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
