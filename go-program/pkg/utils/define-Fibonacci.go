@@ -1,15 +1,16 @@
-package go_type
+package utils
 
 import "time"
 
-// 斐波那契数列
-func (f *Fibonacci) Sequence(count int, timeout time.Duration, cb func([]int)) {
-	c := make(chan int)       // 通道-循环结果
-	q := make(chan bool)      // 通道-结束循环
-	go f.set(c, q, timeout)   // 同步发送
-	go f.get(count, c, q, cb) // 同步接收
+// 斐波那契数列: 并行运算
+func (f *Fibonacci) FibonacciToDo(count int, timeout time.Duration, do func([]int)) {
+	c := make(chan int)                    // 通道-循环结果
+	q := make(chan bool)                   // 通道-结束循环
+	go f.setFibonacciChan(c, q, timeout)   // 同步发送
+	go f.getFibonacciChan(count, c, q, do) // 同步接收
 }
-func (f *Fibonacci) set(c chan<- int, q <-chan bool, d time.Duration) {
+
+func (f *Fibonacci) setFibonacciChan(c chan<- int, q <-chan bool, d time.Duration) {
 	x, y := 1, 1
 	for {
 		select {
@@ -22,7 +23,8 @@ func (f *Fibonacci) set(c chan<- int, q <-chan bool, d time.Duration) {
 		}
 	}
 }
-func (f *Fibonacci) get(n int, c <-chan int, q chan<- bool, cb func([]int)) {
+
+func (f *Fibonacci) getFibonacciChan(n int, c <-chan int, q chan<- bool, cb func([]int)) {
 	s := make([]int, n, n) // 可省略第3个参数:容量(默认=第2个参数:长度)
 	for i := 0; i < n; i++ {
 		if x, ok := <-c; !ok { // 超时或结束
