@@ -375,9 +375,12 @@ go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.
 
 # 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-go get -u google.golang.org/grpc           # 1.1 谷歌开源gRPC | grpc.io | grpc.io/docs/quickstart/go
-   github.com/google/protobuf/releases     # 1.2 Install Protocol Buffers v3
-go get -u github.com/golang/protobuf/protoc-gen-go # 1.3 Install the protoc plugin | google.golang.org/grpc/examples
+  > go get google.golang.org/grpc          # 1.1 谷歌开源gRPC | grpc.io | grpc.io/docs/quickstart/go
+  > github.com/google/protobuf/releases    # 1.2 Install Protocol Buffers v3 | protoc.exe
+  > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
+  > go get google.golang.org/grpc/examples # Examples
+  > go get github.com/golang/protobuf/proto #1.3 Install the protoc plugin
+  > go get github.com/golang/protobuf/protoc-gen-go
 go get -u github.com/istio/istio           # 谷歌开源|连接|安全|控制|微服务|集群管理|Kubernetes *17k | istio.io
 go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
