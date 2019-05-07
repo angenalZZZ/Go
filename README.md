@@ -67,12 +67,6 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
     GOROOT=D:\Program\Go\
     GOPATH=C:\Users\Administrator\go
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-    # go tool vet -shadow main.go # 检查变量覆盖问题
-    > go get -d        # Download the packages source, not to install.
-    > go get -u        # Update the named packages and their dependencies.
-    > go get -v        # Verbose progress and debug output.
-    > go get -insecure # Resolving domains using insecure HTTP(No https).
-    > go get github.com/angenalZZZ/Go/go-program # 获取代码
 
 ~~~bash
   # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
@@ -81,7 +75,14 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
   go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
   go list -m -u all # 列举依赖模块和依赖更新
   # 管理项目模块 go mod <command> [arguments] (模块的增删改+下载) | 模块功能概述 go help modules
-  go help mod       # 查看说明
+  go help mod       # 查看帮助
+  godoc -http=:6060 # 查看文档\本地 | 在线文档 golang.org/doc
+  go get -d         # 下载模块源码,不安装
+  go get -u         # 更新模块源码
+  go get -v         # 打印日志
+  go get -insecure  # 解决安全下载问题,允许用http(非https)
+  go test           # 测试功能
+  go tool vet -shadow main.go # 检查变量覆盖问题
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -89,8 +90,8 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
     wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
     GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改 (选项 tar -C)
     tar -xvzf go1.12.linux-amd64.tar.gz -C $GO_INSTALL_DIR
-    GOROOT=/usr/local/go
     GOPATH=/home/go
+    GOROOT=/usr/local/go
     PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     $ go tool dist list
@@ -99,7 +100,7 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 
 > 安装依赖包
 ~~~bash
-# 翻墙代理设置 (解决网络问题)
+# 代理设置 (解决网络问题)
 set http_proxy=http://127.0.0.1:5005     (临时有效)
 set HTTPS_PROXY=http://127.0.0.1:5005    (临时有效)
 # 安装-全局依赖-镜像包 (解决网络问题)
@@ -184,6 +185,7 @@ go get github.com/muesli/cache2go          # 缓存库，代码量少，适合�
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
+go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 ~~~
 
 > Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
@@ -219,8 +221,9 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
 go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
-go get github.com/google/gxui/...          # 原生UI库
-go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json
+go get github.com/google/gxui/...          # 原生UI库 *4k
+go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json       *5k
+go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验 *1k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
@@ -316,8 +319,8 @@ go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
-go get github.com/travisjeffery/jocko      # 消息推送服务Kafka: producing/consuming[生产/消费] cluster[代理集群]
-go get github.com/gocelery/gocelery        # 分布式任务队列Celery: client/server www.celeryproject.org
+go get github.com/travisjeffery/jocko      # 消息推送服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
+go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
 
 go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/streadway/amqp           # rabbitmq client tutorials | www.rabbitmq.com/#getstarted
@@ -340,7 +343,8 @@ go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serv
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
 go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
 git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1 #后端模块化 go-macaron.com
-
+go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
+go get github.com/braintree/manners        # A polite webserver *1k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
@@ -357,8 +361,8 @@ go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen |
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
-go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件  *3.8k
-go get -u -v github.com/davyxu/tabtoy      # 高性能便捷电子表格导出器
+go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
+go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器  *1k
 go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
 
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
@@ -370,7 +374,7 @@ go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.
 
 # 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-go get github.com/golang/protobuf/protoc-gen-go # 谷歌开源gRPC | 下载 github.com/google/protobuf/releases | 文档 grpc.io/docs/quickstart/go
+go get github.com/golang/protobuf/protoc-gen-go # 谷歌开源gRPC | 下载 github.com/google/protobuf/releases | grpc.io/docs/quickstart/go
 go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
@@ -381,23 +385,6 @@ go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readth
 cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
-
-go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
-go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
-go get github.com/lxn/win                  # Windows API wrapper package
-go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
-go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
-go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
-# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
-# [QT跨平台应用框架] Qt binding package
-go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
-# [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
-# https://github.com/go-flutter-desktop/go-flutter
-go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
-
-# 小米公司的互联网企业级监控系统 | book.open-falcon.org
-# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
 # ------------------------------------------------------------------------------------
 # 测试-跟踪-部署-维护
 # ------------------------------------------------------------------------------------
@@ -417,6 +404,7 @@ go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量。
+go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
 go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
@@ -426,6 +414,23 @@ go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wr
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
+
+go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
+go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
+go get github.com/lxn/win                  # Windows API wrapper package
+go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
+go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
+# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
+go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
+# [QT跨平台应用框架] Qt binding package
+go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
+# [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
+# https://github.com/go-flutter-desktop/go-flutter
+go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
+
+# 小米公司的互联网企业级监控系统 | book.open-falcon.org
+# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
 
 ~~~
 
