@@ -371,12 +371,14 @@ go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/we
 go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
 go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
-go get github.com/istio/istio              # 集群的管理   *16k  for k8s
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 
 # 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-go get github.com/golang/protobuf/protoc-gen-go # 谷歌开源gRPC | 下载 github.com/google/protobuf/releases | grpc.io/docs/quickstart/go
+go get -u google.golang.org/grpc           # 1.1 谷歌开源gRPC | grpc.io | grpc.io/docs/quickstart/go
+   github.com/google/protobuf/releases     # 1.2 Install Protocol Buffers v3
+go get -u github.com/golang/protobuf/protoc-gen-go # 1.3 Install the protoc plugin | google.golang.org/grpc/examples
+go get -u github.com/istio/istio           # 谷歌开源|连接|安全|控制|微服务|集群管理|Kubernetes *17k | istio.io
 go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
 go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
@@ -441,6 +443,13 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 # 云计算
 # ------------------------------------------------------------------------------------
 # 亚马逊 AWS | www.amazonaws.cn/tools
+
+# 谷歌云 Google Cloud Platform | cloud.google.com/go | github.com/GoogleCloudPlatform
+go get -u cloud.google.com/go/storage     # 在 Cloud Storage 中存储和归档数据
+go get -u cloud.google.com/go/bigquery    # 使用 Google BigQuery 执行数据分析
+go get -u cloud.google.com/go/pubsub      # 使用 Pub/Sub 设置完全托管的事件驱动型消息传递系统
+go get -u cloud.google.com/go/translate   # 使用 Translation API 翻译不同语言的文本
+go get -u cloud.google.com/go/vision/apiv1# 使用 Vision API 分析图片
 
 # 阿里云 | api.aliyun.com
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
