@@ -376,19 +376,17 @@ go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 
-# 分布式 RPC 框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
+# 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-  > github.com/google/protobuf/releases    # 1.1 安装Protobuf | protoc.exe
-  > go get google.golang.org/grpc          # 1.2 安装谷歌开源gRPC | grpc.io | grpc.io/docs/quickstart/go
-  > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc       # 安装grpc
-  > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto # 安装genproto
-  > go get github.com/golang/text ; go get github.com/golang/net
-  > go get github.com/golang/protobuf/proto #1.3 Install the protoc plugin
-  > go get github.com/golang/protobuf/protoc-gen-go
-  > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld # 验证 Examples
-  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld\helloworld.proto # 生成代码helloworld.pb.go
-  > go run ./greeter_server/main.go
-  > go run ./greeter_client/main.go
+# 谷歌开源gRPC *8k | grpc.io/docs/quickstart/go
+ # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go
+ > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
+ > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
+ > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
+ > go get github.com/golang/{text,net} ; go get github.com/golang/protobuf/{proto,protoc-gen-go}
+ # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
+ > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto # 2.1 生成代码*.pb.go
+ > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       # 2.2 启动服务端/客户端
 go get -u github.com/istio/istio           # 谷歌开源|连接|安全|控制|微服务|集群管理|Kubernetes *17k | istio.io
 go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
 go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
