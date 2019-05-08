@@ -262,13 +262,13 @@ go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-lev
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,LSM+tree,ACID,Stream,KV+version,SSDs *5.6k
+go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库 *9k
 go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k
 go get github.com/dgraph-io/dgraph/dgraph  # 高性能,分布式位图索引数据库 *10k > docker pull dgraph/dgraph
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k > docker run -p 9851:9851 tile38/tile38
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
-go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展数据库 *19k | github.com/influxdata/influxdb
-go get github.com/dgraph-io/dgraph/dgraph  # 具有可扩展、分布式、低延迟和高吞吐量功能的图形数据库  *9k
+go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库 *19k | github.com/influxdata/influxdb
 go get github.com/pilosa/pilosa            # Pilosa分布式位图索引+实时计算+大数据+列式存储 *16k | kuanshijiao.com/2017/06/12/pilosa1
 go get github.com/pilosa/go-pilosa         # Pilosa分布式位图索引-客户端 | www.pilosa.com/docs/latest/installation/#docker
 go get github.com/pilosa/pdk               # Pilosa开发套件+用例示例
