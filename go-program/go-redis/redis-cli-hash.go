@@ -7,7 +7,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	go_type "github.com/angenalZZZ/Go/go-program/go-type"
+	"github.com/angenalZZZ/Go/go-program/pkg/defines"
 
 	"github.com/gomodule/redigo/redis"
 )
@@ -16,7 +16,7 @@ import (
 func DoCli_hash(c redis.Conn) {
 
 	// 写入数据 Set
-	key, val := fmt.Sprintf("hash%d%d", time.Now().Unix(), rand.Intn(1000)), go_type.Q{
+	key, val := fmt.Sprintf("hash%d%d", time.Now().Unix(), rand.Intn(1000)), defines.Q{
 		"a": 1,
 		"b": "2",
 	}.Slice()

@@ -5,10 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"mime"
 	"net/http"
 	"time"
+
+	"github.com/angenalZZZ/Go/go-program/pkg/defines"
 
 	"github.com/minio/minio-go"
 
@@ -25,7 +28,6 @@ type PutObject struct {
 
 // 获取认证Token
 func WebLogin(w http.ResponseWriter, r *http.Request) {
-	var req *http.Request
 	url := "http://"
 	if ssl {
 		url = "https://"
@@ -39,16 +41,20 @@ func WebLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var resp *http.Response
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("x-amz-date", "20190505T082203Z")
-	resp, e = http.DefaultClient.Do(req)
+	req.Header.Set("x-amz-date", defines.AmzDate())
+	resp, e := http.DefaultClient.Do(req)
 	if e != nil {
 		jsonp.Error(e).Error(w, r)
 		return
 	}
 
 	defer resp.Body.Close()
+
+	if r.URL.Query().Get("rpc") == "" {
+		_, e = io.Copy(w, resp.Body)
+		return
+	}
 
 	var buf []byte
 	buf, e = ioutil.ReadAll(resp.Body)

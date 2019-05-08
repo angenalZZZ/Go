@@ -1,4 +1,4 @@
-package utils
+package defines
 
 import "sort"
 
@@ -14,10 +14,10 @@ type Q map[string]interface{}
 
 // <类型声明> ---------------------------------------- 温度 ----------------------------------------
 
-// 摄氏 温度
+// 摄氏 温度 Temperature
 type Celsius float64
 
-// 华氏 温度
+// 华氏 温度 Temperature
 type Fahrenheit float64
 
 // <类型声明> ---------------------------------------- 数据 ----------------------------------------

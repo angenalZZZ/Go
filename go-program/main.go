@@ -21,14 +21,12 @@ import (
 	go_shutdown_hook "github.com/angenalZZZ/Go/go-program/go-shutdown-hook"
 	go_ssdb "github.com/angenalZZZ/Go/go-program/go-ssdb"
 	go_tcp "github.com/angenalZZZ/Go/go-program/go-tcp"
-	go_type "github.com/angenalZZZ/Go/go-program/go-type"
 )
 
 /**
 命令行参数
 */
 var (
-	flagTypeCheck  = flag.Bool("type-check", false, "test Type Check")
 	flagCreateFile = flag.Bool("create-file", false, "test Create File")
 
 	flagTcp  = flag.Bool("tcp", true, "open flagTcp Serve")
@@ -93,11 +91,6 @@ func main() {
 程序开始执行
 */
 func start() {
-
-	// 类型检查
-	if *flagTypeCheck == true {
-		go go_type.DoTypeCheck()
-	}
 
 	// 文件管理：创建文件
 	if *flagCreateFile == true {

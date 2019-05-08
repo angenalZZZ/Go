@@ -206,7 +206,7 @@ func JwtVerifyValidateHandler(w http.ResponseWriter, r *http.Request) {
 			Claims jwt.Claims             // The second segment of the token
 			Valid  bool
 		}{token.Header, token.Claims, token.Valid}
-		json.NewEncoder(w).Encode(body)
+		_ = json.NewEncoder(w).Encode(body)
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 	}
