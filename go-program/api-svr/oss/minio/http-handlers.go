@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/angenalZZZ/Go/go-program/pkg/defines"
+	"github.com/angenalZZZ/Go/go-program/pkg/types"
 
 	"github.com/minio/minio-go"
 
@@ -42,7 +42,7 @@ func WebLogin(w http.ResponseWriter, r *http.Request) {
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("x-amz-date", defines.AmzDate())
+	req.Header.Set("x-amz-date", types.AmzDate())
 	resp, e := http.DefaultClient.Do(req)
 	if e != nil {
 		jsonp.Error(e).Error(w, r)

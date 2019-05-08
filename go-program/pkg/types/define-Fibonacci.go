@@ -1,4 +1,4 @@
-package defines
+package types
 
 import "time"
 

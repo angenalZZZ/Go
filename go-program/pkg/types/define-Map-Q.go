@@ -1,4 +1,4 @@
-package defines
+package types
 
 // To base type: map
 func (q Q) V() map[string]interface{} {
