@@ -222,6 +222,7 @@ go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xi
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/google/btree             # 数据结构 B-Trees
+go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures 
 go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行设定操作
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
