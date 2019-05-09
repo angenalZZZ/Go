@@ -103,11 +103,13 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 # 代理设置 (解决网络问题)
 set http_proxy=http://127.0.0.1:5005     (临时有效)
 set HTTPS_PROXY=http://127.0.0.1:5005    (临时有效)
+go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [包名]
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
 git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
 git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug   # 调试、跟踪
+git clone https://github.com/golang/exp.git %GOPATH%/src/golang.org/x/exp       # 实验和弃用的包
 git clone https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # 图片库
 git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint     # 语法检查
 git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # 移动端
