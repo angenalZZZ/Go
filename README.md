@@ -264,6 +264,7 @@ go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-clien
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
+go get github.com/hashicorp/go-memdb       # 内存数据库, radix trees *1k
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,LSM+tree,ACID,Stream,KV+version,SSDs *5.6k
 go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展、分布式、低延迟和高吞吐量功能的分布式位图索引数据库 *10k > docker pull dgraph/dgraph
