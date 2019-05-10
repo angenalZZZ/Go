@@ -5,6 +5,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台...
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
+ * 语言优势：开发效率、抽象能力、内存管理、稳定性和功能之间的矛盾、应对需求变更、人才和资源等。
 
  > `开发者`
     [Gopher-China技术交流大会](https://gopherchina.org)、[搜索50万Go语言项目](https://gowalker.org)、[API+SDK'排名'服务平台](https://sdk.cn)
