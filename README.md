@@ -50,18 +50,20 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 # 通过工具排查：
 go tool pprof -alloc_objects   # 生成对象数量
 go tool pprof -inuse_objects   # 引用对象数量
-go tool pprof [binary] [profile] # GC扫描,函数占据大量CPU(如runtime.scanobject等)分析问题
-go test . -bench . -benchtime 3s -cpuprofile prof.cpu # 功能测试与性能分析
-go tool pprof stats.test prof.cpu # 对象\函数\runtime\package 详细性能分析
-go tool pprof -http=":8081" [binary] [profile]
+go tool pprof -http=":8081" [binary] [profile] # GC扫描,函数占据大量CPU(如runtime.scanobject等)分析问题
+go test . -bench . -benchtime 3s -cpuprofile prof.cpu # 功能测试与性能分析 testing.B (benchmark)
+go tool pprof [stats.test] prof.cpu # 对象\代码行\函数调用\runtime\package 详细性能分析 (stats目录/.test*测试)
+go get github.com/prashantv/go_profiling_talk # 案例剖析: 如何使用pprof和go-torch来识别性能瓶颈，并进行优化? youtu.be/N3PWzBeLX2M
+
 # 内存管理`GC`的优化：
  # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+
 # 扩容(横向|纵向)：
  # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
-  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
+ # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
  
 ~~~
 
