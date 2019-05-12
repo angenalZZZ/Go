@@ -50,7 +50,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 # 通过工具排查：
 go tool pprof -alloc_objects   # 生成对象数量
 go tool pprof -inuse_objects   # 引用对象数量
-go tool pprof bin/dupsdc       # GC扫描函数占据大量CPU(如runtime.scanobject等)
+go tool pprof [binary] [profile] # GC扫描,函数占据大量CPU(如runtime.scanobject等)分析问题
+go test . -bench . -benchtime 3s -cpuprofile prof.cpu # 功能测试与性能分析
+go tool pprof stats.test prof.cpu # 对象\函数\runtime\package 详细性能分析
+go tool pprof -http=":8081" [binary] [profile]
 # 内存管理`GC`的优化：
  # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
@@ -431,6 +434,7 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
+go get github.com/uber/go-torch            # Web性能测试工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
