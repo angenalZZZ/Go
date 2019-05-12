@@ -243,6 +243,9 @@ go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
 
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
+# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
+# client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
+go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf | 基于Gossip的Membership,P2P对等网络\去中心 | www.serf.io
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
 go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
@@ -250,8 +253,6 @@ go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 |
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统
-# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
-# client: http://play.etcd.io              # server | github.com/etcd-io/etcd/releases
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
