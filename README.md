@@ -56,6 +56,10 @@ go tool pprof bin/dupsdc       # GC扫描函数占据大量CPU(如runtime.scanob
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+# 扩容(横向|纵向)：
+ # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
+  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
+ 
 ~~~
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
