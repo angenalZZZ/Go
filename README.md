@@ -56,7 +56,7 @@ go tool pprof -seconds 5 http://localhost/debug/pprof/profile # import _ net/htt
 go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
 # ------------------------------------------------------------------------------------
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
-go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
+go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
 go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof和go-torch识别性能瓶颈，并进行优化? 视频youtu.be/N3PWzBeLX2M
 
 # ------------------------------------------------------------------------------------
@@ -444,7 +444,7 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
+go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
