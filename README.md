@@ -45,24 +45,34 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
  > 性能优化
 ~~~
+# ------------------------------------------------------------------------------------
 # 通过工具排查：
-go tool pprof -alloc_objects   # 生成对象数量
-go tool pprof -inuse_objects   # 引用对象数量
-go test . -bench . -benchtime 3s -cpuprofile prof.cpu # 功能测试与性能分析 testing.B (benchmark)
-go tool pprof -http=":8081" [binary] [profile] # GC扫描,函数占据大量CPU(如runtime.scanobject等) 问题分析
-go tool pprof [stats.test] prof.cpu # 对象\代码行\函数调用\runtime\package 详细性能分析 (stats目录/.test*性能测试)
-go get github.com/prashantv/go_profiling_talk # 案例剖析: 如何使用pprof和go-torch来识别性能瓶颈，并进行优化? 视频 youtu.be/N3PWzBeLX2M
+# ------------------------------------------------------------------------------------
+go get github.com/google/pprof # 用于可视化和分析性能和数据的工具pprof(CPU rofile)
+go tool pprof -alloc_objects -inuse_objects   # 生成对象数量、引用对象数量
+go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile prof.heap # 功能测试与性能分析 testing.B (benchmark)
+go tool pprof [stats.test] prof.cpu # 详细性能分析: 对象|代码行|函数调用|runtime|package|binary [stats目录/.test*测试]
+go tool pprof -seconds 5 http://localhost/debug/pprof/profile # import _ net/http/pprof to add /debug/pprof endpoint serve
+go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
+# ------------------------------------------------------------------------------------
+go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
+go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
+go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof和go-torch识别性能瓶颈，并进行优化? 视频youtu.be/N3PWzBeLX2M
 
+# ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
+# ------------------------------------------------------------------------------------
  # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
 
+# ------------------------------------------------------------------------------------
 # 扩容(横向|纵向)：
+# ------------------------------------------------------------------------------------
  # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
- 
+# ------------------------------------------------------------------------------------
 ~~~
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
@@ -415,7 +425,7 @@ go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 # ------------------------------------------------------------------------------------
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
-go get github.com/google/pprof             # 用于可视化和分析性能分析数据的工具
+go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
 go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
 go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
@@ -434,7 +444,7 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/uber/go-torch            # Web性能测试工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
+go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost:8080/debug/pprof/profile # torch.svg
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
