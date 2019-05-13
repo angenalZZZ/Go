@@ -50,7 +50,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 # ------------------------------------------------------------------------------------
 go get github.com/google/pprof # 用于可视化和分析性能和数据的工具pprof(CPU rofile)
 go tool pprof -alloc_objects -inuse_objects   # 生成对象数量、引用对象数量
-go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile prof.heap # 功能测试与性能分析 testing.B (benchmark)
+go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile # 功能测试与性能分析(如testing.B测试benchmark)
 go tool pprof [stats.test] prof.cpu # 详细性能分析: 对象|代码行|函数调用|runtime|package|binary [stats目录/.test*测试]
 go tool pprof -seconds 5 http://localhost/debug/pprof/profile # import _ net/http/pprof to add /debug/pprof endpoint serve
 go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
