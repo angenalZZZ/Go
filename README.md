@@ -364,7 +364,8 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
 go get github.com/astaxie/beego            # 后端模块化 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
-                                          # beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox.
+# beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox, 项目管理工具bee
+go get github.com/beego/bee                # beego生成项目 > bee api github.com/angenalZZZ/Go/go-beego-api
 go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo serve
 go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serve
 go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
