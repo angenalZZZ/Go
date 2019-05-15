@@ -1,7 +1,7 @@
 package models
 
 import (
-	"encoding/hex"
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/google/uuid"
 	"github.com/xormplus/xorm"
@@ -27,7 +27,7 @@ func init() {
 	sqlconn := beego.AppConfig.String("mssqlconn")
 
 	// 原版方式创建引擎
-	//db, err = xorm.NewEngine("mssql", sqlconn)
+	db, err = xorm.NewEngine("mssql", sqlconn)
 	// 也可以针对特定数据库快捷创建
 	//db, err = xorm.NewPostgreSQL(sqlconn)
 	//db, err = xorm.NewSqlite3(sqlconn)
@@ -35,25 +35,20 @@ func init() {
 	// 数据库连接异常
 	if err != nil {
 		panic(sqlconn + " -> " + err.Error())
+	} else {
+		fmt.Printf("%s -> OK\n", sqlconn)
 	}
 }
 
-func UUID32() string {
-	var dst [32]byte
-	id := uuid.New()
-	hex.Encode(dst[:], id[:4])
-	hex.Encode(dst[8:12], id[4:6])
-	hex.Encode(dst[12:16], id[6:8])
-	hex.Encode(dst[16:20], id[8:10])
-	hex.Encode(dst[20:], id[10:])
-	return string(dst[:])
+func TestUUID(t *testing.T) {
+	src1, src2 := uuid.New(), NewID()
+	t.Logf("TestUUID32: %s \t %s", src1, src2)
 }
 
 func TestAddUser(t *testing.T) {
-
 	user1, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := Authuser{
-			ID:          UUID32(),
+			ID:          NewID().String(),
 			Code:        "xxx",
 			Name:        "xxx",
 			Password:    "",
@@ -76,10 +71,11 @@ func TestAddUser(t *testing.T) {
 		if _, err := session.Where("ID = ?", user1.ID).Update(&user2); err != nil {
 			return nil, err
 		}
-		if _, err := session.Exec("delete from AuthUser where Name = ?", user2.Name); err != nil {
-			return nil, err
-		}
-		return user1, nil
+		user1.Name = user2.Name
+		//if _, err := session.Exec("delete from AuthUser where Name = ?", user2.Name); err != nil {
+		//	return nil, err
+		//}
+		return &user1, nil
 	})
 
 	if err != nil {
