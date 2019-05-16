@@ -1,8 +1,8 @@
 package models
 
 import (
+	"github.com/angenalZZZ/Go/go-beego-api/conf"
 	"github.com/angenalZZZ/Go/go-beego-api/models/auth"
-	"github.com/astaxie/beego"
 	"github.com/google/uuid"
 	"github.com/xormplus/xorm"
 	"testing"
@@ -15,34 +15,12 @@ import (
 //    > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./_templates/goxorm
 //    > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" ./_templates/goxorm ./models/auth ^Auth
 
-// 2. 数据库引擎增强版 xorm db engine
+// 2. 数据库引擎增强版 db orm engine
 var db *xorm.Engine
 
 // 3. 数据库连接客户端初始化
 func init() {
-	// 读取配置文件
-	var err error
-	if err = beego.LoadAppConfig("ini", "../conf/app.conf"); err != nil {
-		panic(err)
-	}
-
-	// 原版方式创建引擎
-	conn := beego.AppConfig.String("mssqlconn")
-	db, err = xorm.NewEngine("mssql", conn)
-	// 也可以针对特定数据库快捷创建
-	//db, err = xorm.NewPostgreSQL(conn)
-	//db, err = xorm.NewSqlite3(conn)
-
-	// 数据库连接异常
-	if err != nil {
-		db.Logger().Errorf("CONF DATABASE\t\t%s\n\t\t%v", conn, err)
-	} else if err = db.Ping(); err != nil {
-		db.Logger().Errorf("PING DATABASE\t\t%s\n\t\t%v", conn, err)
-	} else {
-		db.Logger().Infof("PING DATABASE PASS\t\t%s", conn)
-		db.ShowExecTime(true)
-		db.ShowSQL(true)
-	}
+	db = conf.InitDbForXorm("../conf/app.conf")
 }
 
 // 测试: 唯一标识生成器
