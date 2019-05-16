@@ -322,6 +322,12 @@ go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
+   > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates
+   > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
+   > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
+go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
+   > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models
+   > xorm reverse mssql sa:HGJ766GR767FKJU0@localhost?database=AppAuth %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
 go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
