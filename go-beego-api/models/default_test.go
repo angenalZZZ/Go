@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/angenalZZZ/Go/go-beego-api/models/auth"
 	"github.com/astaxie/beego"
 	"github.com/google/uuid"
 	"github.com/xormplus/xorm"
@@ -10,9 +11,9 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
-// 1. 生成数据库实体models - use DbFirst tool - https://github.com/xo/dburl
-//  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models
-//  > xo mssql://sa:Your_password123@localhost:1434/AppAuth?parseTime=true -o ./models
+// 1. 生成数据库实体models - DbFirst 工具 - https://github.com/go-xorm/cmd/xorm
+//    > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./_templates/goxorm
+//    > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" ./_templates/goxorm ./models/auth ^Auth
 
 // 2. 数据库引擎增强版 xorm db engine
 var db *xorm.Engine
@@ -38,7 +39,9 @@ func init() {
 	} else if err = db.Ping(); err != nil {
 		db.Logger().Errorf("PING DATABASE\t\t%s\n\t\t%v", conn, err)
 	} else {
-		db.Logger().Infof("PING DATABASE SUCCESS\t\t%s", conn)
+		db.Logger().Infof("PING DATABASE PASS\t\t%s", conn)
+		db.ShowExecTime(true)
+		db.ShowSQL(true)
 	}
 }
 
@@ -50,9 +53,9 @@ func TestUUID(t *testing.T) {
 
 // 测试: 保存用户信息到数据库
 func TestAddUser(t *testing.T) {
-	user1, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
-		user1 := Authuser{
-			ID:          NewID().String(),
+	_, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
+		user1 := auth.Authuser{
+			Id:          NewID().String(),
 			Code:        "xxx",
 			Name:        "xxx",
 			Password:    "",
@@ -71,20 +74,20 @@ func TestAddUser(t *testing.T) {
 		if _, err := session.Insert(&user1); err != nil {
 			return nil, err
 		}
-		user2 := Authuser{Name: "yyy"}
-		if _, err := session.Where("ID = ?", user1.ID).Update(&user2); err != nil {
+		user2 := auth.Authuser{Name: "yyy"}
+		if _, err := session.Where("Id=?", user1.Id).Update(&user2); err != nil {
 			return nil, err
 		}
-		user1.Name = user2.Name
-		//if _, err := session.Exec("delete from AuthUser where Name = ?", user2.Name); err != nil {
-		//	return nil, err
-		//}
-		return &user1, nil
+		if _, err := session.ID(user1.Id).Get(&user2); err != nil {
+			return nil, err
+		}
+		if _, err := session.Exec("delete from AuthUser where Name=?", user2.Name); err != nil {
+			return nil, err
+		}
+		return nil, nil
 	})
 
 	if err != nil {
 		t.Fatal(err)
-	} else {
-		t.Logf("TestAddUser: %v", user1)
 	}
 }
