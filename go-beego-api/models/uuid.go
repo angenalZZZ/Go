@@ -16,3 +16,9 @@ func NewID() ID {
 	hex.Encode(dst[:], src[:16])
 	return dst
 }
+
+func NewIDFrom(src uuid.UUID) ID {
+	dst := ID{}
+	hex.Encode(dst[:], src[:16])
+	return dst
+}

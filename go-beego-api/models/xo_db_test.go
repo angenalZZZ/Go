@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/google/uuid"
 	"github.com/xormplus/xorm"
@@ -18,33 +17,38 @@ import (
 // 2. 数据库引擎增强版 xorm db engine
 var db *xorm.Engine
 
+// 3. 数据库连接客户端初始化
 func init() {
+	// 读取配置文件
 	var err error
 	if err = beego.LoadAppConfig("ini", "../conf/app.conf"); err != nil {
 		panic(err)
 	}
 
-	sqlconn := beego.AppConfig.String("mssqlconn")
-
 	// 原版方式创建引擎
-	db, err = xorm.NewEngine("mssql", sqlconn)
+	conn := beego.AppConfig.String("mssqlconn")
+	db, err = xorm.NewEngine("mssql", conn)
 	// 也可以针对特定数据库快捷创建
-	//db, err = xorm.NewPostgreSQL(sqlconn)
-	//db, err = xorm.NewSqlite3(sqlconn)
+	//db, err = xorm.NewPostgreSQL(conn)
+	//db, err = xorm.NewSqlite3(conn)
 
 	// 数据库连接异常
 	if err != nil {
-		panic(sqlconn + " -> " + err.Error())
+		db.Logger().Errorf("CONF DATABASE\t\t%s\n\t\t%v", conn, err)
+	} else if err = db.Ping(); err != nil {
+		db.Logger().Errorf("PING DATABASE\t\t%s\n\t\t%v", conn, err)
 	} else {
-		fmt.Printf("%s -> OK\n", sqlconn)
+		db.Logger().Infof("PING DATABASE SUCCESS\t\t%s", conn)
 	}
 }
 
+// 测试: 唯一标识生成器
 func TestUUID(t *testing.T) {
-	src1, src2 := uuid.New(), NewID()
-	t.Logf("TestUUID32: %s \t %s", src1, src2)
+	src1 := uuid.New()
+	t.Logf("TestUUID: %s  %s", src1, NewIDFrom(src1))
 }
 
+// 测试: 保存用户信息到数据库
 func TestAddUser(t *testing.T) {
 	user1, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := Authuser{
