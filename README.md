@@ -326,8 +326,9 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
    > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
    > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
-   > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models
-   > xorm reverse mssql sa:HGJ766GR767FKJU0@localhost?database=AppAuth %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models
+   > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
+   > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
+   > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
 go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
