@@ -431,6 +431,7 @@ go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 # ------------------------------------------------------------------------------------
 # 测试-跟踪-部署-维护
 # ------------------------------------------------------------------------------------
+go get github.com/smartystreets/goconvey   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
