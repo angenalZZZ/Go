@@ -31,7 +31,7 @@ func TestUUID(t *testing.T) {
 
 // 测试: 保存用户信息到数据库
 func TestAddUser(t *testing.T) {
-	_, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
+	users, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := auth.Authuser{
 			Id:          NewID().String(),
 			Code:        "xxx",
@@ -49,23 +49,30 @@ func TestAddUser(t *testing.T) {
 			Updatedby:   "admin",
 			Updatedtime: time.Now(),
 		}
-		if _, err := session.Insert(&user1); err != nil {
-			return nil, err
+		if _, e = session.Insert(&user1); e != nil {
+			return
 		}
 		user2 := auth.Authuser{Name: "yyy"}
-		if _, err := session.Where("Id=?", user1.Id).Update(&user2); err != nil {
-			return nil, err
+		if _, e = session.Where("Id=?", user1.Id).Update(&user2); e != nil {
+			return
 		}
-		if _, err := session.ID(user1.Id).Get(&user2); err != nil {
-			return nil, err
+		if _, e = session.ID(user1.Id).Get(&user2); e != nil {
+			return
 		}
-		if _, err := session.Exec("delete from AuthUser where Name=?", user2.Name); err != nil {
-			return nil, err
+		if _, e = session.Exec("delete from AuthUser where Id=?", user2.Id); e != nil {
+			return
 		}
-		return nil, nil
+		users := make([]auth.Authuser, 0, 1)
+		if e = session.Cols("Id", "Code", "Name").Or("Name=?", user1.Name).Or("Name=?", user2.Name).Limit(10, 0).Find(&users); e != nil {
+			return
+		}
+		i = users
+		return
 	})
 
 	if err != nil {
 		t.Fatal(err)
+	} else if users != nil && len(users.([]auth.Authuser)) > 0 {
+		t.Log(users)
 	}
 }
