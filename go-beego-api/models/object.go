@@ -39,14 +39,14 @@ func GetAll() map[string]*Object {
 	return Objects
 }
 
-func Update(ObjectId string, Score int64) (err error) {
-	if v, ok := Objects[ObjectId]; ok {
-		v.Score = Score
-		return nil
-	}
-	return errors.New("ObjectId Not Exist")
-}
+//func Update(ObjectId string, Score int64) (err error) {
+//	if v, ok := Objects[ObjectId]; ok {
+//		v.Score = Score
+//		return nil
+//	}
+//	return errors.New("ObjectId Not Exist")
+//}
 
-func Delete(ObjectId string) {
-	delete(Objects, ObjectId)
-}
+//func Delete(ObjectId string) {
+//	delete(Objects, ObjectId)
+//}

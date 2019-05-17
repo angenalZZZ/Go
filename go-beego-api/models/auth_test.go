@@ -66,6 +66,11 @@ func TestAddUser(t *testing.T) {
 		if e = session.Cols("Id", "Code", "Name").Or("Name=?", user1.Name).Or("Name=?", user2.Name).Limit(10, 0).Find(&users); e != nil {
 			return
 		}
+		if e = NewPagingBuilder(func(builder *Pager) {
+			builder.Select("Id", "Code", "Name").From("AuthUser").OrderBy("Name ASC")
+		}).Paging(session, 10, 10, &users); e != nil {
+			return
+		}
 		i = users
 		return
 	})
