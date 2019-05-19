@@ -25,5 +25,5 @@ func init() {
 	beego.AddNamespace(ns)
 
 	// 默认网址
-	beego.Router("/", &controllers.DefaultController{})
+	beego.Router("/", &controllers.DefaultController{}, "get:Get")
 }

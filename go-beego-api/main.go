@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/angenalZZZ/Go/go-beego-api/filters"
 	_ "github.com/angenalZZZ/Go/go-beego-api/routers"
 	"github.com/astaxie/beego"
 )
@@ -16,7 +17,7 @@ func main() {
 		// ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	}
 
-	// 运行App
+	// 运行：bee run -gendoc=true
 	beego.Run()
 
 	// 生成代码工具
