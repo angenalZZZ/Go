@@ -7,6 +7,11 @@ import (
 )
 
 func init() {
+
+	// 权限访问控制
+	AddPluginOfAuthZ()
+
+	// 自定义过滤
 	beego.InsertFilter("/v1/*", beego.BeforeExec, func(ctx *context.Context) {
 		basic, auth := "Basic", ctx.Input.Header("Authorization")
 		if auth != "" {
