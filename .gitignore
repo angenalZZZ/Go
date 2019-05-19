@@ -14,5 +14,4 @@
 *.out
 
 workspace.xml
-commentsRouter_.go
-commentsRouter_controllers.go
+swagger.zip
