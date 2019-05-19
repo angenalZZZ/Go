@@ -5,14 +5,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// 检查配置文件
-func MustLoadAppConfig(path string) {
-	if err := beego.LoadAppConfig("ini", path); err != nil {
-		panic(err)
-	}
-}
-
-// 获取配置文本
+// 获取配置信息 from beego.AppConfig
 func GetAppConfig(name, path string) (i interface{}, e error) {
 	i = beego.AppConfig.String(name)
 	if i == "" {
@@ -22,7 +15,7 @@ func GetAppConfig(name, path string) (i interface{}, e error) {
 		i = beego.AppConfig.String(name)
 	}
 	if i == "" {
-		e = errors.New("CONF \t\t" + name + " NOT FOUND")
+		e = errors.New("beego.AppConfig \t\t" + name + " NOT FOUND")
 	}
 	return
 }

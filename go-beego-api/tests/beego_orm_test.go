@@ -1,14 +1,10 @@
-package models
+package test
 
 import (
-	"github.com/angenalZZZ/Go/go-beego-api/conf"
-
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"testing"
 
-	//_ "github.com/lib/pq"
-	//_ "github.com/mattn/go-sqlite3"
-	_ "github.com/go-sql-driver/mysql"
+	"testing"
 )
 
 // 1. 生成数据库实体models - DbFirst 工具 - 从数据库生成 models、routers、controllers
@@ -17,22 +13,23 @@ import (
 // 2. 数据库引擎 beego/orm
 var dbo orm.Ormer
 
-// 3. 数据库连接客户端初始化
-func init() {
+// 3. 数据库连接客户端初始化 _ "github.com/go-sql-driver/mysql"
+func init_beego_orm_test() {
 	// 检查配置文件
-	con, err := conf.GetAppConfig("mysqlconn", "../conf/app.conf")
-	if err != nil {
-		orm.DebugLog.Fatal(err)
-	}
+	con := beego.AppConfig.String("mysqlconn")
+
 	// 默认使用别名为default的数据库
 	const aliasName = "default"
-	if err = orm.RegisterDataBase(aliasName, "mysql", con.(string)); err != nil {
-		orm.DebugLog.Fatal("CONF DATABASE\t\tmysqlconn NOT FOUND")
+	_ = orm.RegisterDriver("mysql", orm.DRMySQL)
+	if err := orm.RegisterDataBase(aliasName, "mysql", con); err != nil {
+		orm.DebugLog.Fatal("CONF DATABASE mysqlconn NOT FOUND")
 	}
 	dbo = orm.NewOrm()
 	_ = dbo.Using(aliasName)
 }
 
+// 测试: Beego Orm
 func TestBeegoOrm(t *testing.T) {
-
+	init_beego_orm_test()
+	t.Log("Beego Orm CRUD...")
 }

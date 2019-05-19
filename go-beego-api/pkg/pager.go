@@ -1,4 +1,4 @@
-package models
+package pkg
 
 import (
 	"github.com/go-xorm/builder"

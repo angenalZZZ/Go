@@ -1,8 +1,9 @@
-package models
+package test
 
 import (
 	"github.com/angenalZZZ/Go/go-beego-api/conf"
 	"github.com/angenalZZZ/Go/go-beego-api/models/auth"
+	"github.com/angenalZZZ/Go/go-beego-api/pkg"
 	"github.com/google/uuid"
 	"github.com/xormplus/xorm"
 	"testing"
@@ -19,21 +20,22 @@ import (
 var db *xorm.Engine
 
 // 3. 数据库连接客户端初始化
-func init() {
-	db = conf.InitDbForXorm("../conf/app.conf")
+func init_auth_test() {
+	db = conf.InitDbForXorm("mssql", "mssqlconn")
 }
 
 // 测试: 唯一标识生成器
 func TestUUID(t *testing.T) {
 	src1 := uuid.New()
-	t.Logf("TestUUID: %s  %s", src1, NewIDFrom(src1))
+	t.Logf("TestUUID: %s  %s", src1, pkg.NewIDFrom(src1))
 }
 
 // 测试: 保存用户信息到数据库
 func TestAddUser(t *testing.T) {
+	init_auth_test()
 	users, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := auth.Authuser{
-			Id:          NewID().String(),
+			Id:          pkg.NewID().String(),
 			Code:        "xxx",
 			Name:        "xxx",
 			Password:    "",
@@ -66,7 +68,7 @@ func TestAddUser(t *testing.T) {
 		if e = session.Cols("Id", "Code", "Name").Or("Name=?", user1.Name).Or("Name=?", user2.Name).Limit(10, 0).Find(&users); e != nil {
 			return
 		}
-		if e = NewPagingBuilder(func(builder *Pager) {
+		if e = pkg.NewPagingBuilder(func(builder *pkg.Pager) {
 			builder.Select("Id", "Code", "Name").From("AuthUser").OrderBy("Name ASC")
 		}).Paging(session, 10, 10, &users); e != nil {
 			return

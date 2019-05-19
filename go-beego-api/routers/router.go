@@ -14,12 +14,8 @@ import (
 )
 
 func init() {
+	// Api 版本 v1
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
 		beego.NSNamespace("/user",
 			beego.NSInclude(
 				&controllers.UserController{},
@@ -27,4 +23,7 @@ func init() {
 		),
 	)
 	beego.AddNamespace(ns)
+
+	// 默认网址
+	beego.Router("/", &controllers.DefaultController{})
 }

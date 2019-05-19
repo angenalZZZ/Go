@@ -1,30 +1,32 @@
 package conf
 
 import (
+	"github.com/astaxie/beego"
 	"github.com/xormplus/xorm"
 )
 
-// 数据库连接客户端初始化
-func InitDbForXorm(path string) (db *xorm.Engine) {
-	// 检查配置文件
-	con, err := GetAppConfig("mssqlconn", path)
-	if err != nil {
-		db.Logger().Error(err)
+// 数据库连接客户端初始化 mssql db
+func InitDbForXorm(driverName, config string) (db *xorm.Engine) {
+	// 检查配置 from beego.AppConfig
+	c := beego.AppConfig.String(config)
+	if c == "" {
+		panic("beego.AppConfig \t\t" + config + " NOT FOUND")
 	}
 
+	var e error
 	// 原版方式创建引擎
-	db, err = xorm.NewEngine("mssql", con.(string))
+	db, e = xorm.NewEngine(driverName, c)
 	// 也可以针对特定数据库快捷创建
 	//db, err = xorm.NewPostgreSQL(conn)
 	//db, err = xorm.NewSqlite3(conn)
 
 	// 数据库连接异常
-	if err != nil {
-		db.Logger().Errorf("CONF DATABASE\t\t%s\n\t\t%v", con, err)
-	} else if err = db.Ping(); err != nil {
-		db.Logger().Errorf("PING DATABASE\t\t%s\n\t\t%v", con, err)
+	if e != nil {
+		db.Logger().Errorf("CONF DATABASE\t\t%s\n\t\t%v", c, e)
+	} else if e = db.Ping(); e != nil {
+		db.Logger().Errorf("PING DATABASE\t\t%s\n\t\t%v", c, e)
 	} else {
-		db.Logger().Infof("PING DATABASE PASS\t\t%s", con)
+		db.Logger().Infof("PING DATABASE PASS\t\t%s", c)
 		// 数据库实例配置信息
 		ConfigDbForXorm(db)
 	}
