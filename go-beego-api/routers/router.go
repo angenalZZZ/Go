@@ -14,7 +14,7 @@ import (
 )
 
 func init() {
-	// Api 版本 v1
+	// 版本 v1
 	ns := beego.NewNamespace("/v1",
 		beego.NSNamespace("/user",
 			beego.NSInclude(
