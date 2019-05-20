@@ -88,8 +88,8 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 
 ~~~bash
   # GoLand全局设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-   # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
-   # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
+   # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod) 
+   # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
   go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
   go list -m -u all # 列举依赖模块和依赖更新
   # 管理项目模块 go mod <command> [arguments] (模块增删改+下载) | 功能概述 go help modules
