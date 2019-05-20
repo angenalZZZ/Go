@@ -87,20 +87,22 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
     PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
 
 ~~~bash
-  # GoLand *全局：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-   # go build环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
-   # go tool 参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
+  # GoLand全局设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
+   # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(development>test>production) 
+   # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时的符号&调试信息(不能gdb调试),缩小文件大小
   go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
   go list -m -u all # 列举依赖模块和依赖更新
-  # 管理项目模块 go mod <command> [arguments] (模块的增删改+下载) | 模块功能概述 go help modules
+  # 管理项目模块 go mod <command> [arguments] (模块增删改+下载) | 功能概述 go help modules
   go help mod       # 查看帮助
-  godoc -http=:6060 # 查看文档\本地 | 在线文档 golang.org/doc
+  godoc -http=:6060 # 查看文档&本地,在线文档 golang.org/doc
   go get -d         # 下载模块源码,不安装
   go get -u         # 更新模块源码
   go get -v         # 打印日志
   go get -insecure  # 解决安全下载问题,允许用http(非https)
-  go test           # 测试功能
-  go tool vet -shadow main.go # 检查变量覆盖问题
+  go help test      # 测试前，先格式化代码 go fmt
+  go tool vet -shadow main.go # 检查变量覆盖
+  go tool cover -help         # 检查代码覆盖率
+  go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -392,7 +394,7 @@ go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
-go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器  *1k
+go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
 
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
@@ -403,26 +405,26 @@ go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.
 
 # 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-# 谷歌开源gRPC *8k | grpc.io/docs/quickstart/go
+# 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
  # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go
  > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
  > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
  > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
  > go get github.com/golang/{text,net} ; go get github.com/golang/protobuf/{proto,protoc-gen-go}
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
- > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto # 2.1 生成代码*.pb.go
- > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       # 2.2 启动服务端/客户端
-go get -u github.com/istio/istio           # 谷歌开源|连接|安全|控制|微服务|集群管理|Kubernetes *17k | istio.io
-go get -u github.com/TarsCloud/TarsGo/tars # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
-go get github.com/micro/go-micro           # 分布式RPC微服务    *7k
-go get github.com/go-kit/kit/cmd/kitgen    # 微服务构建        *13k standard library for web frameworks...
+ > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
+ > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务端/客户端
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
+go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io | www.grpc.io
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
+go get github.com/micro/go-micro           # 分布式RPC微服务 *7k
+go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
+go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
 git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
 go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readthedocs.io
 cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
-go get -u -v github.com/davyxu/cellnet     # 游戏服务器 *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
-go get -u -v github.com/liangdas/mqant     # 游戏服务器 *1.5k
 # ------------------------------------------------------------------------------------
 # 测试-跟踪-部署-维护
 # ------------------------------------------------------------------------------------
@@ -448,7 +450,7 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h ; run pprof command(CPU profile): go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
+go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
