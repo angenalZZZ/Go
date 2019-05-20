@@ -57,39 +57,37 @@ func TestUUID(t *testing.T) {
 }
 
 // 测试: 保存用户信息
-func TestAuthuser(t *testing.T) {
+func TestAuthuserOrm(t *testing.T) {
 	initAuthTest()
-	db := auth.AuthuserXorm{DB: db}
-
+	users := auth.AuthuserXorm{DB: db}
 	user1 := initUser1()
-	if e := db.Create(user1); e != nil {
+	if e := users.Create(user1); e != nil {
 		t.Fatal(e)
 		return
 	}
-	user2, e := db.GetById(user1.Id)
+	user2, e := users.GetById(user1.Id)
 	if e != nil {
 		t.Fatal(e)
 		return
 	}
-	user2.Email = "yyy@qq.com"
-	//if e := db.Update(user2, "Email"); e != nil {
-	//	t.Fatal(e)
-	//	return
-	//}
-	//if _, e := db.GetByEmailOrPhone(user2.Email); e != nil {
-	//	t.Fatal(e)
-	//	return
-	//}
-	//if e := db.Delete(user2.Id); e != nil {
-	//	t.Fatal(e)
-	//	return
-	//}
+	user3 := auth.Authuser{Email: "yyy@qq.com"}
+	if e := users.Update(&user3, user2.Id, "Email"); e != nil {
+		t.Fatal(e)
+		return
+	}
+	if _, e := users.GetByEmailOrPhone(user3.Email); e != nil {
+		t.Fatal(e)
+		return
+	}
+	if e := users.Delete(user2.Id); e != nil {
+		t.Fatal(e)
+		return
+	}
 }
 
 // 测试: 保存用户信息的事务处理
 func TestAuthuserTransaction(t *testing.T) {
 	initAuthTest()
-
 	users, e := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := initUser1()
 		if _, e = session.Insert(user1); e != nil {
@@ -99,10 +97,11 @@ func TestAuthuserTransaction(t *testing.T) {
 		if _, e = session.Where("Id=?", user1.Id).Update(&user2); e != nil {
 			return
 		}
-		if _, e = session.ID(user1.Id).Get(&user2); e != nil {
+		user3 := auth.Authuser{}
+		if _, e = session.ID(user1.Id).Get(&user3); e != nil {
 			return
 		}
-		if _, e = session.Exec("delete from AuthUser where Id=?", user2.Id); e != nil {
+		if _, e = session.Exec("delete from AuthUser where Id=?", user3.Id); e != nil {
 			return
 		}
 		users := make([]auth.Authuser, 0, 1)

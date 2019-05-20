@@ -1,6 +1,9 @@
 package auth
 
-import "github.com/xormplus/xorm"
+import (
+	"github.com/xormplus/xorm"
+	"golang.org/x/gofrontend/libgo/go/regexp"
+)
 
 type AuthuserXorm struct {
 	DB *xorm.Engine
@@ -12,15 +15,19 @@ func (o *AuthuserXorm) Get() (list []Authuser, err error) {
 	return
 }
 
-func (o *AuthuserXorm) GetById(id string) (user *Authuser, err error) {
+func (o *AuthuserXorm) GetById(id string, columns ...string) (user *Authuser, err error) {
 	user = &Authuser{}
-	_, err = o.DB.Id(id).Get(user)
+	_, err = o.DB.Cols(columns...).ID(id).Get(user)
 	return
 }
 
 func (o *AuthuserXorm) GetByEmailOrPhone(emailOrPhone string) (list []Authuser, err error) {
 	list = make([]Authuser, 0)
-	err = o.DB.Where("Email=? or Phone=?", emailOrPhone).Desc("CreatedTime").Find(&list)
+	if OK, _ := regexp.Match(`/^\d+$/`, []byte(emailOrPhone)); OK {
+		err = o.DB.Find(&list, &Authuser{Phone: emailOrPhone})
+	} else {
+		err = o.DB.Find(&list, &Authuser{Email: emailOrPhone})
+	}
 	return
 }
 
@@ -29,8 +36,8 @@ func (o *AuthuserXorm) Create(model *Authuser) (err error) {
 	return
 }
 
-func (o *AuthuserXorm) Update(model *Authuser, columns ...string) (err error) {
-	_, err = o.DB.Id(model.Id).MustCols(columns...).Update(model)
+func (o *AuthuserXorm) Update(model *Authuser, id string, columns ...string) (err error) {
+	_, err = o.DB.ID(id).MustCols(columns...).Update(model)
 	return
 }
 
