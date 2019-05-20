@@ -35,10 +35,17 @@ func InitDbForXorm(driverName, config string) (db *xorm.Engine) {
 
 // 数据库实例配置信息
 func ConfigDbForXorm(db *xorm.Engine) {
-	// 输出SQL执行语句
+	// 打印SQL执行语句 (Debug模式 帮助查看ORM与SQL执行的对照关系)
 	db.ShowSQL(true)
-	// 输出SQL执行时长
+	// 打印SQL执行时长 (Debug模式 帮助SQL执行的性能优化)
 	db.ShowExecTime(true)
+
+	// 性能优化的时候才考虑，加上本机的SQL缓存
+	cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
+	db.SetDefaultCacher(cacher)
+
+	// 中国时区
+	db.SetTZLocation(ChinaTimeLocation)
 
 	// 设置空闲连接池中的最大连接数
 	db.SetMaxIdleConns(10)
