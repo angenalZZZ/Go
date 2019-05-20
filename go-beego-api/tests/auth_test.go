@@ -19,9 +19,14 @@ import (
 // 2. 数据库引擎增强版 db orm engine
 var db *xorm.Engine
 
+const (
+	mssqlDriverName = "mssql"
+	mssqlConn       = "mssqlconn"
+)
+
 // 3. 数据库连接客户端初始化
-func init_auth_test() {
-	db = conf.InitDbForXorm("mssql", "mssqlconn")
+func initAuthTest() {
+	db = conf.InitDbForXOrm(mssqlDriverName, mssqlConn)
 }
 
 // 测试: 唯一标识生成器
@@ -32,7 +37,7 @@ func TestUUID(t *testing.T) {
 
 // 测试: 保存用户信息到数据库
 func TestAddUser(t *testing.T) {
-	init_auth_test()
+	initAuthTest()
 	users, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := auth.Authuser{
 			Id:          pkg.NewID().String(),

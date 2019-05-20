@@ -3,7 +3,7 @@ package test
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-
+	_ "github.com/go-sql-driver/mysql"
 	"testing"
 )
 
@@ -13,16 +13,21 @@ import (
 // 2. 数据库引擎 beego/orm
 var dbo orm.Ormer
 
-// 3. 数据库连接客户端初始化 _ "github.com/go-sql-driver/mysql"
-func init_beego_orm_test() {
+const (
+	mysqlDriverName = "mysql"
+	mysqlConn       = "mysqlconn"
+)
+
+// 3. 数据库连接客户端初始化
+func initBeegoOrmTest() {
 	// 检查配置文件
-	con := beego.AppConfig.String("mysqlconn")
+	c := beego.AppConfig.String(mysqlConn)
 
 	// 默认使用别名为default的数据库
 	const aliasName = "default"
-	_ = orm.RegisterDriver("mysql", orm.DRMySQL)
-	if err := orm.RegisterDataBase(aliasName, "mysql", con); err != nil {
-		orm.DebugLog.Fatal("CONF DATABASE mysqlconn NOT FOUND")
+	_ = orm.RegisterDriver(mysqlDriverName, orm.DRMySQL)
+	if err := orm.RegisterDataBase(aliasName, mysqlDriverName, c); err != nil {
+		orm.DebugLog.Fatal("CONF " + mysqlConn + " NOT FOUND")
 	}
 	dbo = orm.NewOrm()
 	_ = dbo.Using(aliasName)
@@ -30,6 +35,6 @@ func init_beego_orm_test() {
 
 // 测试: Beego Orm
 func TestBeegoOrm(t *testing.T) {
-	init_beego_orm_test()
+	initBeegoOrmTest()
 	t.Log("Beego Orm CRUD...")
 }

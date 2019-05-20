@@ -6,7 +6,7 @@ import (
 )
 
 // 数据库连接客户端初始化 mssql db
-func InitDbForXorm(driverName, config string) (db *xorm.Engine) {
+func InitDbForXOrm(driverName, config string) (db *xorm.Engine) {
 	// 检查配置 from beego.AppConfig
 	c := beego.AppConfig.String(config)
 	if c == "" {
