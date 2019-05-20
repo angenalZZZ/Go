@@ -29,34 +29,70 @@ func initAuthTest() {
 	db = conf.InitDbForXOrm(mssqlDriverName, mssqlConn)
 }
 
+func initUser1() *auth.Authuser {
+	user1 := auth.Authuser{
+		Id:          pkg.NewID().String(),
+		Code:        "xxx",
+		Name:        "xxx",
+		Password:    "",
+		Salt:        "",
+		Avatar:      "",
+		Orgid:       "",
+		Email:       "",
+		Phone:       "",
+		Status:      "",
+		Revision:    0,
+		Createdby:   "admin",
+		Createdtime: time.Now(),
+		Updatedby:   "admin",
+		Updatedtime: time.Now(),
+	}
+	return &user1
+}
+
 // 测试: 唯一标识生成器
 func TestUUID(t *testing.T) {
 	src1 := uuid.New()
 	t.Logf("TestUUID: %s  %s", src1, pkg.NewIDFrom(src1))
 }
 
-// 测试: 保存用户信息到数据库
-func TestAddUser(t *testing.T) {
+// 测试: 保存用户信息
+func TestAuthuser(t *testing.T) {
 	initAuthTest()
-	users, err := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
-		user1 := auth.Authuser{
-			Id:          pkg.NewID().String(),
-			Code:        "xxx",
-			Name:        "xxx",
-			Password:    "",
-			Salt:        "",
-			Avatar:      "",
-			Orgid:       "",
-			Email:       "",
-			Phone:       "",
-			Status:      "",
-			Revision:    0,
-			Createdby:   "admin",
-			Createdtime: time.Now(),
-			Updatedby:   "admin",
-			Updatedtime: time.Now(),
-		}
-		if _, e = session.Insert(&user1); e != nil {
+	db := auth.AuthuserXorm{DB: db}
+
+	user1 := initUser1()
+	if e := db.Create(user1); e != nil {
+		t.Fatal(e)
+		return
+	}
+	user2, e := db.GetById(user1.Id)
+	if e != nil {
+		t.Fatal(e)
+		return
+	}
+	user2.Email = "yyy@qq.com"
+	//if e := db.Update(user2, "Email"); e != nil {
+	//	t.Fatal(e)
+	//	return
+	//}
+	//if _, e := db.GetByEmailOrPhone(user2.Email); e != nil {
+	//	t.Fatal(e)
+	//	return
+	//}
+	//if e := db.Delete(user2.Id); e != nil {
+	//	t.Fatal(e)
+	//	return
+	//}
+}
+
+// 测试: 保存用户信息的事务处理
+func TestAuthuserTransaction(t *testing.T) {
+	initAuthTest()
+
+	users, e := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
+		user1 := initUser1()
+		if _, e = session.Insert(user1); e != nil {
 			return
 		}
 		user2 := auth.Authuser{Name: "yyy"}
@@ -82,8 +118,8 @@ func TestAddUser(t *testing.T) {
 		return
 	})
 
-	if err != nil {
-		t.Fatal(err)
+	if e != nil {
+		t.Fatal(e)
 	} else if users != nil && len(users.([]auth.Authuser)) > 0 {
 		t.Log(users)
 	}
