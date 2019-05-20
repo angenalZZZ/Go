@@ -372,6 +372,7 @@ go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framewor
 go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
 go get github.com/kataras/iris             # 最快Web开发框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
+# 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
