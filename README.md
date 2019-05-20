@@ -369,17 +369,11 @@ go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI ma
 go get github.com/gotify/cli               # WebSocket client to push messages
 
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
-go get github.com/mholt/caddy/caddy        # 后端WebSvr *21k: caddy | 配置快apache+nginx | caddyserver.com
-go get github.com/astaxie/beego            # 后端模块化 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
-# beego基础模块：cache,config,context,httplibs,logs,orm,session,toolbox, 项目管理工具bee
-go get github.com/beego/bee                # beego生成项目 > bee api github.com/angenalZZZ/Go/go-beego-api
-go get github.com/labstack/echo/v4         # 后端WebSvr *13k: echo serve
-go get github.com/valyala/fasthttp         # 超快的HTTP  *8k: client and serve
-go get github.com/emicklei/go-restful      # 后端WebApi  *3k: RESTful Web Services | github.com/muesli/beehive/blob/master/api/api.go
-go get github.com/ant0ine/go-json-rest/... # 后端WebApi  *3k: RESTful JSON API
-git clone https://github.com/go-macaron/macaron.git %GOPATH%/src/gopkg.in/macaron.v1 && go get gopkg.in/macaron.v1 #后端模块化 go-macaron.com
+go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
+# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
+go get github.com/kataras/iris             # 最快Web开发框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
+go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
-go get github.com/braintree/manners        # A polite webserver *1k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
