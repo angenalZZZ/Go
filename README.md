@@ -419,6 +419,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务端/客户端
+ $ prototool help                          # 增强版protoc <ubuntu> github.com/uber/prototool#quick-start
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io | www.grpc.io
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
