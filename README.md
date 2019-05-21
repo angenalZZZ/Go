@@ -243,15 +243,17 @@ go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证�
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures 
-go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行设定操作
+go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行预定的操作
 go get github.com/juju/utils               # General utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
 go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
 go get github.com/google/gxui/...          # 原生UI库 *4k
-go get github.com/json-iterator/go         # 优化性能，替换原生encoding/json       *5k
-go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验 *1k
+
+go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
+go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
+go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验库           *1k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
@@ -403,6 +405,8 @@ go get github.com/gobwas/ws                # WebSocket | github.com/socketio/soc
 go get github.com/reactivex/rxgo           # 响应式编程
 go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
+
+go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
 
 # 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
