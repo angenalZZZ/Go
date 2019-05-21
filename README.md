@@ -358,17 +358,18 @@ go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *
 go get github.com/travisjeffery/jocko      # 消息推送服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
 go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
 
-go get github.com/nsqio/go-nsq             # 实时消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/nsqio/nsq                # 实时分布式消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
 go get github.com/streadway/amqp           # rabbitmq client tutorials | www.rabbitmq.com/#getstarted
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq 框架
 go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
-# 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
-# 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
-# https://github.com/oikomi/FishChatServer2
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
 go get github.com/gorilla/websocket        # WebSocket Serve *8k
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) | gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
+# 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
+# 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
+# https://github.com/oikomi/FishChatServer2
 
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
