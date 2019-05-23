@@ -95,10 +95,7 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
   # 管理项目模块 go mod <command> [arguments] (模块增删改+下载) | 功能概述 go help modules
   go help mod       # 查看帮助
   godoc -http=:6060 # 查看文档&本地,在线文档 golang.org/doc
-  go get -d         # 下载模块源码,不安装
-  go get -u         # 更新模块源码
-  go get -v         # 打印日志
-  go get -insecure  # 解决安全下载问题,允许用http(非https)
+  
   go help test      # 测试前，先格式化代码 go fmt
   go tool vet -shadow main.go # 检查变量覆盖
   go tool cover -help         # 检查代码覆盖率
@@ -123,7 +120,12 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 # 代理设置 (解决网络问题)
 set http_proxy=http://127.0.0.1:5005     (临时有效)
 set HTTPS_PROXY=http://127.0.0.1:5005    (临时有效)
-go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [包名]
+go get -d         # 下载模块源码,不安装
+go get -u         # 更新模块源码
+go get -v         # 打印日志
+go get -insecure  # 解决安全下载问题,允许用http(非https)
+go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
+
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
 git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
@@ -144,7 +146,7 @@ git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
-# 开发工具-VSCode语言支持
+# 开发工具-VSCode-Go语言工具链
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
@@ -160,12 +162,15 @@ go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
 go get -u -v github.com/derekparker/delve/cmd/dlv
+~~~
 
-# 管理项目依赖包
+> 项目管理-构建-测试工具
+~~~bash
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build
 #  ::构建规则:: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
+# 管理依赖包
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
@@ -219,7 +224,7 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 ~~~
 
-> Docker 编译器 [Golang + custom build tools](https://hub.docker.com/_/golang)
+> Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
 
 ~~~shell
 # 1. pull build tools: Glide, gdm, go-test-teamcity
