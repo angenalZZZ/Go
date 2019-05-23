@@ -162,6 +162,10 @@ go get -u -v github.com/cweill/gotests/...
 go get -u -v github.com/derekparker/delve/cmd/dlv
 
 # 管理项目依赖包
+# ------------------------------------------------------------------------------------
+#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build
+#  ::构建规则:: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
+# ------------------------------------------------------------------------------------
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
