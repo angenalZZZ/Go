@@ -260,6 +260,8 @@ go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
 go get github.com/google/gxui/...          # 原生UI库 *4k
 
+go get github.com/pkg/errors               # 错误处理
+go get github.com/mpvl/{errc,errd}         # 错误处理加强版
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验库           *1k
