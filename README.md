@@ -72,7 +72,7 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 # ------------------------------------------------------------------------------------
  # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
-# ------------------------------------------------------------------------------------
+
 ~~~
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
@@ -167,8 +167,8 @@ go get -u -v github.com/derekparker/delve/cmd/dlv
 > 项目管理-构建-测试工具
 ~~~bash
 # ------------------------------------------------------------------------------------
-#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build
-#  ::构建规则:: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
+#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
+#     /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 # 管理依赖包
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
