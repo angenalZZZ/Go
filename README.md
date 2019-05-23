@@ -100,6 +100,7 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
   go tool vet -shadow main.go # 检查变量覆盖
   go tool cover -help         # 检查代码覆盖率
   go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+  go test -timeout 10s github.com/mpvl/errdare
 ~~~
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -260,15 +261,15 @@ go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
 go get github.com/google/gxui/...          # 原生UI库 *4k
 
-go get github.com/pkg/errors               # 错误处理
-go get github.com/mpvl/{errc,errd}         # 错误处理加强版
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验库           *1k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
-go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，一个功能强大的Parser生成器，用来读取、处理、执行或翻译结构化文本或二进制文件 | www.antlr.org
+go get github.com/pkg/errors               # 错误处理pkg
+go get github.com/mpvl/{errc,errd}         # 错误处理mpvl
+go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
 
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
