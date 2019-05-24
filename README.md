@@ -215,6 +215,7 @@ go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123        # 适合初学者
+go get github.com/go-training/training     # 适合初学者
 go get github.com/insionng/zenpress        # 适合学习 cms system
 go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
@@ -271,7 +272,6 @@ go get github.com/pkg/errors               # 错误处理pkg
 go get github.com/mpvl/{errc,errd}         # 错误处理mpvl
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
 
-go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS    *4k
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf | 基于Gossip的Membership,P2P对等网络\去中心 | www.serf.io
@@ -288,6 +288,8 @@ go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
+go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
+go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
@@ -372,6 +374,7 @@ go get github.com/gocraft/work             # do work of redis-queue *1k | github
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
 go get github.com/travisjeffery/jocko      # 消息推送服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
+go get github.com/appleboy/gorush          # 消息推送服务gorush 4k : api, HTTP/2, notification queue and multiple workers.
 go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
 
 go get github.com/nsqio/nsq                # 实时分布式消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
@@ -395,6 +398,7 @@ go get github.com/kataras/iris             # 最快Web开发框架 *15k | github
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
+go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
 go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
@@ -448,6 +452,7 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 # ------------------------------------------------------------------------------------
 # 测试-跟踪-部署-维护
 # ------------------------------------------------------------------------------------
+go get github.com/appleboy/gofight/v2      # API测试框架 for beego,Gin..
 go get github.com/smartystreets/goconvey   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
