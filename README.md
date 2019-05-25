@@ -67,9 +67,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export GOROOT=/usr/local/go
     export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
-    $ go tool dist list
-    $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
-    $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
+    go tool dist list
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+    CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 > 安装依赖包
 ~~~bash
@@ -191,11 +191,35 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
-  go help test                # 测试帮助
-  go tool vet -shadow main.go # 检查变量覆盖
-  go tool cover -help         # 检查代码覆盖率
-  go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  go test -timeout 10s github.com/mpvl/errdare
+  > go help test                # 测试帮助
+  > go tool vet -shadow main.go # 检查变量覆盖
+  > go tool cover -help         # 检查代码覆盖率
+  > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+  > go test -timeout 10s github.com/mpvl/errdare
+  
+  # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
+  > vegeta [global flags] <command> [command flags]
+  
+  # 捕获HTTP请求,跟踪HTTP流量 | https://github.com/buger/goreplay/wiki
+  > gor --input-raw :80 --output-http="http://localhost:81" # 跟踪HTTP流量(:80), HTTP服务查阅结果(HTTP:81)
+  > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
+  > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
+
+# 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
+go get github.com/smartystreets/goconvey
+go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
+go get github.com/appleboy/gofight/...     # API测试框架 for beego,Gin.. 依赖测试框架 github.com/stretchr/testify
+go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
+go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
+# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
+go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
+# Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s [url] | github.com/wg/wrk *20k
+$ wrk -c 1 -t 1 -d 1 --latency [url]       # -t 线程数 -c 连接数 --timeout 超时 -d 持续时间 --latency 响应时间
+go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
+go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
+go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 ~~~
 
 > 性能优化
@@ -407,7 +431,10 @@ go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
 go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
 go get github.com/gorilla/sessions         # session & cookie authentication
-go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication 
+go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication
+go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
+go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
+go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
 go get github.com/dchest/captcha           # 验证码|图片|声音
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
 go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
@@ -454,10 +481,8 @@ go get github.com/inconshreveable/go-update # 自动更新应用程序
 go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readthedocs.io
 cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
 # ------------------------------------------------------------------------------------
-# 测试-跟踪-部署-维护
+# 部署-维护
 # ------------------------------------------------------------------------------------
-go get github.com/appleboy/gofight/v2      # API测试框架 for beego,Gin..
-go get github.com/smartystreets/goconvey   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
@@ -469,21 +494,8 @@ go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go ge
 go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
-go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
-go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
-go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量。
-go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
-go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
-go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
-go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
-go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
-go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
-git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
-go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
+go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
