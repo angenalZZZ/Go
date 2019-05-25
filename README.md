@@ -126,7 +126,8 @@ go get -u -v github.com/cweill/gotests/...
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
 #     /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
-# 管理依赖包
+
+# 管理模块依赖(包管理工具)
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
@@ -144,28 +145,36 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor init             # 项目依赖vendor目录
   > govendor add +e           # 添加本地$GOPATH包[go get]
   > govendor fetch            # 获取远程vendor.json包[govendor get]
-# vgo 一个项目模块管理工具 (go版本^1.11.*,可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
+
+# 管理模块依赖( go版本^1.11.* 推荐)
+# 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   > go help mod <command>       # 帮助 | 功能概述 go help modules
-  > set GO111MODULE=on          # 开始前 | <linux> $ export GO111MODULE=on && env
+  > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
+  > mkdir.\example.com\app      # 先创建项目目录 | <linux> $ mkdir -p example.com/app
+  > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
   > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github镜像
-  > go get ./... || go mod tidy # 根据已有代码import需要的依赖自动生成require语句
-  > go get -u || -u=patch       # 升级到最新的次要版本,升级到最新的修订版本
-  > go list -m                  # 查看当前的依赖和模块版本
-  > go list -m -u all           # 查看当前的依赖和模块版本更新
-  > go list -json
-  > go mod graph
-  > go mod download             # 下载到$GOPATH/pkg/mod/cache共享缓存中
+  > code .                      # 开始编码...
+  #----------------------------------------------------------------------
+  > go mod tidy || go get ./... # 下载依赖 %GOPATH%/pkg/mod/... 文件夹
+  > go build                    # 构建使用 %GOPATH%/pkg/mod/... 文件夹
+  > go clean -r -cache .        # 清除构建&缓存文件
+  #----------------------------------------------------------------------
+  > go mod vendor               # 下载依赖 ./vendor/... 文件夹
+  > go build -mod=vendor        # 构建使用 ./vendor/... 文件夹
+  > go build -mod=readonly      # 防止隐式修改go.mod
+  #----------------------------------------------------------------------
+  > go list -m                  # 查看当前版本
+  > go list -m -u all           # 查看当前的依赖和模块版本更新 -json 支持json输出
+  > go mod graph                # 输出依赖关系
+  > go get -u || -u=patch       # 升级到最新依赖版本 || 升级到最新的修订版本
   > go mod edit -fmt            # 格式化 go.mod 文件
-  > go mod edit -require=path@ver # 添加依赖或修改依赖版本
-  > go mod vendor               # 生成 vendor 文件夹, 下载你代码中引用的库
-  > go mod tidy                 # 安装依赖，下载依赖，生成vendor，然后构建 go build -mod=vendor
-  > go build -mod=vendor        # 构建使用 vendor 文件夹
-  > go build -mod=readonly      # 防止隐式修改 go.mod
-go get -u github.com/sparrc/gdm
+  > go mod edit -require=path@ver # 添加或修改依赖版本
+  > go mod download             # 直接下载到$GOPATH/pkg/mod/cache'共享缓存'
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
+go get -u github.com/sparrc/gdm
 
 # 学习项目案例
 go get github.com/golang/playground
