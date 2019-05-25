@@ -191,33 +191,34 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
-  go help test                # 测试帮助
-  go tool vet -shadow main.go # 检查变量覆盖
-  go tool cover -help         # 检查代码覆盖率
-  go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  go test -timeout 10s github.com/mpvl/errdare
+  > go help test                # 测试帮助
+  > go tool vet -shadow main.go # 检查变量覆盖
+  > go tool cover -help         # 检查代码覆盖率
+  > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+  > go test -timeout 10s github.com/mpvl/errdare
   
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
-  vegeta [global flags] <command> [command flags]
+  > vegeta [global flags] <command> [command flags]
   
   # 捕获HTTP请求,跟踪HTTP流量 | https://github.com/buger/goreplay/wiki
-  gor --input-raw :80 --output-http="http://localhost:81" # 跟踪HTTP流量(:80), HTTP服务查阅结果(HTTP:81)
-  gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
-  gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
+  > gor --input-raw :80 --output-http="http://localhost:81" # 跟踪HTTP流量(:80), HTTP服务查阅结果(HTTP:81)
+  > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
+  > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
+
+# 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
+go get github.com/smartystreets/goconvey
+go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
+go get github.com/appleboy/gofight/v2      # API测试框架 for beego,Gin.. 依赖测试框架 github.com/stretchr/testify
+go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
+go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
   
-  go get github.com/smartystreets/goconvey   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
-  go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
-  go get github.com/appleboy/gofight/v2      # API测试框架 for beego,Gin.. 依赖测试框架 github.com/stretchr/testify
-  go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
-  go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
-  
-  # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-  go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-  go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
-  go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
-  go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
-  go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
-  git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
+go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
+go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
+go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
+go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具github.com/wg/wrk > wrk -t100 -c100 -d30s [url]
+git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 ~~~
 
 > 性能优化
