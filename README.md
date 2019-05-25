@@ -43,41 +43,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     异步: ch := make(chan int, 100) // buffered channel with capacity 100
     管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2
 
- > 性能优化
-~~~
-# ------------------------------------------------------------------------------------
-# 通过工具排查：
-# ------------------------------------------------------------------------------------
-go get github.com/google/pprof # 用于可视化和分析性能和数据的工具pprof(CPU/rofile)
-go tool pprof -seconds 5 http://localhost/debug/pprof/profile # 导入 _ net/http/pprof 添加HTTP性能优化服务 /debug/pprof
-go tool pprof -alloc_objects -inuse_objects   # 生成对象数量、引用对象数量
-go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile # 功能测试与性能分析(如testing.B测试benchmark)
-go tool pprof [stats.test] prof.cpu # 详细的单元分析: 对象|代码行|函数调用|runtime|package|binary [stats目录/.test*测试]
-go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
-# ------------------------------------------------------------------------------------
-go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
-go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
-go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof和go-torch识别性能瓶颈，并进行优化? 视频youtu.be/N3PWzBeLX2M
-
-# ------------------------------------------------------------------------------------
-# 内存管理`GC`的优化：
-# ------------------------------------------------------------------------------------
- # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
-map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
-map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
-someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
-
-# ------------------------------------------------------------------------------------
-# 扩容(横向|纵向)：
-# ------------------------------------------------------------------------------------
- # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
- # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
-
-~~~
-
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
+    环境配置> go env
     安装版本> go version
-    环境配置> go env       帮助文档> godoc -http=:6060 # 查看本地文档,在线文档 golang.org/doc
+    帮助文档> godoc -http=:6060  # 查看本地文档, 在线文档 golang.org/doc
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
@@ -151,7 +120,7 @@ go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
 ~~~
 
-> 项目管理-构建-测试工具
+> 项目管理|构建|测试
 ~~~bash
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
@@ -198,7 +167,7 @@ go get -u github.com/sparrc/gdm
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 
-# 学习案例
+# 学习项目案例
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123        # 适合初学者
@@ -213,11 +182,42 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
-  go help test                # 测试说明
+  go help test                # 测试帮助
   go tool vet -shadow main.go # 检查变量覆盖
   go tool cover -help         # 检查代码覆盖率
   go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   go test -timeout 10s github.com/mpvl/errdare
+~~~
+
+> 性能优化
+~~~
+# ------------------------------------------------------------------------------------
+# 通过工具排查：
+# ------------------------------------------------------------------------------------
+go get github.com/google/pprof # 用于可视化和分析性能和数据的工具pprof(CPU/rofile)
+go tool pprof -seconds 5 http://localhost/debug/pprof/profile # 导入 _ net/http/pprof 添加HTTP性能优化服务 /debug/pprof
+go tool pprof -alloc_objects -inuse_objects   # 生成对象数量、引用对象数量
+go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile # 功能测试与性能分析(如testing.B测试benchmark)
+go tool pprof [stats.test] prof.cpu # 详细的单元分析: 对象|代码行|函数调用|runtime|package|binary [stats目录/.test*测试]
+go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
+# ------------------------------------------------------------------------------------
+go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
+go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
+go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof和go-torch识别性能瓶颈，并进行优化? 视频youtu.be/N3PWzBeLX2M
+
+# ------------------------------------------------------------------------------------
+# 内存管理`GC`的优化：
+# ------------------------------------------------------------------------------------
+ # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
+map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
+map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
+someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+
+# ------------------------------------------------------------------------------------
+# 扩容(横向|纵向)：
+# ------------------------------------------------------------------------------------
+ # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
+ # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
 ~~~
 
 > Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
