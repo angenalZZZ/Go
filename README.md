@@ -255,8 +255,9 @@ go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures 
 go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行预定的操作
-go get github.com/juju/utils               # General utility functions
+go get github.com/juju/utils               # Utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
 go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
