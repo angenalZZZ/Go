@@ -67,9 +67,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export GOROOT=/usr/local/go
     export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
-    $ go tool dist list
-    $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
-    $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
+    go tool dist list
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+    CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 > 安装依赖包
 ~~~bash
@@ -213,7 +213,8 @@ go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing
 go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
 # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
 go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-go get github.com/wg/wrk                   # Web基准测试工具  *20k > wrk -t100 -c100 -d30s [url]
+# Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s [url] | github.com/wg/wrk *20k
+$ wrk -c 1 -t 1 -d 1 --latency [url]       # -t 线程数 -c 连接数 --timeout 超时 -d 持续时间 --latency 响应时间
 go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
 go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
 go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
