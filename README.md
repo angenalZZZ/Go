@@ -77,40 +77,26 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     安装版本> go version
-    环境配置> go env
+    环境配置> go env       帮助文档> godoc -http=:6060 # 查看本地文档,在线文档 golang.org/doc
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.12.windows-amd64.msi
-    GOROOT=D:\Program\Go\
-    GOPATH=C:\Users\Administrator\go
-    PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-
-~~~bash
-  # GoLand全局设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
-   # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod) 
-   # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
-  go list -json     # 列举当前目录（包|模块|项目）的依赖导入、源码、输出等。
-  go list -m -u all # 列举依赖模块和依赖更新
-  # 管理项目模块 go mod <command> [arguments] (模块增删改+下载) | 功能概述 go help modules
-  go help mod       # 查看帮助
-  godoc -http=:6060 # 查看文档&本地,在线文档 golang.org/doc
-  
-  go help test      # 测试前，先格式化代码 go fmt
-  go tool vet -shadow main.go # 检查变量覆盖
-  go tool cover -help         # 检查代码覆盖率
-  go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  go test -timeout 10s github.com/mpvl/errdare
-~~~
+    https://studygolang.com/dl/golang/go1.11.10.windows-amd64.msi # 安装go1.11.10
+    set GOROOT=D:\Program\Go\
+    set GOPATH=C:\Users\Administrator\go
+    set PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
+    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
+    # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
+    # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
-    wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
-    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改 (选项 tar -C)
-    tar -xvzf go1.12.linux-amd64.tar.gz -C $GO_INSTALL_DIR
-    GOPATH=/home/go
-    GOROOT=/usr/local/go
-    PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+    wget https://studygolang.com/dl/golang/go1.11.10.linux-amd64.tar.gz
+    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改临时变量 (选项 tar -C)
+    tar -xvzf go1.11.10.linux-amd64.tar.gz -C $GO_INSTALL_DIR # 安装go1.11.10
+    export GOPATH=~/go
+    export GOROOT=/usr/local/go
+    export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     $ go tool dist list
     $ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
@@ -147,13 +133,14 @@ git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
-# 开发工具-VSCode-Go语言工具链
+# 开发工具 VSCode Go语言工具链
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
 go get -u -v github.com/golang/lint/golint
 go get -u -v github.com/lukehoban/go-outline
 go get -u -v github.com/lukehoban/go-find-references
+go get -u -v github.com/derekparker/delve/cmd/dlv
 go get -u -v github.com/sqs/goreturns
 go get -u -v github.com/tpng/gopkgs
 go get -u -v github.com/golang/tools/cmd/goimports
@@ -162,7 +149,6 @@ go get -u -v github.com/golang/tools/cmd/guru
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
-go get -u -v github.com/derekparker/delve/cmd/dlv
 ~~~
 
 > 项目管理-构建-测试工具
@@ -189,29 +175,30 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor init             # 项目依赖vendor目录
   > govendor add +e           # 添加本地$GOPATH包[go get]
   > govendor fetch            # 获取远程vendor.json包[govendor get]
-# vgo 一个项目模块管理工具 (用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) # [默认auto]
-git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install
-  > go help mod <command>       # 帮助
-  > SET GO111MODULE=on          # 开始前
-  > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github
+# vgo 一个项目模块管理工具 (go版本^1.11.*,可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
+git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
+  > go help mod <command>       # 帮助 | 功能概述 go help modules
+  > set GO111MODULE=on          # 开始前 | <linux> $ export GO111MODULE=on && env
+  > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github镜像
   > go get ./... || go mod tidy # 根据已有代码import需要的依赖自动生成require语句
   > go get -u || -u=patch       # 升级到最新的次要版本,升级到最新的修订版本
-  > go list -m                  # 查看当前的依赖和版本
-  
+  > go list -m                  # 查看当前的依赖和模块版本
+  > go list -m -u all           # 查看当前的依赖和模块版本更新
+  > go list -json
+  > go mod graph
   > go mod download             # 下载到$GOPATH/pkg/mod/cache共享缓存中
   > go mod edit -fmt            # 格式化 go.mod 文件
-  > go mod edit -require=path@version # 添加依赖或修改依赖版本
-  
-  > go mod tidy                 # 安装依赖，下载依赖，生成vendor，然后构建 go build -mod=vendor
+  > go mod edit -require=path@ver # 添加依赖或修改依赖版本
   > go mod vendor               # 生成 vendor 文件夹, 下载你代码中引用的库
-  > go build -mod=vendor        # 使用 vendor 文件夹
+  > go mod tidy                 # 安装依赖，下载依赖，生成vendor，然后构建 go build -mod=vendor
+  > go build -mod=vendor        # 构建使用 vendor 文件夹
   > go build -mod=readonly      # 防止隐式修改 go.mod
 go get -u github.com/sparrc/gdm
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 
-# 学习playground*
+# 学习案例
 go get github.com/golang/playground
 go get github.com/golang/example/hello
 go get github.com/shen100/golang123        # 适合初学者
@@ -224,6 +211,13 @@ go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深�
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
+
+# 测试工具
+  go help test                # 测试说明
+  go tool vet -shadow main.go # 检查变量覆盖
+  go tool cover -help         # 检查代码覆盖率
+  go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+  go test -timeout 10s github.com/mpvl/errdare
 ~~~
 
 > Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
