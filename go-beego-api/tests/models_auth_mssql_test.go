@@ -25,7 +25,7 @@ const (
 )
 
 // 3. 数据库连接客户端初始化
-func initAuthTest() {
+func initAuthMssqlTest() {
 	db = conf.InitDbForXOrm(mssqlDriverName, mssqlConn)
 }
 
@@ -57,8 +57,8 @@ func TestUUID(t *testing.T) {
 }
 
 // 测试: 保存用户信息
-func TestAuthuserOrm(t *testing.T) {
-	initAuthTest()
+func TestAuthUserOrm(t *testing.T) {
+	initAuthMssqlTest()
 	users := auth.AuthuserXorm{DB: db}
 	user1 := initUser1()
 	if e := users.Create(user1); e != nil {
@@ -86,8 +86,8 @@ func TestAuthuserOrm(t *testing.T) {
 }
 
 // 测试: 保存用户信息的事务处理
-func TestAuthuserTransaction(t *testing.T) {
-	initAuthTest()
+func TestAuthUserTransaction(t *testing.T) {
+	initAuthMssqlTest()
 	users, e := db.Transaction(func(session *xorm.Session) (i interface{}, e error) {
 		user1 := initUser1()
 		if _, e = session.Insert(user1); e != nil {

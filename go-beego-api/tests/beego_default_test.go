@@ -2,7 +2,10 @@ package test
 
 import (
 	"github.com/angenalZZZ/Go/go-beego-api/conf"
+	"github.com/angenalZZZ/Go/go-beego-api/controllers"
 	_ "github.com/angenalZZZ/Go/go-beego-api/routers"
+	"github.com/appleboy/gofight"
+	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -13,13 +16,14 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
+// 初始化
 func init() {
 	conf.TestInit()
 }
 
-// 方式一 (需要先手动运行 bee run)
+// 方式一 (测试前，需要先运行 bee run)
 // 端点测试：controllers/default
-func TestDefault(t *testing.T) {
+func TestFunction1(t *testing.T) {
 	req := httplib.Get(conf.TestUrl + "/")
 	res, err := req.Response()
 	if err != nil {
@@ -33,9 +37,9 @@ func TestDefault(t *testing.T) {
 	}
 }
 
-// 方式二 (全自动 Serve HTTP)
+// 方式二 (默认)
 // 端点测试：controllers/user
-func TestGet(t *testing.T) {
+func TestFunction2(t *testing.T) {
 	r, _ := http.NewRequest("GET", "/v1/user/", nil)
 	w := httptest.NewRecorder()
 	beego.BeeApp.Handlers.ServeHTTP(w, r)
@@ -50,5 +54,21 @@ func TestGet(t *testing.T) {
 			_, _ = Printf("\n1 output result\n\n%s\n\n", w.Body)
 			So(w.Body.Len(), ShouldBeGreaterThan, 0)
 		})
+	})
+}
+
+// 方式三 (快捷)
+// 端点测试：controllers/default
+func TestFunction(t *testing.T) {
+	const url = "/"
+	b := beego.NewControllerRegister()
+	b.Add(url, &controllers.DefaultController{}, "get:Get")
+
+	a := assert.New(t)
+	r := gofight.New()
+
+	r.GET(url).SetDebug(true).Run(b, func(r gofight.HTTPResponse, q gofight.HTTPRequest) {
+		a.Equal(http.StatusOK, r.Code)
+		a.Equal(beego.BConfig.AppName, r.Body.String())
 	})
 }

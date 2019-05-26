@@ -19,7 +19,7 @@ const (
 )
 
 // 3. 数据库连接客户端初始化
-func initBeegoOrmTest() {
+func initBeegoOrmMysqlTest() {
 	// 检查配置文件
 	c := beego.AppConfig.String(mysqlConn)
 
@@ -35,6 +35,6 @@ func initBeegoOrmTest() {
 
 // 测试: Beego Orm
 func TestBeegoOrm(t *testing.T) {
-	initBeegoOrmTest()
-	t.Log("Beego Orm CRUD...")
+	initBeegoOrmMysqlTest()
+	t.Logf("DBStats: %v\n", dbo.DBStats())
 }
