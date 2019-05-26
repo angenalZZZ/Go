@@ -191,11 +191,13 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
-  > go help test                # 测试帮助
-  > go tool vet -shadow main.go # 检查变量覆盖
-  > go tool cover -help         # 检查代码覆盖率
+  > go help test                                   # 帮助测试
+  > go test -v -run=^$ ./to/path                   # 单元测试*testing.T [-run=查找func]
+  > go test -benchmem -bench=^Benchmark ./to/path  # 基准测试*testing.B [-bench=查找func]
+  > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
+  > go tool vet -shadow main.go                    # 检查变量覆盖
+  > go tool cover -help                            # 检查代码覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  > go test -timeout 10s github.com/mpvl/errdare
   
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
