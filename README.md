@@ -459,6 +459,7 @@ go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | 
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
+go get github.com/graph-gophers/graphql-go # 脸书开源Facebook - GraphQL api server
 
 # 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
@@ -500,6 +501,7 @@ go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisor
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
+go get github.com/grafana/grafana          # 监测系统|指标分析工具|InfluxDB时序DB|Prometheus等 *29k
 
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
