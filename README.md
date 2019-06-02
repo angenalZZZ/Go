@@ -407,6 +407,8 @@ go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *
 go get github.com/travisjeffery/jocko      # 消息推送服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
 go get github.com/appleboy/gorush          # 消息推送服务gorush 4k : api, HTTP/2, notification queue and multiple workers.
 go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
+go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
+go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
 
 go get github.com/nsqio/nsq                # 实时分布式消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
