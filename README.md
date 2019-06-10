@@ -127,7 +127,7 @@ go get -u -v github.com/cweill/gotests/...
 #     /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 
-# 管理模块依赖(包管理工具)
+# 管理模块依赖( go版本~1.10.* 推荐)
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
@@ -143,8 +143,9 @@ go get -u github.com/Masterminds/glide  # 推荐使用 *7k <Mac or Linux> curl h
   > go build
 go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor init             # 项目依赖vendor目录
-  > govendor add +e           # 添加本地$GOPATH包[go get]
-  > govendor fetch            # 获取远程vendor.json包[govendor get]
+  > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
+  > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
+  > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
 # 管理模块依赖( go版本^1.11.* 推荐)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
@@ -192,12 +193,20 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
   > go help test                                   # 帮助测试
-  > go test -v -run=^$ ./to/path                   # 单元测试*testing.T [-run=查找func]
-  > go test -benchmem -bench=^Benchmark ./to/path  # 基准测试*testing.B [-bench=查找func]
+  > go test -v -run=^$ ./path                      # 单元测试*testing.T [-run=查找func]
+  > go test -v -bench=. -run=none -benchmem ./path # 基准测试*testing.B [-bench=.匹配全部,-run=匹配none]
+  > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 检查代码覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters
+  
+  # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具 gocritic ]
+  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/...
+     && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
+  > gocritic check -help   # 使用说明
+  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  # 扫描代码 GraphQL
   
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
