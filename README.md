@@ -202,11 +202,11 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters
   
-  # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具 gocritic ]
-  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/...
+  # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
+  > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
+  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... # 2.2代码审查工具
      && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
-  > gocritic check -help   # 使用说明
-  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  # 扫描代码 GraphQL
+  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  # 扫描GraphQL代码 #审查说明 gocritic check -help
   
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
