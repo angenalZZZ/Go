@@ -290,6 +290,7 @@ docker exec -it golang1115 bash
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
+go get github.com/reactivex/rxgo           # 响应式编程rxgo
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures 
 go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行预定的操作
@@ -437,9 +438,11 @@ go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服�
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
 go get github.com/kataras/iris             # 最快Web开发框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
+go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
+go get github.com/graph-gophers/graphql-go # GraphQL api server   *3k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
@@ -447,15 +450,14 @@ go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC
 go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication
-go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
-go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务 | grpc-ecosystem.github.io/grpc-gateway
+go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
 go get github.com/dchest/captcha           # 验证码|图片|声音
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
-go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen | github.com/eladnava/mailgen
+go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
+go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
@@ -463,15 +465,10 @@ go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
-
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
-go get github.com/reactivex/rxgo           # 响应式编程
-go get github.com/go-swagger/go-swagger/cmd/swagger # swagger 文档生成器 | goswagger.io/install.html
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
-
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
-go get github.com/graph-gophers/graphql-go # 脸书开源Facebook - GraphQL api server
 
 # 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
@@ -485,6 +482,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务端/客户端
  $ prototool help                          # 增强版protoc <ubuntu> github.com/uber/prototool#quick-start
+go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io | www.grpc.io
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
