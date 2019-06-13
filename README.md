@@ -152,18 +152,14 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
-  > mkdir.\example.com\app      # 先创建项目目录 | <linux> $ mkdir -p example.com/app
+  > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
   > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
   > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github镜像
   > code .                      # 开始编码...
   #----------------------------------------------------------------------
-  > go mod tidy || go get ./... # 下载依赖 %GOPATH%/pkg/mod/... 文件夹
-  > go build                    # 构建使用 %GOPATH%/pkg/mod/... 文件夹
+  > go mod tidy || go get ./... # 下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步)
+  > go build                    # 构建使用%GOPATH%/pkg/mod/... 文件夹
   > go clean -r -cache .        # 清除构建&缓存文件
-  #----------------------------------------------------------------------
-  > go mod vendor               # 下载依赖 ./vendor/... 文件夹
-  > go build -mod=vendor        # 构建使用 ./vendor/... 文件夹
-  > go build -mod=readonly      # 防止隐式修改go.mod
   #----------------------------------------------------------------------
   > go list -m                  # 查看当前版本
   > go list -m -u all           # 查看当前的依赖和模块版本更新 -json 支持json输出
@@ -171,7 +167,14 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go get -u || -u=patch       # 升级到最新依赖版本 || 升级到最新的修订版本
   > go mod edit -fmt            # 格式化 go.mod 文件
   > go mod edit -require=path@ver # 添加或修改依赖版本
-  > go mod download             # 直接下载到$GOPATH/pkg/mod/cache'共享缓存'
+  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
+  #----------------------------------------------------------------------
+  > go mod vendor               # 下载依赖./vendor/... 文件夹
+  > go build -mod=vendor        # 构建使用./vendor/... 文件夹
+  > go build -mod=readonly      # 防止隐式修改go.mod
+  #----------------------------------------------------------------------
+  > go mod init github.com/golang/app # 从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
+  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/... 文件夹
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
