@@ -10,12 +10,16 @@ import (
 	"github.com/pkg/errors"
 )
 
+// 配置功能
 type Config struct {
 	*Configuration
 }
 
+// 配置运行环境
 type Configuration struct {
-	Environment       string
+	// 当前环境
+	Environment string
+	// 环境变量：前缀
 	EnvironmentPrefix string
 	// 异常：检查到错误配置
 	ErrorOnUnmatchedKeys bool
