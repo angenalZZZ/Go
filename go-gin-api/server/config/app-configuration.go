@@ -35,7 +35,6 @@ type AppConfiguration struct {
 		Name string `default:"admin"`
 		Pass string `default:"admin"`
 	}
-	PassStrength      int    `default:"10"`
 	UploadedImagesDir string `default:"data/images"`
 	PluginsDir        string `default:"data/plugins"`
 }
@@ -43,12 +42,13 @@ type AppConfiguration struct {
 // 获取 App 配置
 func Get() *AppConfiguration {
 	if appConfig == nil {
+		config := Config{&Configuration{EnvironmentPrefix: "GI"}}
 		appConfig, files := new(AppConfiguration), []string{"config.yml", "/etc/app/config.yml"}
 
 		// 读取配置例子文件
 		files = append(files, "config.example.yml")
 
-		err := Config{&Configuration{EnvironmentPrefix: "GI"}}.Load(appConfig, files...)
+		err := config.Load(appConfig, files...)
 		if err != nil {
 			panic(err)
 		}
