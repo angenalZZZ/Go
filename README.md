@@ -202,8 +202,10 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 检查代码覆盖率
+  > go test -v -cover ./...                        # 完全测试+覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters
+  > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
+  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
   
   # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
   > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
