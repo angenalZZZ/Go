@@ -3,7 +3,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*管理、构建、测试*](#项目管理构建测试)；[*功能、框架、基础库、应用、工具*](#-功能框架基础库应用工具)；[*云平台-公众平台-支付*](#云平台公众平台支付)
+ > [*管理、构建、测试*](#管理构建测试)；[*功能、框架、基础库、应用、工具*](#-功能框架基础库应用工具)；[*云平台-公众平台-支付*](#云平台公众平台支付)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -122,7 +122,7 @@ go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
 ~~~
 
-#### [管理|构建|测试](https://golangci.com)
+#### 管理|构建|测试
 ~~~bash
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
