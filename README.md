@@ -56,7 +56,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOROOT=D:\Program\Go\
     set GOPATH=C:\Users\Administrator\go
     set PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
+    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11] )
     # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
     # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
 
@@ -149,15 +149,18 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
-# 管理模块依赖( go版本^1.11.* 推荐)
+# 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
   > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
-  > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github镜像
-  > code .                      # 开始编码...
+  #----------------------------------------------------------------------
+  > go mod init [$MODULE_NAME]  # 默认生成 go.mod 文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
+  > go mod init example.com/app # 指定生成 go.mod 文件，依赖golang.org/...可能要翻墙，go.mod中用replace替换成github镜像
+  > go get github.com/gin-gonic/gin # 安装项目依赖... 生成 go.sum 文件，锁定依赖的版本。
+  > code .                      # 开始编码... 在 go module 下，不需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
   > go mod tidy || go get ./... # 下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步)
   > go build                    # 构建使用%GOPATH%/pkg/mod/... 文件夹
