@@ -157,29 +157,30 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
   > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
   #----------------------------------------------------------------------
-  > go mod init [$MODULE_NAME]  # 默认生成 go.mod 文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
-  > go mod init example.com/app # 指定生成 go.mod 文件，依赖golang.org/...可能要翻墙，go.mod中用replace替换成github镜像
+  > go mod init [$MODULE_NAME]  # 1.默认生成 go.mod 文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
+  > go mod init example.com/app # 1.指定生成 go.mod 文件，依赖golang.org/...可能要翻墙，go.mod中用replace替换成github镜像
   > go get github.com/gin-gonic/gin # 安装项目依赖... 生成 go.sum 文件，锁定依赖的版本。
-  > code .                      # 开始编码... 在 go module 下，不需要vendor目录(go~1.10.*)进行精确的版本管理
+  > code .                      # 2.开始编码... 在 go module 下，不需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
-  > go mod tidy || go get ./... # 下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步)
-  > go build                    # 构建使用%GOPATH%/pkg/mod/... 文件夹
-  > go clean -r -cache .        # 清除构建&缓存文件
+  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用的依赖)
+  > go build                    # 3.构建使用%GOPATH%/pkg/mod/... 文件夹
+  > go clean -r -cache .        # 4.清除构建&缓存文件
   #----------------------------------------------------------------------
-  > go list -m                  # 查看当前版本
-  > go list -m -u all           # 查看当前的依赖和模块版本更新 -json 支持json输出
-  > go mod graph                # 输出依赖关系
-  > go get -u || -u=patch       # 升级到最新依赖版本 || 升级到最新的修订版本
-  > go mod edit -fmt            # 格式化 go.mod 文件
-  > go mod edit -require=path@ver # 添加或修改依赖版本
-  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
+  > go list -m all              # 2.查看当前版本
+  > go list -m -u all           # 2.查看当前的依赖和模块版本更新 -json 支持json输出
+  > go mod graph                # 4.输出依赖关系,打印模块依赖图
+  > go mod verify               # 5.验证依赖是否正确
+  > go get -u || -u=patch       # 5.升级到最新依赖版本 || 升级到最新的修订版本
+  > go mod edit -fmt            # 5.格式化 go.mod 文件
+  > go mod edit -require=path@ver # 2.添加或修改依赖版本
+  > go mod download             # 2.下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
   #----------------------------------------------------------------------
-  > go mod vendor               # 下载依赖./vendor/... 文件夹
-  > go build -mod=vendor        # 构建使用./vendor/... 文件夹
-  > go build -mod=readonly      # 防止隐式修改go.mod
+  > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹
+  > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹
+  > go build -mod=readonly      # 3.防止隐式修改go.mod
   #----------------------------------------------------------------------
-  > go mod init github.com/golang/app # 从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
-  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/... 文件夹
+  > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
+  > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
