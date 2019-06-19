@@ -6,8 +6,8 @@ var appConfig *AppConfiguration
 // App 配置 结构
 type AppConfiguration struct {
 	Server struct {
-		ListenAddr string `default:""`
-		Port       int    `default:"80"`
+		ListenAddr string `default:"" env:"GI_API_ADDR"`
+		Port       int    `default:"80" env:"GI_API_PORT" required:"true"`
 		SSL        struct {
 			Enabled         *bool  `default:"false"`
 			RedirectToHTTPS *bool  `default:"true"`

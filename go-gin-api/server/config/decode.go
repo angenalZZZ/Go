@@ -41,18 +41,18 @@ func DecodeFile(file string, config interface{}, errorOnUnmatchedKeys bool) (err
 	}
 }
 
-// 解析配置结构 处理config标记
+// 解析配置的数据结构：处理config标记
 func (c *Config) processTags(config interface{}, prefixes ...string) (err error) {
 	configValue := reflect.Indirect(reflect.ValueOf(config))
 
-	// 当配置项为指针时,读取其结构
+	// 当配置项为指针时,读取数据结构
 	for configValue.Kind() == reflect.Ptr {
 		configValue = configValue.Elem()
 	}
 
 	// 当配置项非结构时,抛出异常
 	if configValue.Kind() != reflect.Struct {
-		return errors.Errorf("解析配置时,读取其结构发生错误：%v", configValue.Kind().String())
+		return errors.Errorf("解析配置时异常,无法读取数据结构：%v", configValue.Kind().String())
 	}
 
 	// 解析配置项数据结构
@@ -69,13 +69,15 @@ func (c *Config) processTags(config interface{}, prefixes ...string) (err error)
 			continue
 		}
 
+		// 检查环境变量
 		if envName == "" {
+			// 按数据结构路径名称
 			envNames = append(envNames, strings.Join(append(prefixes, structField.Name), "_"))
 			envNames = append(envNames, strings.ToUpper(strings.Join(append(prefixes, structField.Name), "_")))
 		} else {
+			// 按指定名称：`env:""`
 			envNames = []string{envName}
 		}
-
 		for _, env := range envNames {
 			if value := os.Getenv(env); value != "" {
 				if err = yaml.Unmarshal([]byte(value), valueField.Addr().Interface()); err != nil {
@@ -87,13 +89,14 @@ func (c *Config) processTags(config interface{}, prefixes ...string) (err error)
 
 		// 配置项为空时
 		if isZero := reflect.DeepEqual(valueField.Interface(), reflect.Zero(valueField.Type()).Interface()); isZero {
-			// 配置项存在默认值时 标记：`default:""`
 			if value := structField.Tag.Get("default"); value != "" {
+				// 有默认值时：`default:""`
 				if err = yaml.Unmarshal([]byte(value), valueField.Addr().Interface()); err != nil {
 					return err
 				}
 			} else if structField.Tag.Get("required") == "true" {
-				return errors.Errorf("解析配置时缺少必填项：%v", structField.Name)
+				// 为必填项时：`required:"true"`
+				return errors.Errorf("解析配置时异常,缺少必填项：%v (%v)", structField.Name, structField.Type)
 			}
 		}
 
