@@ -520,6 +520,7 @@ go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
 go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
+go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
