@@ -1,7 +1,9 @@
 # Go
 Go是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫，罗勃·派克及肯·汤普逊于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。
 
- > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)、[^收藏夹$](#-功能框架基础库应用工具)、[*云平台-公众平台-支付*](#云平台公众平台支付)
+ > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
+ 
+ > [*管理.构建.测试*](#管理构建测试) ；[*功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*开源的web框架*](#-开源的-web-框架) ；[*云平台.公众平台.支付*](#云平台公众平台支付)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -54,7 +56,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOROOT=D:\Program\Go\
     set GOPATH=C:\Users\Administrator\go
     set PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH? )
+    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11] )
     # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
     # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
 
@@ -120,7 +122,7 @@ go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/cweill/gotests/...
 ~~~
 
-> 项目管理|构建|测试
+#### 管理|构建|测试
 ~~~bash
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
@@ -147,34 +149,38 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
-# 管理模块依赖( go版本^1.11.* 推荐)
+# 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
   > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
-  > go mod init example.com/app # 生成 go.mod 文件，golang.org/..各个包都需要翻墙，go.mod中用replace替换成github镜像
-  > code .                      # 开始编码...
   #----------------------------------------------------------------------
-  > go mod tidy || go get ./... # 下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步)
-  > go build                    # 构建使用%GOPATH%/pkg/mod/... 文件夹
-  > go clean -r -cache .        # 清除构建&缓存文件
+  > go mod init [$MODULE_NAME]  # 1.默认生成 go.mod 文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
+  > go mod init example.com/app # 1.指定生成 go.mod 文件，依赖golang.org/...可能要翻墙，go.mod中用replace替换成github镜像
+  > go get github.com/gin-gonic/gin # 安装项目依赖... 生成 go.sum 文件，锁定依赖的版本。
+  > code .                      # 2.开始编码... 在 go module 下，不需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
-  > go list -m                  # 查看当前版本
-  > go list -m -u all           # 查看当前的依赖和模块版本更新 -json 支持json输出
-  > go mod graph                # 输出依赖关系
-  > go get -u || -u=patch       # 升级到最新依赖版本 || 升级到最新的修订版本
-  > go mod edit -fmt            # 格式化 go.mod 文件
-  > go mod edit -require=path@ver # 添加或修改依赖版本
-  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
+  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用的依赖)
+  > go build                    # 3.构建使用%GOPATH%/pkg/mod/... 文件夹
+  > go clean -r -cache .        # 4.清除构建&缓存文件
   #----------------------------------------------------------------------
-  > go mod vendor               # 下载依赖./vendor/... 文件夹
-  > go build -mod=vendor        # 构建使用./vendor/... 文件夹
-  > go build -mod=readonly      # 防止隐式修改go.mod
+  > go list -m all              # 2.查看当前版本
+  > go list -m -u all           # 2.查看当前的依赖和模块版本更新 -json 支持json输出
+  > go mod graph                # 4.输出依赖关系,打印模块依赖图
+  > go mod verify               # 5.验证依赖是否正确
+  > go get -u || -u=patch       # 5.升级到最新依赖版本 || 升级到最新的修订版本
+  > go mod edit -fmt            # 5.格式化 go.mod 文件
+  > go mod edit -require=path@ver # 2.添加或修改依赖版本
+  > go mod download             # 2.下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
   #----------------------------------------------------------------------
-  > go mod init github.com/golang/app # 从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
-  > go mod download             # 下载依赖到%GOPATH%/pkg/mod/... 文件夹
+  > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹
+  > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹
+  > go build -mod=readonly      # 3.防止隐式修改go.mod
+  #----------------------------------------------------------------------
+  > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
+  > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
@@ -202,8 +208,10 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 检查代码覆盖率
+  > go test -v -cover ./...                        # 完全测试+覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters
+  > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
+  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
   
   # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
   > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
@@ -512,6 +520,7 @@ go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
 go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
+go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
@@ -592,14 +601,18 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 # https://github.com/philsong/wechat2
 ~~~
 
-#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
+
+ * Web 框架
+    * [基于 Gin 构建企业级 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+    * [基于 Gin 一步一步搭建Go的Web服务器](https://www.hulunhao.com/go/go-web-backend-starter/)
 ~~~
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 构建 
+# 构建
 cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
