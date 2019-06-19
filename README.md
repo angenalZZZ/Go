@@ -3,7 +3,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*管理、构建、测试*](#管理构建测试)；[*功能、框架、基础库、应用、工具*](#-功能框架基础库应用工具)；[*云平台-公众平台-支付*](#云平台公众平台支付)
+ > [*管理、构建、测试*](#管理构建测试) ；[*功能、框架、基础库、应用、工具*](#-功能框架基础库应用工具) ；[*云平台-公众平台-支付*](#云平台公众平台支付)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -596,14 +596,18 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 # https://github.com/philsong/wechat2
 ~~~
 
-#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks), [参考构建企业级的 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
+
+ * Web 框架
+    * [基于 Gin 构建企业级 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
+    * [基于 Gin 一步一步搭建Go的Web服务器](https://www.hulunhao.com/go/go-web-backend-starter/)
 ~~~
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 构建 
+# 构建
 cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
