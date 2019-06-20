@@ -1,10 +1,7 @@
-package config
-
-// App 配置 变量
-var appConfig *AppConfiguration
+package app
 
 // App 配置 结构
-type AppConfiguration struct {
+type Config struct {
 	Server struct {
 		ListenAddr string `default:"" env:"GI_API_ADDR"`
 		Port       int    `default:"80" env:"GI_API_PORT" required:"true"`
@@ -37,21 +34,4 @@ type AppConfiguration struct {
 	}
 	UploadedImagesDir string `default:"data/images"`
 	PluginsDir        string `default:"data/plugins"`
-}
-
-// 获取 App 配置
-func Get() *AppConfiguration {
-	if appConfig == nil {
-		config := Config{&Configuration{EnvironmentPrefix: "GI"}}
-		appConfig, files := new(AppConfiguration), []string{"config.yml", "/etc/app/config.yml"}
-
-		// 读取配置例子文件
-		files = append(files, "config.example.yml")
-
-		err := config.Load(appConfig, files...)
-		if err != nil {
-			panic(err)
-		}
-	}
-	return appConfig
 }
