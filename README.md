@@ -207,8 +207,8 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
-  > go tool cover -help                            # 检查代码覆盖率
-  > go test -v -cover ./...                        # 完全测试+覆盖率
+  > go tool cover -help                            # 帮助测试覆盖率
+  > go test -v -cover ./... || go test -coverprofile ./... # 显示测试覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
   > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
