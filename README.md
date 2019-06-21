@@ -127,7 +127,6 @@ go get -u -v github.com/cweill/gotests/...
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build/versions/0.25.0/windows.html
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
-#   /发布自动化: goreleaser.com | github.com/goreleaser/goreleaser
 # ------------------------------------------------------------------------------------
 
 # 管理模块依赖( go版本~1.10.* 推荐)
@@ -244,6 +243,10 @@ go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... m
 go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
 go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
 git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+
+# 发布自动化
+  # 工具 goreleaser.com | github.com/goreleaser/goreleaser
+
 ~~~
 
 > 性能优化
