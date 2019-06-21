@@ -1,9 +1,9 @@
 # Go
 Go是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫，罗勃·派克及肯·汤普逊于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。
 
- > [应用&库&工具](https://github.com/avelino/awesome-go)、[官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
+ > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*管理.构建.测试*](#管理构建测试) ；[*功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*开源的web框架*](#-开源的-web-框架) ；[*云平台.公众平台.支付*](#云平台公众平台支付)
+ > [*管理.构建.测试*](#管理构建测试) ；[*推荐的功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐的开源web框架*](#-开源的-web-框架) ；[更多的应用&库&工具](https://github.com/avelino/awesome-go) ；[*云平台.公众平台.支付*](#云平台公众平台支付)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -100,7 +100,7 @@ git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     
 git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
 git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
 git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
-git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具文档
+git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
@@ -125,8 +125,9 @@ go get -u -v github.com/cweill/gotests/...
 #### 管理|构建|测试
 ~~~bash
 # ------------------------------------------------------------------------------------
-#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ https://docs.bazel.build/versions/0.25.0/windows.html
-#     /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ https://github.com/stackb/rules_proto
+#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build/versions/0.25.0/windows.html
+#   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
+#   /发布自动化: goreleaser.com | github.com/goreleaser/goreleaser
 # ------------------------------------------------------------------------------------
 
 # 管理模块依赖( go版本~1.10.* 推荐)
@@ -212,6 +213,7 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
   > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
+  > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具
   
   # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
   > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
@@ -553,6 +555,7 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 # 亚马逊 AWS | www.amazonaws.cn/tools
 
 # 谷歌云 Google Cloud Platform | cloud.google.com/go | github.com/GoogleCloudPlatform
+go get -u github.com/google/go-cloud      # 云计算
 go get -u cloud.google.com/go/storage     # 在 Cloud Storage 中存储和归档数据
 go get -u cloud.google.com/go/bigquery    # 使用 Google BigQuery 执行数据分析
 go get -u cloud.google.com/go/pubsub      # 使用 Pub/Sub 设置完全托管的事件驱动型消息传递系统
@@ -600,6 +603,39 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 # 微信公众平台/微信企业号/微信商户平台/微信支付
 # https://github.com/philsong/wechat2
 ~~~
+
+#### Google 开源
+
+*Go team:*
+
+- https://github.com/golang/protobuf/
+- https://github.com/golang/oauth2
+- https://github.com/golang/glog
+- https://github.com/golang/geo
+- https://github.com/golang/groupcache
+- https://github.com/golang/snappy
+- https://github.com/golang/freetype
+- https://github.com/rsc/goversion
+
+*Google team:*
+
+- https://github.com/googleapis/googleapis
+- https://github.com/google/btree
+- https://github.com/google/go-cloud
+- https://github.com/google/gops
+- https://github.com/google/gvisor
+- https://github.com/google/google-api-go-client
+- https://github.com/grpc/grpc-go
+
+*WebAssembly:*
+
+- https://tip.golang.org/pkg/syscall/js
+- https://github.com/golang/go/tree/master/misc/wasm
+
+- https://github.com/chai2010/awesome-wasm-zh
+- https://github.com/mbasso/awesome-wasm
+- https://gopry.rice.sh/
+
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
 
