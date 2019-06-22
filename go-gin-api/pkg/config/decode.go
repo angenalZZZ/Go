@@ -1,10 +1,7 @@
 package config
 
 import (
-	"fmt"
 	"io/ioutil"
-	"os"
-	"reflect"
 	"strings"
 
 	"github.com/BurntSushi/toml"
@@ -13,8 +10,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-// 解析配置文件 转换为config
-func DecodeFile(file string, config interface{}, errorOnUnmatchedKeys bool) (err error) {
+// 解析配置文件 转换为对象config
+func DecodeFile(file string, config interface{}) (err error) {
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
 		return err
@@ -22,118 +19,16 @@ func DecodeFile(file string, config interface{}, errorOnUnmatchedKeys bool) (err
 
 	switch {
 	case strings.HasSuffix(file, ".yml") || strings.HasSuffix(file, ".yaml"):
-		if errorOnUnmatchedKeys {
-			return yaml.UnmarshalStrict(data, config)
-		}
 		return yaml.Unmarshal(data, config)
 
 	case strings.HasSuffix(file, ".toml"):
-		if metadata, err := toml.Decode(string(data), config); err == nil && len(metadata.Undecoded()) > 0 && errorOnUnmatchedKeys {
-			return &UnmatchedTomlKeysError{Keys: metadata.Undecoded()}
-		}
+		_, err := toml.Decode(string(data), config)
 		return err
 
 	case strings.HasSuffix(file, ".json"):
 		return jsoniter.ConfigCompatibleWithStandardLibrary.Unmarshal(data, config)
 
 	default:
-		return errors.Errorf("解析配置文件失败：%v", file)
+		return errors.Errorf("解析配置文件失败(*.yml *.toml *.json)：%v", file)
 	}
-}
-
-// 解析配置的数据结构：处理config标记
-func (c *Config) processTags(config interface{}, prefixes ...string) (err error) {
-	configValue := reflect.Indirect(reflect.ValueOf(config))
-
-	// 当配置项为指针时,读取数据结构
-	for configValue.Kind() == reflect.Ptr {
-		configValue = configValue.Elem()
-	}
-
-	// 当配置项非结构时,抛出异常
-	if configValue.Kind() != reflect.Struct {
-		return errors.Errorf("解析配置时异常,无法读取数据结构：%v", configValue.Kind().String())
-	}
-
-	// 解析配置项数据结构
-	configType := configValue.Type()
-	for i := 0; i < configType.NumField(); i++ {
-		var (
-			structField = configType.Field(i)
-			valueField  = configValue.Field(i)
-			envName     = structField.Tag.Get("env")
-			envNames    []string
-		)
-
-		if !valueField.CanAddr() || !valueField.CanInterface() {
-			continue
-		}
-
-		// 检查环境变量
-		if envName == "" {
-			// 按数据结构路径名称
-			envNames = append(envNames, strings.Join(append(prefixes, structField.Name), "_"))
-			envNames = append(envNames, strings.ToUpper(strings.Join(append(prefixes, structField.Name), "_")))
-		} else {
-			// 按指定名称：`env:""`
-			envNames = []string{envName}
-		}
-		for _, env := range envNames {
-			if value := os.Getenv(env); value != "" {
-				if err = yaml.Unmarshal([]byte(value), valueField.Addr().Interface()); err != nil {
-					return err
-				}
-				break
-			}
-		}
-
-		// 配置项为空时
-		if isZero := reflect.DeepEqual(valueField.Interface(), reflect.Zero(valueField.Type()).Interface()); isZero {
-			if value := structField.Tag.Get("default"); value != "" {
-				// 有默认值时：`default:""`
-				if err = yaml.Unmarshal([]byte(value), valueField.Addr().Interface()); err != nil {
-					return err
-				}
-			} else if structField.Tag.Get("required") == "true" {
-				// 为必填项时：`required:"true"`
-				return errors.Errorf("解析配置时异常,缺少必填项：%v (%v)", structField.Name, structField.Type)
-			}
-		}
-
-		for valueField.Kind() == reflect.Ptr {
-			valueField = valueField.Elem()
-		}
-
-		if valueField.Kind() == reflect.Struct {
-			err = c.processTags(
-				valueField.Addr().Interface(),
-				prefix(prefixes, &structField)...,
-			)
-			if err != nil {
-				return err
-			}
-		}
-
-		if valueField.Kind() == reflect.Slice {
-			for i := 0; i < valueField.Len(); i++ {
-				if reflect.Indirect(valueField.Index(i)).Kind() == reflect.Struct {
-					err = c.processTags(
-						valueField.Index(i).Addr().Interface(),
-						append(prefix(prefixes, &structField), fmt.Sprint(i))...,
-					)
-					if err != nil {
-						return err
-					}
-				}
-			}
-		}
-	}
-	return nil
-}
-
-func prefix(prefixes []string, structField *reflect.StructField) []string {
-	if structField.Anonymous && structField.Tag.Get("anonymous") == "true" {
-		return prefixes
-	}
-	return append(prefixes, structField.Name)
 }

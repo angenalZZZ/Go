@@ -9,7 +9,7 @@ import (
 )
 
 func TestConfig_Load(t *testing.T) {
-	config := Config{&Configuration{EnvironmentPrefix: "GI"}}
+	config := Config{&Environ{EnvironmentPrefix: "GI"}}
 	appConfig, files := new(app.Config), []string{"app/config.example.yml"}
 
 	err := config.Load(appConfig, files...)
