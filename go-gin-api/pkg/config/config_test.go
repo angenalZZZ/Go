@@ -1,6 +1,7 @@
 package config
 
 import (
+	"os"
 	"testing"
 
 	"github.com/angenalZZZ/Go/go-gin-api/pkg/config/app"
@@ -9,10 +10,22 @@ import (
 )
 
 func TestConfig_Load(t *testing.T) {
-	config := Config{&Environ{EnvironmentPrefix: "GI"}}
+	// 设置环境变量
+	err := os.Setenv("API_SERVER_ADDR", "api.server.com")
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = os.Setenv("API_SERVER_PORT", "8080")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// 读取配置信息
+	config := Config{&Environ{EnvironmentPrefix: "API"}}
 	appConfig, files := new(app.Config), []string{"app/config.example.yml"}
 
-	err := config.Load(appConfig, files...)
+	// 解析配置文件
+	err = config.Load(appConfig, files...)
 	if err != nil {
 		t.Fatal(err)
 	} else {

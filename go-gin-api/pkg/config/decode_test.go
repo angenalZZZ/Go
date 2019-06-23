@@ -10,7 +10,7 @@ import (
 func TestDecodeFile(t *testing.T) {
 	config, file := new(app.Config), "app/config.example.yml"
 
-	if err := DecodeFile(file, config, false); err != nil {
+	if err := DecodeFile(file, config); err != nil {
 		t.Fatal(err)
 	} else {
 		t.Log(jsoniter.ConfigCompatibleWithStandardLibrary.MarshalToString(config))
