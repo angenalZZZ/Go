@@ -174,7 +174,9 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go mod edit -fmt            # 5.格式化 go.mod 文件
   > go mod edit -require=path@ver # 2.添加或修改依赖版本
   > go mod download             # 2.下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
-  #----------------------------------------------------------------------
+  #----------------------------------------------------------------------     (处理网络问题)
+  > go mod edit -replace=google.golang.org/grpc=github.com/grpc/grpc-go@latest # 2.编辑镜像
+  > go mod tidy
   > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹
   > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹
   > go build -mod=readonly      # 3.防止隐式修改go.mod
