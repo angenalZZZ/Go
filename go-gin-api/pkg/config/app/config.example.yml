@@ -30,6 +30,8 @@ server: # WebApi服务
 database: # 连接数据库
   dialect: sqlite3 # 数据库类型
   connection: data/app.db
+  # mysql 数据库 root:root@tcp(localhost:3306)/db?charset=utf8&parseTime=true&loc=Local
+  # sqlserver://sa:123456@localhost?database=db&connection+timeout=3
 
 defaultuser: # 系统默认账号(内置账号)
   name: admin # 用户名
