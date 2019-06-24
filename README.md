@@ -200,6 +200,7 @@ go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、�
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
+go get -d github.com/Yesterday17/bili-archive-frontend # *bili-bili 前端实现
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
 # 测试工具
@@ -484,9 +485,12 @@ go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
+go get -u github.com/skip2/go-qrcode/...   # 二维码生成器 > qrcode     *1k
+go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|转换    *3k
 go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
+go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，然后提供http服务: statik -src=/path/to
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
 
