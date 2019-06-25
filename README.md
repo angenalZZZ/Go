@@ -326,6 +326,7 @@ go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自�
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
+go get github.com/asticode/go-astilog      # 日志自定义:logrus[.Entry-Data]+context[.Value-Fields]+configuration
 go get github.com/pkg/errors               # 错误处理pkg
 go get github.com/mpvl/{errc,errd}         # 错误处理mpvl
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
