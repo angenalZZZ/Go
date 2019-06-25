@@ -304,7 +304,6 @@ docker exec -it golang1115 bash
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
- * [QT跨平台应用框架](https://github.com/therecipe/qt)、[Webview-App](https://github.com/zserge/webview)、[Electron-App](https://github.com/asticode/go-astilectron)、[WebAssembly-App](https://github.com/murlokswarm/app)
 ~~~
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
@@ -642,10 +641,17 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 
 - https://tip.golang.org/pkg/syscall/js
 - https://github.com/golang/go/tree/master/misc/wasm
-
 - https://github.com/chai2010/awesome-wasm-zh
 - https://github.com/mbasso/awesome-wasm
 - https://gopry.rice.sh/
+
+#### *GUI - HTML/JS/CSS*
+
+ * [Electron](https://github.com/asticode/go-astilectron)
+    * - https://github.com/asticode/go-astilectron
+ * [QT](https://github.com/therecipe/qt)
+ * [Webview](https://github.com/zserge/webview)
+ * [WebAssembly](https://github.com/murlokswarm/app)
 
 ----
 
