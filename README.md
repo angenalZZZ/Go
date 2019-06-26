@@ -665,8 +665,8 @@ go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
 go get github.com/asticode/go-astivid/...
 cd %GOPATH%/src/github.com/asticode/go-astivid
 cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
-rm bind.go    # delete file before bundler help: astilectron-bundler -h
-astilectron-bundler -v
+rm -f bind*.go                # delete file before bundle
+astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
  * [Webview](https://github.com/zserge/webview)
