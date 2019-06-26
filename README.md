@@ -3,7 +3,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*管理.构建.测试*](#管理构建测试) ；[*推荐的功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐的开源web框架*](#-开源的-web-框架) ；[更多的应用&库&工具](https://github.com/avelino/awesome-go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*Google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly)
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) ；[*推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) ；[awesome-go](https://github.com/avelino/awesome-go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*Google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
