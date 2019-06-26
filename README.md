@@ -656,14 +656,17 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
     * Install astilectron-bundler & Play Demos
 ~~~bash
 # Download : astilectron & electron***
-cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
+ - https://github.com/asticode/astilectron/releases > %GOPATH%/bin/astibundler/astilectron-0.32.0.zip
+ - https://github.com/electron/electron/releases/tag/v4.0.1 > electron-windows-amd64-4.0.1.zip
 # Install : astilectron-bundler
 go get -u github.com/asticode/go-astilectron-bundler/...
 go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
 # Demo : video tools
 go get github.com/asticode/go-astivid/...
 cd %GOPATH%/src/github.com/asticode/go-astivid
-rm bind.go && astilectron-bundler -v # 帮助: astilectron-bundler -h
+cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
+rm bind.go    # delete file before bundler help: astilectron-bundler -h
+astilectron-bundler -v
 ~~~
  * [QT](https://github.com/therecipe/qt)
  * [Webview](https://github.com/zserge/webview)
