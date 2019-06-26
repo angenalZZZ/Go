@@ -329,6 +329,9 @@ go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com
 go get github.com/asticode/go-astilog      # 日志自定义:logrus[.Entry-Data]+context[.Value-Fields]+configuration
 go get github.com/pkg/errors               # 错误处理pkg
 go get github.com/mpvl/{errc,errd}         # 错误处理mpvl
+
+go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
+go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
 
 # https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
