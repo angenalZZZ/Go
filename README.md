@@ -653,13 +653,17 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 #### *GUI - HTML/JS/CSS*
 
  * [Electron](https://github.com/asticode/go-astilectron)
-    * Demo - video tools
+    * Install astilectron-bundler & Play Demos
 ~~~bash
- go get -u github.com/asticode/go-astivid/...
- rm $GOPATH/src/github.com/asticode/go-astivid/bind.go
- go get -u github.com/asticode/go-astilectron-bundler/...
- cd $GOPATH/src/github.com/asticode/go-astivid
- astilectron-bundler -v
+# Install astilectron-bundler
+go get -u github.com/asticode/go-astilectron-bundler/...
+go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
+# Demo : video tools
+go get github.com/asticode/go-astivid/...
+rm $GOPATH/src/github.com/asticode/go-astivid/bind.go
+go get -u github.com/asticode/go-astilectron-bundler/...
+cd $GOPATH/src/github.com/asticode/go-astivid
+astilectron-bundler -v
 ~~~
  * [QT](https://github.com/therecipe/qt)
  * [Webview](https://github.com/zserge/webview)
