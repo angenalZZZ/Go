@@ -351,10 +351,10 @@ go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,r
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 
-go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client
-go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli
+go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
+go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli *6k
 go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
-go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp ;第三方工具redis-dump
+go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
@@ -362,7 +362,7 @@ go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 
 go get github.com/hashicorp/go-memdb       # 内存数据库, radix trees *1k
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,LSM+tree,ACID,Stream,KV+version,SSDs *5.6k
-go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展、分布式、低延迟和高吞吐量功能的分布式位图索引数据库 *10k > docker pull dgraph/dgraph
+go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展、分布式、低延迟和高吞吐量功能的分布式位图索引数据库 *10k
 go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k > docker run -p 9851:9851 tile38/tile38
@@ -494,7 +494,7 @@ go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
 
-# 分布式 RPC框架 rpcx，支持Zookepper、etcd、consul多种服务发现方式，多种服务路由方式 *3k | books.studygolang.com/go-rpc-programming-guide
+# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 # 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
  # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go
@@ -509,7 +509,8 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io | www.grpc.io
-go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *1.7k
+go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
 go get github.com/micro/go-micro           # 分布式RPC微服务 *7k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
