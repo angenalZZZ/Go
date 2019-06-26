@@ -104,7 +104,7 @@ git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
-# 开发工具 VSCode Go语言工具链
+# 开发工具 VSCode Go语言工具链: pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
