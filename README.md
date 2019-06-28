@@ -40,7 +40,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     函数: make len cap new append copy close delete    complex real imag    panic recover
 
  > 通道`chan`
-
+    ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
     同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{},0) 
     异步: ch := make(chan int, 100) // buffered channel with capacity 100
     管道: ch1, ch2 := make(chan int), make(chan int) // 即-串连的通道-读写; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2
