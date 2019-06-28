@@ -212,7 +212,7 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 帮助测试覆盖率
-  > go test -v -cover ./... || go test -coverprofile ./... # 显示测试覆盖率
+  > go test -v -cover ./... || go test -coverprofile .out ./... # 显示测试覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
   > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
@@ -316,10 +316,9 @@ go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范�
 go get github.com/juju/utils               # Utility functions
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/appleboy/com             # Random、Array、File、Convert
-go get github.com/google/go-github         # 访问 GitHub API v3 | developer.github.com/v3
+go get gopkg.in/pipe.v2                    # Pipeline IO | github.com/go-pipe/pipe
 go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
-go get github.com/google/gxui/...          # 原生UI库 *4k
 
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
@@ -421,9 +420,9 @@ go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvet
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
-go get labix.org/v2/mgo                    # MongoDB 驱动
+go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
 git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
-  go get github.com/go-stack/stack 
+  go get github.com/go-stack/stack
   go get github.com/golang/snappy
   go get github.com/google/go-cmp
   go get github.com/montanaflynn/stats
@@ -624,7 +623,8 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 
 *Go team:*
 
-- https://github.com/golang/protobuf/
+- https://github.com/google/go-github
+- https://github.com/golang/protobuf
 - https://github.com/golang/oauth2
 - https://github.com/golang/glog
 - https://github.com/golang/geo
@@ -632,6 +632,7 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 - https://github.com/golang/snappy
 - https://github.com/golang/freetype
 - https://github.com/rsc/goversion
+- https://github.com/google/gxui/...
 
 *Google team:*
 
