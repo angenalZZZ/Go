@@ -376,13 +376,13 @@ go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、
 go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
-go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
-go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
-go get github.com/hashicorp/go-memdb       # 内存数据库, radix trees *1k
-go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
-go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,LSM+tree,ACID,Stream,KV+version,SSDs *5.6k
+
+go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
 go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展、分布式、低延迟和高吞吐量功能的分布式位图索引数据库 *10k
 go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
+go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-level, in-memory, key/value store, persists to disk
+go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
+go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
 go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k > docker run -p 9851:9851 tile38/tile38
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
