@@ -204,7 +204,7 @@ git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonov
 go get -d github.com/Yesterday17/bili-archive-frontend # *bili-bili 前端实现
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
 
-# 测试工具
+# 测试工具CI
   > go help test                                   # 帮助测试
   > go test -v -run=^$ ./path                      # 单元测试*testing.T [-run=查找func]
   > go test -v -bench=. -run=none -benchmem ./path # 基准测试*testing.B [-bench=.匹配全部,-run=匹配none]
@@ -212,11 +212,12 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 帮助测试覆盖率
-  > go test -v -cover ./... || go test -coverprofile .out ./... # 显示测试覆盖率
+  > go test -v -cover ./...                        # 显示测试覆盖率
+  > go test -coverprofile .out ./...               # 概述测试覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (排除目录vendor)
-  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
+  > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (静态检查,排除目录vendor)
   > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具
+  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
   
   # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
   > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
@@ -232,23 +233,23 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
   > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
 
-# 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
-go get github.com/smartystreets/goconvey
-go get github.com/stretchr/testify         # 接口调试工具testify *7k | assert,require,mock,suite
-go get github.com/appleboy/gofight/...     # API测试框架 for beego,Gin.. 依赖测试框架 github.com/stretchr/testify
-go get github.com/astaxie/bat              # 接口调试工具cURL *2k, testing, debugging, generally interacting servers
-go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强的curl
-# Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-# Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s [url] | github.com/wg/wrk *20k
-$ wrk -c 1 -t 1 -d 1 --latency [url]       # -t 线程数 -c 连接数 --timeout 超时 -d 持续时间 --latency 响应时间
-go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
-go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
-go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
-go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
-git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+  # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
+  > go get github.com/smartystreets/goconvey   # 优雅的单元测试   *4k
+  > go get github.com/stretchr/testify         # 通用接口调试工具 *8k | assert,require,mock,suite,http
+  > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
+  > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
+  > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
+  # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
+  > go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
+  # Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s [url] | github.com/wg/wrk *20k  
+  $ wrk -c 1 -t 1 -d 1 --latency [url]       # -t 线程数 -c 连接数 --timeout 超时 -d 持续时间 --latency 响应时间
+  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+  > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
+  > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
+  > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
+  > git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 
-# 发布自动化
+# 发布自动化CD
   # 工具 goreleaser.com | github.com/goreleaser/goreleaser
 
 ~~~
