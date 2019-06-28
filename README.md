@@ -35,7 +35,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     常量: true false iota nil
     
     类型: bool byte rune string error
-          int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64  complex64 complex128
+         int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64  complex64 complex128
     
     函数: make len cap new append copy close delete    complex real imag    panic recover
 
