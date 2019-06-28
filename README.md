@@ -41,7 +41,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
  > 通道`chan`
 
-    ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
+ ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
 
     同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{},0) 
     异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓存)
