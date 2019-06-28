@@ -43,9 +43,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
 
-    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write # make(chan struct{},0) 
+    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write
     异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓存)
-    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2 ; //串连通道的读写
+    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2 ;//串连通道的读写
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     环境配置> go env
@@ -65,7 +65,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
     wget https://studygolang.com/dl/golang/go1.11.10.linux-amd64.tar.gz
-    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改临时变量 (选项 tar -C)
+    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改解压到的目录 (选项 tar -C)
     tar -xvzf go1.11.10.linux-amd64.tar.gz -C $GO_INSTALL_DIR # 安装go1.11.10
     export GOPATH=~/go
     export GOROOT=/usr/local/go
