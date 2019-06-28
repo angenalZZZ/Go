@@ -319,6 +319,7 @@ go get github.com/appleboy/com             # Random、Array、File、Convert
 go get gopkg.in/pipe.v2                    # Pipeline IO | github.com/go-pipe/pipe
 go get github.com/google/go-querystring/query # 转换对象，用于URL参数
 go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
+go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
@@ -631,7 +632,6 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 - https://github.com/golang/groupcache
 - https://github.com/golang/snappy
 - https://github.com/golang/freetype
-- https://github.com/rsc/goversion
 - https://github.com/google/gxui/...
 
 *Google team:*
