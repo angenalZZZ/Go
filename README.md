@@ -40,7 +40,6 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     函数: make len cap new append copy close delete    complex real imag    panic recover
 
  > 通道`chan`
-
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
 
     读写: ch := make(chan<- int) #只读; ch := make(<-chan int) #只写; make(chan<- chan int) #只读chanOfchan;
@@ -50,6 +49,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     选择: select: 常规模式(for轮循次数=chan实际数量); 反射模式(reflect.Select([]reflect.SelectCase)..);
     时间: ch := time.After(300 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
 
+ > 指针`pointer`
+ ![](http://tensor-programming.com/wp-content/uploads/2016/11/Pointer.png)
+ 
  > 协程(超线程)`goroutine` + 上下文(传递)`context`
 
 
