@@ -508,7 +508,11 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
  > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
  > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
- > go get github.com/golang/{text,net} ; go get github.com/golang/protobuf/{proto,protoc-gen-go}
+ > go get github.com/golang/{text,net}                                       # 安装protoc的依赖
+ > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
+   $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
+ > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
+   $ protoc --gogo_out=. *.proto                          # protoc --gofast_out=. *.proto
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务端/客户端
