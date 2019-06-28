@@ -43,9 +43,15 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
 
-    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write
-    异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓存)
-    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1; ch2 <- 2 * <-ch1; result:=<-ch2 ;//串连通道的读写
+    读写: ch := make(chan<- int) #只读; ch := make(<-chan int) #只写; make(chan<- chan int) #只读chanOfchan;
+    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write.
+    异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓存).
+    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1 ; ch2 <- 2 * <-ch1; result:=<-ch2 ;
+    选择: select: 常规模式(for轮循次数=chan实际数量); 反射模式(reflect.Select([]reflect.SelectCase)..);
+    时间: ch := time.After(300 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
+
+ > 协程(超线程)`goroutine` + 上下文(传递)`context`
+
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     环境配置> go env
