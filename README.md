@@ -524,7 +524,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
    $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
  > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
-   $ protoc --gogo_out=. *.proto                          # protoc --gofast_out=. *.proto
+   $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto
   $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool#quick-start
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
@@ -707,7 +707,7 @@ git clone https://github.com/lexkong/apiserver_demos apiserver                  
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
 # 构建
-cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
+cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
