@@ -15,7 +15,6 @@ var rpcJsonAddr string
 
 // 初始化配置
 func init() {
-	// <多命令窗口> nc 127.0.0.1 8007 > 输入请求内容
 	rpcJsonAddr = "127.0.0.1:8007" // 选填本地IP
 }
 

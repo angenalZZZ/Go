@@ -69,7 +69,7 @@ func (c *ApiConfigs) Load() {
 		jwtSign := api_config.JwtSign{}
 		s := strings.Split(os.Getenv("JWT_Sign"), ",")
 		if len(s) == 3 {
-			jwtSign = api_config.JwtSign{s[0], s[1], s[2]}
+			jwtSign.Key, jwtSign.Pub, jwtSign.Alg = s[0], s[1], s[2]
 		}
 
 		c.Jwt = &api_config.JwtConfig{
