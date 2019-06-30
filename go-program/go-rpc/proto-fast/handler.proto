@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto_fast;
+
+message Request {
+    string action = 1;
+    string query  = 2;
+}
+
+message Response {
+    int32 code = 1;
+    string result = 2;
+}
+
+service Handler {
+    rpc Execute(Request) returns (Response);
+}
