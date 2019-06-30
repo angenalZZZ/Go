@@ -707,7 +707,7 @@ git clone https://github.com/lexkong/apiserver_demos apiserver                  
 git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
 # 构建
-cd %GOPATH%/src/apiserver && gofmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
+cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
 # 运行
 %GOPATH%/src/apiserver/apiserver.exe
 ~~~
