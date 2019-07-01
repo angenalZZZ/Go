@@ -516,7 +516,7 @@ go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones�
 # 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 # 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
- # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast; prototool(增强版protoc)
+ # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
  > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
  > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
  > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
@@ -525,14 +525,14 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
    $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
  > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
    $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
-   > go get -u github.com/gogo/grpc-example              # gRPC-Gateway(gRPC to JSON proxy),swagger,validators
-  $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool#quick-start
+   > go get -u github.com/gogo/grpc-example              # gRPC-Gateway(gRPC to JSON proxy: 例子)+swagger+validators
+  $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
- > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务端/客户端
-go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源API网关:读取protobuf定义并生成一个反向代理，将JSON-API转换为gRPC服务
+ > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
+go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io | www.grpc.io
+go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
 go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
 go get github.com/micro/go-micro           # 分布式RPC微服务 *7k
