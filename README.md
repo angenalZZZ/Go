@@ -525,7 +525,8 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
    $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
  > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
    $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
-   > go get -u github.com/gogo/grpc-example              # gRPC-Gateway(gRPC to JSON proxy: 例子)+swagger+validators
+   # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
+   > git clone https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
   $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
