@@ -171,7 +171,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
-  # github.com/goproxy/goproxy.cn github.com/golang/go/wiki/Modules research.swich.com/vgo blog.jetbrains.com/go
+  #! github.com/golang/go/wiki/Modules research.swich.com/vgo blog.jetbrains.com/go
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
