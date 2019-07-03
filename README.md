@@ -54,10 +54,13 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/Pointer.png)
  
- > 协程(超线程)`goroutine` + 上下文(传递)`context`
+ > 协程(超线程/轻量级线程)`goroutine` + 上下文(传递)`context`
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/gopher_pipe.png)
 
+ > 包、模块(命名空间)`package`
+
+    << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     环境配置> go env
