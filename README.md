@@ -578,14 +578,21 @@ go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir 
 go get github.com/lxn/win                  # Windows API wrapper package
 go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
 go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
-go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
-# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 # [QT跨平台应用框架] Qt binding package
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
 # https://github.com/go-flutter-desktop/go-flutter
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
+# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
+go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
+go get gitea.com/lunny/gps                 # 地图坐标系转换
+/** WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
+ * 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
+ *  GCJ02坐标系：即火星坐标系，是由中国国家测绘局制订的地理信息系统的坐标系统。由WGS84坐标系经加密后的坐标系。
+ * 谷歌中国地图和搜搜中国地图采用的是GCJ02地理坐标系; BD09坐标系：即百度坐标系，GCJ02坐标系经加密后的坐标系;
+ * 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
+ */
 
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
