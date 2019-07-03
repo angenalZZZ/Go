@@ -1,6 +1,7 @@
 package go_rpc
 
 import (
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -32,19 +33,7 @@ func (c *GrpcClientFast) Execute(ctx *gin.Context, request *proto_fast.Request) 
 	} else if _, e = c.conn.Write(b); e != nil {
 		return nil, e
 	}
-
-	b, r := make([]byte, 4096), &proto_fast.Response{}
-	for {
-		if i, e := c.conn.Read(b); e != nil {
-			return nil, e
-		} else if i > 10 {
-			if e = proto.Unmarshal(b[:i], r); e != nil {
-				return nil, e
-			}
-			break
-		}
-	}
-	return r, nil
+	return readResponseMessage(c.conn)
 }
 
 // 运行一个 GIN API 服务
@@ -65,5 +54,18 @@ func (c *GrpcClientFast) RunApi() {
 	})
 	if e := g.Run(":8080"); e != nil {
 		log.Fatalf("Failed to run grpc client server: %v", e)
+	}
+}
+
+func readResponseMessage(conn net.Conn) (r *proto_fast.Response, err error) {
+	i, b := 0, make([]byte, 4096)
+	r = &proto_fast.Response{}
+	for {
+		if i, err = conn.Read(b); i > 0 {
+			err = proto.Unmarshal(b[:i], r)
+			return
+		} else if err != nil && err != io.EOF {
+			return
+		}
 	}
 }

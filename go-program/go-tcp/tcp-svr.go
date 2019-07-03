@@ -57,11 +57,7 @@ func DoTcpSvrRun() {
 					b := make([]byte, l)
 					n, e := c.Read(b) // 读取Socket服务的输入
 					//n, e := os.Stdin.Read(b) // 读取键盘的输入
-					if n == 0 {
-						// 关闭异常时
-						if e == io.EOF {
-							return
-						}
+					if n == 0 && e != io.EOF { // 关闭异常时
 						fmt.Printf("  tcp read error: %v\n", e)
 						return
 					}
