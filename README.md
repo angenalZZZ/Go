@@ -337,27 +337,25 @@ docker exec -it golang1115 bash
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
-go get github.com/reactivex/rxgo           # 响应式编程rxgo
-go get github.com/google/btree             # 数据结构 B-Trees
-go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures 
-go get github.com/google/go-intervals/...  # 在一维间隔（例如时间范围）上执行预定的操作
-go get github.com/juju/utils               # Utility functions
+go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/appleboy/com             # Random、Array、File、Convert
-go get gopkg.in/pipe.v2                    # Pipeline IO | github.com/go-pipe/pipe
-go get github.com/google/go-querystring/query # 转换对象，用于URL参数
-go get github.com/google/jsonapi           # 转换对象，用于HTTP请求的输入输出
-go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
-
-go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
-go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
-go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验库           *1k
+go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
+go get github.com/reactivex/rxgo           # 响应式编程rxgo
+go get github.com/google/go-intervals/...  # 时间范围内执行操作
+go get github.com/google/btree             # 数据结构 B-Trees
+go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
+go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
+go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
+go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
+go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验             *1k
+go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
+go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json) && gjson.Get(json,"name.last").Exists()
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
 go get github.com/asticode/go-astilog      # 日志自定义:logrus[.Entry-Data]+context[.Value-Fields]+configuration
-go get github.com/pkg/errors               # 错误处理pkg
-go get github.com/mpvl/{errc,errd}         # 错误处理mpvl
+go get github.com/pkg/errors               # 错误处理库pkg                                     *5k
 
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
@@ -577,7 +575,7 @@ go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查�
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 go get github.com/grafana/grafana          # 监测系统|指标分析工具|InfluxDB时序DB|Prometheus等 *29k
-
+go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/lxn/win                  # Windows API wrapper package
