@@ -271,8 +271,12 @@ go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
   > git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 
-# 发布自动化CD
-  # 工具 goreleaser.com | github.com/goreleaser/goreleaser
+# 自动化工具`CI`
+  # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
+  $ wget https://github.com/goreleaser/goreleaser/releases/download/v0.111.0/goreleaser_Linux_x86_64.tar.gz
+  $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/
+  $ rm -f goreleaser && rm -f *.md
+  $ goreleaser help release
 
 ~~~
 
