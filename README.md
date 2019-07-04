@@ -225,6 +225,7 @@ go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 go get -d github.com/Yesterday17/bili-archive-frontend # *bili-bili 前端实现
 go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
+go get -d github.com/etcd-io/etcd/etcdserver  # 深度学习grpc
 
 # 测试工具CI
   > go help test                                   # 帮助测试
