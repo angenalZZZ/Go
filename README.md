@@ -544,6 +544,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
+go get github.com/TykTechnologies/tyk             # Tyk开源网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
 go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
@@ -586,7 +587,7 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
 # https://github.com/go-flutter-desktop/go-flutter
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
-go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert > https://localhost
 # [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
 go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 go get gitea.com/lunny/gps                 # 地图坐标系转换
