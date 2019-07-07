@@ -68,6 +68,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     环境配置> go env
     安装版本> go version
     帮助文档> godoc -http=:6060  # 查看本地文档, 在线文档 golang.org/doc
+    工具goland> 激活 http://idea.lanyus.com
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
