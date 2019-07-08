@@ -125,11 +125,12 @@ git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     
 git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
 git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
 git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
-git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成
 git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
-# 开发工具 VSCode Go语言工具链: pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
+# 开发工具 VSCode | github.com/Microsoft/vscode-go
+# 分享Go语言工具链: pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
+git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成✨
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
