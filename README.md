@@ -82,12 +82,12 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
-    wget https://studygolang.com/dl/golang/go1.11.10.linux-amd64.tar.gz
+    wget https://studygolang.com/dl/golang/go1.12.5.linux-amd64.tar.gz
     GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改解压到的目录 (选项 tar -C)
-    tar -xvzf go1.11.10.linux-amd64.tar.gz -C $GO_INSTALL_DIR # 安装go1.11.10
+    tar -xzf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
-    export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+    export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
