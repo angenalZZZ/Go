@@ -84,7 +84,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     wget https://studygolang.com/dl/golang/go1.12.5.linux-amd64.tar.gz
     GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改解压到的目录 (选项 tar -C)
-    tar -xzf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
+    tar -zxf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
@@ -92,7 +92,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
-    # <按条件编译> 通过代码注释的形式实现(在包声明之前&必须空行隔开)
+    # <按条件编译> 通过代码注释的形式(在包声明之前&必须空行隔开); 通过文件名后缀(比如:*_linux_amd64.go)
     go build -tags [linux|darwin|386|amd64]
     // +build darwin linux freebsd windows android js
     // +build 386 amd64 arm arm64 ppc64 wasm
