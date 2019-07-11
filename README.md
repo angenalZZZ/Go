@@ -87,7 +87,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     tar -zxf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
+    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64)
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+    sudo vi /etc/profile  # 添加以上export变量到文件结尾,然后启用设置. source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
