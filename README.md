@@ -112,7 +112,6 @@ go get -d         # 下载模块源码,不安装
 go get -u         # 更新模块源码
 go get -v         # 打印日志
 go get -insecure  # 解决安全下载问题,允许用http(非https)
-go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
@@ -215,6 +214,8 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   #----------------------------------------------------------------------
   > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
   > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
+  
+go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
 # 源代码版本管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
