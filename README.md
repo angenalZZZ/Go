@@ -92,6 +92,11 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
+    # <按条件编译> 通过代码注释的形式实现(在包声明之前&必须空行隔开)
+    go build -tags [linux|darwin|386|amd64]
+    // +build darwin linux freebsd windows android js
+    // +build 386 amd64 arm arm64 ppc64 wasm
+    [空行]
 
 > 安装依赖包
 ~~~bash
