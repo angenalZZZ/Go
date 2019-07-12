@@ -112,7 +112,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 $ export GO111MODULE=on
 $ export GOPROXY=https://goproxy.cn      ##Linux Bash
 $ echo "GOPROXY=https://goproxy.cn" >> ~/.profile && source ~/.profile
-$ export ATHENS_STORAGE=~/athens-storage ##Docker
+
+# 内网代理推荐 Athens: https://docs.gomods.io/zh/
+$ export ATHENS_STORAGE=~/athens-storage ##Docker 参考 https://docs.gomods.io/walkthrough/
 $ mkdir -p $ATHENS_STORAGE
 $ docker run -d -v $ATHENS_STORAGE:/var/lib/athens \
    -e ATHENS_DISK_STORAGE_ROOT=/var/lib/athens \
@@ -121,13 +123,11 @@ $ docker run -d -v $ATHENS_STORAGE:/var/lib/athens \
    --restart always \
    -p 3000:3000 \
    gomods/athens:latest
-$ export GO111MODULE=on                  ##Linux Bash after run Docker
+$ export GO111MODULE=on                  ##Linux Bash use after run Docker
 $ export GOPROXY=http://127.0.0.1:3000
 - environment:                           ##Docker file
     GO111MODULE: on
     GOPROXY: http://127.0.0.1:3000
-
-# 内网代理推荐 Athens: https://docs.gomods.io/zh/
 
 # 下载模块
 go get -d         # 下载模块源码,不安装
