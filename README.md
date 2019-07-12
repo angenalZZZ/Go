@@ -126,6 +126,9 @@ $ export GOPROXY=http://127.0.0.1:3000
 - environment:                           ##Docker file
     GO111MODULE: on
     GOPROXY: http://127.0.0.1:3000
+
+# 内网代理推荐 Athens: https://docs.gomods.io/zh/
+
 # 下载模块
 go get -d         # 下载模块源码,不安装
 go get -u         # 更新模块源码
