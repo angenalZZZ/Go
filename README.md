@@ -119,8 +119,13 @@ $ docker run -d -v $ATHENS_STORAGE:/var/lib/athens \
    -e ATHENS_STORAGE_TYPE=disk \
    --name athens-proxy \
    --restart always \
-   -p 5005:3000 \
+   -p 3000:3000 \
    gomods/athens:latest
+$ export GO111MODULE=on                  ##Linux Bash after run Docker
+$ export GOPROXY=http://127.0.0.1:3000
+- environment:                           ##Docker file
+    GO111MODULE: on
+    GOPROXY: http://127.0.0.1:3000
 # 下载模块
 go get -d         # 下载模块源码,不安装
 go get -u         # 更新模块源码
