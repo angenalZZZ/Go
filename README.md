@@ -112,8 +112,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > $env:GO111MODULE=on
 > $env:GOPROXY=https://goproxy.cn        ##Windows PowerShell
 $ export GO111MODULE=on
-$ export GOPROXY=https://goproxy.io       ## 推荐使用
-$ export GOPROXY=https://goproxy.cn      ##Linux Bash
+$ export GOPROXY=https://goproxy.io       ## 推荐使用io
+$ export GOPROXY=https://goproxy.cn
 $ echo "GOPROXY=https://goproxy.cn" >> ~/.profile && source ~/.profile
 
 # 内网代理推荐 Athens: https://docs.gomods.io/zh/
