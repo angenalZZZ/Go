@@ -236,6 +236,7 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹
   > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹
   > go build -mod=readonly      # 3.防止隐式修改go.mod
+  > rm go.sum && go mod vendor # 删掉 go.sum 并重建, 解决 checksum mismatch?
   #----------------------------------------------------------------------
   > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
   > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
