@@ -184,26 +184,6 @@ go get -u -v github.com/cweill/gotests/...
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 
-# 管理模块依赖( go版本~1.10.* 推荐)
-go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
-  > dep init                  # 初始化项目
-  > dep ensure -add [package] # 添加一个包
-  > dep ensure                # 安装依赖包(速度慢)
-go get -u github.com/Masterminds/glide  # 推荐使用 *7k <Mac or Linux> curl https://glide.sh/get | sh
-  > glide --version ; glide help # https://glide.sh
-  > glide create                 # Start a new workspace
-  > glide get github.com/foo/bar#^1.2.3 # Get a package, add to glide.yaml; https://glide.sh/docs/glide.yaml
-  > glide install -v          # Install packages and dependencies
-  > glide update              # Update the latest dependency tree
-  > glide list                # See installed packages
-  > glide tree                # See imported packages
-  > go build
-go get -u github.com/kardianos/govendor # 推荐使用 *4k
-  > govendor init             # 项目依赖vendor目录
-  > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
-  > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
-  > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
-
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
@@ -240,12 +220,38 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   #----------------------------------------------------------------------
   > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
   > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
-  
+  #----------------------------------------------------------------------
+   # Environment settings for proxy download imported modules
+  > set GO111MODULE=on
+  > set GOPROXY=https://goproxy.io
+   # Download dependency and build settings for gui project
+  > set CGO_ENABLED=0
+  > set GOOS=windows
+  > set GOARCH=amd64
+  > go mod download | go build              # $GOPATH/pkg/mod [缓存]
+  > go mod vendor   | go build -mod=vendor  # ./vendor [方便复制打包]
+
 go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
-# 源代码版本管理
-go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
-go get -u github.com/sparrc/gdm
+# 管理模块依赖( go版本~1.10.* 推荐)
+go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
+  > dep init                  # 初始化项目
+  > dep ensure -add [package] # 添加一个包
+  > dep ensure                # 安装依赖包(速度慢)
+go get -u github.com/Masterminds/glide  # 推荐使用 *7k <Mac or Linux> curl https://glide.sh/get | sh
+  > glide --version ; glide help # https://glide.sh
+  > glide create                 # Start a new workspace
+  > glide get github.com/foo/bar#^1.2.3 # Get a package, add to glide.yaml; https://glide.sh/docs/glide.yaml
+  > glide install -v          # Install packages and dependencies
+  > glide update              # Update the latest dependency tree
+  > glide list                # See installed packages
+  > glide tree                # See imported packages
+  > go build
+go get -u github.com/kardianos/govendor # 推荐使用 *4k
+  > govendor init             # 项目依赖vendor目录
+  > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
+  > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
+  > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
 # 学习项目案例
 go get github.com/golang/playground
@@ -314,6 +320,9 @@ go get -d github.com/etcd-io/etcd/etcdserver  # 深度学习grpc
   $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/
   $ rm -f goreleaser && rm -f *.md
   $ goreleaser help release
+
+# 源代码版本管理
+  > go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 
 ~~~
 
@@ -740,25 +749,12 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 # Install : astilectron-bundler
 go get -u github.com/asticode/go-astilectron-bundler/...
 go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
-
-# Environment settings for proxy download imported modules, go^1.11.*
-set GO111MODULE=on
-set GOPROXY=https://goproxy.io
-# Download dependency and build settings for gui project, go^1.11.*
-set CGO_ENABLED=0
-set GOOS=windows
-set GOARCH=amd64
-go build         | go build -mod=vendor  # $GOPATH/pkg/mod [缓存]
-go mod download  | go mod vendor         # ./vendor [方便复制打包]
-
 # Demo 1 : video tools
 go get github.com/asticode/go-astivid/...
 cd %GOPATH%/src/github.com/asticode/go-astivid
 cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
 rm -f bind*.go                # delete file before bundle
 astilectron-bundler -v        # help: astilectron-bundler -h
-# Demo 2 : bili
-go get github.com/Yesterday17/bili-archive-frontend
 ~~~
  * [QT](https://github.com/therecipe/qt)
  * [Webview](https://github.com/zserge/webview)
