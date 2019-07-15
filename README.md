@@ -740,12 +740,25 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
 # Install : astilectron-bundler
 go get -u github.com/asticode/go-astilectron-bundler/...
 go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
-# Demo : video tools
+
+# Environment settings for proxy download imported modules, go^1.11.*
+set GO111MODULE=on
+set GOPROXY=https://goproxy.io
+# Download dependency and build settings for gui project, go^1.11.*
+go mod vendor
+set CGO_ENABLED=0
+set GOARCH=amd64
+set GOOS=windows
+go build -mod=vendor
+
+# Demo 1 : video tools
 go get github.com/asticode/go-astivid/...
 cd %GOPATH%/src/github.com/asticode/go-astivid
 cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
 rm -f bind*.go                # delete file before bundle
 astilectron-bundler -v        # help: astilectron-bundler -h
+# Demo 2 : bili
+go get github.com/Yesterday17/bili-archive-frontend
 ~~~
  * [QT](https://github.com/therecipe/qt)
  * [Webview](https://github.com/zserge/webview)
