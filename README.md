@@ -745,11 +745,11 @@ go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
 set GO111MODULE=on
 set GOPROXY=https://goproxy.io
 # Download dependency and build settings for gui project, go^1.11.*
-go mod vendor
 set CGO_ENABLED=0
-set GOARCH=amd64
 set GOOS=windows
-go build -mod=vendor
+set GOARCH=amd64
+go build         | go build -mod=vendor  # $GOPATH/pkg/mod [缓存]
+go mod download  | go mod vendor         # ./vendor [方便复制打包]
 
 # Demo 1 : video tools
 go get github.com/asticode/go-astivid/...
