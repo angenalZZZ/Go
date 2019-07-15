@@ -221,17 +221,15 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
   > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
   #----------------------------------------------------------------------
-   # Environment settings for proxy download imported modules
+  # Environment settings for proxy download imported modules
   > set GO111MODULE=on
   > set GOPROXY=https://goproxy.io
-   # Download dependency and build settings for gui project
+  # Download dependency and build settings for your project
   > set CGO_ENABLED=0
   > set GOOS=windows
   > set GOARCH=amd64
   > go mod download | go build              # $GOPATH/pkg/mod [缓存]
   > go mod vendor   | go build -mod=vendor  # ./vendor [方便复制打包]
-
-go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
 # 管理模块依赖( go版本~1.10.* 推荐)
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
@@ -252,6 +250,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
+# go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
 # 学习项目案例
 go get github.com/golang/playground
