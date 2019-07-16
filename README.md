@@ -5,7 +5,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) ；[*推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) ；[awesome-go](https://github.com/avelino/awesome-go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*Google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly)
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) [*性能优化*](#性能优化) ；[*推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) ；[awesome-go](https://github.com/avelino/awesome-go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*Google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly)
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -323,7 +323,18 @@ go get -d github.com/etcd-io/etcd/etcdserver  # 深度学习grpc
 
 ~~~
 
-> 性能优化
+#### 性能优化
+ * 减少算法的时间复杂度
+ * 根据业务逻辑，设计优化的数据结构
+ * 尽量减少磁盘IO次数
+ * 尽量复用资源
+ * 同步锁sync.Map,RWMutex,Mutex (锁的粒度尽量小;尽量使用无锁的方式)
+ * 内存分配 (数据结构初始化时，尽量指定合适的容量 make 避免多次内存分配)
+ * 固定的 go routine 数量 + 固定的 channel 数量, 提升单机性能.
+ * [High performance go workshop](https://talks.godoc.org/github.com/davecheney/high-performance-go-workshop/high-performance-go-workshop.slide)
+ * [An Introduction to go tool trace](https://about.sourcegraph.com/go/an-introduction-to-go-tool-trace-rhys-hiltner/)
+ * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
+ * [Go tooling essentials](https://rakyll.org/go-tool-flags/)
 ~~~
 # ------------------------------------------------------------------------------------
 # 通过工具排查：
@@ -348,7 +359,7 @@ map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map
 someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
 
 # ------------------------------------------------------------------------------------
-# 扩容(横向|纵向)：
+# 扩展容量(横向|纵向)：
 # ------------------------------------------------------------------------------------
  # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
