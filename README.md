@@ -75,12 +75,15 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
     https://studygolang.com/dl/golang/go1.11.10.windows-amd64.msi # 安装go1.11.10
-    set GOROOT=D:\Program\Go\
     set GOPATH=C:\Users\Administrator\go
-    set PATH=D:\Program\Go\bin;%GOPATH%\bin;%PATH%
-    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11] )
+    set GOROOT=D:\Program\Go
+    set GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
+    set GOPROXY=https://goproxy.io
+    set GO111MODULE=on
+    set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
     # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
-    # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译时符号+调试信息(杜绝gdb调试)+缩小file
+    # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译符号+调试信息(杜绝gdb调试)+缩小file
+    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11] )
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
@@ -89,14 +92,16 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     tar -zxf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
-    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64)
+    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
+    export GOPROXY=https://goproxy.io
+    export GO111MODULE=on
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-    sudo vi /etc/profile  # 添加以上export变量到文件结尾,然后启用设置. source /etc/profile
+    sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
-    # <按条件编译> 通过代码注释的形式(在包声明之前&必须空行隔开); 通过文件名后缀(比如:*_linux_amd64.go)
+    # <按条件编译> 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
     go build -tags [linux|darwin|386|amd64]
     // +build darwin linux freebsd windows android js
     // +build 386 amd64 arm arm64 ppc64 wasm
@@ -221,13 +226,6 @@ git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go i
   > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
   > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
   #----------------------------------------------------------------------
-  # Environment settings for proxy download imported modules
-  > set GO111MODULE=on
-  > set GOPROXY=https://goproxy.io
-  # Download dependency and build settings for your project
-  > set CGO_ENABLED=0
-  > set GOOS=windows
-  > set GOARCH=amd64
   > go mod download | go build              # $GOPATH/pkg/mod [缓存]
   > go mod vendor   | go build -mod=vendor  # ./vendor [方便复制打包]
 
