@@ -79,7 +79,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOROOT=D:\Program\Go
     set GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GOPROXY=https://goproxy.io
-    set GO111MODULE=on
+    set GO111MODULE=on             (可选项: 建议设置为 GO111MODULE=auto )
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
     # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
     # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译符号+调试信息(杜绝gdb调试)+缩小file
@@ -92,9 +92,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     tar -zxf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
-    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
+    export GOTOOLS=$GOROOT/pkg/tool (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GOPROXY=https://goproxy.io
-    export GO111MODULE=on
+    export GO111MODULE=on           (可选项: 建议设置为 GO111MODULE=auto )
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
