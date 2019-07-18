@@ -262,9 +262,9 @@ go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、�
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
 git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
-go get -d github.com/Yesterday17/bili-archive-frontend # *bili-bili 前端实现
-go get -d github.com/angenalZZZ/Go/go-program # 获取个人代码
-go get -d github.com/etcd-io/etcd/etcdserver  # 深度学习grpc
+go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
+go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
+go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
 
 # 测试工具CI
   > go help test                                   # 帮助测试
