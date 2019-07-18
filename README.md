@@ -250,22 +250,6 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 # go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
-# 学习项目案例
-go get github.com/golang/playground
-go get github.com/golang/example/hello
-go get github.com/shen100/golang123        # 适合初学者
-go get github.com/go-training/training     # 适合初学者
-go get github.com/insionng/zenpress        # 适合学习 cms system
-go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
-go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
-go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
-go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
-go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
-git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
-go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
-go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
-go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
-
 # 测试工具CI
   > go help test                                   # 帮助测试
   > go test -v -run=^$ ./path                      # 单元测试*testing.T [-run=查找func]
@@ -365,28 +349,26 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
  # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
 ~~~
 
-> Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
-
-~~~shell
-# 1. pull build tools: Glide, gdm, go-test-teamcity
-docker pull jetbrainsinfra/golang:1.11.5
-docker pull golang:1.4.2-cross
-docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
-# 2. run docker container
-docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
-docker cp golang1115:/go/src/github.com %GOPATH%\src
-docker cp golang1115:/go/src/golang.org %GOPATH%\src
-docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
-# 3. go build
-docker exec -it golang1115 bash
-  $ cd apiserver & go build & ./apiserver                                                # build for linux
-  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
-    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
-~~~
+----
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
 ~~~
+go get github.com/golang/playground        # 学习项目案例
+go get github.com/golang/example/hello
+go get github.com/shen100/golang123        # 适合初学者
+go get github.com/go-training/training     # 适合初学者
+go get github.com/insionng/zenpress        # 适合学习 cms system
+go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
+go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
+go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
+go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
+go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
+git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
+go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
+go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
+go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
+
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
@@ -797,6 +779,28 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 
  * 高性能
     * [高并发架构解决方案](https://studygolang.com/articles/15479)
+
+----
+
+
+> Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
+
+~~~shell
+# 1. pull build tools: Glide, gdm, go-test-teamcity
+docker pull jetbrainsinfra/golang:1.11.5
+docker pull golang:1.4.2-cross
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
+# 2. run docker container
+docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
+docker cp golang1115:/go/src/github.com %GOPATH%\src
+docker cp golang1115:/go/src/golang.org %GOPATH%\src
+docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
+# 3. go build
+docker exec -it golang1115 bash
+  $ cd apiserver & go build & ./apiserver                                                # build for linux
+  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
+    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
+~~~
 
 ----
 
