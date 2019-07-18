@@ -144,27 +144,27 @@ go get -v         # 打印日志
 go get -insecure  # 解决安全下载问题,允许用http(非https)
 
 # 安装-全局依赖-镜像包 (解决网络问题)
-git clone https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
-git clone https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
-git clone https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
-git clone https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug   # 调试、跟踪
-git clone https://github.com/golang/exp.git %GOPATH%/src/golang.org/x/exp       # 实验和弃用的包
-git clone https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # 图片库
-git clone https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint     # 语法检查
-git clone https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # 移动端
-git clone https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net       # 网络库
-git clone https://github.com/golang/oauth2.git %GOPATH%/src/golang.org/x/oauth2 # OAuth 2.0 认证授权
-git clone https://github.com/golang/perf.git %GOPATH%/src/golang.org/x/perf     # 性能测量、存储和分析
-git clone https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     # 并发访问-同步锁
-git clone https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
-git clone https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
-git clone https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
-git clone https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
-git clone https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
+git clone --depth=1 https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
+git clone --depth=1 https://github.com/golang/build.git %GOPATH%/src/golang.org/x/build   # 构建、发布
+git clone --depth=1 https://github.com/golang/crypto.git %GOPATH%/src/golang.org/x/crypto # 加密、安全
+git clone --depth=1 https://github.com/golang/debug.git %GOPATH%/src/golang.org/x/debug   # 调试、跟踪
+git clone --depth=1 https://github.com/golang/exp.git %GOPATH%/src/golang.org/x/exp       # 实验和弃用的包
+git clone --depth=1 https://github.com/golang/image.git %GOPATH%/src/golang.org/x/image   # 图片库
+git clone --depth=1 https://github.com/golang/lint.git %GOPATH%/src/golang.org/x/lint     # 语法检查
+git clone --depth=1 https://github.com/golang/mobile.git %GOPATH%/src/golang.org/x/mobile # 移动端
+git clone --depth=1 https://github.com/golang/net.git %GOPATH%/src/golang.org/x/net       # 网络库
+git clone --depth=1 https://github.com/golang/oauth2.git %GOPATH%/src/golang.org/x/oauth2 # OAuth 2.0 认证授权
+git clone --depth=1 https://github.com/golang/perf.git %GOPATH%/src/golang.org/x/perf     # 性能测量、存储和分析
+git clone --depth=1 https://github.com/golang/sync.git %GOPATH%/src/golang.org/x/sync     # 并发访问-同步锁
+git clone --depth=1 https://github.com/golang/sys.git %GOPATH%/src/golang.org/x/sys       # 系统底层
+git clone --depth=1 https://github.com/golang/text.git %GOPATH%/src/golang.org/x/text     # 文本处理
+git clone --depth=1 https://github.com/golang/time.git %GOPATH%/src/golang.org/x/time     # 时间处理
+git clone --depth=1 https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
+git clone --depth=1 https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
 # 开发工具 VSCode | github.com/Microsoft/vscode-go
 # 分享Go语言工具链: pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
-git clone https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成✨
+git clone --depth=1 https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成✨
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
@@ -191,7 +191,7 @@ go get -u -v github.com/cweill/gotests/...
 
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
-git clone https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
+git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   #! github.com/golang/go/wiki/Modules research.swich.com/vgo blog.jetbrains.com/go
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
@@ -293,7 +293,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
-  > git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+  > git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
 
 # 自动化工具`CI`
   # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
@@ -364,7 +364,7 @@ go get -d github.com/phachon/gis           # 图片上传，下载，存储，�
 go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
-git clone https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
+git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
@@ -444,7 +444,7 @@ go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,postgres,sqlite3...
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
-git clone https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
+git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql     | github.com/siddontang/go-mysql
 go get github.com/denisenkom/go-mssqldb    # MsSql
@@ -463,7 +463,7 @@ go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,
 go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射.
 go get github.com/mattes/migrate           # 数据库迁移工具 *2k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
-git clone https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
+git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
    > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates
@@ -483,14 +483,14 @@ go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful AP
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
-git clone https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
+git clone --depth=1 https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
   go get github.com/go-stack/stack
   go get github.com/golang/snappy
   go get github.com/google/go-cmp
   go get github.com/montanaflynn/stats
   go get github.com/tidwall/pretty
   dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
-git clone https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
+git clone --depth=1 https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
@@ -513,7 +513,7 @@ go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨P
 go get github.com/gorilla/websocket        # WebSocket Serve *8k
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) | gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
-# 聊天室 git clone https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
+# 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
 # 后端框架
@@ -564,15 +564,15 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
 # 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
  # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
  > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
- > git clone https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
- > git clone https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
+ > git clone --depth=1 https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
+ > git clone --depth=1 https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
  > go get github.com/golang/{text,net}                                       # 安装protoc的依赖
  > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
    $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
  > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
    $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
    # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
-   > git clone https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
+   > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
   $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
@@ -587,7 +587,7 @@ go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高
 go get github.com/micro/go-micro           # 分布式RPC微服务 *7k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
-git clone https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
+git clone --depth=1 https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
 go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readthedocs.io
@@ -760,8 +760,8 @@ astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
-git clone https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
-git clone https://github.com/lexkong/vendor                                     # 项目依赖-govendor
+git clone --depth=1 https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
+git clone --depth=1 https://github.com/lexkong/vendor                                     # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
 # 构建
 cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
