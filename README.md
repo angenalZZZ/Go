@@ -412,7 +412,7 @@ go get github.com/coocood/freecache        # cache and high concurrent performan
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
-go get github.com/gohugoio/hugo            # 一个超快的静态资源Web服务系统
+go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站点生成系统 gohugo.io/about
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
