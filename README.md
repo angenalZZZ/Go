@@ -368,6 +368,7 @@ git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
+-------------------------------------------------------------------------------------------------
 
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
@@ -382,6 +383,7 @@ go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
+go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验             *1k
