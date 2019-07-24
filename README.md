@@ -337,6 +337,8 @@ go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof�
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
+ # 内存分配性能测试
+testing.AllocsPerRun()
  # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
@@ -376,7 +378,7 @@ go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/appleboy/com             # Random、Array、File、Convert
-go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `测试内存`testing.AllocsPerRun()
+go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get github.com/reactivex/rxgo           # 响应式编程rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
