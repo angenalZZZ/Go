@@ -400,8 +400,9 @@ go get github.com/pkg/errors               # 错误处理库pkg                 
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
+go get github.com/go-ego/gpy               # 汉语拼音转换工具
 
-# https://github.com/etcd-io/etcdlabs      # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
+# https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf | 基于Gossip的Membership,P2P对等网络\去中心 | www.serf.io
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
@@ -481,8 +482,9 @@ go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst
    > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
-go get github.com/blevesearch/bleve        # 现代文本索引库 *5k
-go get github.com/olivere/elastic          # Elasticsearch 6.0 客户端
+go get github.com/blevesearch/bleve        # 现代文本搜索引擎Bleve   *6k
+go get github.com/go-ego/riot              # 搜索引擎Riot,支持中文分词,逻辑搜索,持久存储,分布式索引 *5k
+go get github.com/olivere/elastic          # Elasticsearch 6.0客户端 *4k
 go get github.com/Qihoo360/poseidon        # 360开源|日志搜索平台是搜索引擎的核心技术+索引数据Hadoop
 go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvetta/neoism
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
@@ -552,7 +554,7 @@ go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由
 go get github.com/go-swagger/go-swagger/cmd/swagger # 使用 > swagger generate spec --scan-models -o docs/spec.json
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
-go get github.com/henrylee2cn/pholcus      # 重量级爬虫软件    *5k
+go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
