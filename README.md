@@ -252,14 +252,17 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 
 # 测试工具CI
   > go help test                                   # 帮助测试
+  > go test -v .                                   # 测试当前package
+  > go test -v ./...                               # 测试所有package
   > go test -v -run=^$ ./path                      # 单元测试*testing.T [-run=查找func]
   > go test -v -bench=. -run=none -benchmem ./path # 基准测试*testing.B [-bench=.匹配全部,-run=匹配none]
   > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
   > go tool vet -shadow main.go                    # 检查变量覆盖
   > go tool cover -help                            # 帮助测试覆盖率
-  > go test -v -cover ./...                        # 显示测试覆盖率
-  > go test -coverprofile .out ./...               # 概述测试覆盖率
+  > go tool cover -html=c.out
+  > go test -v -cover ./...                        # 显示代码覆盖率
+  > go test -coverprofile=c.out .                  # 检测代码覆盖率
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (静态检查,排除目录vendor)
   > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具
@@ -294,6 +297,12 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
   > git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
+  
+# 测试代码书写`Testing`
+  > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
+  > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
+  > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
+  > go get github.com/go-stack/stack # 包堆栈实现了用于捕获、操作和格式化调用堆栈的实用程序。它提供了比包运行时更简单的API。
 
 # 自动化工具`CI`
   # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
@@ -491,14 +500,6 @@ go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful AP
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
-git clone --depth=1 https://github.com/mongodb/mongo-go-driver.git %GOPATH%/src/github.com/mongodb/mongo-go-driver 
-  go get github.com/go-stack/stack
-  go get github.com/golang/snappy
-  go get github.com/google/go-cmp
-  go get github.com/montanaflynn/stats
-  go get github.com/tidwall/pretty
-  dep ensure -add "go.mongodb.org/mongo-driver/mongo@~1.0.0"
-git clone --depth=1 https://github.com/jmcvetta/neoism.git %GOPATH%/src/gopkg.in/jmcvetta/neoism.v1 && go get gopkg.in/jmcvetta/neoism.v1
 
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
