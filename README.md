@@ -766,7 +766,7 @@ rm -f bind*.go                # delete file before bundle
 astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
-    * - https://github.com/peterq/pan-light
+    * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
  * [Webview](https://github.com/zserge/webview)
  * [WebAssembly](https://github.com/murlokswarm/app)
 
