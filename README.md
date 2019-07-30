@@ -113,13 +113,15 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > set http_proxy=http://127.0.0.1:5005     (临时有效) [设置环境变量linux $ export -> vim /etc/profile]
 > set https_proxy=http://127.0.0.1:5005    (临时有效)
 > set ftp_proxy=http://127.0.0.1:5005      (临时有效)
-# 代理推荐 (中国内地https://goproxy.cn 非中国区https://goproxy.io)
-> $env:GO111MODULE=on
-> $env:GOPROXY=https://goproxy.cn        ##Windows PowerShell
-$ export GO111MODULE=on
-$ export GOPROXY=https://goproxy.io       ## 推荐使用io
-$ export GOPROXY=https://goproxy.cn
-$ echo "GOPROXY=https://goproxy.cn" >> ~/.profile && source ~/.profile
+# 代理推荐
+> $env:GOPROXY=https://goproxy.io         ## Windows PowerShell
+$ export GOPROXY=https://goproxy.io       ## Linux Profile ~ GO111MODULE=on
+$ echo "GOPROXY=https://goproxy.io" >> ~/.profile && source ~/.profile
+# 1. https://goproxy.io                   ## 首选
+# 2. https://goproxy.cn
+# 3. https://gocenter.io
+# 4. https://athens.azurefd.net
+# 5. https://mirrors.aliyun.com/goproxy/  ## 阿里镜像快但不全新
 
 # 内网代理推荐 Athens: https://docs.gomods.io/zh/
 $ export ATHENS_STORAGE=~/athens-storage ##Docker 参考 https://docs.gomods.io/walkthrough/
