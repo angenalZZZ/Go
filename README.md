@@ -365,20 +365,21 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
 ~~~
-go get github.com/golang/playground        # 学习项目案例
-go get github.com/golang/example/hello
-go get github.com/shen100/golang123        # 适合初学者
-go get github.com/go-training/training     # 适合初学者
-go get github.com/insionng/zenpress        # 适合学习 cms system
-go get github.com/muesli/cache2go          # 缓存库，代码量少，适合学习，锁、goroutines等
+go get -d github.com/golang/example/hello  # hello
+go get -d github.com/golang/playground     # playground
+go get -d github.com/shen100/golang123     # 适合初学者
+go get -d github.com/go-training/training  # 适合初学者培训
+go get -d github.com/insionng/zenpress     # 适合学习 cms system
+go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
+go get -d github.com/muesli/cache2go       # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
 go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
 go get -d github.com/getlantern/lantern    # 网络底层的东西，适合深入学习  *42k
 go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关注: Gogs, INI file, 音视频学习教程
-git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io # programs
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
+git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io
 -------------------------------------------------------------------------------------------------
 
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
