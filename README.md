@@ -397,8 +397,12 @@ go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
+# 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
+go get github.com/tinylib/msgp             # MessagePack编码/解码(推荐使用)   考虑结合缓存库使用
+go get github.com/vmihailenco/msgpack      # MessagePack编码/解码(像JSON但更快更小) msgpack.org
+go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自带序列化库gob的3倍以上(减少使用reflect库)
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验             *1k
@@ -435,8 +439,9 @@ go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,r
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 
+go get github.com/go-redis/cache
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo/redis    # 内存数据库,使用原生的Redis-cli *6k
+go get github.com/gomodule/redigo/redis    # 内存数据库,集成原生的Redis-cli *6k
 go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
@@ -470,6 +475,8 @@ go get github.com/denisenkom/go-mssqldb    # MsSql
 go get github.com/lib/pq                   # Postgres  | github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres  驱动与工具集
 go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
+go get gopkg.in/mgo.v2                     # MongoDB 2 驱动
+go get github.com/globalsign/mgo           # MongoDB^4
 go get github.com/mattn/go-sqlite3         # SQLite
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
@@ -532,15 +539,15 @@ go get github.com/gotify/cli               # WebSocket client to push messages
 go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
 go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
-go get github.com/kataras/iris             # 最快Web开发框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
+go get github.com/kataras/iris             # 最快Web框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
-go get github.com/graph-gophers/graphql-go # GraphQL api server   *3k
-go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)
-go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin
+go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
+go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)  *6k
+go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin *1k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
 go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
@@ -759,6 +766,7 @@ rm -f bind*.go                # delete file before bundle
 astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
+    * - https://github.com/peterq/pan-light
  * [Webview](https://github.com/zserge/webview)
  * [WebAssembly](https://github.com/murlokswarm/app)
 
