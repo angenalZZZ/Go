@@ -392,7 +392,8 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
-go get github.com/reactivex/rxgo           # 响应式编程rxgo
+go get github.com/chrislusf/glow/...       # 并行计算库+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm *2.5k
+go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
