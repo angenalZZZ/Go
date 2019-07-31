@@ -475,8 +475,7 @@ go get github.com/denisenkom/go-mssqldb    # MsSql
 go get github.com/lib/pq                   # Postgres  | github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres  驱动与工具集
 go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
-go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
-go get gopkg.in/mgo.v2                     # MongoDB 2 驱动
+go get gopkg.in/mgo.v2                     # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
 go get github.com/globalsign/mgo           # MongoDB^4
 go get github.com/mattn/go-sqlite3         # SQLite
 go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
@@ -568,9 +567,9 @@ go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
 go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件 *3.2k
-go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
+go get github.com/360EntSecGroup-Skylar/excelize # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
-go get -u github.com/skip2/go-qrcode/...   # 二维码生成器 > qrcode     *1k
+go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|转换    *3k
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
