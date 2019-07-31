@@ -475,6 +475,7 @@ go get github.com/denisenkom/go-mssqldb    # MsSql
 go get github.com/lib/pq                   # Postgres  | github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres  驱动与工具集
 go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
+go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
 go get gopkg.in/mgo.v2                     # MongoDB 2 驱动
 go get github.com/globalsign/mgo           # MongoDB^4
 go get github.com/mattn/go-sqlite3         # SQLite
@@ -509,7 +510,6 @@ go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvet
 go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
-go get labix.org/v2/mgo                    # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
 
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/iamduo/go-workq          # job server and client  *1k
@@ -566,12 +566,14 @@ go get github.com/go-swagger/go-swagger/cmd/swagger # 使用 > swagger generate 
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
-go get github.com/tealeg/xlsx              # 读取 Excel 文件  *3.2k
+go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
+go get github.com/tealeg/xlsx              # 读取 Excel 文件 *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize/v2 # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get -u github.com/skip2/go-qrcode/...   # 二维码生成器 > qrcode     *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|转换    *3k
-go get github.com/jung-kurt/gofpdf         # 生成 PDF 文件  *2.8k | 支持text,drawing,images
+go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
+go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
 go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
 go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，然后提供http服务: statik -src=/path/to
@@ -614,12 +616,19 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 # ------------------------------------------------------------------------------------
 # 部署-维护
 # ------------------------------------------------------------------------------------
+go get github.com/containous/yaegi/cmd/yaegi # 一个优雅的 Go 解释器
+go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
 go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
 go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
+go get github.com/go-task/task             # 一个任务运行/构建工具，旨在比 GNU Make 更简单易用 *2k
+go get github.com/drakkan/sftpgo           # 全功能和高度可配置SFTP服务器
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert > https://localhost
+# [申请Let's Encrypt永久免费SSL证书]         www.jianshu.com/p/3ae2f024c291
+go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
 go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
@@ -641,9 +650,6 @@ go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') d
 # [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
 # https://github.com/go-flutter-desktop/go-flutter
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
-go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert > https://localhost
-# [申请Let's Encrypt永久免费SSL证书]          | www.jianshu.com/p/3ae2f024c291
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 go get gitea.com/lunny/gps                 # 地图坐标系转换
 /** WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
  * 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
