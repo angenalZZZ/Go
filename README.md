@@ -549,8 +549,9 @@ go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)  *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin *1k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
+go get github.com/bitly/oauth2_proxy # 反向代理-认证服务 *5k
+go get github.com/ory/fosite/...           # 访问控制-认证服务 OAuth2.0, OpenID Connect SDK | www.ory.sh
 go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
-go get github.com/ory/fosite/...           # 访问控制 OAuth2.0, OpenID Connect SDK | www.ory.sh
 go get github.com/gorilla/sessions         # session & cookie authentication
 go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication
 go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
