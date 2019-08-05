@@ -315,6 +315,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 
 # 源代码版本管理
   > go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
+  > go get -d github.com/github/hub # 轻松使用Github的命令行工具 *17k
 
 ~~~
 
@@ -429,7 +430,8 @@ go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
-go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统
+go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
+go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
