@@ -439,7 +439,8 @@ go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
+go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis..}-server   *4k
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
 
 go get github.com/go-redis/cache
@@ -457,7 +458,7 @@ go get github.com/tidwall/buntdb           # 内存数据库,BuntDB is a low-lev
 go get github.com/tidwall/buntdb-benchmark # 性能测试 > buntdb-benchmark -n 10000 -q # 单机时超越Redis，有索引和geospatial功能
 go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存   *2k
 go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *20k | www.cockroachlabs.com/docs/stable
-go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k > docker run -p 9851:9851 tile38/tile38
+go get -d github.com/tidwall/tile38        # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
 go get -d github.com/pingcap/tidb          # TiDB 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
 go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库InfluxDB *19k | github.com/influxdata/influxdb
 go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB2.x客户端 | v2.docs.influxdata.com/v2.0/get-started
