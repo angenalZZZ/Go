@@ -442,6 +442,7 @@ go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/instal
 go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis..}-server   *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
+go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 
 go get github.com/go-redis/cache
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
