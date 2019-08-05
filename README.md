@@ -407,6 +407,7 @@ go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自�
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验             *1k
+go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器functions     *4k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json) && gjson.Get(json,"name.last").Exists()
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
@@ -439,6 +440,7 @@ go get github.com/rjeczalik/notify         # 文件系统事件通知库
 go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
+go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
 
 go get github.com/go-redis/cache
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
