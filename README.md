@@ -555,14 +555,15 @@ go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k |
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)  *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin *1k
-go get golang.org/x/oauth2                 # OAuth 2.0 认证授权 | github.com/golang/oauth2
-go get github.com/bitly/oauth2_proxy # 反向代理-认证服务 *5k
-go get github.com/ory/fosite/...           # 访问控制-认证服务 OAuth2.0, OpenID Connect SDK | www.ory.sh
-go get github.com/casbin/casbin            # 授权访问-认证服务 ACL, RBAC, ABAC | casbin.org
-go get github.com/gorilla/sessions         # session & cookie authentication
-go get github.com/kgretzky/evilginx2       # session cookies, allowing for the bypass of 2-factor authentication
-go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请 | www.google.com/recaptcha/admin/create
-go get github.com/dchest/captcha           # 验证码|图片|声音
+go get github.com/thoas/stats              # 请求计时 Http-Filter    *1k
+go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k    github.com/golang/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐) *5k (ACL, RBAC, ABAC) casbin.org
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (简单易用)
+go get github.com/ory/fosite/...           # 访问控制-认证服务扩展    *1k    (OAuth2.0, OpenID Connect) www.ory.sh
+go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
+go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authentication  *2.5k
+go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请(推荐) www.google.com/recaptcha/admin/create
+go get github.com/dchest/captcha           # 验证码|图片|声音(推荐)
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
