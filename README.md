@@ -118,10 +118,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 $ export GOPROXY=https://goproxy.io       ## Linux Profile ~ GO111MODULE=on
 $ echo "GOPROXY=https://goproxy.io" >> ~/.profile && source ~/.profile
 # 1. https://goproxy.io                   ## 首选
-# 2. https://goproxy.cn
-# 3. https://gocenter.io
-# 4. https://athens.azurefd.net
-# 5. https://mirrors.aliyun.com/goproxy/  ## 阿里镜像快但不全新
+# 2. https://mirrors.aliyun.com/goproxy/
+# 3. https://athens.azurefd.net
+# 4. https://gocenter.io
+# 5. https://goproxy.cn
 
 # 内网代理推荐 Athens: https://docs.gomods.io/zh/
 $ export ATHENS_STORAGE=~/athens-storage ##Docker 参考 https://docs.gomods.io/walkthrough/
