@@ -477,15 +477,16 @@ go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
 git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
-go get github.com/go-sql-driver/mysql      # Mysql     | github.com/siddontang/go-mysql
-go get github.com/denisenkom/go-mssqldb    # MsSql
-go get github.com/lib/pq                   # Postgres  | github.com/prest/prest
-go get github.com/jackc/pgx                # Postgres  驱动与工具集
-go get github.com/sosedoff/pgweb           # Postgres  Web管理系统
-go get gopkg.in/mgo.v2                     # MongoDB 驱动:集群,并发,一致性,Auth,GridFS | labix.org/mgo
-go get github.com/globalsign/mgo           # MongoDB^4
-go get github.com/mattn/go-sqlite3         # SQLite
-go get github.com/jmoiron/sqlx             # 数据库sql    *6k  extensions go's standard database/sql library
+go get github.com/go-sql-driver/mysql      # Mysql client and driver     *8k   github.com/siddontang/go-mysql
+go get github.com/lib/pq                   # Postgres client and driver  *5k   github.com/prest/prest
+go get github.com/jackc/pgx                # Postgres client and toolkit *2k
+go get github.com/go-pg/pg/v9              # Postgres client and ORM     *3k
+go get github.com/sosedoff/pgweb           # Postgres client and WebUI   *6k
+go get github.com/denisenkom/go-mssqldb    # MsSql client and driver     *1k
+go get gopkg.in/mgo.v2                     # MongoDB 驱动:集群,并发,一致性,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
+go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
+go get github.com/mattn/go-sqlite3         # SQLite client and driver    *3k
+go get github.com/jmoiron/sqlx             # 数据库sql library  *6k  (extensions go's standard database/sql)
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
   go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
