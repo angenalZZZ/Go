@@ -552,14 +552,14 @@ go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
-go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
-go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)  *6k
-go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin *1k
-go get github.com/thoas/stats              # 请求计时 Http-Filter    *1k
-go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k    github.com/golang/oauth2
-go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐) *5k (ACL, RBAC, ABAC) casbin.org
-go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (简单易用)
+go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
+go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google, Github...)
 go get github.com/ory/fosite/...           # 访问控制-认证服务扩展    *1k    (OAuth2.0, OpenID Connect) www.ory.sh
+go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
+go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
+go get github.com/thoas/stats              # Http Router Filter[计时] *1k
 go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
 go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authentication  *2.5k
 go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请(推荐) www.google.com/recaptcha/admin/create
