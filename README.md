@@ -525,27 +525,7 @@ go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
 go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
-go get github.com/travisjeffery/jocko      # 消息推送服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
-go get github.com/appleboy/gorush          # 消息推送服务gorush 4k : api, HTTP/2, notification queue and multiple workers.
 go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
-go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
-go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
-
-go get github.com/nsqio/nsq                # 实时分布式消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
-go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
-go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq框架
-go get github.com/streadway/amqp           # Rabbitmq client tutorials | www.rabbitmq.com/#getstarted
-go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
-go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
-
-go get github.com/gorilla/websocket        # WebSocket Serve *8k
-go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) | gotify.net
-go get github.com/gotify/cli               # WebSocket client to push messages
-go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
-go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
-# 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
-# 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
-# https://github.com/oikomi/FishChatServer2
 
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *26k: Gin Web Framework
 go get github.com/astaxie/beego            # 后端WebSvr框架 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
@@ -588,9 +568,29 @@ go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
+go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
+go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
+
+go get github.com/gorilla/websocket        # WebSocket Serve *8k
+go get github.com/gotify/server            # WebSocket Serve(推荐) (Web-Admin-UI) | gotify.net
+go get github.com/gotify/cli               # WebSocket client to push messages
+go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
+go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
+# 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
+# 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
+# https://github.com/oikomi/FishChatServer2
+
+go get github.com/nsqio/nsq                # 实时分布式消息平台nsq(推荐) *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
+go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
+go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq框架
+go get github.com/streadway/amqp           # Rabbitmq client tutorials | www.rabbitmq.com/#getstarted
+go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
+go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
+go get github.com/appleboy/gorush          # 消息推送PUSH服务gorush(推荐) *4k : api, notification queue, multiple workers
+go get github.com/travisjeffery/jocko      # 消息推送PUSH服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
 
 # 物联网IoT、物理计算Drones、机器人Robotics
-go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 github.com/hybridgroup/gobot
+go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
 # github.com/LiteOS/LiteOS                 # 华为LiteOS是华为面向物联网领域开发的一个基于实时内核的轻量级操作系统
 
 # 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
