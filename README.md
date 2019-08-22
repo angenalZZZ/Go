@@ -441,6 +441,8 @@ go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站�
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
+go get github.com/DataDog/zstd             # 超快的压缩/解压数据Facebook. Zstd Go Wrapper: Compress/Decompress,Stream-API
+# 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis..}-server   *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
