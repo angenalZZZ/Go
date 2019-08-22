@@ -815,6 +815,8 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 
 #### ④ [中文标准库文档](https://studygolang.com/pkgdoc)
 
+ * [项目布局设计*目录*](https://github.com/golang-standards/project-layout)
+ 
 ----
 
 #### ⑤ 阅读相关文章
