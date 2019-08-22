@@ -373,6 +373,7 @@ go get -d github.com/golang/playground     # playground
 go get -d github.com/shen100/golang123     # 适合初学者
 go get -d github.com/go-training/training  # 适合初学者培训
 go get -d github.com/insionng/zenpress     # 适合学习 cms system
+go get -u github.com/ponzu-cms/ponzu/...   # 用户友好、可扩展的CMS和管理后台(SSL+Push+BoltDB)
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
 go get -d github.com/muesli/cache2go       # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
@@ -532,21 +533,24 @@ go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
 
 go get github.com/nsqio/nsq                # 实时分布式消息平台nsq *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
-go get github.com/streadway/amqp           # rabbitmq client tutorials | www.rabbitmq.com/#getstarted
-go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq 框架
+go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq框架
+go get github.com/streadway/amqp           # Rabbitmq client tutorials | www.rabbitmq.com/#getstarted
 go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
+
 go get github.com/gorilla/websocket        # WebSocket Serve *8k
 go get github.com/gotify/server            # WebSocket Serve (Includes Web-UI manage) | gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
+go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
+go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
-# 后端框架
-go get github.com/gin-gonic/gin            # 后端WebSvr *26k: Gin Web Framework
-go get github.com/astaxie/beego            # 后端WebSvr *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
+
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *26k: Gin Web Framework
+go get github.com/astaxie/beego            # 后端WebSvr框架 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
-go get github.com/kataras/iris             # 最快Web框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
+go get github.com/kataras/iris             # 最快WebSvr框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
@@ -570,8 +574,7 @@ go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen | github.com/eladnava/mailgen
 go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-# 后端API文档生成器 swagger
-go get github.com/go-swagger/go-swagger/cmd/swagger # 使用 > swagger generate spec --scan-models -o docs/spec.json
+go get github.com/go-swagger/go-swagger/cmd/swagger # 后端API文档生成器 > swagger generate spec --scan-models -o docs/spec.json
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
@@ -579,15 +582,16 @@ go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
 go get github.com/tealeg/xlsx              # 读取 Excel 文件 *3.2k
 go get github.com/360EntSecGroup-Skylar/excelize # 读写 Excel 文件 *3.8k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
+go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
-go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|转换    *3k
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
-go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
-go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
-go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，然后提供http服务: statik -src=/path/to
+go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
-go get -d -u gobot.io/x/gobot/...          # 物联网IoT、物理计算Drones、机器人Robotics | github.com/hybridgroup/gobot
+
+# 物联网IoT、物理计算Drones、机器人Robotics
+go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 github.com/hybridgroup/gobot
+# github.com/LiteOS/LiteOS                 # 华为LiteOS是华为面向物联网领域开发的一个基于实时内核的轻量级操作系统
 
 # 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
