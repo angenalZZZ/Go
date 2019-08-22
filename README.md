@@ -5,7 +5,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐的开源项目](https://github.com/golang/go/wiki/Projects)、[Go语言圣经](https://docs.hacknode.org/gopl-zh)、[高级编程](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) [*性能优化*](#性能优化) ；[*推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) ；[awesome-go](https://github.com/avelino/awesome-go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*Google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly)
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) [*性能优化*](#性能优化) ；[*推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly*](#webassembly) <br> [awesome-go](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -437,7 +437,7 @@ go get github.com/coocood/freecache        # cache and high concurrent performan
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
-go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站点生成系统 gohugo.io/about
+go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站点生成系统 *37k  gohugo.io/about
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
@@ -653,7 +653,7 @@ go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisor
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
-go get github.com/grafana/grafana          # 监测系统|指标分析工具|InfluxDB时序DB|Prometheus等 *29k
+go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|InfluxDB时序DB|Prometheus等(强力推荐) *30k
 go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
