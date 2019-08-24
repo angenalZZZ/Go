@@ -167,27 +167,25 @@ git clone --depth=1 https://github.com/googleapis/google-cloud-go.git %GOPATH%/s
 # 开发工具 VSCode✨  github.com/Microsoft/vscode-go
 # 分享Go工具链✨  pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
 git clone --depth=1 https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools
-go get -u -v github.com/ramya-rao-a/go-outline
-go get -u -v github.com/acroca/go-symbols
-go get -u -v github.com/mdempsky/gocode
-go get -u -v github.com/rogpeppe/godef
-go get -u -v golang.org/x/tools/cmd/godoc
-go get -u -v github.com/zmb3/gogetdoc
-go get -u -v golang.org/x/lint/golint
-go get -u -v github.com/fatih/gomodifytags
-go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v sourcegraph.com/sqs/goreturns
-go get -u -v golang.org/x/tools/cmd/goimports
-go get -u -v github.com/cweill/gotests/...
-go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v github.com/josharian/impl
-go get -u -v github.com/haya14busa/goplay/cmd/goplay
-go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
-go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-go get -u -v github.com/alecthomas/gometalinter  &&  gometalinter --install
-go get -u github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blob/master/Documentation/installation/README.md
-git clone https://github.com/go-delve/delve.git $GOPATH/src/github.com/go-delve/delve
-cd $GOPATH/src/github.com/go-delve/delve  &&  make install
+go get github.com/ramya-rao-a/go-outline
+go get github.com/acroca/go-symbols
+go get github.com/mdempsky/gocode
+go get github.com/rogpeppe/godef
+go get golang.org/x/tools/cmd/godoc
+go get github.com/zmb3/gogetdoc
+go get golang.org/x/lint/golint
+go get github.com/fatih/gomodifytags
+go get golang.org/x/tools/cmd/gorename
+go get sourcegraph.com/sqs/goreturns
+go get golang.org/x/tools/cmd/goimports
+go get github.com/cweill/gotests/...
+go get golang.org/x/tools/cmd/guru
+go get github.com/josharian/impl
+go get github.com/haya14busa/goplay/cmd/goplay
+go get github.com/uudashr/gopkgs/cmd/gopkgs
+go get github.com/davidrjenni/reftools/cmd/fillstruct
+go get github.com/alecthomas/gometalinter  &&  gometalinter --install
+go get github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
 
 #### 管理|构建|测试
