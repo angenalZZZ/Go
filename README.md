@@ -164,24 +164,28 @@ git clone --depth=1 https://github.com/golang/time.git %GOPATH%/src/golang.org/x
 git clone --depth=1 https://github.com/golang/tour.git %GOPATH%/src/golang.org/x/tour     # 开发文档
 git clone --depth=1 https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
-# 开发工具 VSCode | github.com/Microsoft/vscode-go
-# 分享Go语言工具链: pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
-git clone --depth=1 https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools   # 工具集成✨
-go get -u -v github.com/nsf/gocode
+# 开发工具 VSCode✨  github.com/Microsoft/vscode-go
+# 分享Go工具链✨  pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
+git clone --depth=1 https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools
+go get -u -v github.com/ramya-rao-a/go-outline
+go get -u -v github.com/acroca/go-symbols
+go get -u -v github.com/mdempsky/gocode
 go get -u -v github.com/rogpeppe/godef
+go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v github.com/zmb3/gogetdoc
-go get -u -v github.com/golang/lint/golint
-go get -u -v github.com/lukehoban/go-outline
-go get -u -v github.com/lukehoban/go-find-references
-go get -u -v github.com/derekparker/delve/cmd/dlv
-go get -u -v github.com/sqs/goreturns
-go get -u -v github.com/tpng/gopkgs
-go get -u -v github.com/golang/tools/cmd/goimports
-go get -u -v github.com/golang/tools/cmd/gorename
-go get -u -v github.com/golang/tools/cmd/guru
-go get -u -v github.com/newhook/go-symbols
+go get -u -v golang.org/x/lint/golint
 go get -u -v github.com/fatih/gomodifytags
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v sourcegraph.com/sqs/goreturns
+go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v github.com/cweill/gotests/...
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v github.com/josharian/impl
+go get -u -v github.com/haya14busa/goplay/cmd/goplay
+go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
+go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
+go get -u -v github.com/alecthomas/gometalinter
+gometalinter --install
 ~~~
 
 #### 管理|构建|测试
