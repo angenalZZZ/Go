@@ -184,8 +184,10 @@ go get -u -v github.com/josharian/impl
 go get -u -v github.com/haya14busa/goplay/cmd/goplay
 go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-go get -u -v github.com/alecthomas/gometalinter
-gometalinter --install
+go get -u -v github.com/alecthomas/gometalinter  &&  gometalinter --install
+go get -u github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blob/master/Documentation/installation/README.md
+git clone https://github.com/go-delve/delve.git $GOPATH/src/github.com/go-delve/delve
+cd $GOPATH/src/github.com/go-delve/delve  &&  make install
 ~~~
 
 #### 管理|构建|测试
