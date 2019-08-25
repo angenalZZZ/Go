@@ -623,8 +623,10 @@ go get github.com/TykTechnologies/tyk             # Tyk开源网关API:auth,gran
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
 go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架，包含大量微服务相关框架及工具 *6k
+go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc&rpc业务工具库
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
-go get github.com/micro/go-micro           # 分布式RPC微服务 *7k
+go get github.com/micro/go-micro           # Micro开源分布式RPC微服务 *7k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
 git clone --depth=1 https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
