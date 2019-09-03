@@ -639,12 +639,14 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 # 部署-维护
 # ------------------------------------------------------------------------------------
 go get github.com/containous/yaegi/cmd/yaegi # 一个优雅的 Go 解释器
-go get github.com/martinlindhe/gohash/...  # 编码解码>coder;推荐>hasher[加密算法--list-hashes][编码解码--list-encodings]
+go get github.com/martinlindhe/gohash/...  # 编码解码>coder;推荐>hasher [-A加密算法][-E编码解码] --help
+$ echo -n hello |coder -e base64+hex   > echo -n 614756736247383d |coder -d  hex+base64 ; cat file.b64 |coder -d base64
+$ echo -n 123456 |hasher md5 [-e base64]; hasher -i file.txt sha1 [-e base64] --bsd [ > file.b64 ]
 go get github.com/hidevopsio/crypto        # 加密解密>crypto rsa -h[crypto rsa -e -s hello][crypto rsa -d -s ***][-k:rsa.key]
 $ wget https://github.com/smallstep/cli/releases/download/v0.11.0/step-cli_0.11.0_amd64.deb
 $ wget https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_amd64.deb
-$ sudo dpkg -i step-cli_0.11.0_amd64       # 自动化证书管理cli:X.509,TLS;OAuth OIDC|OTP;JSONWebEncrypt;JWT...
-$ sudo dpkg -i step-certificates_0.11.0_amd64.deb && step version && step-ca version 
+$ sudo dpkg -i step-cli_0.11.0_amd64       # 自动化证书管理cli: X.509,TLS;OAuth OIDC|OTP;JSONWebEncrypt;JWT...
+$ sudo dpkg -i step-certificates_0.11.0_amd64.deb && step version && step-ca version
 $ step ca init #1.初始化ca
 $ step-ca $(step path)/config/ca.json #2.设置ca密码
 $ cat > srv.go #3.开发server
