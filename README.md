@@ -639,6 +639,8 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 # 部署-维护
 # ------------------------------------------------------------------------------------
 go get github.com/containous/yaegi/cmd/yaegi # 一个优雅的 Go 解释器
+go get github.com/martinlindhe/gohash/...  # 编码解码>coder;推荐>hasher[加密算法--list-hashes][编码解码--list-encodings]
+go get github.com/hidevopsio/crypto        # 加密解密>crypto rsa -h[crypto rsa -e -s hello][crypto rsa -d -s ***][-k:rsa.key]
 go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
