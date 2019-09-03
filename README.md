@@ -641,6 +641,19 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 go get github.com/containous/yaegi/cmd/yaegi # 一个优雅的 Go 解释器
 go get github.com/martinlindhe/gohash/...  # 编码解码>coder;推荐>hasher[加密算法--list-hashes][编码解码--list-encodings]
 go get github.com/hidevopsio/crypto        # 加密解密>crypto rsa -h[crypto rsa -e -s hello][crypto rsa -d -s ***][-k:rsa.key]
+$ wget https://github.com/smallstep/cli/releases/download/v0.11.0/step-cli_0.11.0_amd64.deb
+$ wget https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_amd64.deb
+$ sudo dpkg -i step-cli_0.11.0_amd64       # 自动化证书管理cli:X.509,TLS;OAuth OIDC|OTP;JSONWebEncrypt;JWT...
+$ sudo dpkg -i step-certificates_0.11.0_amd64.deb && step version && step-ca version 
+$ step ca init #1.初始化ca
+$ step-ca $(step path)/config/ca.json #2.设置ca密码
+$ cat > srv.go #3.开发server
+$ step ca certificate localhost srv.crt srv.key #4.从StepCA获取服务器标识>step certificate inspect --bundle srv.crt
+$ go run srv.go & #5.运行server
+$ step ca root root.crt #6.从StepCA获取根证书
+$ curl --cacert root.crt https://localhost:8443/hi #7.验证CA,使用HTTP.TLS向服务器发出经过身份验证的加密curl请求
+$ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
+go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
 go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
