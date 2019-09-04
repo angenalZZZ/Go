@@ -639,9 +639,10 @@ cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos w
 # 部署-维护
 # ------------------------------------------------------------------------------------
 go get github.com/containous/yaegi/cmd/yaegi # 一个优雅的 Go 解释器
-go get github.com/martinlindhe/gohash/...  # 编码解码>coder;推荐>hasher [-A加密算法][-E编码解码] --help
- > echo -n hello |coder -e base64+hex  > echo -n 614756736247383d |coder -d  hex+base64 > cat file.b64|coder -d base64
- > echo -n 123456|hasher md5 [-e base64] -n --no-colors > hasher -i file.txt sha1 --bsd #加密文件&输出BSD格式化结果
+go get github.com/martinlindhe/gohash/...  # 编码解码> coder --help ; 推荐> hasher --help [-A加密算法][-E编码解码]
+ > echo2 123456|hasher md5 -n --no-colors  # echo2解决各系统的换行问题(个人编译,用于替换echo)
+ > echo2 hello |coder -e base64+hex > echo2 614756736247383d|coder -d hex+base64 > cat file.b64|coder -d base64
+ > echo2 123456|hasher md5 [-e base64] [-n --no-colors] > hasher -i file.txt sha1 --bsd #加密文件&输出BSD格式化结果
 go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
  $ wget https://github.com/smallstep/cli/releases/download/v0.11.0/step-cli_0.11.0_amd64.deb
  $ wget https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_amd64.deb
