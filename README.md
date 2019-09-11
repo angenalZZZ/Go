@@ -123,7 +123,7 @@ $ echo "GOPROXY=https://goproxy.io" >> ~/.profile && source ~/.profile
 # 3. https://athens.azurefd.net
 # 4. https://gocenter.io
 # 5. https://goproxy.cn
-
+# go get github.com/gpmgo/gopm ##内地代理 https://gopm.io > gopm -h ; gopm bin [-d %GOPATH%/bin][包名]
 # 内网代理推荐 Athens: https://docs.gomods.io/zh/
 $ export ATHENS_STORAGE=~/athens-storage ##Docker 参考 https://docs.gomods.io/walkthrough/
 $ mkdir -p $ATHENS_STORAGE
@@ -255,7 +255,6 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
-# go get -u github.com/gpmgo/gopm          (包管理工具) > gopm -h ; gopm bin [-d %GOPATH%/bin] [安装包名]
 
 # 测试工具CI
   > go help test                                   # 帮助测试
@@ -289,8 +288,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
   > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
 
-  # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知
-  > go get github.com/smartystreets/goconvey   # 优雅的单元测试   *4k
+  # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知`goconvey`
+  > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (强力推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
   > go get github.com/stretchr/testify         # 通用接口调试工具 *8k | assert,require,mock,suite,http
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
