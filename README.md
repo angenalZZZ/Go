@@ -302,7 +302,6 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
-  > git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1
   
 # 测试代码书写`Testing`
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
@@ -502,11 +501,11 @@ go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,类ibatis配置等
                                              # ^xorm增强版*文档 https://www.kancloud.cn/xormplus/xorm/167077
 go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射.
-go get github.com/mattes/migrate           # 数据库迁移工具 *2k
+go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
-git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 # gorm migrate
-go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用它
-go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go
+git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
+go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
+go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go # gorm migrate
    > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates
    > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
    > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
