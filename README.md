@@ -540,6 +540,8 @@ go get github.com/kataras/iris             # 最快WebSvr框架 *15k | github.co
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
+go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k | martini.codegangsta.io
+go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 | go-macaron.com/docs
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
@@ -679,6 +681,7 @@ go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|InfluxDB时序DB|Prometheus等(强力推荐) *30k
 go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
+go get github.com/yinqiwen/gscan           # 扫描可用HTTPsIP、修复Hosts、可用GoogleIP; 可用于代理工具GSnova,GoAgent
 go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/lxn/win                  # Windows API wrapper package
