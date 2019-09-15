@@ -541,6 +541,7 @@ go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k | martini.codegangsta.io
 go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 | go-macaron.com/docs
+go get github.com/julienschmidt/httprouter  # 超轻量级高性能httprouter(推荐)*10k  (有助于开发web框架) github.com/julienschmidt
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
