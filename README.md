@@ -81,7 +81,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOPROXY=https://goproxy.io
     set GO111MODULE=on             (可选项: 建议设置为 GO111MODULE=auto )
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
-    # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
+    # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod);[-ldflags "-H windowsgui"]可以让exe运行时不弹出cmd窗口
     set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     # go tool  参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译符号+调试信息(杜绝gdb调试)+缩小file
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
