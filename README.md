@@ -659,6 +659,8 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
  $ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
 go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
 go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
+go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
+go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
@@ -682,15 +684,6 @@ go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序
 go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|InfluxDB时序DB|Prometheus等(强力推荐) *30k
 go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 go get github.com/yinqiwen/gscan           # 扫描可用HTTPsIP、修复Hosts、可用GoogleIP; 可用于代理工具GSnova,GoAgent
-go get github.com/elves/elvish             # shell for unix > 可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
-go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
-go get github.com/lxn/win                  # Windows API wrapper package
-go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
-go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
-# [QT跨平台应用框架] Qt binding package
-go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
-# [Bringing Flutter to Windows, MacOS and Linux] - through the power of Go and GLFW.
-# https://github.com/go-flutter-desktop/go-flutter
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
 go get gitea.com/lunny/gps                 # 地图坐标系转换
 /** WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
@@ -817,8 +810,14 @@ astilectron-bundler -v        # help: astilectron-bundler -h
     * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
  * [Webview](https://github.com/zserge/webview)
  * [WebAssembly](https://github.com/murlokswarm/app)
- * [原生GUI库](https://github.com/andlabs/ui)
- 
+ * [原生GUI库](https://github.com/andlabs/ui)、[go-flutter-desktop](https://github.com/go-flutter-desktop/go-flutter)
+~~~bash
+# [QT跨平台应用框架] Qt binding package
+go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
+go get github.com/lxn/win                  # Windows API wrapper package
+go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
+go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
+~~~
 ----
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
