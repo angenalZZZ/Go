@@ -436,6 +436,8 @@ go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: 
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
+go get github.com/VictoriaMetrics/fastcache
+go get github.com/allegro/bigcache         # GB级大数据的高效缓存库&超快的GC(推荐) *3k
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
@@ -451,6 +453,7 @@ go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
+go get github.com/chrislusf/glow/...       # similar to Hadoop Map Reduce, Spark, Flink, Storm ... *3k
 
 go get github.com/go-redis/cache
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
