@@ -528,14 +528,6 @@ go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful AP
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 
-go get github.com/robfig/cron              # 任务计划 a cron library *4k
-go get github.com/iamduo/go-workq          # job server and client  *1k
-go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
-go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
-go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
-go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
-go get github.com/gocelery/gocelery        # 分布式任务队列Celery *1k : client/server www.celeryproject.org
-
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *26k: Gin Web Framework
 go get github.com/astaxie/beego            # 后端WebSvr框架 *20k: API、Web、服务 | 高度解耦的框架 | beego.me/docs/intro
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
@@ -592,10 +584,19 @@ go get github.com/gobwas/ws                # WebSocket | github.com/socketio/soc
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
 
+go get github.com/robfig/cron              # 任务计划 a cron library *4k
+go get github.com/iamduo/go-workq          # job server and client  *1k
+go get github.com/jasonlvhit/gocron        # simple Job Scheduling  *1k
+go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
+go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
+go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
+go get github.com/gocelery/gocelery        # 分布式任务队列管理系统 *1k client/server | www.celeryproject.org
+go get github.com/RichardKnop/machinery/v1 # 分布式消息队列+异步任务(推荐) *3.5k
+go get github.com/streadway/amqp           # RabbitMQ tutorials *3k | www.rabbitmq.com | github.com/rabbitmq/rabbitmq-tutorials/tree/master/go
+go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff + zookeeper 实现的多种持久化方案的mq框架
+
 go get github.com/nsqio/nsq                # 实时分布式消息平台nsq(推荐) *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
-go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff 实现的多种持久化方案的 mq框架
-go get github.com/streadway/amqp           # Rabbitmq client tutorials | www.rabbitmq.com/#getstarted
 go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQTT消息服务器 *4k | www.emqtt.com
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
 go get github.com/appleboy/gorush          # 消息推送PUSH服务gorush(推荐) *4k : api, notification queue, multiple workers
