@@ -720,9 +720,174 @@ go get -u cloud.google.com/go/translate   # 使用 Translation API 翻译不同�
 go get -u cloud.google.com/go/vision/apiv1# 使用 Vision API 分析图片
 
 # 阿里云 | api.aliyun.com
-go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 # 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
+go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
+# Alibaba Cloud SDK
+go get github.com/aliyun/alibaba-cloud-sdk-go
+# 存储服务
+go get github.com/aliyun/aliyun-oss-go-sdk
+# 日志服务
+go get github.com/aliyun/aliyun-log-go-sdk
+# 函数计算
+go get github.com/aliyun/fc-go-sdk
+# 消息服务
+go get github.com/aliyun/aliyun-mns-go-sdk
+# 表格存储tablestore
+go get github.com/aliyun/aliyun-tablestore-go-sdk
+# 消息队列 MQ
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ons
+# 消息队列 Kafka
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/alikafka
+# API 网关
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cloudapi
+# 表格存储ots
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ots
+# 链路追踪
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/xtrace
+# Web应用防火墙
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/waf_openapi
+# 专有网络VPC
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/vpc
+# 视频点播
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/vod
+# 视频直播
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/live
+# 媒体处理
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/mts
+# 音视频通信
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/rtc
+# 资源编排
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ros
+# 智能媒体管理
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/imm
+# 商标服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/trademark
+# 云通信网络加速
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/snsuapi
+# 智能接入网关
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/smartag
+# sls服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/sls
+# 负载均衡
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/slb
+# 敏感数据保护
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/sddp
+# 实时计算（流计算）
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cusanalytic_sc_online
+# 云安全中心（态势感知）
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/sas
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/sas-api
+# 风险识别
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/saf
+# Serverless 应用引擎
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/sae
+# 访问控制
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ram
+# 云解析 PrivateZone
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/pvtz
+# 云数据库 POLARDB
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/polardb
+# 云数据库 MongoDB 版
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dds
+# 云数据库 Redis 版
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/r_kvstore
+# HybridDB for MySQL
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/petadata
+# 分析型数据库PostgreSQL版
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/gpdb
+# 分布式关系型数据库服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/drds
+# 大数据E-MapReduce
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/emr
+# 数据管理
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dms-enterprise
+# 数据库备份
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dbs
+# 开放搜索
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/opensearch
+# 图像识别
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/imagesearch
+# Data Lake Analytics
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/openanalytics
+# 数据库审计
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/yundun_dbaudit
+# 数据库和应用迁移
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/tesladam
+# 操作审计
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/actiontrail
+# 归档存储
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/foas
+# 文件存储NAS
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/nas
+# 密钥管理服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/kms
+# 智能视觉
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ivision
+# 语音服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dyvmsapi
+# 人脸识别
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/linkface
+# 物联网平台
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/iot
+# 加密服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/hsm
+# 函数工作流
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/fnf
+# 弹性伸缩
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ess
+# 边缘节点服务 ENS
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ens
+# 弹性Web托管
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/elasticsearch
+# 弹性高性能计算 E-HPC
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ehpc
+# 企业级分布式应用服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/edas
+# 云服务器 ECS
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ecs
+# 弹性容器实例 ECI
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/eci
+# 短信服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dysmsapi
+# 号码认证服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dypnsapi
+# 号码隐私保护
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dyplsapi
+# 数据传输
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dts
+# 域名
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/domain
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/domain-intl
+# SSL证书（CA证书服务、数据安全）
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cas
+# 云解析DNS
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/alidns
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/httpdns
+# 安全加速 SCDN
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/scdn
+# 全站加速
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/dcdn
+# CDN
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cdn
+# 企业工商注册服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/companyreg
+# 云监控
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cms
+# 实人认证
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cloudauth
+# 凭证管理
+go get github.com/aliyun/credentials-go
+# 区块链服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/baas
+# 应用实时监控服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/arms
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/arms4finance
+# 应用高可用服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ahas_openapi
+# 容器镜像服务
+go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cr
+
 
 # 腾讯云 | console.cloud.tencent.com/api/explorer
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
