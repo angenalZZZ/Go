@@ -707,7 +707,7 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 
 #### 云平台|公众平台|在线支付
 ~~~
-# 云计算
+# 云计算、云数据库、点播、直播...
 # ------------------------------------------------------------------------------------
 # 亚马逊 AWS | www.amazonaws.cn/tools
 
@@ -719,12 +719,12 @@ go get -u cloud.google.com/go/pubsub      # 使用 Pub/Sub 设置完全托管的
 go get -u cloud.google.com/go/translate   # 使用 Translation API 翻译不同语言的文本
 go get -u cloud.google.com/go/vision/apiv1# 使用 Vision API 分析图片
 
-# 阿里云 | api.aliyun.com
+# 阿里云 | api.aliyun.com | developer.aliyun.com/sdk
 # 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 # 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
-go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
-# Alibaba Cloud SDK
-go get github.com/aliyun/alibaba-cloud-sdk-go
+# 阿里云 SDK
+go get -u github.com/aliyun/alibaba-cloud-sdk-go
+go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk  # cloud sdk
 # 存储服务
 go get github.com/aliyun/aliyun-oss-go-sdk
 # 日志服务
@@ -897,6 +897,7 @@ go get -u github.com/tencentcloud/tencentcloud-sdk-go
 # 云直播 智能语音服务 机器翻译 智能钛机器学习 催收机器人 智聆口语评测 腾讯优评 Elasticsearch'Service
 # 物联网通信 TBaaS 云监控 迁移服务平台 电子合同服务 计费相关 渠道合作伙伴 人脸核身'云智慧眼
 # 威胁情报云查 样本智能分析平台 数学作业批改 人脸融合 人脸识别 数字版权管理
+
 
 # 七牛云 | developer.qiniu.com/sdk
 go get -u github.com/qiniu/api.v7 # 对象存储
