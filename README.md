@@ -2,6 +2,7 @@
 Go是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫，罗勃·派克及肯·汤普逊于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。
 
 `[程序设计]`    [✨帮助文档✨](https://github.com/angenalZZZ/doc)
+`[内存管理]`    [✨脸书的jemalloc](https://github.com/jemalloc/jemalloc)、[✨谷歌的tcmalloc](https://goog-perftools.sourceforge.net)
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
