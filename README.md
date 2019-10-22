@@ -405,10 +405,11 @@ go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
+go get github.com/OneOfOne/xxhash          # 超快的非加密哈希算法(推荐) github.com/Cyan4973/xxHash
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
-go get github.com/tinylib/msgp             # MessagePack编码/解码(推荐使用)   考虑结合缓存库使用
+go get github.com/tinylib/msgp             # MessagePack编码/解码(推荐) 考虑结合缓存库使用
 go get github.com/vmihailenco/msgpack      # MessagePack编码/解码(像JSON但更快更小) msgpack.org
 go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自带序列化库gob的3倍以上(减少使用reflect库)
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
@@ -437,12 +438,12 @@ go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 |
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
-go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
-go get github.com/VictoriaMetrics/fastcache
-go get github.com/allegro/bigcache         # GB级大数据的高效缓存库&超快的GC(推荐) *3k
+go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
+go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *3k
+go get github.com/eko/gocache              # 缓存管理(推荐)Memory[Bigcache,Ristretto]+Memcache+Redis+[Chained,Metric]..
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
-go get github.com/peterbourgon/diskv       # 支持磁盘的 key-value 存储
+go get github.com/VictoriaMetrics/fastcache
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
 go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站点生成系统 *37k  gohugo.io/about
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
