@@ -398,8 +398,9 @@ go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
+go get gopkg.in/go-playground/pool.v3      # easier limited and unlimited worker pool | github.com/go-playground/pool
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm.. *2.5k
-go get github.com/chrislusf/gleam/...      # 快速高效可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka..
+go get github.com/chrislusf/gleam/...      # 快速高效可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
