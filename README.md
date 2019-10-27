@@ -608,6 +608,7 @@ go get -d github.com/emqx/emqx             # 百万级分布式开源物联网MQ
 go get github.com/mattermost/mattermost-server # 通讯 *15k 为团队带来跨PC和移动设备的消息、文件分享，提供归档和搜索功能+前端React
 go get github.com/appleboy/gorush          # 消息推送PUSH服务gorush(推荐) *4k : api, notification queue, multiple workers
 go get github.com/travisjeffery/jocko      # 消息推送PUSH服务Kafka *3k : producing/consuming[生产/消费] cluster[代理集群]
+go get github.com/benmanns/goworker        # 10万级并行的后台任务系统-基于Redis的workers(推荐) *2.3k
 
 # 物联网IoT、物理计算Drones、机器人Robotics
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
