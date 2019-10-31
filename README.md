@@ -407,6 +407,8 @@ go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
+go get gonum.org/v1/gonum/...              # 各种算数运行(推荐) 包含matrix等 *3.2k  www.gonum.org
+go get github.com/skelterjohn/go.matrix    # 线性代数运算(推荐) 
 go get github.com/OneOfOne/xxhash          # 超快的非加密哈希算法(推荐) github.com/Cyan4973/xxHash
 go get github.com/enriquebris/goconcurrentqueue # 高并发队列(线程安全队列推荐)
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
@@ -679,6 +681,7 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
  $ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
 go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
 go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
+go get github.com/shazow/ssh-chat          # 自定义 SSH server 用于替代 shell  *3.6k
 go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
