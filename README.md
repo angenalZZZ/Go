@@ -407,8 +407,8 @@ go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
-go get gonum.org/v1/gonum/...              # 各种算数运行(推荐) 包含matrix等 *3.2k  www.gonum.org
-go get github.com/skelterjohn/go.matrix    # 线性代数运算(推荐) 
+go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络创建&分析等
+go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
 go get github.com/OneOfOne/xxhash          # 超快的非加密哈希算法(推荐) github.com/Cyan4973/xxHash
 go get github.com/enriquebris/goconcurrentqueue # 高并发队列(线程安全队列推荐)
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
