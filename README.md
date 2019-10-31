@@ -395,18 +395,20 @@ go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证�
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get gopkg.in/go-playground/pool.v3      # easier limited and unlimited worker pool | github.com/go-playground/pool
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm.. *2.5k
-go get github.com/chrislusf/gleam/...      # 快速高效可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
+go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get github.com/OneOfOne/xxhash          # 超快的非加密哈希算法(推荐) github.com/Cyan4973/xxHash
+go get github.com/enriquebris/goconcurrentqueue # 高并发队列(线程安全队列推荐)
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
@@ -433,6 +435,10 @@ go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(�
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
 go get github.com/go-ego/gpy               # 汉语拼音转换工具
+go get github.com/levigross/grequests      # HTTP client Requests(推荐)
+go get gopkg.in/h2non/gentleman.v2         # HTTP client library
+go get github.com/sethgrid/pester          # HTTP client calls with retries, backoff, and concurrency.
+go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
