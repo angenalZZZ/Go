@@ -441,6 +441,7 @@ go get github.com/levigross/grequests      # HTTP client Requests(推荐)
 go get gopkg.in/h2non/gentleman.v2         # HTTP client library
 go get github.com/sethgrid/pester          # HTTP client calls with retries, backoff, and concurrency.
 go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
+go get -d github.com/upspin/upspin         # 构建安全统一和全局命名、共享文件和数据的框架：一个排序的全局名称系统 *5k | git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
