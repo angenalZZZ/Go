@@ -102,7 +102,6 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     go tool dist list
-    go tool vet .          # 执行代码的静态检查(Go语法等)
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
     # <按条件编译> 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
@@ -267,11 +266,14 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -v -bench=. -run=none -benchmem ./path # 基准测试*testing.B [-bench=.匹配全部,-run=匹配none]
   > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
-  > go tool vet -shadow main.go                    # 检查变量覆盖
-  > go tool cover -help                            # 帮助测试覆盖率
-  > go tool cover -html=c.out
   > go test -v -cover ./...                        # 显示代码覆盖率
   > go test -coverprofile=c.out .                  # 检测代码覆盖率
+  > go vet .                                       # 执行代码的静态检查(Go语法等)
+  > go help vet
+  > go tool vet help                               # 查看vet支持的检查?
+  > go tool vet -shadow main.go                    # 检查变量覆盖(install the 'shadow' analyzer tool)
+  > go tool cover -help                            # 帮助测试覆盖率
+  > go tool cover -html=c.out                      # generate HTML representation of coverage profile
   > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (静态检查,排除目录vendor)
   > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具
