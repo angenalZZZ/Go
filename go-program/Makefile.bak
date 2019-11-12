@@ -1,9 +1,9 @@
 build:
-	go build -i -v -ldflags "-s -w" -o go-program.exe .
+	go build -i -v -o go-program.exe .
 
 lint:
 	go fmt .
-	go vet .
+	go tool vet .
 
 proto:
     cd go-rpc/proto/ && protoc --go_out=plugins=grpc:. handler.proto
