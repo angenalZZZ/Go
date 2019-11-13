@@ -301,9 +301,10 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
   # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
   > go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-  # Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s [url] | github.com/wg/wrk *20k  
-  $ wrk -c 1 -t 1 -d 1 --latency [url]       # -t 线程数 -c 连接数 --timeout 超时 -d 持续时间 --latency 响应时间
-  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
+  # Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s --timeout=3s [url] | github.com/wg/wrk *20k  
+  $ wrk -t100 -c100 -d3s --latency [url]       # -t线程数 -c并发连接数 -d压测时间 --timeout超时 --latency打印响应时间
+  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk
+  > go-wrk -M GET -c 1000 -d 10 -T 3000 -no-ka [url] # -c并发连接数 -d压测时间10s -T超时3s -no-ka=no-keep-alive
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
