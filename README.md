@@ -260,17 +260,18 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 
 # 测试工具CI
   > go help test                                   # 帮助测试
-  > go test -v .                                   # 测试当前package
-  > go test -v ./...                               # 测试所有package
-  > go test -v -run=^$ ./path                      # 单元测试*testing.T [-run=查找func]
-  > go test -v -bench=. -run=none -benchmem ./path # 基准测试*testing.B [-bench=.匹配全部,-run=匹配none]
+  > go test -v .                                   # 测试当前 testing package name
+  > go test ./...                                  # 测试所有 package
+  > go test -run=^$ ./path                         # 单元测试*testing.T [-run=查找func进行单元测试]
+  > go test -bench=. -run=none -benchmem ./path    # 基准测试*testing.B [-bench=.匹配全部,-run=排除单元测试]
   > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
+  > go test -bench=".*" -cpuprofile=cpu.pro ./path # 查看性能并生成函数调用图> go tool pprof ./path cpu.pro
   > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
-  > go test -v -cover ./...                        # 显示代码覆盖率
+  > go test -cover ./...                           # 显示代码覆盖率
   > go test -coverprofile=c.out .                  # 检测代码覆盖率
-  > go vet .                                       # 执行代码的静态检查(Go语法等)
+  > go vet .                                       # 执行代码静态检查(语法)
   > go help vet
-  > go tool vet help                               # 查看vet支持的检查?
+  > go tool vet help                               # 查看vet支持哪些检查?
   > go tool vet -shadow main.go                    # 检查变量覆盖(install the 'shadow' analyzer tool)
   > go tool cover -help                            # 帮助测试覆盖率
   > go tool cover -html=c.out                      # generate HTML representation of coverage profile
