@@ -260,13 +260,13 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 
 # 测试工具CI
   > go help test                                   # 帮助测试
-  > go test -v .                                   # 测试当前 testing package name
-  > go test ./...                                  # 测试所有 package
-  > go test -run=^$ ./path                         # 单元测试*testing.T [-run=查找func进行单元测试]
-  > go test -bench=. -run=none -benchmem ./path    # 基准测试*testing.B [-bench=.匹配全部,-run=排除单元测试]
-  > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找func]
-  > go test -bench=".*" -cpuprofile=cpu.pro ./path # 查看性能并生成函数调用图> go tool pprof ./path cpu.pro
-  > go test -timeout 10s github.com/mpvl/errdare   # 远程测试
+  > go test -v -count=1 [package-name]             # 测试指定的包 默认目录path=. 默认次数count=1
+  > go test ./...                                  # 测试遍历目录... "*_test.go"
+  > go test -run=^$ ./path                         # 单元测试*testing.T [-run=查找TestXxx进行单元测试]
+  > go test -bench=.* -run=none -benchmem ./path   # 基准测试*testing.B [-bench=.*匹配全部,-run=排除单元测试]
+  > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找]
+  > go test -bench=.* -cpuprofile=cpu.tmp ./path   # 查看性能然后生成函数调用图> go tool pprof ./path cpu.tmp
+  > go test -timeout 10s github.com/mpvl/errdare   # 远程测试,超时
   > go test -cover ./...                           # 显示代码覆盖率
   > go test -coverprofile=c.out .                  # 检测代码覆盖率
   > go vet .                                       # 执行代码静态检查(语法)
