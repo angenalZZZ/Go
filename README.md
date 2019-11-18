@@ -262,13 +262,28 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go help test                                   # 帮助测试
   > go test -v -count=1 [package-name]             # 测试指定的包 默认目录path=. 默认次数count=1
   > go test ./...                                  # 测试遍历目录... "*_test.go"
-  > go test -run=^$ ./path                         # 单元测试*testing.T [-run=查找TestXxx进行单元测试]
-  > go test -bench=.* -run=none -benchmem ./path   # 基准测试*testing.B [-bench=.*匹配全部,-run=排除单元测试]
-  > go test -bench=^Benchmark -benchmem ./path     # 性能测试*testing.B [-bench=查找]
-  > go test -bench=.* -cpuprofile=cpu.tmp ./path   # 查看性能然后生成函数调用图> go tool pprof ./path cpu.tmp
-  > go test -timeout 10s github.com/mpvl/errdare   # 远程测试,超时
+  > go test -run=^$  -parallel=20 ./path           # 单元测试( t *testing.T )[-run=查找TestXxx进行测试,-parallel=并行数]
+  > go test -test.list=^Benchmark ./path           # 打印匹配的测试函数结果列表
+  -------------------------------------------------------------------------------
+  t.Log   t.Logf   # 正常信息
+  t.Error t.Errorf # 测试失败信息
+  t.Fatal t.Fatalf # 致命错误，测试程序退出的信息
+  t.Fail     # 当前测试标记为失败
+  t.Failed   # 查看失败标记
+  t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的 
+             #Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
+  t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用 t.Skipf 方法则相当于先后对 
+             #t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
+  t.Parallel # 标记为可并行运算 (当-parallel=并行运算时)
+  -------------------------------------------------------------------------------
+  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`时需要在循环体中指定testing.B.N来执行代码
+  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test,cpu.out;包名path;另外-test.memprofile file
+    > go tool pprof path.test cpu.out              # 生成函数调用(pprof)指令 > top 指令
+    > go tool pprof path.test cpu.out              # 生成函数调用(svg)图 > 依赖 yum -y install graphviz.x86_64
+  > go test -timeout=10s github.com/mpvl/errdare   # 远程测试,超时10秒
   > go test -cover ./...                           # 显示代码覆盖率
-  > go test -coverprofile=c.out .                  # 检测代码覆盖率
+  > go test -coverprofile=cover.out                # 生成覆盖率文件
+  > go tool cover -func=cover.out                  # 分析覆盖率文件，通过`覆盖率`可看出哪些函数没有测试，没有测试完全等
   > go vet .                                       # 执行代码静态检查(语法)
   > go help vet
   > go tool vet help                               # 查看vet支持哪些检查?
