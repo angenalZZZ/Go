@@ -276,24 +276,22 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
              #t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
   t.Parallel # 标记为可并行运算 (当-parallel=并行运算时)
   -------------------------------------------------------------------------------
-  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`时需要在循环体中指定testing.B.N来执行代码
-  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test,cpu.out;包名path;另外-test.memprofile file
-    > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令 > help,top,png生成图片需安装Graphviz
-    > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图 > 安装 yum -y install graphviz.x86_64
+  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`需在循环体指定testing.B.N
+  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test.exe,cpu.out;包名path;
+    > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
+    > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
+    > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./...                           # 显示代码覆盖率
-  > go test -coverprofile=cover.out                # 生成覆盖率文件
-  > go tool cover -func=cover.out                  # 分析覆盖率文件，通过`覆盖率`可看出哪些函数没有测试，没有测试完全等
-  > go vet .                                       # 执行代码静态检查(语法)
-  > go help vet
+  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件+> -test.memprofile=mem.out
+  > go tool cover -func=cover.out                  # 分析代码覆盖率，可看出哪些函数没测试或没测试完全
+  > go tool cover -html=out.html                   # generate HTML representation of coverage profile
+  > go help vet                                    # 执行代码静态检查(语法)+> go vet
   > go tool vet help                               # 查看vet支持哪些检查?
-  > go tool vet -shadow main.go                    # 检查变量覆盖(install the 'shadow' analyzer tool)
-  > go tool cover -help                            # 帮助测试覆盖率
-  > go tool cover -html=c.out                      # generate HTML representation of coverage profile
-  > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
-  > go list ./...|grep -v vendor|xargs go vet -v   # 代码检查工具 go vet (静态检查,排除目录vendor)
-  > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具
-  > go errcheck|golint|unused|varcheck|gofmt       # 其它检测工具 go linters...
+  > go list ./...|grep -v vendor|xargs go vet -v   # 检查时排除目录vendor
+  > go tool vet -shadow main.go                    # 检查变量覆盖;提前安装 'shadow' analyzer tool
+  > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具 gosec 
+  > go errcheck|golint|unused|varcheck             # 其它检测工具 go linters
   
   # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
   > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
