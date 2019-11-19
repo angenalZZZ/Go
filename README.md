@@ -278,7 +278,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   -------------------------------------------------------------------------------
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`时需要在循环体中指定testing.B.N来执行代码
   > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test,cpu.out;包名path;另外-test.memprofile file
-    > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令 > top,png,help等指令(输出图片需安装Graphviz)
+    > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令 > help,top,png生成图片需安装Graphviz
     > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图 > 安装 yum -y install graphviz.x86_64
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./...                           # 显示代码覆盖率
