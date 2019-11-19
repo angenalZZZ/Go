@@ -280,6 +280,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test.exe,cpu.out;包名path;
     > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
     > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
+    $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan #<ubuntu>
     > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./...                           # 显示代码覆盖率
