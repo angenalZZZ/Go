@@ -259,11 +259,11 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
 # 测试工具CI
-  > go help test                                   # 帮助测试
+  > go help test                                   # 测试帮助文档
   > go test -v -count=1 [package-name]             # 测试指定的包 默认目录path=. 默认次数count=1
-  > go test ./...                                  # 测试遍历目录... "*_test.go"
-  > go test -run=^$  -parallel=20 ./path           # 单元测试( t *testing.T )[-run=查找TestXxx进行测试,-parallel=并行数]
-  > go test -test.list=^Benchmark ./path           # 打印匹配的测试函数结果列表
+  > go test ./...                                  # 测试遍历递归目录...所有的*_test.go文件;并且代码中包名一致
+  > go test -run=^$  -parallel=20 ./path           # 单元测试(t *testing.T)-run=查找TestXxx,-parallel=并行数
+  > go test -test.list=^Benchmark ./path           # 只打印匹配的测试函数
   -------------------------------------------------------------------------------
    t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
    t.Error t.Errorf # 测试失败信息 -> 类似HTTP状态码^400
@@ -272,7 +272,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
    t.Failed   # 查看当前测试函数失败标记
    t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的
               # Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
-   t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用 t.Skipf 方法则相当于先后对
+   t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用t.Skipf方法则相当于先后对
               # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
    t.Parallel # 标记为可并行运算 (当test参数 -parallel 时)
   -------------------------------------------------------------------------------
