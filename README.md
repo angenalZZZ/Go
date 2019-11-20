@@ -265,40 +265,40 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -run=^$  -parallel=20 ./path           # 单元测试( t *testing.T )[-run=查找TestXxx进行测试,-parallel=并行数]
   > go test -test.list=^Benchmark ./path           # 打印匹配的测试函数结果列表
   -------------------------------------------------------------------------------
-  t.Log   t.Logf   # 正常信息
-  t.Error t.Errorf # 测试失败信息
-  t.Fatal t.Fatalf # 致命错误，测试程序退出的信息
-  t.Fail     # 当前测试标记为失败
-  t.Failed   # 查看失败标记
-  t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的 
-             #Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
-  t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用 t.Skipf 方法则相当于先后对 
-             #t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
-  t.Parallel # 标记为可并行运算 (当-parallel=并行运算时)
+   t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
+   t.Error t.Errorf # 测试失败信息 -> 类似HTTP状态码^400
+   t.Fatal t.Fatalf # 致命错误，测试程序退出的信息 -> 类似HTTP状态码^500
+   t.Fail     # 当前测试函数被标记为失败
+   t.Failed   # 查看当前测试函数失败标记
+   t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的
+              # Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
+   t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用 t.Skipf 方法则相当于先后对
+              # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
+   t.Parallel # 标记为可并行运算 (当test参数 -parallel 时)
   -------------------------------------------------------------------------------
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`需在循环体指定testing.B.N
   > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test.exe,cpu.out;包名path;
     > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
     > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
     $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan #<ubuntu>
-    > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU火焰图生成 go-torch -h <torch.svg>
+    > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU性能火焰图生成 go-torch -h #<*.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
-  > go test -cover ./...                           # 显示代码覆盖率
-  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件+> -test.memprofile=mem.out
-  > go tool cover -func=cover.out                  # 分析代码覆盖率，可看出哪些函数没测试或没测试完全
+  > go test -cover ./...                           # 检测代码覆盖率
+  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件参数-test.memprofile=mem.out
+  > go tool cover -func=cover.out                  # 分析代码覆盖率，检查哪些`函数`没测试、没测试完全等
   > go tool cover -html=out.html                   # generate HTML representation of coverage profile
-  > go help vet                                    # 执行代码静态检查(语法)+> go vet
-  > go tool vet help                               # 查看vet支持哪些检查?
-  > go list ./...|grep -v vendor|xargs go vet -v   # 检查时排除目录vendor
-  > go tool vet -shadow main.go                    # 检查变量覆盖;提前安装 'shadow' analyzer tool
-  > go get github.com/securego/gosec/cmd/gosec/... # 安全分析工具 gosec 
-  > go errcheck|golint|unused|varcheck             # 其它检测工具 go linters
+  > go help vet                                    # 执行代码静态检查(go语法等)如> go vet -v
+  > go tool vet help                               # 查看工具vet支持哪些检查?
+  > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
+  > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
+  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具 gosec 
+  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go linters
   
-  # 代码质量审查 [ 1.结合github平台进行自动化的审查 https://golangci.com  |  2.本地src审查工具golangci-lint & gocritic ]
-  > golangci-lint run | golangci-lint run ./... # 2.1代码运行与审查工具 github.com/golangci/golangci-lint
-  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... # 2.2代码审查工具
+  # 代码质量审查 [1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
+  > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
+  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
      && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
-  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  # 扫描GraphQL代码 #审查说明 gocritic check -help
+  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  #扫描GraphQL代码质量 gocritic check -help
   
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
