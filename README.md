@@ -291,8 +291,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go tool vet help                               # 查看工具vet支持哪些检查?
   > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
   > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
-  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具 gosec 
-  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go linters
+  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./... 
+  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
   
   # 代码质量审查 [1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
   > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
