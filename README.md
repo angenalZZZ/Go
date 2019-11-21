@@ -420,8 +420,6 @@ go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get gopkg.in/go-playground/pool.v3      # easier limited and unlimited worker pool | github.com/go-playground/pool
-go get github.com/eapache/queue
-go get github.com/eapache/channels
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm.. *2.5k
 go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
@@ -432,7 +430,6 @@ go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/Th
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络创建&分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
 go get github.com/OneOfOne/xxhash          # 超快的非加密哈希算法(推荐) github.com/Cyan4973/xxHash
-go get github.com/enriquebris/goconcurrentqueue # 高并发队列(线程安全队列推荐)
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
@@ -500,7 +497,7 @@ go get github.com/go-redis/redis           # 内存数据库,类型安全的Redi
 go get github.com/gomodule/redigo/redis    # 内存数据库,集成原生的Redis-cli *6k
 go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
-go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb-client
+go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
 
 go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
@@ -623,6 +620,10 @@ go get github.com/gobwas/ws                # WebSocket | github.com/socketio/soc
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2
 
+go get github.com/eapache/queue
+go get github.com/eapache/channels
+go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐)
+go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储(推荐) & LevelDB Stores
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
