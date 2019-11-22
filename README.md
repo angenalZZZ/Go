@@ -277,14 +277,15 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
    t.Parallel # 标记为可并行运算 (当test参数 -parallel 时)
   -------------------------------------------------------------------------------
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`需在循环体指定testing.B.N
-  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成性能测试两个文件path.test.exe,cpu.out;包名path;
+  > go test -bench=.* -memprofile=mem.out ./path   # 生成mem性能测试两个文件path.test.exe,mem.out;
+  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成cpu性能测试两个文件path.test.exe,cpu.out;包名path;
     > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
     > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
     $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan #<ubuntu>
     > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU性能火焰图生成 go-torch -h #<*.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./...                           # 检测代码覆盖率
-  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件参数-test.memprofile=mem.out
+  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件参数
   > go tool cover -func=cover.out                  # 分析代码覆盖率，检查哪些`函数`没测试、没测试完全等
   > go tool cover -html=out.html                   # generate HTML representation of coverage profile
   > go help vet                                    # 执行代码静态检查(go语法等)如> go vet -v
@@ -359,17 +360,17 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 # ------------------------------------------------------------------------------------
 # 通过工具排查：
 # ------------------------------------------------------------------------------------
-go get github.com/google/pprof # 用于可视化和分析性能和数据的工具pprof(CPU/rofile)
-go tool pprof -seconds 5 http://localhost/debug/pprof/profile # 导入 _ net/http/pprof 添加HTTP性能优化服务 /debug/pprof
-go tool pprof -alloc_objects -inuse_objects   # 生成对象数量、引用对象数量
-go test . -bench . -benchtime 3s -cpuprofile prof.cpu -memprofile # 功能测试与性能分析(如testing.B测试benchmark)
-go tool pprof [stats.test] prof.cpu # 详细的单元分析: 对象|代码行|函数调用|runtime|package|binary [stats目录/.test*测试]
-go tool pprof -http=":8081" [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题分析)
+#1. 导入 _ runtime/pprof 添加程序性能分析服务(可用于控制台程序、测试程序等)
+go test -bench=.* -benchtime 10s -cpuprofile=cpu.out -memprofile=mem.out #测试与性能分析*testing.B
+go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的分析结果文件;再调用svg可生成直观图)
+go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
+#go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
+#2. 导入 _ net/http/pprof 添加HTTP性能分析服务(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
+go tool pprof [-raw -seconds 5] http://localhost/debug/pprof/profile #获取性能采集数据并分析;访问/debug/pprof查看cpu和内存状况
 # ------------------------------------------------------------------------------------
+go get github.com/google/pprof # Go内置工具，用于可视化和分析性能和数据的工具pprof(分析cpu,内存等)
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
-go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # torch.svg
-go get github.com/prashantv/go_profiling_talk # 案例剖析:如何使用pprof和go-torch识别性能瓶颈，并进行优化? 视频youtu.be/N3PWzBeLX2M
-
+go get github.com/prashantv/go_profiling_talk # 剖析:如何使用pprof和go-torch识别性能瓶颈及优化?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
