@@ -612,14 +612,13 @@ go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.
 go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
 go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
 
-go get github.com/gorilla/websocket        # WebSocket Serve *8k
-go get github.com/gotify/server            # WebSocket Serve(推荐) (Web-Admin-UI) | gotify.net
+go get github.com/gotify/server            # WebSocket Serve(推荐1) (Web-Admin-UI) | gotify.net
 go get github.com/gotify/cli               # WebSocket client to push messages
-go get github.com/gorilla/websocket        # WebSocket | github.com/joewalnes/websocketd websocketd.com
-go get github.com/gobwas/ws                # WebSocket | github.com/socketio/socket.io
+go get github.com/gorilla/websocket        # WebSocket Serve(推荐2) *10.k github.com/joewalnes/websocketd websocketd.com
+go get github.com/gobwas/ws                # WebSocket Serve(推荐3) *2.7k 支持百万级连接数 github.com/socketio/socket.io
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
-# https://github.com/oikomi/FishChatServer2
+# https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
 
 go get github.com/eapache/queue
 go get github.com/eapache/channels
