@@ -621,10 +621,9 @@ go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支�
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
 
-go get github.com/eapache/queue
-go get github.com/eapache/channels
 go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐)
 go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储(推荐) & LevelDB Stores
+go get github.com/eapache/channels         # 通道：`Distribute分发`1In*Out,`Multiplex多路复用`*In1Out,`Pipe管道`1In1Out,`BatchingChannel批量通道`...
 go get github.com/robfig/cron              # 任务计划 a cron library *4k
 go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
