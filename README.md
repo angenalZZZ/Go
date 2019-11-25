@@ -636,10 +636,12 @@ go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuf
 
 go get github.com/nsqio/nsq                # 实时分布式消息平台nsq(推荐) *15k | nsqlookupd & nsqd & nsqadmin https://nsq.io
 go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
-go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
+go get github.com/nats-io/nats-server      # 消息系统nats服务端 *7k | http://nats.io
+go get github.com/nats-io/nats.go/         # 消息系统nats客户端 | docs.nats.io/developing-with-nats/tutorials/
 go get github.com/appleboy/gorush          # 消息推送gorush服务(推荐)  *4k : api, notification queue, multiple workers
 go get github.com/Shopify/sarama           # 消息系统Kafka客户端(推荐) *5k : github.com/bsm/sarama-cluster [集群客户端]
 go get github.com/travisjeffery/jocko      # 消息系统Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
+go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
 # 物联网IoT、物理计算Drones、机器人Robotics
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
