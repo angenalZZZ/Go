@@ -319,11 +319,11 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   $ wrk -t100 -c600 -d30s --latency [url]      #  -t线程数 -c并发连接数 -d压测时间s --latency打印n%响应时间ms --timeout超时
   # Web性能测试命令 github.com/codesenberg/bombardier *1.5k
   $ bombardier -n 10000 -c 600 -d 30s -l [url] # [-n:request,-c:connection,-d:duration(s)]
-  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk
+  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
   $ go-wrk -M GET -c 600 -d 30 -no-ka [url]    #  -c并发连接数 -d压测时间30s -T超时3s -no-ka=no-keep-alive
-  > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
+  > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > goad -h
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
-  > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
+  > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
   
 # 测试代码书写`Testing`
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
@@ -367,11 +367,11 @@ go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的
 go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
 #2. 导入 _ net/http/pprof 添加HTTP性能分析服务(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
-go tool pprof [-raw -seconds 5] http://localhost/debug/pprof/profile #获取性能采集数据并分析;访问/debug/pprof查看cpu和内存状况
+go tool pprof http://localhost/debug/pprof/profile #获取性能采集数据并分析;访问/debug/pprof查看cpu和内存状况
 # ------------------------------------------------------------------------------------
-go get github.com/google/pprof # Go内置工具，用于可视化和分析性能和数据的工具pprof(分析cpu,内存等)
+go get github.com/google/pprof # 更新工具pprof用于性能分析和采集数据的可视化(分析cpu时间片、内存分配等)
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
-go get github.com/prashantv/go_profiling_talk # 剖析:如何使用pprof和go-torch识别性能瓶颈及优化?视频youtu.be/N3PWzBeLX2M
+go get github.com/prashantv/go_profiling_talk #剖析:如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
