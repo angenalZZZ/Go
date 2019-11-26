@@ -285,8 +285,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
     > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU性能火焰图生成 go-torch -h #<*.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./...                           # 检测代码覆盖率
-  > go test -coverprofile=cover.out                # 生成代码覆盖率文件；生成内存分析文件参数
-  > go tool cover -func=cover.out                  # 分析代码覆盖率，检查哪些`函数`没测试、没测试完全等
+  > go test -coverprofile=cover.prof               # 生成代码覆盖率文件；生成内存分析文件参数
+  > go tool cover -func=cover.prof                 # 分析代码覆盖率并检查哪些`函数`没测试或者没测试完全
   > go tool cover -html=out.html                   # generate HTML representation of coverage profile
   > go help vet                                    # 执行代码静态检查(go语法等)如> go vet -v
   > go tool vet help                               # 查看工具vet支持哪些检查?
@@ -306,8 +306,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   
   # 捕获HTTP请求,跟踪HTTP流量 | https://github.com/buger/goreplay/wiki
   > gor --input-raw :80 --output-http="http://localhost:81" # 跟踪HTTP流量(:80), HTTP服务查阅结果(HTTP:81)
-  > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
-  > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8001"
+  > gor --input-raw :80 --output-stdout #跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
+  > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8080"
 
   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知`goconvey`
   > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (强力推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
@@ -371,7 +371,7 @@ go tool pprof http://localhost/debug/pprof/profile #获取性能采集数据并�
 # ------------------------------------------------------------------------------------
 go get github.com/google/pprof # 更新工具pprof用于性能分析和采集数据的可视化(分析cpu时间片、内存分配等)
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
-go get github.com/prashantv/go_profiling_talk #剖析:如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
+go get github.com/prashantv/go_profiling_talk #剖析如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
