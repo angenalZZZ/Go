@@ -315,12 +315,12 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
-  # Web性能测试命令 > bombardier -n 100 -c 100 -d 30s -l [url] # [-n:request(s),-c:connection(s),-d:duration(s)]
-  > go get github.com/codesenberg/bombardier   # Web性能测试工具 | 基准测试工具 *1.5k > bombardier
-  # Web基准测试工具 > bash ; $ wrk -t100 -c100 -d3s --timeout=3s [url] | github.com/wg/wrk *20k  
-  $ wrk -t100 -c100 -d3s --latency [url]       # -t线程数 -c并发连接数 -d压测时间 --timeout超时 --latency打印响应时间
+  # Web基准测试命令 github.com/wg/wrk *20k
+  $ wrk -t100 -c600 -d30s --latency [url]      #  -t线程数 -c并发连接数 -d压测时间s --latency打印n%响应时间ms --timeout超时
+  # Web性能测试命令 github.com/codesenberg/bombardier *1.5k
+  $ bombardier -n 10000 -c 600 -d 30s -l [url] # [-n:request,-c:connection,-d:duration(s)]
   > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk
-  > go-wrk -M GET -c 1000 -d 10 -T 3000 -no-ka [url] # -c并发连接数 -d压测时间10s -T超时3s -no-ka=no-keep-alive
+  $ go-wrk -M GET -c 600 -d 30 -no-ka [url]    #  -c并发连接数 -d压测时间30s -T超时3s -no-ka=no-keep-alive
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > ... make windows; goad --help
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具
