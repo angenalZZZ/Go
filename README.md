@@ -276,11 +276,11 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
               # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
    t.Parallel # 标记为可并行运算 (当test参数 -parallel 时)
   -------------------------------------------------------------------------------
-  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 # 基准测试*testing.B，`压测`需在循环体指定testing.B.N
-  > go test -bench=.* -memprofile=mem.out ./path   # 生成mem性能测试两个文件path.test.exe,mem.out;
-  > go test -bench=.* -cpuprofile=cpu.out ./path   # 生成cpu性能测试两个文件path.test.exe,cpu.out;包名path;
-    > go tool pprof path.test.exe cpu.out          # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
-    > go tool pprof path.test cpu.out > svg        # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
+  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 #基准测试*testing.B，`压测`需在循环体指定testing.B.N
+  > go test -bench=.* -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof;
+  > go test -bench=.* -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof;包名path;
+    > go tool pprof path.test.exe cpu.prof         # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
+    > go tool pprof path.test cpu.prof > web       # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
     $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan #<ubuntu>
     > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU性能火焰图生成 go-torch -h #<*.svg>
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
@@ -362,7 +362,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 # 通过工具排查：
 # ------------------------------------------------------------------------------------
 #1. 导入 _ runtime/pprof 添加程序性能分析服务(可用于控制台程序、测试程序等)
-go test -bench=.* -benchtime 10s -cpuprofile=cpu.out -memprofile=mem.out #测试与性能分析*testing.B
+go test -bench=.* -benchtime 10s -cpuprofile=cpu.prof -memprofile=mem.prof #测试与性能分析*testing.B
 go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的分析结果文件;再调用svg可生成直观图)
 go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
