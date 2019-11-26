@@ -356,6 +356,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
  * [An Introduction to go tool trace](https://about.sourcegraph.com/go/an-introduction-to-go-tool-trace-rhys-hiltner/)
  * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
  * [Go tooling essentials](https://rakyll.org/go-tool-flags/)
+ * [Profiling、Tracing、Debugging、Runtime statistics and events](https://cyningsun.github.io/07-21-2019/go-diagnostics-cn.html)
 ~~~
 # ------------------------------------------------------------------------------------
 # 通过工具排查：
@@ -374,7 +375,7 @@ go get github.com/prashantv/go_profiling_talk # 剖析:如何使用pprof和go-to
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
- # 内存分配性能测试
+ # 内存分配性能测试(排查内存)
 testing.AllocsPerRun()
  # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
