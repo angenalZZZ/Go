@@ -64,7 +64,154 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
  > 包、模块(命名空间)`package`
 
     << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
+    
+ > [文本`string`、字符`utf8`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
+~~~go
+// 底层结构 string=[]byte即字节数组，[]byte("你好")该轮换一般不会有内存分配的开销。
+    type StringHeader struct {
+     Data uintptr
+     Len  int
+    }
+~~~
+`for range对字符串的迭代模拟实现`
+~~~go
+func str2bytes(s string) []byte {
+	p := make([]byte, len(s))
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+		p[i] = c
+	}
+	return p
+}
+~~~
+`[]byte(s)转换模拟实现`
+~~~go
+func str2bytes(s string) []byte {
+	p := make([]byte, len(s))
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+		p[i] = c
+	}
+	return p
+}
+~~~
+`string(bytes)转换模拟实现`
+~~~go
+func bytes2str(s []byte) (p string) {
+	data := make([]byte, len(s))
+	for i, c := range s {
+		data[i] = c
+	}
 
+	hdr := (*reflect.StringHeader)(unsafe.Pointer(&p))
+	hdr.Data = uintptr(unsafe.Pointer(&data[0]))
+	hdr.Len = len(s)
+
+	return p
+}
+~~~
+`[]rune(s)转换模拟实现`
+~~~go
+func str2runes(s string) []rune{
+	var p []int32
+	for len(s)>0 {
+        r,size:=utf8.DecodeRuneInString(s)
+        p=append(p,int32(r))
+        s=s[size:]
+        }
+        return []rune(p)
+}
+~~~
+`string(runes)转换模拟实现`
+~~~go
+func runes2string(s []int32) string {
+	var p []byte
+	buf := make([]byte, 3)
+	for _, r := range s {
+		n := utf8.EncodeRune(buf, r)
+		p = append(p, buf[:n]...)
+	}
+	return string(p)
+}
+~~~
+`切片(slice)`
+~~~go
+// 底层结构
+type SliceHeader struct {
+	Data uintptr
+	Len  int
+	Cap  int
+}
+~~~
+`添加切片元素`
+~~~go
+var a []int
+a = append(a[:i], append([]int{x}, a[i:]...)...)     // 在第i个位置插入x
+a = append(a[:i], append([]int{1,2,3}, a[i:]...)...) // 在第i个位置插入切片
+a = append(a, 0)     // 切片扩展1个空间
+copy(a[i+1:], a[i:]) // a[i:]向后移动1个位置
+a[i] = x             // 设置新添加的元素
+a = append(a, x...)       // 为x切片扩展足够的空间
+copy(a[i+len(x):], a[i:]) // a[i:]向后移动len(x)个位置
+copy(a[i:], x)            // 复制新添加的切片
+~~~
+`删除切片元素`
+~~~go
+a = []int{1, 2, 3}
+a = a[N:]          // 删除开头N个元素
+a = a[:copy(a, a[N:])] // 删除开头N个元素
+a = append(a[:0], a[N:]...) // 删除开头N个元素
+a = a[:len(a)-N]   // 删除尾部N个元素
+a = append(a[:i], a[i+N:]...) // 删除中间N个元素
+a = a[:i+copy(a[i:], a[i+N:])]  // 删除中间N个元素
+~~~
+`切片内存技巧`
+~~~go
+func Filter(s []byte, fn func(x byte) bool) []byte {
+	b := s[:0]
+	for _, x := range s {
+		if !fn(x) {
+			b = append(b, x)
+		}
+	}
+	return b
+}
+var a []*int{ ... }
+a = a[:len(a)-1]  // 被删除的最后一个元素依然被引用, 可能导致GC操作被阻碍
+a[len(a)-1] = nil // GC回收最后一个元素内存 (保险的方式)
+a = a[:len(a)-1]  // 从切片删除最后一个元素
+~~~
+`切片类型强制转换`
+~~~go
+// +build amd64 arm64
+
+import "sort"
+
+var a = []float64{4, 2, 5, 7, 2, 1, 88, 1}
+// 下面通过两种方法将[]float64类型的切片a转换为[]int类型的切片
+
+// 第一种强制转换是先将切片数据的开始地址转换为一个较大的数组的指针，然后对数组指针对应的数组重新做切片操作。
+// 中间需要unsafe.Pointer来连接两个不同类型的指针传递。
+func SortFloat64FastV1(a []float64) {
+	// 强制类型转换
+	var b []int = ((*[1 << 20]int)(unsafe.Pointer(&a[0])))[:len(a):cap(a)]
+
+	// 以int方式给float64排序
+	sort.Ints(b)
+}
+// 第二种转换操作是分别取到两个不同类型的切片头信息指针，任何类型的切片头部信息底层都是对应reflect.SliceHeader结构，
+// 然后通过更新结构体方式来更新切片信息，从而实现a对应的[]float64切片到c对应的[]int类型切片的转换
+func SortFloat64FastV2(a []float64) {
+	// 通过 reflect.SliceHeader 更新切片头部信息实现转换
+	var c []int
+	aHdr := (*reflect.SliceHeader)(unsafe.Pointer(&a))
+	cHdr := (*reflect.SliceHeader)(unsafe.Pointer(&c))
+	*cHdr = *aHdr
+
+	// 以int方式给float64排序
+	sort.Ints(c)
+}
+~~~
 ----
 
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
