@@ -65,10 +65,11 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
     
- > [文本`string`、字符`utf8`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)<br>
+ > [文本`string`、字符`utf8`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
+
 `字符串(string)`
 ~~~go
-// 底层结构  string = []byte 即字节数组，[]byte("你好") 该轮换一般不会有内存分配的开销。
+// 底层结构  string = []byte 即字节数组，[]byte("你好") 该转换一般不会有内存分配的开销。
 type StringHeader struct {
 	Data uintptr
 	Len  int
