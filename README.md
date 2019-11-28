@@ -504,22 +504,26 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
  * [High performance go workshop](https://talks.godoc.org/github.com/davecheney/high-performance-go-workshop/high-performance-go-workshop.slide)
  * [An Introduction to go tool trace](https://about.sourcegraph.com/go/an-introduction-to-go-tool-trace-rhys-hiltner/)
  * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
- * [Go tooling essentials](https://rakyll.org/go-tool-flags/)
+ * [Go tooling essentials](https://rakyll.org/go-tool-flags/) 、 [go-torch](https://www.cnblogs.com/li-peng/p/9391543.html)
  * [Profiling、Tracing、Debugging、Runtime statistics and events](https://cyningsun.github.io/07-21-2019/go-diagnostics-cn.html)
 ~~~
 # ------------------------------------------------------------------------------------
 # 通过工具排查：
 # ------------------------------------------------------------------------------------
-#1. 导入 _ runtime/pprof 添加程序性能分析服务(可用于控制台程序、测试程序等)
+#1. import _ "runtime/pprof" 添加性能分析采集(可用于控制台程序、测试程序等)
 go test -bench=.* -benchtime 10s -cpuprofile=cpu.prof -memprofile=mem.prof #测试与性能分析*testing.B
 go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的分析结果文件;再调用svg可生成直观图)
 go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
-#2. 导入 _ net/http/pprof 添加HTTP性能分析服务(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
-go tool pprof http://localhost/debug/pprof/profile #获取性能采集数据并分析;访问/debug/pprof查看cpu和内存状况
+#2. import _ "net/http/pprof" 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
+# 通过访问/debug/pprof查看cpu和内存状况 (通常:我们用wrk来访问，让服务处于高速运行状态，取样的结果会更准确)
+# go tool pprof <demo.exe> http://localhost/debug/pprof/profile # 分析CPU使用情况(默认频率100Hz,即每10毫秒取样一次)
+# git clone https://github.com/brendangregg/FlameGraph.git 然后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
+# go-torch -u http://localhost --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
+# ... http://localhost/debug/pprof/profile,block,goroutines,heap,mutex,threadcreate # 查看性能采集数据与分析结果
 # ------------------------------------------------------------------------------------
 go get github.com/google/pprof # 更新工具pprof用于性能分析和采集数据的可视化(分析cpu时间片、内存分配等)
-go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch -h
+go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch demo.exe <cpu.prof|mem.prof>
 go get github.com/prashantv/go_profiling_talk #剖析如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
