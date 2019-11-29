@@ -738,7 +738,11 @@ go get github.com/casbin/casbin            # 授权访问-认证服务(强力推
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google, Github...)
 go get github.com/ory/fosite/...           # 访问控制-认证服务扩展     *1k    (OAuth2.0, OpenID Connect) www.ory.sh
 go get golang.org/x/time/rate              # 访问限流-限时调用rate
-go get github.com/jaegertracing/jaeger-client-go # 链路追踪-问题排查 *9.6k (推荐) github.com/jaegertracing/jaeger
+go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
+go get github.com/fvbock/endless           # 站点零停机\重启
+go get github.com/codegangsta/gin          # 站点热启动 > gin -h
+go get github.com/ochinchina/supervisord   # 开机启动服务 > supervisord -d -c website.conf
+go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
@@ -879,11 +883,6 @@ go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert >
 go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
-go get -u github.com/uber/jaeger-client-go/  # CNCF Jaeger，分布式跟踪系统 | github.com/jaegertracing/jaeger
-go get github.com/codegangsta/gin          # 站点热启动 > gin -h
-go get github.com/fvbock/endless           # 站点零停机\重启
-go get github.com/ochinchina/supervisord   # 开机启动supervisor > supervisord -c website.conf -d
-go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
 go get github.com/prometheus/prometheus/cmd/... # 服务监控系统和时间序列数据库 *23k | prometheus.io/community
 go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|InfluxDB时序DB|Prometheus等(强力推荐) *30k
