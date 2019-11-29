@@ -517,12 +517,13 @@ go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
 #2. import _ "net/http/pprof" 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
 # 通过访问/debug/pprof查看cpu和内存状况 (通常:我们用wrk来访问，让服务处于高速运行状态，取样的结果会更准确)
-# go tool pprof <demo.exe> http://localhost/debug/pprof/profile # 分析CPU使用情况(默认频率100Hz,即每10毫秒取样一次)
+# go tool pprof 127.0.0.1:8080/debug/pprof/profile # 分析CPU采样信息(默认频率100Hz,即每10毫秒取样一次)
 # git clone https://github.com/brendangregg/FlameGraph.git 然后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
 # go-torch -u http://localhost --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
-# ... http://localhost/debug/pprof/profile,block,goroutines,heap,mutex,threadcreate # 查看性能采集数据与分析结果
+# ... 127.0.0.1:8080/debug/pprof/profile,heap,goroutine,mutex,block,threadcreate # 查看性能采集数据与分析结果
 # ------------------------------------------------------------------------------------
-go get github.com/google/pprof # 更新工具pprof用于性能分析和采集数据的可视化(分析cpu时间片、内存分配等)
+go get -u github.com/google/pprof # 更新pprof用于性能分析和采集数据可视化(分析cpu时间片,内存,死锁,查看火焰图等)
+#  pprof -http=:8088 cpu.prof   # 启动可视化界面 http://127.0.0.1:8088/ui
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch demo.exe <cpu.prof|mem.prof>
 go get github.com/prashantv/go_profiling_talk #剖析如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
@@ -574,7 +575,7 @@ go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
-go get gopkg.in/go-playground/pool.v3      # easier limited and unlimited worker pool | github.com/go-playground/pool
+go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池 github.com/go-playground/pool
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm.. *2.5k
 go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
@@ -735,7 +736,9 @@ go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google, Github...)
-go get github.com/ory/fosite/...           # 访问控制-认证服务扩展    *1k    (OAuth2.0, OpenID Connect) www.ory.sh
+go get github.com/ory/fosite/...           # 访问控制-认证服务扩展     *1k    (OAuth2.0, OpenID Connect) www.ory.sh
+go get golang.org/x/time/rate              # 访问限流-限时调用rate
+go get github.com/jaegertracing/jaeger-client-go # 链路追踪-问题排查 *9.6k (推荐) github.com/jaegertracing/jaeger
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
