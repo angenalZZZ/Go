@@ -518,12 +518,14 @@ go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数
 #2. import _ "net/http/pprof" 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
 # 通过访问/debug/pprof查看cpu和内存状况 (通常:我们用wrk来访问，让服务处于高速运行状态，取样的结果会更准确)
 # go tool pprof 127.0.0.1:8080/debug/pprof/profile # 分析CPU采样信息(默认频率100Hz,即每10毫秒取样一次)
-# git clone https://github.com/brendangregg/FlameGraph.git 然后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
+# git clone https://github.com/brendangregg/FlameGraph.git 后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
 # go-torch -u http://localhost --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
 # ... 127.0.0.1:8080/debug/pprof/profile,heap,goroutine,mutex,block,threadcreate # 查看性能采集数据与分析结果
+#2.1 import "expvar"; var visits=expvar.NewInt("visits"); expvar.Publish(name string, v expvar.Var)#全局注册表Func
+# 通过访问/debug/vars查看expvar包中注册的所有公共变量(两个指标:os.Args,runtime.Memstats)与自定义变量#globalVars
 # ------------------------------------------------------------------------------------
-go get -u github.com/google/pprof # 更新pprof用于性能分析和采集数据可视化(分析cpu时间片,内存,死锁,查看火焰图等)
-#  pprof -http=:8088 cpu.prof   # 启动可视化界面 http://127.0.0.1:8088/ui
+go get -u github.com/google/pprof # 更新pprof用于性能分析和采集数据可视化(分析cpu时间片,内存,死锁,火焰图等)
+#  pprof -http=:8088 cpu.prof     # 后启动可视化界面 http://127.0.0.1:8088/ui 查看火焰图
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch demo.exe <cpu.prof|mem.prof>
 go get github.com/prashantv/go_profiling_talk #剖析如何用pprof和go-torch识别性能瓶颈?视频youtu.be/N3PWzBeLX2M
 # ------------------------------------------------------------------------------------
