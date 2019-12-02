@@ -52,7 +52,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1 ; ch2 <- 2 * <-ch1; result := <-ch2 ;
     选择: select: 常规模式(for轮循次数=chan实际数量); 反射模式(reflect.Select([]reflect.SelectCase)..);
     时间: ch := time.After(300 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
-    更多: github.com/eapache/channels #Distribute分发1In*Out,Multiplex多路复用*In1Out,Pipe管道1In1Out,Batching*批量...
+    更多: github.com/eapache/channels #Distribute分发1In*Out,Multiplex多路复用*In1Out,Pipe管道1In1Out,Batching*批量..
 
  > 指针`pointer`
 
