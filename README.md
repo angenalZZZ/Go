@@ -16,13 +16,13 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
     [Gopher-China技术交流大会](https://gopherchina.org)、[搜索50万Go语言项目](https://gowalker.org)、[API+SDK'排名'服务平台](https://sdk.cn)
 
 ~~~shell
-# 1.部署简单：编译成机器码(像C一样,不被反编译)复制给别人后，就能直接运行(环境免装)
+# 1.部署简单：编译成机器码(像C一样,不被反编译)复制给别人后，就能直接运行(参考跨平台编译)
 #   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
-$   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行
-# 2.静态编译语言(又像动态解释语言)
-# 3.自动回收机制GC
-# 4.语言层面支持高并发
-# 5.丰富的第三方库,并且开源
+$   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行(已编译成机器码)
+# 2.静态编译语言(又像动态解释语言)，您不用再去关心变量是存在堆上还是栈的内存问题(编译器与运行时会帮您做到)
+# 3.自动回收机制GC(除了CGO中`C语言那部分`管理的之外的内存；另外，Go指针不能被`值类型`长期保持--与其它语言不同)
+# 4.语言层面支持高并发(goroutine是go适合高并发场景的重要原因)高性能goroutine池 go get github.com/panjf2000/ants/v2
+# 5.丰富的第三方库,并且开源... github.com/avelino/awesome-go
 ~~~
 
  > 语法`关键字`
@@ -40,18 +40,19 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     类型: bool byte rune string error
          int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64  complex64 complex128
     
-    函数: make len cap new append copy close delete    complex real imag    panic recover
+    函数: make len cap append delete new copy close    complex real imag    panic recover
 
  > 通道`chan`
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
 
     读写: ch := make(chan<- int) #只读; ch := make(<-chan int) #只写; make(chan<- chan int) #只读chanOfchan;
-    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for read or write.
-    异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓存).
-    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1 ; ch2 <- 2 * <-ch1; result:=<-ch2 ;
+    同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for IO #空结构,无内存开销,更高效;
+    异步: ch := make(chan int, 100) // buffered channel with capacity 100 (缓冲) 可避免阻塞,推荐select用法;
+    管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1 ; ch2 <- 2 * <-ch1; result := <-ch2 ;
     选择: select: 常规模式(for轮循次数=chan实际数量); 反射模式(reflect.Select([]reflect.SelectCase)..);
     时间: ch := time.After(300 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
+    更多: github.com/eapache/channels #Distribute分发1In*Out,Multiplex多路复用*In1Out,Pipe管道1In1Out,Batching*批量等等
 
  > 指针`pointer`
 
