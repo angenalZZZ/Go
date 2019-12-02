@@ -465,8 +465,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
-  # Web基准测试命令 github.com/wg/wrk *20k
-  $ wrk -t100 -c600 -d30s --latency <url>      #  -t线程数 -c并发连接数 -d压测时间s --latency打印n%响应时间ms --timeout超时
+  # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
+  $ wrk -t144 -c600 -d30s --latency <url>      #  -t线程数 -c并发连接数 -d压测时间s --latency打印n%响应时间ms --timeout超时-T
   # Web性能测试命令 github.com/codesenberg/bombardier *1.5k
   $ bombardier -n 10000 -c 600 -d 10s -m GET -t 3s --fasthttp -l <url> # -n请求数 -c连接数 -d压测时间s -l即--latencies
   > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
@@ -516,12 +516,13 @@ go test -bench=.* -benchtime 10s -cpuprofile=cpu.prof -memprofile=mem.prof #测�
 go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的分析结果文件;再调用svg可生成直观图)
 go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
+# top ; top20 ; top -cum # 按累积取样计数来排序(top命令-默认只包含本地取样计数最大的前十个函数)
 #2. import _ "net/http/pprof" 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
 # 通过访问/debug/pprof查看cpu和内存状况 (通常:我们用wrk来访问，让服务处于高速运行状态，取样的结果会更准确)
-# go tool pprof 127.0.0.1:8080/debug/pprof/profile # 分析CPU采样信息(默认频率100Hz,即每10毫秒取样一次)
+# go tool pprof http://127.0.0.1:8080/debug/pprof/profile # 分析CPU采样信息(默认频率100Hz,即每10毫秒取样一次)
 # git clone https://github.com/brendangregg/FlameGraph.git 后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
-# go-torch -u http://localhost --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
-# ... 127.0.0.1:8080/debug/pprof/profile,heap,goroutine,mutex,block,threadcreate # 查看性能采集数据与分析结果
+# go-torch -u http://127.0.0.1:8080 --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
+# ... http://127.0.0.1:8080/debug/pprof/profile,heap,goroutine,mutex,block,threadcreate # 查看性能采集数据与分析结果
 #2.1 import "expvar"; var visits=expvar.NewInt("visits"); expvar.Publish(name string, v expvar.Var)#全局注册表Func
 # 通过访问/debug/vars查看expvar包中注册的所有公共变量(两个指标:os.Args,runtime.Memstats)与自定义变量#globalVars
 # ------------------------------------------------------------------------------------
