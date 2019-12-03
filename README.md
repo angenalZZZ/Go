@@ -59,7 +59,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/Pointer.png)
  
  > 协程(超线程/轻量级线程)`goroutine` + 上下文(传递)`context`
-
+	Go语言是基于`CSP消息并发模型`的集大成者，与Erlang不同的是Go语言的`Goroutine`之间是共享内存的。
+	Go的运行时还包含了其自己的调度器，这个调度器使用了一些技术手段，可以在n个操作系统线程上多工调度m个Goroutine。Go调度器的工作和内核的调度是相似的，但是这个调度器只关注单独的Go程序中的Goroutine。Goroutine采用的是半抢占式的协作调度，只有在当前Goroutine发生阻塞时才会导致调度；同时发生在用户态，调度器会根据具体函数只保存必要的寄存器，切换的代价要比系统线程低得多。运行时有一个runtime.GOMAXPROCS变量，用于控制当前运行正常非阻塞Goroutine的系统线程数目。
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/gopher_pipe.png)
 
  > 包、模块(命名空间)`package`
@@ -501,7 +502,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
  * 尽量复用资源
  * 同步锁sync.Map,RWMutex,Mutex (锁的粒度尽量小;尽量使用无锁的方式)
  * 内存分配 (数据结构初始化时，尽量指定合适的容量 make 避免多次内存分配)
- * 固定的 go routine 数量 + 固定的 channel 数量, 提升单机性能.
+ * 固定的 go routine 数量 + 固定的 channel 数量, 提升单机性能
  * [High performance go workshop](https://talks.godoc.org/github.com/davecheney/high-performance-go-workshop/high-performance-go-workshop.slide)
  * [An Introduction to go tool trace](https://about.sourcegraph.com/go/an-introduction-to-go-tool-trace-rhys-hiltner/)
  * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
