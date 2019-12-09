@@ -557,7 +557,7 @@ someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类
 
 ~~~
 go get -d github.com/golang/example/hello  # hello
-go get -d github.com/golang/playground     # playground
+go get -d github.com/golang/playground     # playground  #本地教程# > tour  #在线教程# tour.go-zh.org
 go get -d github.com/shen100/golang123     # 适合初学者
 go get -d github.com/go-training/training  # 适合初学者培训
 go get -d github.com/insionng/zenpress     # 适合学习 cms system
