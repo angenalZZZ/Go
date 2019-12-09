@@ -642,8 +642,7 @@ go get github.com/eko/gocache              # 缓存管理(推荐)Memory[Bigcache
 go get github.com/coocood/freecache        # cache and high concurrent performance
 go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
 go get github.com/VictoriaMetrics/fastcache
-go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS...
-go get github.com/gohugoio/hugo            # 一个超快的静态网站Web站点生成系统 *37k  gohugo.io/about
+go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS..
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
@@ -730,14 +729,15 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 
 # Web开发推荐如下：Router框架 + MVC框架
 go get github.com/julienschmidt/httprouter # Web高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin Star数最高的Web框架!
-go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC | 高度解耦的框架 | beego.me/docs/intro
-# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins... 管理工具bee | github.com/beego/bee
-go get github.com/kataras/iris             # 最快WebSvr框架 *15k | github.com/kataras/iris/blob/master/README_ZH.md
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐) Star数最高的Web框架!
+go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC | 高度解耦的框架 | beego.me/docs
+# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee | github.com/beego/bee
+go get github.com/kataras/iris             # 最快WebSvr框架 *15k | 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k | martini.codegangsta.io
 go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 | go-macaron.com/docs
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端框架mux工具链 *9k
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架mux工具链 *10k
+go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k  gohugo.io
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
@@ -767,6 +767,36 @@ go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
 go get github.com/go-swagger/go-swagger/cmd/swagger # 后端API文档生成器 > swagger generate spec --scan-models -o docs/spec.json
 
+# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
+go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
+# 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
+ # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
+ > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
+ > git clone --depth=1 https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
+ > git clone --depth=1 https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
+ > go get github.com/golang/{text,net}                                       # 安装protoc的依赖
+ > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
+   $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
+ > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
+   $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
+   # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
+   > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
+  $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
+ # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
+ > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
+ > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
+go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
+go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
+go get github.com/TykTechnologies/tyk             # Tyk开源网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
+go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
+go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架，包含大量微服务相关框架及工具 *6k
+go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc&rpc业务工具库
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
+go get github.com/micro/go-micro           # Micro开源分布式RPC微服务 *7k
+go get goa.design/goa/v3/cmd/goa           # 基于设计的Api(高生产力+集成开发)和微服务工具链 *3.6k
+
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
 go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
@@ -783,7 +813,7 @@ go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
 go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *10.k 一个快速，测试良好，广泛使用的WebSocket
-go get github.com/joewalnes/websocketd     # websocket-serve(推荐2) *14.k 将STDIN/STDOUT程序转换为WebSocket服务器
+go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *14.k 将STDIN/STDOUT程序转换为WebSocket服务器
 go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.3k 提供Web管理及客户端App推送功能 gotify.net
 go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.1k 提供完整的WebSocket接口处理 socket.io/docs
 go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支持百万级连接数 github.com/socketio/socket.io
@@ -817,35 +847,6 @@ go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
 # github.com/LiteOS/LiteOS                 # 华为LiteOS是华为面向物联网领域开发的一个基于实时内核的轻量级操作系统
 go get -d github.com/emqx/emqx             # 百万级分布式开源物联网-消息服务平台 *4k | www.emqtt.com
-
-# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
-go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-# 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
- # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
- > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
- > git clone --depth=1 https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
- > git clone --depth=1 https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
- > go get github.com/golang/{text,net}                                       # 安装protoc的依赖
- > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
-   $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
- > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
-   $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
-   # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
-   > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
-  $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
- # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
- > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
- > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
-go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
-go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
-go get github.com/TykTechnologies/tyk             # Tyk开源网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
-go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
-go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
-go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架，包含大量微服务相关框架及工具 *6k
-go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc&rpc业务工具库
-go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
-go get github.com/micro/go-micro           # Micro开源分布式RPC微服务 *7k
 go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
 go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
 git clone --depth=1 https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
