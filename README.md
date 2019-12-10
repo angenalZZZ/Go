@@ -351,6 +351,10 @@ go get github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blo
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 
+# 构建
+  > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
+  > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
+
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
@@ -590,6 +594,7 @@ go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
+go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comparators,Iterators…
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络创建&分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
