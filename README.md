@@ -734,18 +734,18 @@ go get github.com/DarthSim/imgproxy        # Fast image server: docker pull dart
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 
 # Web开发推荐如下：Router框架 + MVC框架
-go get github.com/julienschmidt/httprouter # Web高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐) Star数最高的Web框架!
-go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC | 高度解耦的框架 beego.me/docs
-# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee github.com/beego/bee
-go get github.com/kataras/iris             # 最快WebSvr框架 *15k | 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
+go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐)  Star数最高的Web框架
+go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC  高度解耦的框架  beego.me/docs
+# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee   github.com/beego/bee
+go get github.com/kataras/iris             # 最快WebSvr框架 *15k 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k martini.codegangsta.io
-go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 go-macaron.com/docs
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架mux工具链 *10k
-go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k  gohugo.io
-go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx  caddyserver.com
-go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r  github.com/revel/revel
+go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)martini高级扩展+依赖注入 go-macaron.com/docs
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
+go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
+go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
+go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
