@@ -615,6 +615,7 @@ go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作D
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
 go get github.com/asticode/go-astilog      # 日志自定义:logrus[.Entry-Data]+context[.Value-Fields]+configuration
 go get github.com/pkg/errors               # 错误处理库pkg                                     *5k
+go get github.com/juju/errors              # 用简单的方法描述错误而不丢失原始错误信息(强力推荐)  *1.1k
 
 go get github.com/abice/go-enum            # 代码生成枚举类型的功能
 go get github.com/clipperhouse/gen         # 代码生成类似泛型的功能 *1k  clipperhouse.com/gen/overview
@@ -749,9 +750,10 @@ go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k |
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
-go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google, Github...)
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google,Github..)
 go get github.com/ory/fosite/...           # 访问控制-认证服务扩展     *1k    (OAuth2.0, OpenID Connect) www.ory.sh
-go get golang.org/x/time/rate              # 访问限流-限时调用rate
+go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Reader,Writer
+go get golang.org/x/time                   # 速率限制-调用Limiter方法 import golang.org/x/time/rate
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
@@ -792,7 +794,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
-go get github.com/TykTechnologies/tyk             # Tyk开源网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
+go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
 go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
