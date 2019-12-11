@@ -736,23 +736,23 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 # Web开发推荐如下：Router框架 + MVC框架
 go get github.com/julienschmidt/httprouter # Web高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐) Star数最高的Web框架!
-go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC | 高度解耦的框架 | beego.me/docs
-# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee | github.com/beego/bee
+go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC | 高度解耦的框架 beego.me/docs
+# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee github.com/beego/bee
 go get github.com/kataras/iris             # 最快WebSvr框架 *15k | 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
-go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k | martini.codegangsta.io
-go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 | go-macaron.com/docs
+go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k martini.codegangsta.io
+go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)+martini高级扩展+依赖注入等 go-macaron.com/docs
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架mux工具链 *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k  gohugo.io
-go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx | caddyserver.com
-go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r | github.com/revel/revel
-go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k | GraphQL中文网™ graphql.org.cn
+go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k | 配置超快apache+nginx  caddyserver.com
+go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r  github.com/revel/revel
+go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
-go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐)   *5k   (OAuth2.0, OpenID Connect; Google,Github..)
-go get github.com/ory/fosite/...           # 访问控制-认证服务扩展     *1k    (OAuth2.0, OpenID Connect) www.ory.sh
-go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Reader,Writer
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
+go get github.com/ory/fosite/...           # 访问控制-认证服务扩展   *1k (OAuth2.0, OpenID Connect...  www.ory.sh
+go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流的Reader,Writer
 go get golang.org/x/time                   # 速率限制-调用Limiter方法 import golang.org/x/time/rate
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
@@ -769,7 +769,7 @@ go get github.com/dchest/captcha           # 验证码|图片|声音(推荐)
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
-go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen | github.com/eladnava/mailgen
+go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
 go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
 go get github.com/go-swagger/go-swagger/cmd/swagger # 后端API文档生成器 > swagger generate spec --scan-models -o docs/spec.json
