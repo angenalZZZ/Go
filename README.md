@@ -789,6 +789,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
    # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
    > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
   $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
+ > go get github.com/fullstorydev/grpcurl  # 查询工具grpcurl<服务列表&调用方法+反射服务> google.golang.org/grpc/reflection
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
