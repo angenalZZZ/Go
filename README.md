@@ -796,9 +796,9 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
 go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
-go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k | istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k | gokit.io
-go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k  (ASF licenses)
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k istio.io | www.grpc.io
+go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k gokit.io (推荐)
+go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架  *7k thrift.apache.org (推荐)rpc高效传输协议thrift
 go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架，包含大量微服务相关框架及工具 *6k
 go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc&rpc业务工具库
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
