@@ -798,12 +798,12 @@ go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,o
 go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k gokit.io (推荐)
-go get github.com/apache/thrift/lib/go/thrift/... # 滴滴推荐|微服务框架 *7k thrift.apache.org (推荐)高效rpc协议thrift
-go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架，包含大量微服务相关框架及工具 *6k
-go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc&rpc业务工具库(推荐)
-go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k | 网关+容器化+服务治理等
-go get github.com/micro/go-micro           # Micro开源分布式RPC微服务 *7k
-go get goa.design/goa/v3/cmd/goa           # 基于设计的Api(高生产力+集成开发)和微服务工具链 *3.6k
+go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|基于Thrift协议的高性能RPC框架 *7k (强力推荐)
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 *6k
+go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐)
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
+go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *7k (推荐)
+go get goa.design/goa/v3/cmd/goa           # 设计优雅的Api(高生产力集成开发)+微服务工具链 *3.6k (推荐)
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
