@@ -588,7 +588,10 @@ go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池 github.com/go-playground/pool
-go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm.. *2.5k
+go get gopkg.in/go-playground/validator.v8 # 数据结构的验证功能(推荐)
+go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
+go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验      *1k
+go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm  *2.5k
 go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
@@ -607,8 +610,6 @@ go get github.com/vmihailenco/msgpack      # MessagePack编码/解码(像JSON但
 go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自带序列化库gob的3倍以上(减少使用reflect库)
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
-go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验             *1k
-go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器functions     *4k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json) && gjson.Get(json,"name.last").Exists()
 go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
