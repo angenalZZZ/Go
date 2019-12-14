@@ -743,6 +743,7 @@ go get github.com/kataras/iris             # 最快WebSvr框架 *15k 中文文�
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k martini.codegangsta.io
 go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)martini高级扩展+依赖注入 go-macaron.com/docs
+go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链 *3.6k (推荐)
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
@@ -804,7 +805,6 @@ go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|�
 go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
 go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *7k (推荐)
-go get goa.design/goa/v3/cmd/goa           # 设计优雅的Api(高生产力集成开发)+微服务工具链 *3.6k (推荐)
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
