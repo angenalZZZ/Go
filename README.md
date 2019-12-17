@@ -602,7 +602,7 @@ go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/Th
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
 go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐)> xxhgo ; xxhsum -h ;C语言github.com/Cyan4973/xxHash
-go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐) MurmurHash3
+go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐)> murmur32 123456 ; murmur64 123456
 go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4> lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
 go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar)> arc archive|unarchive|extract|ls|compress|decompress
 go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
