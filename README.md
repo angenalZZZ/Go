@@ -601,9 +601,11 @@ go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Con
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络创建&分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
-go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐) github.com/Cyan4973/xxHash
+go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐) > xxhgo ; xxhsum ;C语言 github.com/Cyan4973/xxHash
 go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐) MurmurHash3
-go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4(推荐) 参考C语言算法 github.com/Cyan4973/lz4
+go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4 > lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
+go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar) > arc archive|unarchive|extract|ls|compress|decompress
+go get github.com/DataDog/zstd             # 压缩/解压数据(推荐) DataDog/Facebook/Zstd: Stream-API
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
@@ -655,8 +657,6 @@ go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且�
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
-go get github.com/mholt/archiver/cmd/arc   # 压缩文件/解压工具(zip,tar,rar) arc archive [archive name] [input files...]
-go get github.com/DataDog/zstd             # 超快的压缩/解压数据Facebook. Zstd Go Wrapper: Compress/Decompress,Stream-API
 # 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
 go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis..}-server   *4k
