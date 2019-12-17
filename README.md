@@ -597,26 +597,26 @@ go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
-go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comparators,Iterators…
+go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
-go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络创建&分析等
+go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
-go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐) > xxhgo ; xxhsum ;C语言 github.com/Cyan4973/xxHash
+go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐)> xxhgo ; xxhsum -h ;C语言github.com/Cyan4973/xxHash
 go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐) MurmurHash3
-go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4 > lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
-go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar) > arc archive|unarchive|extract|ls|compress|decompress
-go get github.com/DataDog/zstd             # 压缩/解压数据(推荐) DataDog/Facebook/Zstd: Stream-API
+go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4> lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
+go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar)> arc archive|unarchive|extract|ls|compress|decompress
+go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
 go get github.com/tinylib/msgp             # MessagePack编码/解码(推荐) 考虑结合缓存库使用
 go get github.com/vmihailenco/msgpack      # MessagePack编码/解码(像JSON但更快更小) msgpack.org
 go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自带序列化库gob的3倍以上(减少使用reflect库)
-go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
+go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
-go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json) && gjson.Get(json,"name.last").Exists()
-go get github.com/PuerkitoBio/goquery      # 解析HTML，像jQuery那样操作DOM                     *7k
+go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
+go get github.com/PuerkitoBio/goquery      # 解析HTML像jQuery那样操作DOM                       *7k
 go get github.com/sirupsen/logrus          # 日志跟踪 import log "github.com/sirupsen/logrus" *10k
 go get github.com/asticode/go-astilog      # 日志自定义:logrus[.Entry-Data]+context[.Value-Fields]+configuration
 go get github.com/pkg/errors               # 错误处理库pkg                                     *5k
