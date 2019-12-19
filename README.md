@@ -778,28 +778,28 @@ go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
 go get github.com/go-swagger/go-swagger/cmd/swagger # 后端API文档生成器 > swagger generate spec --scan-models -o docs/spec.json
 
-# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k | books.studygolang.com/go-rpc-programming-guide
+# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-# 谷歌开源gRPC | grpc.io/docs/quickstart/go & 'HTTP/2'更快 http2.golang.org
- # 1.安装: gRPC、genproto ; <protoc.exe>插件: proto、protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
- > github.com/google/protobuf/releases     # 先下载Protobuf | <protoc.exe>
+# 谷歌开源gRPC  grpc.io/docs/quickstart/go & 'HTTP/2'传输更快 http2.golang.org
+ # 1.安装: protoc、genproto; <protoc>插件: protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强插件)
+ > github.com/google/protobuf/releases     # 先下载protobuf-command > protoc.exe, protoc
  > git clone --depth=1 https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
  > git clone --depth=1 https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
- > go get github.com/golang/{text,net}                                       # 安装protoc的依赖
- > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 生成工具protoc-gen-go
-   $ protoc --go_out=. *.proto                                               # segmentfault.com/a/1190000009277748
- > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go
-   $ protoc --gogo_out=plugins=grpc:. *.proto            # protoc --gofast_out=plugins=grpc:. *.proto (输入输出:当前目录)
-   # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口Demo) + swagger + validators ↓
+ > go get github.com/golang/{text,net}                                       # 安装protoc的依赖 ↓
+ > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 安装插件protoc-gen-go ↓
+   $ protoc --go_out=plugins=grpc:. *.proto                                  # 使用segmentfault.com/a/1190000009277748
+ > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go ↓
+   $ protoc --gogo_out=plugins=grpc:. *.proto  ||  protoc --gofast_out=plugins=grpc:. *.proto  (使用gofast插件)
+   # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口用例) + swagger + validators ↓
    > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
-  $ prototool help                         # 增强版protoc <ubuntu> github.com/uber/prototool
+  $ prototool help                         # 增强版protoc优步推荐 github.com/uber/prototool <ubuntu>
  > go get github.com/fullstorydev/grpcurl  # 查询工具grpcurl<服务列表&调用方法+反射服务> google.golang.org/grpc/reflection
  # 2.使用: gRPC-Examples > cd %GOPATH%/src/google.golang.org/grpc/examples/helloworld
  > protoc -I ./helloworld --go_out=plugins=grpc:./helloworld ./helloworld/helloworld.proto #2.1生成代码*.pb.go
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
-go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
+go get github.com/TykTechnologies/tyk  # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k gokit.io (推荐)
 go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架 *7k (推荐) thrift.apache.org > thrift -help
