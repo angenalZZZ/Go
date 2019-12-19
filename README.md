@@ -354,6 +354,7 @@ go get github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blo
 # 构建
   > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
   > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
+  > gowatch                       # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
 
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
@@ -375,6 +376,8 @@ git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/
   #----------------------------------------------------------------------
   > go list -m all              # 2.查看当前版本
   > go list -m -u all           # 2.查看当前的依赖和模块版本更新 -json 支持json输出
+  > depth [package-name]        # 查看某一个库的依赖 go get github.com/KyleBanks/depth/cmd/depth
+  > go-callvis                  # 代码调用链图工具 go get github.com/TrueFurby/go-callvis
   > go mod graph                # 4.输出依赖关系,打印模块依赖图
   > go mod verify               # 5.验证依赖是否正确
   > go get -u || -u=patch       # 5.升级到最新依赖版本 || 升级到最新的修订版本 (也可指定版本)
@@ -453,6 +456,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
   
   # 代码质量审查 [1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
+  > revive                                      # 代码质量检测工具 go get github.com/mgechev/revive
   > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
   > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
      && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
