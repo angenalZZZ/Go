@@ -36,11 +36,13 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
  > 内建的`常量`、`类型`、`函数`
 
     常量: true false iota nil
+          const ptrSize = 4 << (^uintptr(0) >> 63) // unsafe.Sizeof(uintptr(0)) but an ideal const
     
     类型: bool int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64
           uintptr  float32 float64  complex64 complex128
-	  array chan func interface map ptr slice string struct 
-	  *UnsafePointer*   *Invalid*   byte rune error
+          array chan func interface map ptr slice string struct 
+          unsafe.Pointer   invalid
+          byte rune error
     
     函数: make len cap append delete new copy close    complex real imag    panic recover
 
