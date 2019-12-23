@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建.测试*](#管理构建测试) [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly - WebRTC*](#webassembly) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建)[*测试*](#测试) [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly - WebRTC*](#webassembly) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -348,16 +348,17 @@ go get github.com/alecthomas/gometalinter  &&  gometalinter --install
 go get github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
 
-#### 管理|构建|测试
+#### 管理|构建
 ~~~bash
 # ------------------------------------------------------------------------------------
-#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle.支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build/versions/0.25.0/windows.html
+#  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 
 # 构建
   > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
   > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
+  > GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w"
   > gowatch                       # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
 
 # 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
@@ -421,26 +422,30 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
+  
+~~~
 
-# 测试工具CI
+#### 测试
+~~~bash
+  # 测试工具
   > go help test                                   # 测试帮助文档
-  > go test -v -count=1 [package-name]             # 测试指定的包 默认目录path=. 默认次数count=1
-  > go test ./...                                  # 测试遍历递归目录...所有的*_test.go文件;并且代码中包名一致
-  > go test -run=^$  -parallel=20 ./path           # 单元测试(t *testing.T)-run=查找TestXxx,-parallel=并行数
+  > go test ./...                                  # 测试遍历递归目录...所有的*_test.go 并且代码中包名一致
+  > go test -v -count=1 [package-name]             # 测试指定的包(默认目录path=. 默认次数count=1 -v打印详情)
+  > go test -run=^$  -parallel=20 ./path           # 单元测试(t *testing.T) -run=查找TestXxx -parallel=并行数
   > go test -test.list=^Benchmark ./path           # 只打印匹配的测试函数
   -------------------------------------------------------------------------------
    t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
-   t.Error t.Errorf # 测试失败信息 -> 类似HTTP状态码^400
-   t.Fatal t.Fatalf # 致命错误，测试程序退出的信息 -> 类似HTTP状态码^500
+   t.Error t.Errorf # 测试失败信息，测试程序`报告`的错误信息 -> 类似HTTP状态码^400
+   t.Fatal t.Fatalf # 致命错误信息，测试程序`退出`的异常信息 -> 类似HTTP状态码^500
    t.Fail     # 当前测试函数被标记为失败
    t.Failed   # 查看当前测试函数失败标记
    t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的
               # Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
    t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用t.Skipf方法则相当于先后对
               # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
-   t.Parallel # 标记为可并行运算 (当test参数 -parallel 时)
+   t.Parallel # 标记为可并行测试 (当test参数 -parallel 时)
   -------------------------------------------------------------------------------
-  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s -count=1 #基准测试*testing.B，`压测`需在循环体指定testing.B.N
+  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B) 在测试函数循环体指定testing.B.N
   > go test -bench=.* -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof;
   > go test -bench=.* -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof;包名path;
     > go tool pprof path.test.exe cpu.prof         # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
