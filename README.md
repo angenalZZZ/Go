@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) [*测试*](#测试) [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly - WebRTC*](#webassembly) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI - HTML/JS/CSS - WebAssembly - WebRTC*](#webassembly) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -42,7 +42,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
           float32 float64  complex64 complex128
           array chan func interface map ptr slice string struct
           uintptr  unsafe.Pointer                  // unsafe.Pointer is a safe version of uintptr used
-          byte rune error  reflect.Type,Value,StringHeader,SliceHeader,SelectCase... invalid...
+          byte rune error  invalid    reflect.Type,Value,StringHeader,SliceHeader,SelectCase...底层结构
     
     函数: make len cap append delete new copy close    complex real imag    panic recover
 
@@ -73,13 +73,13 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
     
- > [文本`string`、字符`utf8`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
+ > [文本`string`、字符`utf8,utf16`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
 
 `字符串(string)`
 ~~~go
 // 底层结构  string = []byte 即字节数组，[]byte("你好") 该转换一般不会有内存分配的开销。
-type StringHeader struct {
-	Data uintptr
+type StringHeader struct {          // stringHeader is a safe version of StringHeader used
+	Data uintptr                // stringHeader { Data unsafe.Pointer	Len  int }
 	Len  int
 }
 ~~~
@@ -88,8 +88,7 @@ type StringHeader struct {
 func str2bytes(s string) []byte {
 	p := make([]byte, len(s))
 	for i := 0; i < len(s); i++ {
-		c := s[i]
-		p[i] = c
+		p[i] = s[i]
 	}
 	return p
 }
@@ -99,8 +98,7 @@ func str2bytes(s string) []byte {
 func str2bytes(s string) []byte {
 	p := make([]byte, len(s))
 	for i := 0; i < len(s); i++ {
-		c := s[i]
-		p[i] = c
+		p[i] = s[i]
 	}
 	return p
 }
@@ -122,12 +120,12 @@ func bytes2str(s []byte) (p string) {
 ~~~
 `[]rune(s)转换模拟实现`
 ~~~go
-func str2runes(s string) []rune{
+func str2runes(s string) []rune {
 	var p []int32
-	for len(s)>0 {
-        r,size:=utf8.DecodeRuneInString(s)
-        p=append(p,int32(r))
-        s=s[size:]
+	for len(s) > 0 {
+        	r,size: = utf8.DecodeRuneInString(s)
+        	p = append(p,int32(r))
+        	s = s[size:]
         }
         return []rune(p)
 }
