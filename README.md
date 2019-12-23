@@ -591,8 +591,9 @@ go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
-go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池 github.com/go-playground/pool
-go get gopkg.in/go-playground/validator.v8 # 数据结构的验证功能(推荐)
+go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池(推荐) github.com/go-playground/pool
+go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请求限制goroutines(推荐) *1.5k
+go get gopkg.in/go-playground/validator.v8 # 数据结构的验证功能(强力推荐)
 go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
 go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验      *1k
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm  *2.5k
