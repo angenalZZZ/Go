@@ -40,9 +40,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     
     类型: bool int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64
           float32 float64  complex64 complex128
-          array chan func interface map ptr slice string struct invalid
+          array chan func interface map ptr slice string struct
           uintptr  unsafe.Pointer                  // unsafe.Pointer is a safe version of uintptr used
-          byte rune error  reflect.Type,Value,StringHeader,SliceHeader,SelectCase...
+          byte rune error  reflect.Type,Value,StringHeader,SliceHeader,SelectCase... invalid...
     
     函数: make len cap append delete new copy close    complex real imag    panic recover
 
