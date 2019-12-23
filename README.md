@@ -589,7 +589,9 @@ go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
 git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io
 -------------------------------------------------------------------------------------------------
 
-go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid
+go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
+go get github.com/teris-io/shortid         # super short, fully unique(推荐)(9~10个字符) *.5k -URL friendly Ids
+go get github.com/kjk/betterguid           # guid generator, 20 chars
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
 go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
