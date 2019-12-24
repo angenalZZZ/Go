@@ -590,10 +590,11 @@ git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.
 -------------------------------------------------------------------------------------------------
 
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
-go get github.com/teris-io/shortid         # super short, fully unique(推荐)(9~10个字符) *.5k -URL friendly Ids
+go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
 go get github.com/kjk/betterguid           # guid generator, 20 chars
-go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成、检查Uuid
-go get github.com/satori/go.uuid           # uuid generator, Version 1 ~ 5 (RFC 4122)
+go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter的snowflake算法:1毫秒2^12=4096条:1秒409万(支持使用69年)
+go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成uuid、检查uuid等
+go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122)
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
