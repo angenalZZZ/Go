@@ -831,8 +831,8 @@ go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *7
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
 go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
-go get github.com/tealeg/xlsx              # 读取 Excel 文件 *3.2k
-go get github.com/360EntSecGroup-Skylar/excelize # 读写 Excel 文件 *3.8k
+go get github.com/tealeg/xlsx              # 读写Excel文件     *4k
+go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
