@@ -754,7 +754,7 @@ go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful AP
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 
-# Web开发推荐如下：Router框架 + MVC框架
+# Web开发推荐如下：Router|Api框架 + MVC框架
 go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐)  Star数最高的Web框架
 go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC  高度解耦的框架  beego.me/docs
@@ -772,10 +772,12 @@ go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
-go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
-go get github.com/ory/fosite/...           # 访问控制-认证服务扩展   *1k (OAuth2.0, OpenID Connect...  www.ory.sh
-go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流的Reader,Writer
-go get golang.org/x/time                   # 速率限制-调用Limiter方法 import golang.org/x/time/rate
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(强力推荐)*2k  CSRF,Throttle,Auth(Password|OAuth2|2fa[totp.sms]),Regist,Lock,Expire等
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
+go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
+go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
+go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read\Write
+go get golang.org/x/time                   # 速率限制-调用Limiter接口方法 import golang.org/x/time/rate
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
