@@ -484,7 +484,9 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
   # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
-  $ wrk -t144 -c600 -d30s --latency <url>      #  -t线程数 -c并发连接数 -d压测时间s --latency打印n%响应时间ms --timeout超时-T
+  $ wrk -t144 -c600 -d30s --latency <url>      # -t线程数 -c并发连接数 -d压测时间s --latency响应n%延迟统计ms --timeout超时
+  $ wrk2 -t144 -c100 -d30s -R2000 --latency <url> # -R每秒请求的工作速率[次/秒Required] --timeout[-T]超时 --latency[-L]延迟统计
+  $ wrk2 -t144 -c100 -d30s -R2000 --u_latency <url> # --u_latency[-U]打印未校正的延迟统计信息;跟踪报告"未校正延迟直方图"
   # Web性能测试命令 github.com/codesenberg/bombardier *1.5k
   $ bombardier -n 10000 -c 600 -d 10s -m GET -t 3s --fasthttp -l <url> # -n请求数 -c连接数 -d压测时间s -l即--latencies
   > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
