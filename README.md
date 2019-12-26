@@ -593,7 +593,8 @@ git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.
 
 go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
-go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法:1毫秒2^12=4096条:1秒409万(支持用69年)
+go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法:1毫秒2^12=4096条:1秒409万
+go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐)  www.sony.net
 go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成uuid、检查uuid等
 go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122)
 go get github.com/kjk/betterguid           # guid generator, 20 chars
@@ -601,6 +602,7 @@ go get github.com/juju/utils               # Utility functions: arch,cache,cert,
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
 go get github.com/appleboy/com             # Random、Array、File、Convert
+go get github.com/huandu/xstrings          # String functions to their friends in other languages
 go get github.com/bradfitz/iter            # Range [0,n) | for i := range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池(推荐) github.com/go-playground/pool
@@ -608,11 +610,13 @@ go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请�
 go get github.com/rafaeldias/async         # 超级好用+异步高并发处理(推荐)
 go get gopkg.in/go-playground/validator.v8 # 数据结构的验证功能(强力推荐)
 go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
-go get github.com/xeipuuv/gojsonschema     # 元模式验证，json schema 自定义错误校验      *1k
+go get github.com/bytedance/go-tagexpr     # 数据校验，参数Binding:{ B string `tagexpr:"len($)>1 && regexp('^\\w*$')"` }
+go get github.com/xeipuuv/gojsonschema     # 数据校验，json schema 自定义错误校验       *1k
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm  *2.5k
 go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
+go get github.com/Knetic/govaluate         # 表达式引擎:Eval表达式:Functions:Accessors
 go get github.com/cheekybits/genny         # 泛型语言支持 golang.org/doc/faq#generics
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
@@ -624,6 +628,7 @@ go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算�
 go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐)> murmur32 123456 ; murmur64 123456
 go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4> lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
 go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar)> arc archive|unarchive|extract|ls|compress|decompress
+go get github.com/hpcloud/tail/...         # 从不断更新的文件读取.惠普.开源(推荐) log rotation tool: www.hpe.com
 go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
@@ -778,8 +783,11 @@ go get github.com/volatiletech/authboss    # 授权访问-认证服务(强力推
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
 go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
+go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
 go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read\Write
 go get golang.org/x/time                   # 速率限制-调用Limiter接口方法 import golang.org/x/time/rate
+go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐)breaker.CircuitBreaker  www.sony.net
+go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
@@ -829,6 +837,7 @@ go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|�
 go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
 go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *7k (推荐)
+go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
@@ -838,6 +847,7 @@ go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
+go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
