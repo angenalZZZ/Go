@@ -230,12 +230,12 @@ func SortFloat64FastV2(a []float64) {
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.12.5.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.13.5.windows-amd64.msi
     set GOPATH=C:\Users\Administrator\go
     set GOROOT=D:\Program\Go
     set GOTOOLS=%GOROOT%/pkg/tool  (可选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
-    set GOPROXY=https://goproxy.io
-    set GO111MODULE=on             (可选项: 建议设置为 GO111MODULE=auto )
+    set GO111MODULE=on             (可选项: 建议 GO111MODULE=auto )
+    set GOPROXY=https://goproxy.io (可选项: 建议 网络代理)
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
     # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod);[-ldflags "-H windowsgui"]可以让exe运行时不弹出cmd窗口
     set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
@@ -245,14 +245,14 @@ func SortFloat64FastV2(a []float64) {
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
-    wget https://studygolang.com/dl/golang/go1.12.5.linux-amd64.tar.gz
+    wget https://studygolang.com/dl/golang/go1.13.5.linux-amd64.tar.gz
     GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改解压到的目录 (选项 tar -C)
-    tar -zxf go1.12.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
+    tar -zxf go1.13.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
-    export GOTOOLS=$GOROOT/pkg/tool (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
-    export GOPROXY=https://goproxy.io
-    export GO111MODULE=on           (可选项: 建议设置为 GO111MODULE=auto )
+    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
+    export GO111MODULE=on             (可选项: 建议 GO111MODULE=auto )
+    export GOPROXY=https://goproxy.io (可选项: 建议 网络代理)
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
