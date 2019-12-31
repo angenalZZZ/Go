@@ -1245,9 +1245,6 @@ astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
     * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
- * [Webview](https://github.com/zserge/webview)
- * [WebAssembly](https://github.com/murlokswarm/app)
- * [原生GUI库](https://github.com/andlabs/ui)、[go-flutter-desktop](https://github.com/go-flutter-desktop/go-flutter)
 ~~~bash
 # [QT跨平台应用框架] Qt binding package
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
@@ -1255,6 +1252,11 @@ go get github.com/lxn/win                  # Windows API wrapper package
 go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
 go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
 ~~~
+ * [Webview](https://github.com/zserge/webview)
+ * [WebAssembly](https://github.com/murlokswarm/app)
+ * [go-flutter-desktop](https://github.com/go-flutter-desktop/go-flutter)
+ * [go-material-design-GUI](https://fyne.io/develop/)、[google-andlabs-GUI](https://github.com/andlabs/ui)
+
 ----
 
 #### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
