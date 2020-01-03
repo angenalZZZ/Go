@@ -607,9 +607,9 @@ go get github.com/bradfitz/iter            # Range [0,n) | for i:=range iter.N(1
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
 go get golang.org/x/sync/errgroup          # sync.group扩展 g:=new(errgroup.Group);g.Go(func(){});e:=g.Wait() godoc.org/golang.org/x/sync/errgroup
 go get github.com/rafaeldias/async         # 超级好用+异步高并发处理(推荐)
-go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池(推荐) github.com/go-playground/pool
 go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请求限制goroutines(推荐) *1.5k
-go get gopkg.in/go-playground/validator.v8 # 数据结构的验证功能(强力推荐)
+go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池(推荐) github.com/go-playground/pool
+go get gopkg.in/go-playground/validator.v9 # 数据结构扩展验证功能(强力推荐) github.com/go-playground/validator
 go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
 go get github.com/bytedance/go-tagexpr     # 数据校验，参数Binding:{ B string `tagexpr:"len($)>1 && regexp('^\\w*$')"` }
 go get github.com/xeipuuv/gojsonschema     # 数据校验，json schema 自定义错误校验       *1k
