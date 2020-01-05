@@ -353,7 +353,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
 
-# 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性好)
+# 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性更好)
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
   > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
   > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
@@ -412,9 +412,9 @@ testing.AllocsPerRun()                          # 检测平均占用内存(分�
 map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型,避免对map遍历
 map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型,避免对map遍历
 someSlice []float64  -> someSlice [32]float64   # 可利用值类型Array代替对象类型Slice
-
+someSlice []int      -> map[int]bool
 # ------------------------------------------------------------------------------------
-# 扩充`IO`容量(横向|纵向)+分布式应用：
+# 扩充`IO`容量（横向|纵向）>>分布式应用：
 # ------------------------------------------------------------------------------------
  # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;
    节点node+副本replica
