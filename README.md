@@ -352,9 +352,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > goad -h
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
-# -------------------------------------------------------------------------------
 
-# 测试代码书写`Testing`
+# 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性好)
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
   > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
   > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
@@ -398,9 +397,8 @@ go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数
 # git clone https://github.com/brendangregg/FlameGraph.git 后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
 # go-torch -u http://127.0.0.1:8080 --seconds 60 -f <cpu.svg> # 火焰图分析CPU: 生成cpu.svg文件
 # ... http://127.0.0.1:8080/debug/pprof/profile,heap,goroutine,mutex,block,threadcreate # 查看性能采集数据与分析结果
-#2.1 import "expvar"; var visits=expvar.NewInt("visits"); expvar.Publish(name string, v expvar.Var)#全局注册表Func
+#2.1 import "expvar"; var v=expvar.NewInt("visits"); v.Publish(name string, v expvar.Var) # 全局注册表func
 # 通过访问/debug/vars查看expvar包中注册的所有公共变量(两个指标:os.Args,runtime.Memstats)与自定义变量#globalVars
-# ------------------------------------------------------------------------------------
 go get -u github.com/google/pprof # 更新pprof用于性能分析和采集数据可视化(分析cpu时间片,内存,死锁,火焰图等)
 #  pprof -http=:8088 cpu.prof     # 后启动可视化界面 http://127.0.0.1:8088/ui 查看火焰图
 go get github.com/uber/go-torch # Web性能测试与CPU火焰图生成工具 > go-torch demo.exe <cpu.prof|mem.prof>
@@ -416,10 +414,12 @@ map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型,避免对ma
 someSlice []float64  -> someSlice [32]float64   # 可利用值类型Array代替对象类型Slice
 
 # ------------------------------------------------------------------------------------
-# 扩展容量(横向|纵向)：
+# 扩充`IO`容量(横向|纵向)+分布式应用：
 # ------------------------------------------------------------------------------------
- # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;节点node+副本replica
- # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
+ # 分片Sharding > 如何集群? 把数据划分成若干部分,1个部分映射1个Shard(内存中分配完成);把Shard分配到服务器节点上;
+   节点node+副本replica
+ # 策略 > 如何分片? <空间索引>把数据按空间范围划分成若干个最小单元Cell;按规则算法把部分单元Cells放入1个Shard分片;
+   Cell队列中的数据可查找所在Shard/Cell;数据清理Clean
 ~~~
 
 ----
