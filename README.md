@@ -73,152 +73,6 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
     
- > [文本`string`、字符`utf8,utf16`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
-
-`字符串(string)`
-~~~go
-// 底层结构  string = []byte 即字节数组，[]byte("你好") 该转换一般不会有内存分配的开销。
-type StringHeader struct {          // stringHeader is a safe version of StringHeader used
-	Data uintptr                // stringHeader { Data unsafe.Pointer	Len  int }
-	Len  int
-}
-~~~
-`for range对字符串的迭代模拟实现`
-~~~go
-func str2bytes(s string) []byte {
-	p := make([]byte, len(s))
-	for i := 0; i < len(s); i++ {
-		p[i] = s[i]
-	}
-	return p
-}
-~~~
-`[]byte(s)转换模拟实现`
-~~~go
-func str2bytes(s string) []byte {
-	p := make([]byte, len(s))
-	for i := 0; i < len(s); i++ {
-		p[i] = s[i]
-	}
-	return p
-}
-~~~
-`string(bytes)转换模拟实现`
-~~~go
-func bytes2str(s []byte) (p string) {
-	data := make([]byte, len(s))
-	for i, c := range s {
-		data[i] = c
-	}
-
-	hdr := (*reflect.StringHeader)(unsafe.Pointer(&p))
-	hdr.Data = uintptr(unsafe.Pointer(&data[0]))
-	hdr.Len = len(s)
-
-	return p
-}
-~~~
-`[]rune(s)转换模拟实现`
-~~~go
-func str2runes(s string) []rune {
-	var p []int32
-	for len(s) > 0 {
-        	r,size: = utf8.DecodeRuneInString(s)
-        	p = append(p,int32(r))
-        	s = s[size:]
-        }
-        return []rune(p)
-}
-~~~
-`string(runes)转换模拟实现`
-~~~go
-func runes2string(s []int32) string {
-	var p []byte
-	buf := make([]byte, 3)
-	for _, r := range s {
-		n := utf8.EncodeRune(buf, r)
-		p = append(p, buf[:n]...)
-	}
-	return string(p)
-}
-~~~
-`切片(slice)`
-~~~go
-// 底层结构
-type SliceHeader struct {
-	Data uintptr
-	Len  int
-	Cap  int
-}
-~~~
-`添加切片元素`
-~~~go
-var a []int
-a = append(a[:i], append([]int{x}, a[i:]...)...)     // 在第i个位置插入x
-a = append(a[:i], append([]int{1,2,3}, a[i:]...)...) // 在第i个位置插入切片
-a = append(a, 0)     // 切片扩展1个空间
-copy(a[i+1:], a[i:]) // a[i:]向后移动1个位置
-a[i] = x             // 设置新添加的元素
-a = append(a, x...)       // 为x切片扩展足够的空间
-copy(a[i+len(x):], a[i:]) // a[i:]向后移动len(x)个位置
-copy(a[i:], x)            // 复制新添加的切片
-~~~
-`删除切片元素`
-~~~go
-a = []int{1, 2, 3}
-a = a[N:]          // 删除开头N个元素
-a = a[:copy(a, a[N:])] // 删除开头N个元素
-a = append(a[:0], a[N:]...) // 删除开头N个元素
-a = a[:len(a)-N]   // 删除尾部N个元素
-a = append(a[:i], a[i+N:]...) // 删除中间N个元素
-a = a[:i+copy(a[i:], a[i+N:])]  // 删除中间N个元素
-~~~
-`切片内存技巧`
-~~~go
-func Filter(s []byte, fn func(x byte) bool) []byte {
-	b := s[:0]
-	for _, x := range s {
-		if !fn(x) {
-			b = append(b, x)
-		}
-	}
-	return b
-}
-var a []*int{ ... }
-a = a[:len(a)-1]  // 被删除的最后一个元素依然被引用, 可能导致GC操作被阻碍
-a[len(a)-1] = nil // GC回收最后一个元素内存 (保险的方式)
-a = a[:len(a)-1]  // 从切片删除最后一个元素
-~~~
-`切片类型强制转换`
-~~~go
-// +build amd64 arm64
-
-import "sort"
-
-var a = []float64{4, 2, 5, 7, 2, 1, 88, 1}
-// 下面通过两种方法将[]float64类型的切片a转换为[]int类型的切片
-
-// 第一种强制转换是先将切片数据的开始地址转换为一个较大的数组的指针，然后对数组指针对应的数组重新做切片操作。
-// 中间需要unsafe.Pointer来连接两个不同类型的指针传递。
-func SortFloat64FastV1(a []float64) {
-	// 强制类型转换
-	var b []int = ((*[1 << 20]int)(unsafe.Pointer(&a[0])))[:len(a):cap(a)]
-
-	// 以int方式给float64排序
-	sort.Ints(b)
-}
-// 第二种转换操作是分别取到两个不同类型的切片头信息指针，任何类型的切片头部信息底层都是对应reflect.SliceHeader结构，
-// 然后通过更新结构体方式来更新切片信息，从而实现a对应的[]float64切片到c对应的[]int类型切片的转换
-func SortFloat64FastV2(a []float64) {
-	// 通过 reflect.SliceHeader 更新切片头部信息实现转换
-	var c []int
-	aHdr := (*reflect.SliceHeader)(unsafe.Pointer(&a))
-	cHdr := (*reflect.SliceHeader)(unsafe.Pointer(&c))
-	*cHdr = *aHdr
-
-	// 以int方式给float64排序
-	sort.Ints(c)
-}
 ~~~
 ----
 
@@ -423,47 +277,52 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   
 ~~~
 
+
 #### 测试
 ~~~bash
-  # 测试工具
+  -------------------------------------------------------------------------------
+  # 测试命令 >>
+  -------------------------------------------------------------------------------
   > go help test                                   # 测试帮助文档
   > go test ./...                                  # 测试遍历递归目录...所有的*_test.go 并且代码中包名一致
   > go test -v -count=1 [package-name]             # 测试指定的包(默认目录path=. 默认次数count=1 -v打印详情)
   > go test -run=^$  -parallel=20 ./path           # 单元测试(t *testing.T) -run=查找TestXxx -parallel=并行数
   > go test -test.list=^Benchmark ./path           # 只打印匹配的测试函数
-  -------------------------------------------------------------------------------
-   t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
-   t.Error t.Errorf # 测试失败信息，测试程序`报告`的错误信息 -> 类似HTTP状态码^400
-   t.Fatal t.Fatalf # 致命错误信息，测试程序`退出`的异常信息 -> 类似HTTP状态码^500
-   t.Fail     # 当前测试函数被标记为失败
-   t.Failed   # 查看当前测试函数失败标记
-   t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的
-              # Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
-   t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用t.Skipf方法则相当于先后对
-              # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
-   t.Parallel # 标记为可并行测试 (当test参数 -parallel 时)
-  -------------------------------------------------------------------------------
-  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B) 在测试函数循环体指定testing.B.N
-  > go test -bench=.* -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof;
-  > go test -bench=.* -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof;包名path;
-    > go tool pprof path.test.exe cpu.prof         # 生成函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
-    > go tool pprof path.test cpu.prof > web       # 生成函数调用(svg)图+> yum install graphviz.x86_64 www.graphviz.org
-    $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan #<ubuntu>
-    > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # CPU性能火焰图生成 go-torch -h #<*.svg>
+  # t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
+  # t.Error t.Errorf # 测试失败信息，测试程序`报告`的错误信息 -> 类似HTTP状态码^400
+  # t.Fatal t.Fatalf # 致命错误信息，测试程序`退出`的异常信息 -> 类似HTTP状态码^500
+  # t.Fail     # 当前测试函数被标记为失败
+  # t.Failed   # 查看当前测试函数失败标记
+  # t.FailNow  # 标记失败，并终止当前测试函数的执行，需要注意的是，我们只能在运行测试函数的
+               # Goroutine 中调用 t.FailNow 方法，而不能在我们在测试代码创建出的 Goroutine 中调用它
+  # t.Skip     # 调用 t.Skip 方法相当于先后对 t.Log 和 t.SkipNow 方法进行调用，而调用t.Skipf方法则相当于先后对
+               # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
+  # t.Parallel # 标记为可并行测试 (当test参数 -parallel 时)
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
-  > go test -cover ./...                           # 检测代码覆盖率
-  > go test -coverprofile=cover.prof               # 生成代码覆盖率文件；生成内存分析文件参数
-  > go tool cover -func=cover.prof                 # 分析代码覆盖率并检查哪些`函数`没测试或者没测试完全
-  > go tool cover -html=out.html                   # generate HTML representation of coverage profile
-  > go help vet                                    # 执行代码静态检查(go语法等)如> go vet -v
+  > go test -cover ./path                          # 检测代码覆盖率(testing使用到的代码行比例)
+  > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B)在函数循环体指定b.N
+  -------------------------------------------------------------------------------
+  # 测试工具 >>
+  -------------------------------------------------------------------------------
+  > go test -bench=. -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof
+  > go test -bench=. -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof
+  > go tool pprof path.test.exe cpu.prof    # 分析函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
+   $ go tool pprof path.test cpu.prof > web # 分析函数调用(svg)图+> yum install graphviz.x86_64  www.graphviz.org
+   $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan 
+   $ go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # 查看CPU性能火焰图 go-torch -h #out.svg
+  > go test -coverprofile=c.out             # 生成代码覆盖率分析文件(标记出未测试到的代码行与代码比例)
+  > go tool cover -func=c.out               # 分析代码覆盖率;检查哪些`函数`没测试或者没测试完全
+  > go tool cover -html=c.out               # 分析代码覆盖率;查看网页格式html文件
+  
+  # 代码质量审查
+  > go help vet                                    # 执行代码静态检查(语法检查)
   > go tool vet help                               # 查看工具vet支持哪些检查?
   > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
   > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
   > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./... 
   > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
-  
-  # 代码质量审查 [1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
-  > revive                                      # 代码质量检测工具 go get github.com/mgechev/revive
+   # 推荐[1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
+  > revive -h                                    #1.1代码质量检测工具 go get github.com/mgechev/revive
   > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
   > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
      && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
@@ -472,9 +331,9 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
   
-  # 捕获HTTP请求,跟踪HTTP流量 | https://github.com/buger/goreplay/wiki
+  # 捕获HTTP请求,跟踪流量  github.com/buger/goreplay/wiki
   > gor --input-raw :80 --output-http="http://localhost:81" # 跟踪HTTP流量(:80), HTTP服务查阅结果(HTTP:81)
-  > gor --input-raw :80 --output-stdout #跟踪HTTP流量(:80)[打印输出--output-http-track-response],文件服务查阅结果gor file-server :81
+  > gor --input-raw :80 --output-stdout # 跟踪HTTP流量(:80)[--output-http-track-response],文件web结果 gor file-server :81
   > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8080"
 
   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知`goconvey`
@@ -507,10 +366,6 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/
   $ rm -f goreleaser && rm -f *.md
   $ goreleaser help release
-
-# 源代码版本管理
-  > go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
-  > go get -d github.com/github/hub # 轻松使用Github的命令行工具 *17k
 
 ~~~
 
@@ -943,6 +798,9 @@ go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|
 go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 go get github.com/yinqiwen/gscan           # 扫描可用HTTPsIP、修复Hosts、可用GoogleIP; 可用于代理工具GSnova,GoAgent
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
+# 源代码版本管理 git version manage
+go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
+go get -d github.com/github/hub # 轻松使用Github的命令行工具 *17k
 go get gitea.com/lunny/gps                 # 地图坐标系转换
 /** WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
  * 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
@@ -1292,7 +1150,6 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 
 ----
 
-
 > Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
 
 ~~~shell
@@ -1310,6 +1167,158 @@ docker exec -it golang1115 bash
   $ cd apiserver & go build & ./apiserver                                                # build for linux
   $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
     mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
+~~~
+
+----
+
+> 敲代码，磨练。
+
+ * [文本`string`、字符`utf8,utf16`、切片`slice`](https://github.com/chai2010/advanced-go-programming-book/blob/master/ch1-basic/ch1-03-array-string-and-slice.md)
+
+`字符串(string)`
+~~~go
+// 底层结构  string = []byte 即字节数组，[]byte("你好") 该转换一般不会有内存分配的开销。
+type StringHeader struct {          // stringHeader is a safe version of StringHeader used
+	Data uintptr                // stringHeader { Data unsafe.Pointer	Len  int }
+	Len  int
+}
+~~~
+`for range对字符串的迭代模拟实现`
+~~~go
+func str2bytes(s string) []byte {
+	p := make([]byte, len(s))
+	for i := 0; i < len(s); i++ {
+		p[i] = s[i]
+	}
+	return p
+}
+~~~
+`[]byte(s)转换模拟实现`
+~~~go
+func str2bytes(s string) []byte {
+	p := make([]byte, len(s))
+	for i := 0; i < len(s); i++ {
+		p[i] = s[i]
+	}
+	return p
+}
+~~~
+`string(bytes)转换模拟实现`
+~~~go
+func bytes2str(s []byte) (p string) {
+	data := make([]byte, len(s))
+	for i, c := range s {
+		data[i] = c
+	}
+
+	hdr := (*reflect.StringHeader)(unsafe.Pointer(&p))
+	hdr.Data = uintptr(unsafe.Pointer(&data[0]))
+	hdr.Len = len(s)
+
+	return p
+}
+~~~
+`[]rune(s)转换模拟实现`
+~~~go
+func str2runes(s string) []rune {
+	var p []int32
+	for len(s) > 0 {
+        	r,size: = utf8.DecodeRuneInString(s)
+        	p = append(p,int32(r))
+        	s = s[size:]
+        }
+        return []rune(p)
+}
+~~~
+`string(runes)转换模拟实现`
+~~~go
+func runes2string(s []int32) string {
+	var p []byte
+	buf := make([]byte, 3)
+	for _, r := range s {
+		n := utf8.EncodeRune(buf, r)
+		p = append(p, buf[:n]...)
+	}
+	return string(p)
+}
+~~~
+`切片(slice)`
+~~~go
+// 底层结构
+type SliceHeader struct {
+	Data uintptr
+	Len  int
+	Cap  int
+}
+~~~
+`添加切片元素`
+~~~go
+var a []int
+a = append(a[:i], append([]int{x}, a[i:]...)...)     // 在第i个位置插入x
+a = append(a[:i], append([]int{1,2,3}, a[i:]...)...) // 在第i个位置插入切片
+a = append(a, 0)     // 切片扩展1个空间
+copy(a[i+1:], a[i:]) // a[i:]向后移动1个位置
+a[i] = x             // 设置新添加的元素
+a = append(a, x...)       // 为x切片扩展足够的空间
+copy(a[i+len(x):], a[i:]) // a[i:]向后移动len(x)个位置
+copy(a[i:], x)            // 复制新添加的切片
+~~~
+`删除切片元素`
+~~~go
+a = []int{1, 2, 3}
+a = a[N:]          // 删除开头N个元素
+a = a[:copy(a, a[N:])] // 删除开头N个元素
+a = append(a[:0], a[N:]...) // 删除开头N个元素
+a = a[:len(a)-N]   // 删除尾部N个元素
+a = append(a[:i], a[i+N:]...) // 删除中间N个元素
+a = a[:i+copy(a[i:], a[i+N:])]  // 删除中间N个元素
+~~~
+`切片内存技巧`
+~~~go
+func Filter(s []byte, fn func(x byte) bool) []byte {
+	b := s[:0]
+	for _, x := range s {
+		if !fn(x) {
+			b = append(b, x)
+		}
+	}
+	return b
+}
+var a []*int{ ... }
+a = a[:len(a)-1]  // 被删除的最后一个元素依然被引用, 可能导致GC操作被阻碍
+a[len(a)-1] = nil // GC回收最后一个元素内存 (保险的方式)
+a = a[:len(a)-1]  // 从切片删除最后一个元素
+~~~
+`切片类型强制转换`
+~~~go
+// +build amd64 arm64
+
+import "sort"
+
+var a = []float64{4, 2, 5, 7, 2, 1, 88, 1}
+// 下面通过两种方法将[]float64类型的切片a转换为[]int类型的切片
+
+// 第一种强制转换是先将切片数据的开始地址转换为一个较大的数组的指针，然后对数组指针对应的数组重新做切片操作。
+// 中间需要unsafe.Pointer来连接两个不同类型的指针传递。
+func SortFloat64FastV1(a []float64) {
+	// 强制类型转换
+	var b []int = ((*[1 << 20]int)(unsafe.Pointer(&a[0])))[:len(a):cap(a)]
+
+	// 以int方式给float64排序
+	sort.Ints(b)
+}
+// 第二种转换操作是分别取到两个不同类型的切片头信息指针，任何类型的切片头部信息底层都是对应reflect.SliceHeader结构，
+// 然后通过更新结构体方式来更新切片信息，从而实现a对应的[]float64切片到c对应的[]int类型切片的转换
+func SortFloat64FastV2(a []float64) {
+	// 通过 reflect.SliceHeader 更新切片头部信息实现转换
+	var c []int
+	aHdr := (*reflect.SliceHeader)(unsafe.Pointer(&a))
+	cHdr := (*reflect.SliceHeader)(unsafe.Pointer(&c))
+	*cHdr = *aHdr
+
+	// 以int方式给float64排序
+	sort.Ints(c)
+}
 ~~~
 
 ----
