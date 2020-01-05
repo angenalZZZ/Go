@@ -196,8 +196,8 @@ go get github.com/josharian/impl
 go get github.com/haya14busa/goplay/cmd/goplay
 go get github.com/uudashr/gopkgs/cmd/gopkgs
 go get github.com/davidrjenni/reftools/cmd/fillstruct
-go get github.com/alecthomas/gometalinter  &&  gometalinter --install
-go get github.com/go-delve/delve/cmd/dlv  #debug:  github.com/go-delve/delve/blob/master/Documentation/installation/README.md
+go get github.com/alecthomas/gometalinter  && gometalinter --install
+go get github.com/go-delve/delve/cmd/dlv  #debug: github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
 
 #### 管理|构建
@@ -274,15 +274,13 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
-  
 ~~~
-
 
 #### 测试
 ~~~bash
-  -------------------------------------------------------------------------------
-  # 测试命令 >>
-  -------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
+# 测试命令 >>
+# -------------------------------------------------------------------------------
   > go help test                                   # 测试帮助文档
   > go test ./...                                  # 测试遍历递归目录...所有的*_test.go 并且代码中包名一致
   > go test -v -count=1 [package-name]             # 测试指定的包(默认目录path=. 默认次数count=1 -v打印详情)
@@ -301,9 +299,9 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
   > go test -cover ./path                          # 检测代码覆盖率(testing使用到的代码行比例)
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B)在函数循环体指定b.N
-  -------------------------------------------------------------------------------
-  # 测试工具 >>
-  -------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
+# 测试工具 >>
+# -------------------------------------------------------------------------------
   > go test -bench=. -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof
   > go test -bench=. -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof
   > go tool pprof path.test.exe cpu.prof    # 分析函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
@@ -313,8 +311,9 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -coverprofile=c.out             # 生成代码覆盖率分析文件(标记出未测试到的代码行与代码比例)
   > go tool cover -func=c.out               # 分析代码覆盖率;检查哪些`函数`没测试或者没测试完全
   > go tool cover -html=c.out               # 分析代码覆盖率;查看网页格式html文件
-  
-  # 代码质量审查
+# -------------------------------------------------------------------------------
+# 代码质量 >>
+# -------------------------------------------------------------------------------
   > go help vet                                    # 执行代码静态检查(语法检查)
   > go tool vet help                               # 查看工具vet支持哪些检查?
   > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
@@ -353,7 +352,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > goad -h
   > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
-  
+# -------------------------------------------------------------------------------
+
 # 测试代码书写`Testing`
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
   > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
@@ -366,14 +366,13 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/
   $ rm -f goreleaser && rm -f *.md
   $ goreleaser help release
-
 ~~~
 
 #### 性能优化
  * 减少算法的时间复杂度
- * 根据业务逻辑，设计优化的数据结构
- * 尽量减少磁盘IO次数
- * 尽量复用资源
+ * 根据业务逻辑，设计优化的数据结构 (一般需投入的精力:数据结构>程序算法)
+ * 尽量减少磁盘IO次数 (现而今需关注)
+ * 尽量复用资源 (分布式应用需关注)
  * 同步锁sync.Map,RWMutex,Mutex (锁的粒度尽量小;尽量使用无锁的方式)
  * 内存分配 (数据结构初始化时，尽量指定合适的容量 make 避免多次内存分配)
  * 固定的 go routine 数量 + 固定的 channel 数量, 提升单机性能
@@ -385,15 +384,15 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
  * [Profiling、Tracing、Debugging、Runtime statistics and events](https://cyningsun.github.io/07-21-2019/go-diagnostics-cn.html)
 ~~~
 # ------------------------------------------------------------------------------------
-# 通过工具排查：
+# 程序代码排查`go tool pprof`的优化：
 # ------------------------------------------------------------------------------------
-#1. import _ "runtime/pprof" 添加性能分析采集(可用于控制台程序、测试程序等)
+#1. import _ "runtime/pprof" # 添加性能分析采集(可用于控制台程序、测试程序等)
 go test -bench=.* -benchtime 10s -cpuprofile=cpu.prof -memprofile=mem.prof #测试与性能分析*testing.B
 go tool pprof [binary] [profile] # 调用分析工具pprof(调用上面生成的分析结果文件;再调用svg可生成直观图)
 go tool pprof -alloc_objects -inuse_objects [binary] [profile] # 生成对象数量、引用对象数量等分析结果
 #go tool pprof -http=:8080 [binary] [profile] # GC对象扫描,函数占据大量CPU(如runtime.scanobject等问题)
 # top ; top20 ; top -cum # 按累积取样计数来排序(top命令-默认只包含本地取样计数最大的前十个函数)
-#2. import _ "net/http/pprof" 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
+#2. import _ "net/http/pprof" # 添加HTTP性能分析采集(也是基于runtime/pprof的封装;用于暴露HTTP端口进行调试)
 # 通过访问/debug/pprof查看cpu和内存状况 (通常:我们用wrk来访问，让服务处于高速运行状态，取样的结果会更准确)
 # go tool pprof http://127.0.0.1:8080/debug/pprof/profile # 分析CPU采样信息(默认频率100Hz,即每10毫秒取样一次)
 # git clone https://github.com/brendangregg/FlameGraph.git 后运行FlameGraph下的(拷贝flamegraph.pl到/usr/local/bin)
@@ -409,12 +408,12 @@ go get github.com/prashantv/go_profiling_talk #剖析如何用pprof和go-torch�
 # ------------------------------------------------------------------------------------
 # 内存管理`GC`的优化：
 # ------------------------------------------------------------------------------------
- # 内存分配性能测试(排查内存)
-testing.AllocsPerRun()
- # 对象数量过多时(引用传递过多时)，导致GC三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
-map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型避免对map遍历
-map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型避免对map遍历
-someSlice []float64  -> someSlice [32]float64   # 利用值类型代替对象类型
+ # 内存分配性能测试
+testing.AllocsPerRun()                          # 检测平均占用内存(分配对象数量)
+ # 对象数量过多时(引用传递过多时)，导致`GC`三色算法耗费较多CPU（可利用耗费少量的内存，优化耗费的CPU）
+map[string]NewStruct -> map[[32]byte]NewStruct  # key使用值类型,避免对map遍历
+map[int]*NewStruct   -> map[int]NewStruct       # val使用值类型,避免对map遍历
+someSlice []float64  -> someSlice [32]float64   # 可利用值类型Array代替对象类型Slice
 
 # ------------------------------------------------------------------------------------
 # 扩展容量(横向|纵向)：
