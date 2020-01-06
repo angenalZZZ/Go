@@ -75,12 +75,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     
 ~~~
 
-----
-
 #### ① [搭建开发环境](https://juejin.im/book/5b0778756fb9a07aa632301e/section/5b0d466bf265da08ee7edd20)
     环境配置> go env
-    安装版本> go version         #go1.13安装godoc> set GO111MODULE=on ; go get golang.org/x/tools/cmd/godoc
-    帮助文档> godoc -http=:6060 -index  ↑↑ 查看本地文档; 在线文档→ golang.org/doc
+    安装版本> go version         go1.13安装godoc> set GO111MODULE=on ; go get golang.org/x/tools/cmd/godoc
+    帮助文档> godoc -http=:6060 -index  ↑查看本地文档; 在线文档→ golang.org/doc
     开发工具> goland激活 http://idea.lanyus.com
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
