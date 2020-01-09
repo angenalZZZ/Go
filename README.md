@@ -459,6 +459,7 @@ go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/huandu/xstrings          # String functions to their friends in other languages
 go get github.com/bradfitz/iter            # Range [0,n) | for i:=range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
+go get golang.org/x/crypto/acme/autocert   # tls usage | github.com/go-ego/autotls
 go get golang.org/x/sync/errgroup          # sync.group扩展 g:=new(errgroup.Group);g.Go(func(){});e:=g.Wait() godoc.org/golang.org/x/sync/errgroup
 go get github.com/rafaeldias/async         # 超级好用+异步高并发处理(推荐)
 go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请求限制goroutines(推荐) *1.5k
