@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) <br> [✨语法速查表](#语法速查表) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*推荐开源web框架*](#-开源的-web-框架) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) <br> [✨语法速查表](#语法速查表) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*✨推荐开源web框架*](#-开源的-web-框架) ；[*✨推荐第三方库*](https://libs.garden/go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*google开源*](#Google开源) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) <br> [awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -118,6 +118,27 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     // +build darwin linux freebsd windows android js
     // +build 386 amd64 arm arm64 ppc64 wasm
     [空行]
+
+> 编译器命令
+~~~bash
+go command [arguments]    // go 命令 [参数]
+go build                  // 编译包和依赖包
+go clean                  // 移除对象和缓存文件
+go doc                    // 显示包的文档
+go env                    // 打印go的环境变量信息
+go bug                    // 报告bug
+go fix                    // 更新包使用新的api
+go fmt                    // 格式规范化代码
+go generate               // 通过处理资源生成go文件
+go get                    // 下载并安装包及其依赖
+go install                // 编译和安装包及其依赖
+go list                   // 列出所有包
+go run                    // 编译和运行go程序
+go test                   // 测试
+go tool                   // 运行给定的go工具
+go version                // 显示go当前版本
+go vet                    // 发现代码中可能的错误
+~~~
 
 > 安装依赖包
 ~~~bash
