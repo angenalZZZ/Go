@@ -142,7 +142,7 @@ go vet                    // 发现代码中可能的错误
 
 > 安装依赖包
 ~~~bash
-# 代理设置 (解决网络问题)
+# 代理设置 (解决网络问题) HTTP_PROXY, HTTPS_PROXY, NO_PROXY - defines HTTP proxy environment variables
 > set http_proxy=http://127.0.0.1:5005     (临时有效) [设置环境变量linux $ export -> vim /etc/profile]
 > set https_proxy=http://127.0.0.1:5005    (临时有效)
 > set ftp_proxy=http://127.0.0.1:5005      (临时有效)
