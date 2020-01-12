@@ -727,6 +727,8 @@ go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
+# Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
+# https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
