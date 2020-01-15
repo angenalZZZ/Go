@@ -357,15 +357,15 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > gor --input-raw :80 --output-file=requests.gor && gor --input-file requests.gor --output-http="http://localhost:8080"
 
   # 集成go-test,全自动web-UI,回归测试套件,测试复盖率,代码生成器,桌面通知`goconvey`
-  > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (强力推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
-  > go get github.com/stretchr/testify         # 通用接口调试工具 *8k | assert,require,mock,suite,http
+  > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
+  > go get github.com/stretchr/testify         # 通用的接口测试 *10k (强力推荐) | assert,http,mock,require,suite
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
   # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
   $ wrk -t144 -c600 -d30s --latency <url>      # -t线程数 -c并发连接数 -d压测时间s --latency响应n%延迟统计ms --timeout超时
-  $ wrk2 -t144 -c100 -d30s -R2000 --latency <url> # -R每秒请求的速率[次/秒Required] --latency[-L]延迟统计 --timeout[-T]超时
-  $ wrk2 -t144 -c100 -d30s -R2000 --u_latency <url> # --u_latency[-U]打印未校正的延迟统计;跟踪报告"未校正延迟直方图"
+  $ wrk2 -t144 -c400 -d30s -R2000 --latency <url> # -R每秒请求的速率[次/秒] --latency[-L]延迟统计 --timeout[-T]超时
+  $ wrk2 -t144 -c400 -d30s -R2000 --u_latency <url> # --u_latency[-U]打印未校正的延迟统计;生成跟踪报告"未校正延迟直方图"
   # Web性能测试命令 github.com/codesenberg/bombardier *1.5k
   $ bombardier -n 10000 -c 600 -d 10s -m GET -t 3s --fasthttp -l <url> # -n请求数 -c连接数 -d压测时间s -l即--latencies
   > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
