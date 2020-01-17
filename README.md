@@ -631,12 +631,13 @@ go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst
    > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
 
-go get github.com/blevesearch/bleve        # 现代文本搜索引擎Bleve   *6k
-go get github.com/go-ego/riot              # 搜索引擎Riot,支持中文分词,逻辑搜索,持久存储,分布式索引 *5k
+go get github.com/cayleygraph/go-client    # 图数据库 Client API  *13k
+go get github.com/cayleygraph/cayley       # 图数据库(推荐) Driven & RESTful API & LevelDB Stores
+go get github.com/siesta/neo4j             # Neo4j 客户端  github.com/jmcvetta/neoism
+go get github.com/go-ego/riot              # Riot 搜索引擎|分布式索引|中文分词|中文转拼音 *5k
+go get github.com/blevesearch/bleve        # Bleve 现代文本搜索引擎  *6k
 go get github.com/olivere/elastic          # Elasticsearch 6.0客户端 *4k
-go get github.com/Qihoo360/poseidon        # 360开源|日志搜索平台是搜索引擎的核心技术+索引数据Hadoop
-go get github.com/siesta/neo4j             # Neo4j 客户端 | github.com/jmcvetta/neoism
-go get github.com/cayleygraph/cayley       # 图形数据库 Driven & RESTful API & LevelDB Stores
+go get github.com/Qihoo360/poseidon        # 360开源|百亿级日志分布式搜索引擎&Hadoop *1.5k
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
 
