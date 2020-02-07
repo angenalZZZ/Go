@@ -1152,8 +1152,8 @@ go get github.com/google/gapid             # Windows UI App : Graphics API Debug
 ~~~
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
-git clone --depth=1 https://github.com/lexkong/apiserver_demos apiserver                  # 项目源码-复制^demo至-工作目录
-git clone --depth=1 https://github.com/lexkong/vendor                                     # 项目依赖-govendor
+git clone --depth=1 https://github.com/lexkong/apiserver_demos apiserver        # 项目源码-复制^demo至-工作目录
+git clone --depth=1 https://github.com/lexkong/vendor                           # 项目依赖-govendor
 go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
 # 构建
 cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
@@ -1179,6 +1179,7 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 > Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
 
 ~~~shell
+> docker pull dockercore/golang-cross # 推荐: the MinGW compiler for windows, and an OSX SDK.
 # 1. pull build tools: Glide, gdm, go-test-teamcity
 docker pull jetbrainsinfra/golang:1.11.5
 docker pull golang:1.4.2-cross
