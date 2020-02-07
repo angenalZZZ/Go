@@ -703,6 +703,7 @@ go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authenti
 go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请(推荐) www.google.com/recaptcha/admin/create
 go get github.com/dchest/captcha           # 验证码|图片|声音(推荐)
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
+go get github.com/anthonynsimon/bild       # 图像处理库 adjust,blend,blur,channel,effect,histogram,imgio,noise,segment
 go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
@@ -768,6 +769,7 @@ go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支�
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
 
+go get github.com/dirkaholic/kyoo          # Unlimited job queue.Submit from http.handler
 go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐)
 go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储(推荐) & LevelDB Stores
 go get github.com/eapache/channels         # 通道：`Distribute分发`1In*Out,`Multiplex多路复用`*In1Out,`Pipe管道`1In1Out,`BatchingChannel批量通道`...
