@@ -140,6 +140,27 @@ go version                // 显示go当前版本
 go vet                    // 发现代码中可能的错误
 ~~~
 
+> 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
+
+~~~shell
+> docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
+# 1. pull build tools: Glide, gdm, go-test-teamcity
+docker pull jetbrainsinfra/golang:1.11.5
+docker pull golang:1.4.2-cross
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
+# 2. run docker container
+docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
+docker cp golang1115:/go/src/github.com %GOPATH%\src
+docker cp golang1115:/go/src/golang.org %GOPATH%\src
+docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
+# 3. go build
+docker exec -it golang1115 bash
+  $ cd apiserver & go build & ./apiserver                                                # build for linux
+  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
+    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
+~~~
+
+
 > 安装依赖包
 ~~~bash
 # 代理设置 (解决网络问题) HTTP_PROXY, HTTPS_PROXY, NO_PROXY - defines HTTP proxy environment variables
@@ -1173,28 +1194,6 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 
  * 高性能
     * [高并发架构解决方案](https://studygolang.com/articles/15479)
-
-----
-
-> Docker 编译器(可选) [Golang + custom build tools](https://hub.docker.com/_/golang)
-
-~~~shell
-> docker pull dockercore/golang-cross # 推荐: the MinGW compiler for windows, and an OSX SDK.
-# 1. pull build tools: Glide, gdm, go-test-teamcity
-docker pull jetbrainsinfra/golang:1.11.5
-docker pull golang:1.4.2-cross
-docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
-# 2. run docker container
-docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
-docker cp golang1115:/go/src/github.com %GOPATH%\src
-docker cp golang1115:/go/src/golang.org %GOPATH%\src
-docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
-# 3. go build
-docker exec -it golang1115 bash
-  $ cd apiserver & go build & ./apiserver                                                # build for linux
-  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
-    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
-~~~
 
 ----
 
