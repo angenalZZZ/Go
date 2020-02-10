@@ -339,7 +339,8 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
                # t.Logf 和 t.SkipNow 方法进行调用。方法 t.Skipped 的结果值会告知我们当前的测试是否已被忽略
   # t.Parallel # 标记为可并行测试 (当test参数 -parallel 时)
   > go test -timeout=10s github.com/mpvl/errdare   # 远程测试超时10秒
-  > go test -cover ./path                          # 检测代码覆盖率(testing使用到的代码行比例)
+  > go test -v -cover -race ./path                 # 检测代码覆盖率(testing使用到的代码行比例)
+  > go test -v -cover -race -test.bench=. -test.benchmem # 性能测试-test.bench简写-bench; mem性能测试
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B)在函数循环体指定b.N
 # -------------------------------------------------------------------------------
 # 测试工具 >>
