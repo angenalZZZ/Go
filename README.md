@@ -563,6 +563,12 @@ go get github.com/sethgrid/pester          # HTTP client calls with retries, bac
 go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
 go get -d github.com/upspin/upspin         # 构建安全统一和全局命名、共享文件和数据的框架：一个排序的全局名称系统 *5k | git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
 
+go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                  *25k
+go get github.com/tidwall/evio             # 超快的事件网络IO{http,redis..}-server   *4k
+go get github.com/panjf2000/gnet           # 高性能-轻量级-非阻塞的事件驱动网络框架  *1.7k
+go get github.com/perlin-network/noise     # P2P网络堆栈-高性能分散式应用程序框架    *1.4k
+go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
+
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf | 基于Gossip的Membership,P2P对等网络\去中心 | www.serf.io
@@ -585,7 +591,6 @@ go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 # 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
 go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
-go get github.com/tidwall/evio             # 超快的事件/网络IO{http,redis..}-server   *4k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
