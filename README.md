@@ -566,8 +566,17 @@ go get -d github.com/upspin/upspin         # 构建安全统一和全局命名�
 go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                  *25k
 go get github.com/tidwall/evio             # 超快的事件网络IO{http,redis..}-server   *4k
 go get github.com/panjf2000/gnet           # 高性能-轻量级-非阻塞的事件驱动网络框架  *1.7k
-go get github.com/perlin-network/noise     # P2P网络堆栈-高性能分散式应用程序框架    *1.4k
 go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
+go get github.com/perlin-network/noise     # P2P网络堆栈-高性能分散式应用程序框架    *1.4k
+go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
+go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
+go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
+go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
+go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库
+go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享
+go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
+go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
@@ -590,9 +599,6 @@ go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文�
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 # 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
-go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
-go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 
 go get github.com/go-redis/cache
@@ -763,8 +769,6 @@ go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unido
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
-go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
-go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *10.k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *14.k 将STDIN/STDOUT程序转换为WebSocket服务器
