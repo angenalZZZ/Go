@@ -91,10 +91,12 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GO111MODULE=on             (可选项: 建议 GO111MODULE=auto )
     set GOPROXY=https://goproxy.io (可选项: 建议 网络代理)
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
-    # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod);[-ldflags "-H windowsgui"]可以让exe运行时不弹出cmd窗口
+    # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
     set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
-    # go build 参数：-i -ldflags "-s -w" # -ldflags 自定义编译标记:"-s -w"去掉编译符号+调试信息(杜绝gdb调试)+缩小file
-    # gofmt -w .    # 格式化代码         #build参数 -ldflags "-s -w -X importpath.varname=value" #-X编译时修改代码
+    # go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
+    # -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
+    # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -race 启用数据竞赛检测; -v 编译时显示包名;
+    # -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -111,7 +113,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
     # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
     go tool dist list
-    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
     # <按条件编译> 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
     go build -tags [linux|darwin|386|amd64]
