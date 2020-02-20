@@ -10,6 +10,12 @@ gitTreeState = $(shell if git status|grep -q 'clean';then echo clean; else echo 
 
 ldflags="-s -w -X ${versionDir}.gitTag=${gitTag} -X ${versionDir}.buildDate=${buildDate} -X ${versionDir}.gitCommit=${gitCommit} -X ${versionDir}.gitTreeState=${gitTreeState}"
 
+# generate ca files
+caOut = "configs/server.crt"
+caKeyout = "configs/server.key"
+caSubj = "/C=DE/ST=NRW/L=Earth/O=Random Company/OU=IT/CN=127.0.0.1/emailAddress=angenal@hotmail.com"
+
+# make commands
 all: gotool
 	@go build -v -ldflags ${ldflags} .
 clean:
@@ -19,7 +25,7 @@ gotool:
 	gofmt -w .
 	go vet . | grep -v vendor;true
 ca:
-	openssl req -new -nodes -x509 -out configs/server.crt -keyout configs/server.key -days 3650 -subj "/C=DE/ST=NRW/L=Earth/O=Random Company/OU=IT/CN=127.0.0.1/emailAddress=angenal@hotmail.com"
+	openssl req -new -nodes -x509 -days 3650 -out ${caOut} -keyout ${caKeyout} -subj ${caSubj}
 
 help:
 	@echo "make - compile the source code"
