@@ -10,7 +10,7 @@ import (
 // App配置
 var (
 	AppConfig     *Config
-	AppConfigFile = pflag.StringP("config", "c", "app.config.yml", "api server config file path.")
+	AppConfigFile = pflag.StringP("config", "c", "server.config.yml", "api server config file path.")
 )
 
 // init 初始化:App配置
