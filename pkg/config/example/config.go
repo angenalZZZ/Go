@@ -1,8 +1,6 @@
-package app
+package example
 
-import "github.com/lexkong/log"
-
-// App 配置 结构
+// Config 配置 结构
 type Config struct {
 	// WebApi服务
 	Server struct {
@@ -44,6 +42,4 @@ type Config struct {
 	UploadedImagesDir string `default:"data/images"`
 	// 插件目录
 	PluginsDir string `default:"data/plugins"`
-	// 日志跟踪
-	Log log.PassLagerCfg
 }

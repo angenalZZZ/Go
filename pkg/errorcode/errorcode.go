@@ -2,21 +2,22 @@ package errorcode
 
 import "fmt"
 
-// 错误代码.
+// ErrorCode 错误代码.
 type ErrorCode struct {
 	Code int
 	Msg  string
 	Desc string
 }
 
-// 添加错误详情信息
+// AddDetail 添加错误详情信息.
 func (e *ErrorCode) AddDetail(format string, param ...interface{}) {
 	e.Desc = e.Desc + " " + fmt.Sprintf(format, param)
 }
 
-// 返回错误时的HTTP状态码
+// 返回错误时的HTTP状态码.
 var errorCodeToHttpStatusCode = map[string]int{}
 
+// GetHttpStatusCode 获取HTTP状态码.
 func (e *ErrorCode) GetHttpStatusCode() int {
 	if code, OK := errorCodeToHttpStatusCode[e.Msg]; OK {
 		return code
@@ -24,6 +25,7 @@ func (e *ErrorCode) GetHttpStatusCode() int {
 	return 0
 }
 
+// SetHttpStatusCode 设置HTTP状态码.
 func (e *ErrorCode) SetHttpStatusCode(code int) {
 	errorCodeToHttpStatusCode[e.Msg] = code
 }

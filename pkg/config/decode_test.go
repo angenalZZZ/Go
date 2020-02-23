@@ -3,12 +3,12 @@ package config
 import (
 	"testing"
 
-	"github.com/angenalZZZ/Go/go-gin-api/pkg/config/app"
+	"github.com/angenalZZZ/Go/pkg/config/example"
 	jsoniter "github.com/json-iterator/go"
 )
 
 func TestDecodeFile(t *testing.T) {
-	config, file := new(app.Config), "app/config.example.yml"
+	config, file := new(example.Config), "example/config.example.yml"
 
 	if err := DecodeFile(file, config); err != nil {
 		t.Fatal(err)

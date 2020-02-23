@@ -2,7 +2,7 @@ package errorcode
 
 import "net/http"
 
-// 错误码表
+// 错误码表.
 const (
 	// 请求成功.
 	OK = 0
@@ -34,6 +34,7 @@ const (
 	ServiceUnAvailable = 503
 )
 
+// Common 生成错误信息.
 func Common(code int) ErrorCode {
 	e := ErrorCode{Code: code}
 

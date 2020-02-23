@@ -11,13 +11,13 @@ import (
 	"github.com/pkg/errors"
 )
 
-// 配置功能
+// Config 配置功能
 type Config struct {
 	// 运行环境
 	*Environ
 }
 
-// 配置运行环境
+// Environ 配置运行环境
 type Environ struct {
 	// 当前环境
 	Environment string
@@ -25,7 +25,7 @@ type Environ struct {
 	EnvironmentPrefix string
 }
 
-// 解析配置文件
+// Load 解析配置文件
 func (c *Config) Load(config interface{}, files ...string) (err error) {
 	// 查找配置文件
 	configFiles := c.GetConfigFiles(files...)
@@ -41,7 +41,7 @@ func (c *Config) Load(config interface{}, files ...string) (err error) {
 	return c.DecodeTags(config)
 }
 
-// 查找配置文件
+// GetConfigFiles 查找配置文件
 func (c *Config) GetConfigFiles(files ...string) []string {
 	var results []string
 
@@ -70,18 +70,7 @@ func (c *Config) GetConfigFiles(files ...string) []string {
 	return results
 }
 
-// 查找特定环境配置文件
-func getFilenameWithEnvironmentPrefix(file, env string) (string, error) {
-	extname := path.Ext(file)
-	envFile := fmt.Sprintf("%v.%v%v", strings.TrimSuffix(file, extname), env, extname)
-
-	if fileInfo, err := os.Stat(envFile); err == nil && fileInfo.Mode().IsRegular() {
-		return envFile, nil
-	}
-	return "", errors.Errorf("未找到特定环境[%s]配置文件：%s", env, file)
-}
-
-// 解析配置文件数据结构：标记
+// DecodeTags 解析配置文件数据结构：标记
 func (c *Config) DecodeTags(config interface{}, prefixes ...string) (err error) {
 	if len(prefixes) == 0 && c.EnvironmentPrefix != "" {
 		prefixes = []string{c.EnvironmentPrefix} // 环境变量：前缀
@@ -173,6 +162,17 @@ func (c *Config) DecodeTags(config interface{}, prefixes ...string) (err error) 
 		}
 	}
 	return nil
+}
+
+// 查找特定环境配置文件
+func getFilenameWithEnvironmentPrefix(file, env string) (string, error) {
+	extname := path.Ext(file)
+	envFile := fmt.Sprintf("%v.%v%v", strings.TrimSuffix(file, extname), env, extname)
+
+	if fileInfo, err := os.Stat(envFile); err == nil && fileInfo.Mode().IsRegular() {
+		return envFile, nil
+	}
+	return "", errors.Errorf("未找到特定环境[%s]配置文件：%s", env, file)
 }
 
 func prefixToDecodeTags(prefixes []string, structField *reflect.StructField) []string {

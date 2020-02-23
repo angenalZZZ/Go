@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/angenalZZZ/Go/go-gin-api/pkg/config/app"
+	"github.com/angenalZZZ/Go/pkg/config/example"
 
 	jsoniter "github.com/json-iterator/go"
 )
@@ -22,7 +22,7 @@ func TestConfig_Load(t *testing.T) {
 
 	// 读取配置信息
 	config := Config{&Environ{EnvironmentPrefix: "API"}}
-	appConfig, files := new(app.Config), []string{"app/config.example.yml"}
+	appConfig, files := new(example.Config), []string{"example/config.example.yml"}
 
 	// 解析配置文件
 	err = config.Load(appConfig, files...)

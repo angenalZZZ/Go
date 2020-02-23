@@ -10,7 +10,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// 解析配置文件 转换为对象config
+// DecodeFile 解析配置文件 转换为对象config
 func DecodeFile(file string, config interface{}) (err error) {
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
