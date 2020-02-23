@@ -258,14 +258,14 @@ git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/
   > go help mod <command>       # 帮助 | 功能概述 go help modules
   > set GO111MODULE=on          # 开始前(临时开启) | <linux> $ export GO111MODULE=on && env
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
-  > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
+  > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH% ; 在 go module 下, 弃用了GOPATH
   #----------------------------------------------------------------------
-  > go mod init [$MODULE_NAME]  # 1.默认生成go.mod文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
-  > go mod init example.com/app # 1.指定生成go.mod文件，依赖golang.org/...需代理，或在go.mod中用replace替换为github镜像
-  > go get github.com/gin-gonic/gin # 安装项目依赖...生成go.sum文件，用于锁定依赖版本，有点类似Nodejs的package-lock.json
-  > code .                      # 2.开始编码... 在 go module 下，go^1.11不再需要vendor目录(go~1.10.*)进行精确的版本管理
+  > go mod init [$MODULE_NAME]  # 1.默认生成go.mod文件，$MODULE_NAME默认github.com/$GITHUB_USER_NAME/$PROJECT_NAME
+  > go mod init example.com/app # 1.指定生成go.mod文件，依赖golang.org/...需代理或在go.mod中replace替换为github镜像
+  > go get github.com/gin-gonic/gin # 安装项目依赖...生成go.sum文件用于锁定依赖版本，有点类似Nodejs的package-lock.json
+  > code .                      # 2.开始编码...在 go module 下 go^1.11不再需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
-  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用的依赖,改变go.mod)
+  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用依赖,改了go.mod)
   > go build                    # 3.构建使用%GOPATH%/pkg/mod/... 缓存目录(go.mod文件对每个依赖项进行精确的版本管理)
   > go clean -r -cache .        # 4.清除构建&缓存文件,下次构建时需重新下载依赖包.
   #----------------------------------------------------------------------
@@ -293,8 +293,8 @@ git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/
   > go mod download && go build              # 7.下载依赖后进行项目的构建 $GOPATH/pkg/mod [缓存]
   > go mod vendor   && go build -mod=vendor  # 7.下载依赖后进行项目的构建 ./vendor [方便复制打包]
 
-# 管理模块依赖( go版本~1.10.* 推荐)
-go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
+# 管理模块依赖( go版本~1.10.* ~低版本~)
+go get -u github.com/golang/dep/cmd/dep # 推荐使用 *13k
   > dep init                  # 初始化项目
   > dep ensure -add [package] # 添加一个包
   > dep ensure                # 安装依赖包(速度慢)
@@ -403,7 +403,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
   > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
   > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
-  > go get github.com/go-stack/stack # 包堆栈实现了用于捕获、操作和格式化调用堆栈的实用程序。它提供了比包运行时更简单的API。
+  > go get github.com/go-stack/stack # 包堆栈实现了用于捕获、操作和格式化调用堆栈的实用程序。它提供了比包运行时更简单的API
 
 # 自动化工具`CI`
   # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
