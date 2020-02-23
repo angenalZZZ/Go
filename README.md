@@ -712,6 +712,7 @@ go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查�
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
+go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
 go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
 go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authentication  *2.5k
