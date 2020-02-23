@@ -40,6 +40,11 @@ type Config struct {
 		Name string `default:"admin"`
 		Pass string `default:"admin"`
 	}
+	// 链路追踪
+	Tracker struct {
+		Enabled    *bool  `default:"false"`
+		JaegerAddr string `default:""`
+	}
 	// 上传图片目录
 	UploadedImagesDir string `default:"data/images"`
 	// 插件目录
