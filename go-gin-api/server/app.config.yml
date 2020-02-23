@@ -1,0 +1,51 @@
+# 后端配置文档,请在修改后另存为`config.yml`
+
+server: # WebApi服务
+  listenaddr: "" # 监听本地IP 地址; 空字符表示监听所有本地IP
+  port: 80 # 监听本地IP 端口号
+
+  ssl: # HTTPS设置
+    enabled: false # 启用
+    redirecttohttps: true # 强制跳转HTTPS
+    listenaddr: "" # 监听本地IP 地址; 空字符表示监听所有本地IP
+    port: 443 # 监听本地IP 端口号
+    certfile: # 证书文件 (启用 letsencrypt 不填写)
+    certkey: # 证书密钥 (启用 letsencrypt 不填写)
+    letsencrypt:
+      enabled: false # 启用 letsencrypt
+      accepttos: false # if you accept the tos from letsencrypt
+      cache: data/certs # the directory of the cache from letsencrypt
+      hosts: # the hosts for which letsencrypt should request certificates
+      - mydomain.com
+      - myotherdomain.tld
+  
+  responseheaders: # 输出响应头Headers
+    Access-Control-Allow-Origin: "*" # 允许跨域的请求限制 http connections
+    Access-Control-Allow-Methods: "GET,POST"
+
+  stream: # 跨域访问限制
+    allowedorigins: # 允许跨域的请求限制 websocket connections (相同域名不受此限制)
+      - ".+.example.com"
+
+database: # 连接数据库
+  dialect: sqlite3 # 数据库类型
+  connection: data/app.db
+  # mysql 数据库 root:root@tcp(localhost:3306)/db?charset=utf8&parseTime=true&loc=Local
+  # sqlserver://sa:123456@localhost?database=db&connection+timeout=3
+
+defaultuser: # 系统默认账号(内置账号)
+  name: admin # 用户名
+  pass: admin # 密码
+
+uploadedimagesdir: data/images # 上传图片目录
+pluginsdir: data/plugins # 插件目录
+
+log: # 日志跟踪
+  writers: file,stdout # 输出位置(选项:file,stdout)
+  logger_level: DEBUG # 日志级别
+  logger_file: log/debug.log # 日志文件
+  log_format_text: false # 输出格式(选项:true输出json,false输出plaintext)
+  rollingPolicy: size # 转存文件依据(选项:daily,size)
+  log_rotate_date: 1 # 转存时间Day(配合rollingPolicy:daily)
+  log_rotate_size: 1 # 转存大小MB(配合rollingPolicy:size)
+  log_backup_count: 7 # 日志文件达到转存标准时进行压缩备份(指定文件最大个数)
