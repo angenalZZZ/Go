@@ -480,6 +480,7 @@ go get -d github.com/go-training/training  # 适合初学者培训
 go get -d github.com/insionng/zenpress     # 适合学习 cms system
 go get -u github.com/ponzu-cms/ponzu/...   # 用户友好、可扩展的CMS和管理后台(SSL+Push+BoltDB)
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
+go get -d github.com/jakewright/tutorials  # Docker And Go Concurrency
 go get -d github.com/muesli/cache2go       # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
 go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
@@ -683,9 +684,9 @@ go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web�
 # 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee   github.com/beego/bee
 go get github.com/kataras/iris             # 最快WebSvr框架 *15k 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
-go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k martini.codegangsta.io
-go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架(推荐)martini高级扩展+依赖注入 go-macaron.com/docs
-go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链 *3.6k (推荐)
+go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架+依赖注入(强力推荐) go-macaron.com/zh-cn
+go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k   martini.codegangsta.io
+go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链 *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
@@ -747,13 +748,13 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator,recovery,ratelimit;retry
 go get github.com/TykTechnologies/tyk  # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit,analytics,quotas,webhooks,IP/Blacklist/Whitelist,restart,versioning
-go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *17k istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *13k gokit.io (推荐)
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *22k istio.io | www.grpc.io
+go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *17k gokit.io (强力推荐)
+go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *12k (强力推荐)
 go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架 *7k (推荐) thrift.apache.org > thrift -help
-go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 *6k
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 *9k
 go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
-go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *7k (推荐)
 go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
@@ -780,6 +781,7 @@ go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支�
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
+go get github.com/rsms/gotalk              # WebSocket Serve and Js Client Peer异步通信库 *1k
 
 go get github.com/dirkaholic/kyoo          # Unlimited job queue.Submit from http.handler
 go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐)
@@ -803,6 +805,11 @@ go get github.com/appleboy/gorush          # 消息推送gorush服务(推荐)  *
 go get github.com/Shopify/sarama           # 消息系统Kafka客户端(推荐) *5k : github.com/bsm/sarama-cluster [集群客户端]
 go get github.com/travisjeffery/jocko      # 消息系统Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
+
+go get github.com/prometheus/prometheus    # 监控系统和时序数据库Prometheus    *30k
+go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
+go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
+go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
 
 # 物联网IoT、物理计算Drones、机器人Robotics
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
