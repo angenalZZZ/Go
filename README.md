@@ -251,13 +251,7 @@ go get github.com/go-delve/delve/cmd/dlv  #debug: github.com/go-delve/delve/blob
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
 # ------------------------------------------------------------------------------------
 
-# 构建
-  > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
-  > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
-  > GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w"
-  > gowatch                       # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
-
-# 管理模块依赖( go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
+# 管理模块依赖(新建项目 go版本^1.11.* 推荐) & 设置GoLand环境 √ Enable Go Modules(vgo)
 # 集成 vgo 项目模块管理工具 (可用环境变量 GO111MODULE 开启或关闭模块支持:off,on,auto) #默认auto未开启
 git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/vgo ; go install #安装vgo
   #! github.com/golang/go/wiki/Modules research.swich.com/vgo blog.jetbrains.com/go
@@ -266,38 +260,38 @@ git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/
   > mkdir.\example.com\app      # 新建项目 | <linux> $ mkdir -p example.com/app
   > cd example.com/app          # 进入项目目录，此目录不再需要 in %GOPATH%
   #----------------------------------------------------------------------
-  > go mod init [$MODULE_NAME]  # 1.默认生成 go.mod 文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
-  > go mod init example.com/app # 1.指定生成 go.mod 文件，依赖golang.org/...可能要翻墙，go.mod中用replace替换成github镜像
-  > go get github.com/gin-gonic/gin # 安装项目依赖... 生成 go.sum 文件，锁定依赖的版本。
-  > code .                      # 2.开始编码... 在 go module 下，不需要vendor目录(go~1.10.*)进行精确的版本管理
+  > go mod init [$MODULE_NAME]  # 1.默认生成go.mod文件，$MODULE_NAME默认为github.com/$GITHUB_USER_NAME/$PROJECT_NAME
+  > go mod init example.com/app # 1.指定生成go.mod文件，依赖golang.org/...需代理，或在go.mod中用replace替换为github镜像
+  > go get github.com/gin-gonic/gin # 安装项目依赖...生成go.sum文件，用于锁定依赖版本，有点类似Nodejs的package-lock.json
+  > code .                      # 2.开始编码... 在 go module 下，go^1.11不再需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
-  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用的依赖)
-  > go build                    # 3.构建使用%GOPATH%/pkg/mod/... 文件夹
-  > go clean -r -cache .        # 4.清除构建&缓存文件
+  > go mod tidy || go get ./... # 2.下载依赖%GOPATH%/pkg/mod/... 文件夹(tidy保持依赖项目同步,舍弃无用的依赖,改变go.mod)
+  > go build                    # 3.构建使用%GOPATH%/pkg/mod/... 缓存目录(go.mod文件对每个依赖项进行精确的版本管理)
+  > go clean -r -cache .        # 4.清除构建&缓存文件,下次构建时需重新下载依赖包.
   #----------------------------------------------------------------------
   > go list -m all              # 2.查看当前版本
   > go list -m -u all           # 2.查看当前的依赖和模块版本更新 -json 支持json输出
   > depth [package-name]        # 查看某一个库的依赖 go get github.com/KyleBanks/depth/cmd/depth
   > go-callvis                  # 代码调用链图工具 go get github.com/TrueFurby/go-callvis
   > go mod graph                # 4.输出依赖关系,打印模块依赖图
-  > go mod verify               # 5.验证依赖是否正确
+  > go mod verify               # 5.验证依赖是否正确,检查依赖的问题
   > go get -u || -u=patch       # 5.升级到最新依赖版本 || 升级到最新的修订版本 (也可指定版本)
   > go mod edit -fmt            # 5.格式化 go.mod 文件
   > go mod edit -require=path@ver # 2.添加或修改依赖版本
   > go mod download             # 2.下载依赖到%GOPATH%/pkg/mod/cache'共享缓存'
   #----------------------------------------------------------------------     (处理网络问题)
-  > go mod edit -replace=google.golang.org/grpc=github.com/grpc/grpc-go@latest # 2.编辑镜像
+  > go mod edit -replace=google.golang.org/grpc=github.com/grpc/grpc-go@latest # 2.编辑镜像,修改依赖版本
   > go mod tidy
-  > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹
-  > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹
+  > go mod vendor               # 3.拷贝依赖到./vendor/... 文件夹 (有时用于Git版本管理,避免新环境无法还原,下载依赖包)
+  > go build -mod=vendor        # 3.构建时使用./vendor/... 文件夹 (有时用于Git版本管理)
   > go build -mod=readonly      # 3.防止隐式修改go.mod
-  > rm go.sum && go mod vendor # 删掉 go.sum 并重建, 解决 checksum mismatch?
+  > rm go.sum && go mod vendor  #  .删掉 go.sum 并重建, 解决 checksum mismatch 下载问题?
   #----------------------------------------------------------------------
-  > go mod init github.com/golang/app # 6.从旧项目迁移 GO111MODULE (读取vendor/vendor.json,gopkg.toml到go.mod)
-  > go mod download             # 6.下载依赖到%GOPATH%/pkg/mod/... 缓存文件夹
+  > go mod init github.com/golang/app # 6.从旧项目迁移至 GO111MODULE (读取vendor/vendor.json,gopkg.toml升到go.mod)
+  > go mod download                   # 6.下载依赖到%GOPATH%/pkg/mod/... 文件夹 (非Git版本项目文件夹内)
   #----------------------------------------------------------------------
-  > go mod download | go build              # $GOPATH/pkg/mod [缓存]
-  > go mod vendor   | go build -mod=vendor  # ./vendor [方便复制打包]
+  > go mod download && go build              # 7.下载依赖后进行项目的构建 $GOPATH/pkg/mod [缓存]
+  > go mod vendor   && go build -mod=vendor  # 7.下载依赖后进行项目的构建 ./vendor [方便复制打包]
 
 # 管理模块依赖( go版本~1.10.* 推荐)
 go get -u github.com/golang/dep/cmd/dep # 推荐使用 *12k
@@ -318,6 +312,12 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor add +e           # 添加本地$GOPATH包(未加入vendor目录时)[go get]
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
+
+# 构建
+  > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
+  > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
+  > GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w"
+  > gowatch                   # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
 ~~~
 
 #### 测试
