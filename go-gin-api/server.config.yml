@@ -1,4 +1,6 @@
 # 后端配置文档,请在修改后另存为`config.yml`
+appname: "API"
+appmode: "debug"
 
 server: # WebApi服务
   listenaddr: "" # 监听本地IP 地址; 空字符表示监听所有本地IP

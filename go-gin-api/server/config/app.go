@@ -2,8 +2,18 @@ package config
 
 import "github.com/lexkong/log"
 
+// Must panic if err.
+func Must(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
 // App 配置 结构
-type Config struct {
+type AppConfigModel struct {
+	// App名称
+	AppName string `default:"API"`
+	AppMode string `default:"debug"` //debug or release
 	// WebApi服务
 	Server struct {
 		ListenAddr string `default:"" env:"API_SERVER_ADDR"`
