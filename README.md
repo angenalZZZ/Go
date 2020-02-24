@@ -679,14 +679,14 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 
 # Web开发推荐如下：Router|Api框架 + MVC框架
 go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *33k: Gin(推荐)  Star数最高的Web框架
-go get github.com/astaxie/beego            # 后端WebSvr框架 *22k: API、Web、MVC  高度解耦的框架  beego.me/docs
-# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins.. 管理工具bee   github.com/beego/bee
-go get github.com/kataras/iris             # 最快WebSvr框架 *15k 中文文档 github.com/kataras/iris/blob/master/README_ZH.md
-# 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [postgres+angular]github.com/iris-contrib/parrot
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *36k: Gin(推荐) Star最高的Web框架 gin-gonic.com/zh-cn
+go get github.com/astaxie/beego            # 后端WebSvr框架 *23k: API、Web、MVC 高度解耦的框架  beego.me/docs
+# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins..项目管理工具bee  github.com/beego/bee
 go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架+依赖注入(强力推荐) go-macaron.com/zh-cn
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k   martini.codegangsta.io
-go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链 *3.6k
+go get github.com/kataras/iris             # 最快WebSvr框架 *18k (推荐)
+# 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
+go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
