@@ -545,11 +545,11 @@ go get github.com/google/go-querystring/query # 转换对象，URL参数        
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
 go get github.com/PuerkitoBio/goquery      # 解析HTML像jQuery那样操作DOM                       *7k
-go get github.com/rs/zerolog/log           # 日志记录-性能最高           *2k
+go get github.com/rs/zerolog/log           # 日志记录-性能最高-(强力推荐) *3k
 go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
 go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插件 *13.4k
-go get github.com/pkg/errors               # 错误处理库pkg/errors        *5k
-go get github.com/juju/errors              # 用简单的方法描述错误而不丢失原始错误信息(强力推荐)  *1.1k
+go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
+go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
 
 go get github.com/abice/go-enum            # 代码生成枚举类型的功能
 go get github.com/clipperhouse/gen         # 代码生成类似泛型的功能 *1k  clipperhouse.com/gen/overview
