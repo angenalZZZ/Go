@@ -65,9 +65,9 @@ type AppConfigModel struct {
 		ErrorNotifyUser string `default:"angenal2008@163.com"`
 		// 邮箱服务器信息
 		Smtp struct {
-			Port int    `default:"465"`
-			Host string `default:"smtp.163.com"`
-			User string `default:"angenal@163.com"`
+			Port int    `default:"465"` // 163邮箱端口号
+			Host string `default:"smtp.163.com"` // 使用163邮箱服务
+			User string `default:"angenals@163.com"` // 发送邮件的账号
 			Pass string `default:""` // 密码或授权码
 		}
 	}
