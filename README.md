@@ -727,10 +727,10 @@ go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
 go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档 swagger generate spec --scan-models -o docs/spec.json
+go get github.com/go-swagger/go-swagger/cmd/swagger #API文档 swagger generate spec --scan-models -o docs/swagger.json
+go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间件 swagger 2.0
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
-go get github.com/swaggo/http-swagger      # 自动生成API文档的net/http中间件 swagger 2.0
-
+go get github.com/fengbeihong/macaron-swagger # 自动生成API文档的macaron中间件 swagger 2.0
 
 # 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
