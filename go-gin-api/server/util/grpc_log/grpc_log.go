@@ -3,12 +3,11 @@ package grpc_log
 import (
 	"context"
 	"fmt"
+	"github.com/angenalZZZ/gofunc/log"
+	"github.com/angenalZZZ/gofunc/log/lager"
 	"github.com/xinliangnote/go-util/json"
 	"github.com/xinliangnote/go-util/time"
-	//"github.com/angenalZZZ/Go/go-gin-api/server/config"
-	"github.com/lexkong/log"
 	"google.golang.org/grpc"
-	//"os"
 )
 
 var grpcChannel = make(chan string, 100)
@@ -50,13 +49,10 @@ func ClientInterceptor() grpc.UnaryClientInterceptor {
 }
 
 func handleGrpcChannel() {
-	//if f, err := os.OpenFile(config.AppGrpcLogName, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666); err != nil {
-	//	log.Println(err)
-	//} else {
 	for accessLog := range grpcChannel {
-		//_, _ = f.WriteString(accessLog + "\n")
-		log.Infof("[grpc] %s\n", accessLog)
+		log.Info("gRPC", lager.Data{
+			"Log": accessLog,
+		})
 	}
-	//}
 	return
 }

@@ -1,13 +1,6 @@
 package config
 
-import "github.com/lexkong/log"
-
-// Must panic if err.
-func Must(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
+import "github.com/angenalZZZ/gofunc/log"
 
 // App 配置 结构
 type AppConfigModel struct {
@@ -65,10 +58,10 @@ type AppConfigModel struct {
 		ErrorNotifyUser string `default:"angenal2008@163.com"`
 		// 邮箱服务器信息
 		Smtp struct {
-			Port int    `default:"465"` // 163邮箱端口号
-			Host string `default:"smtp.163.com"` // 使用163邮箱服务
+			Port int    `default:"465"`              // 163邮箱端口号
+			Host string `default:"smtp.163.com"`     // 使用163邮箱服务
 			User string `default:"angenals@163.com"` // 发送邮件的账号
-			Pass string `default:""` // 密码或授权码
+			Pass string `default:""`                 // 密码或授权码
 		}
 	}
 	// 上传图片目录

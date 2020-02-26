@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
 	"github.com/xinliangnote/go-util/aes"
 	timeUtil "github.com/xinliangnote/go-util/time"
@@ -21,18 +21,18 @@ var AppSecret string
 func SetUp() gin.HandlerFunc {
 
 	return func(c *gin.Context) {
-		utilGin := response.Gin{Ctx: c}
+		g := ctx.Wrap(c)
 
 		sign, err := verifySign(c)
 
 		if sign != nil {
-			utilGin.Response(-1, "Debug Sign", sign)
+			g.Fail("Debug Sign", sign)
 			c.Abort()
 			return
 		}
 
 		if err != nil {
-			utilGin.Response(-1, err.Error(), sign)
+			g.Fail(err.Error(), sign)
 			c.Abort()
 			return
 		}

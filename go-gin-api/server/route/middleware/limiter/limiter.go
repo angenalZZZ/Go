@@ -1,8 +1,8 @@
 package limiter
 
 import (
-	"fmt"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	//"fmt"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/time/rate"
 	"time"
@@ -16,9 +16,9 @@ func SetUp(maxBurstSize int) gin.HandlerFunc {
 			c.Next()
 			return
 		}
-		fmt.Println("Too many requests")
-		utilGin := response.Gin{Ctx: c}
-		utilGin.Response(-1, "Too many requests", nil)
+
+		//fmt.Println("Too many requests")
+		ctx.Wrap(c).Fail("Too many requests", nil)
 		c.Abort()
 		return
 	}

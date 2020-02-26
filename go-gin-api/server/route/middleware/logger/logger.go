@@ -4,13 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/angenalZZZ/Go/go-gin-api/server/model"
+	"github.com/angenalZZZ/gofunc/log"
+	"github.com/angenalZZZ/gofunc/log/lager"
 	"github.com/gin-gonic/gin"
 	jsonUtil "github.com/xinliangnote/go-util/json"
 	"github.com/xinliangnote/go-util/time"
-	//"github.com/angenalZZZ/Go/go-gin-api/server/config"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
-	"github.com/lexkong/log"
-	//"os"
 )
 
 type bodyLogWriter struct {
@@ -51,11 +50,11 @@ func SetUp() gin.HandlerFunc {
 		var responseData interface{}
 
 		if responseBody != "" {
-			res := response.Response{}
+			res := model.Response{}
 			err := json.Unmarshal([]byte(responseBody), &res)
 			if err == nil {
 				responseCode = res.Code
-				responseMsg = res.Message
+				responseMsg = res.Msg
 				responseData = res.Data
 			}
 		}
@@ -92,13 +91,10 @@ func SetUp() gin.HandlerFunc {
 }
 
 func handleAccessChannel() {
-	//if f, err := os.OpenFile(config.AppAccessLogName, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666); err != nil {
-	//	log.Println(err)
-	//} else {
 	for accessLog := range accessChannel {
-		//_, _ = f.WriteString(accessLog + "\n")
-		log.Infof("%s\n", accessLog)
+		log.Info("HTTP", lager.Data{
+			"Log": accessLog,
+		})
 	}
-	//}
 	return
 }

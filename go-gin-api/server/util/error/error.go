@@ -1,17 +1,16 @@
 package error
 
 import (
+	"errors"
 	"fmt"
-	//"github.com/xinliangnote/go-util/json"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
 	"github.com/angenalZZZ/Go/go-gin-api/server/route/middleware/exception"
-	"github.com/lexkong/log"
+	"github.com/angenalZZZ/gofunc/log"
+	"github.com/angenalZZZ/gofunc/log/lager"
 	"github.com/xinliangnote/go-util/mail"
 	timeUtil "github.com/xinliangnote/go-util/time"
-	//"os"
 	"runtime/debug"
 	"strings"
-	//"time"
 )
 
 type errorString struct {
@@ -49,9 +48,9 @@ func ErrorWeChat(text string) error {
 func alarm(level string, str string) {
 	conf := config.AppConfig
 
-	DebugStack := ""
+	debugStack := ""
 	for _, v := range strings.Split(string(debug.Stack()), "\n") {
-		DebugStack += v + "<br>"
+		debugStack += v + "<br>"
 	}
 
 	subject := fmt.Sprintf("【系统告警】%s 项目出错了！", conf.AppName)
@@ -61,7 +60,7 @@ func alarm(level string, str string) {
 	body = strings.ReplaceAll(body, "{RequestURL}", "--")
 	body = strings.ReplaceAll(body, "{RequestUA}", "--")
 	body = strings.ReplaceAll(body, "{RequestIP}", "--")
-	body = strings.ReplaceAll(body, "{DebugStack}", DebugStack)
+	body = strings.ReplaceAll(body, "{debugStack}", debugStack)
 
 	if level == "MAIL" {
 		// 执行发邮件
@@ -84,7 +83,10 @@ func alarm(level string, str string) {
 
 	} else if level == "INFO" {
 		// 执行记日志
-		log.Infof("%s\r\n%s", subject, body)
+		log.Error("HTTP", errors.New("后端接口异常"), lager.Data{
+			"Subject": subject,
+			"Body":    body,
+		})
 
 		//if f, err := os.OpenFile(config.AppErrorLogName, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0664); err != nil {
 		//	log.Println(err)

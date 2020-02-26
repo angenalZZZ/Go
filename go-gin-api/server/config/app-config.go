@@ -1,7 +1,9 @@
 package config
 
 import (
-	"github.com/lexkong/log"
+	"github.com/angenalZZZ/gofunc/configfile"
+	"github.com/angenalZZZ/gofunc/f"
+	"github.com/angenalZZZ/gofunc/log"
 	"github.com/spf13/pflag"
 )
 
@@ -31,11 +33,9 @@ var (
 func init() {
 	if AppConfig == nil {
 		AppConfig = new(AppConfigModel)
-		// 环境配置
-		cfg := Config{Environ: &Environ{EnvironmentPrefix: "API"}}
 		// 解析配置
-		Must(cfg.Load(AppConfig, *AppConfigFile))
+		f.Must(configfile.YamlTo(*AppConfigFile, AppConfig))
 		// 日志跟踪
-		Must(log.InitWithConfig(&AppConfig.Log))
+		f.Must(log.InitWithConfig(&AppConfig.Log))
 	}
 }

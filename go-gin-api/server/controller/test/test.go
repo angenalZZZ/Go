@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
 	"github.com/xinliangnote/go-util/aes"
 	"github.com/xinliangnote/go-util/md5"
@@ -22,8 +22,7 @@ func Md5Test(c *gin.Context) {
 		// 验证签名
 		md5.MD5(appSecret + encryptStr + appSecret)
 	}
-	utilGin := response.Gin{Ctx: c}
-	utilGin.Response(1, fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
+	ctx.Wrap(c).OK(fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
 }
 
 func AesTest(c *gin.Context) {
@@ -36,10 +35,9 @@ func AesTest(c *gin.Context) {
 		sn, _ := aes.Encrypt(encryptStr, []byte(appSecret), appSecret)
 
 		// 验证签名
-		aes.Decrypt(sn, []byte(appSecret), appSecret)
+		_, _ = aes.Decrypt(sn, []byte(appSecret), appSecret)
 	}
-	utilGin := response.Gin{Ctx: c}
-	utilGin.Response(1, fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
+	ctx.Wrap(c).OK(fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
 }
 
 func RsaTest(c *gin.Context) {
@@ -51,8 +49,7 @@ func RsaTest(c *gin.Context) {
 		sn, _ := rsa.PublicEncrypt(encryptStr, "rsa/public.pem")
 
 		// 验证签名
-		rsa.PrivateDecrypt(sn, "rsa/private.pem")
+		_, _ = rsa.PrivateDecrypt(sn, "rsa/private.pem")
 	}
-	utilGin := response.Gin{Ctx: c}
-	utilGin.Response(1, fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
+	ctx.Wrap(c).OK(fmt.Sprintf("%v次 - %v", count, time.Since(startTime)), nil)
 }

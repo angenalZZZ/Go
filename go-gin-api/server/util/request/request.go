@@ -3,11 +3,11 @@ package request
 import (
 	"crypto/tls"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
+	"github.com/angenalZZZ/gofunc/log"
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"time"
 )
@@ -44,7 +44,7 @@ func HttpGet(url string, c *gin.Context) (string, error) {
 
 		injectErr := tracer.(opentracing.Tracer).Inject(span.Context(), opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
 		if injectErr != nil {
-			log.Fatalf("%s: Couldn't inject headers", err)
+			log.Errorf(err, "OpenTracing: Couldn't inject headers")
 		}
 	}
 

@@ -3,7 +3,7 @@ package exception
 import (
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
 	"github.com/xinliangnote/go-util/mail"
 	"github.com/xinliangnote/go-util/time"
@@ -43,8 +43,7 @@ func SetUp() gin.HandlerFunc {
 				}
 				_ = mail.Send(options)
 
-				utilGin := response.Gin{Ctx: c}
-				utilGin.Response(500, "系统异常，请联系管理员！", nil)
+				ctx.Wrap(c).Error("系统异常，请联系管理员！", nil)
 			}
 		}()
 		c.Next()

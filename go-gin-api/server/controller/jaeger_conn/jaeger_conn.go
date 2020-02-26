@@ -51,6 +51,6 @@ func JaegerTest(c *gin.Context) {
 		resWrite.Message + "-" +
 		resHttpGet
 
-	utilGin := response.Gin{Ctx: c}
+	utilGin := ctx.Gin{Ctx: c}
 	utilGin.Response(1, msg, nil)
 }

@@ -1,54 +1,50 @@
 package product
 
 import (
-	"fmt"
-	"github.com/angenalZZZ/Go/go-gin-api/server/controller/param_bind"
-	"github.com/angenalZZZ/Go/go-gin-api/server/controller/param_verify"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/bind"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	dto "github.com/angenalZZZ/Go/go-gin-api/server/controller/product_dto"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
-	"gopkg.in/go-playground/validator.v9"
 )
 
 // 新增
 func Add(c *gin.Context) {
-	utilGin := response.Gin{Ctx: c}
+	g := ctx.Wrap(c)
 
 	// 参数绑定
-	s, e := bind.Bind(&param_bind.ProductAdd{}, c)
-	if e != nil {
-		utilGin.Response(-1, e.Error(), nil)
+	s := new(dto.ProductAdd)
+	if e := g.Bind(s); e != nil {
+		g.Fail(e.Error(), nil)
 		return
 	}
 
 	// 参数验证
-	validate := validator.New()
-
-	// 注册自定义验证
-	_ = validate.RegisterValidation("NameValid", param_verify.NameValid)
-
-	if err := validate.Struct(s); err != nil {
-		utilGin.Response(-1, err.Error(), nil)
+	if err := dto.ProductAddValidate(s); err != nil {
+		g.Fail(err.Error(), nil)
 		return
 	}
 
 	// 业务处理...
 
-	utilGin.Response(1, "success", nil)
+	g.OK("success", nil)
 }
 
 // 编辑
 func Edit(c *gin.Context) {
-	fmt.Println(c.Request.RequestURI)
+	g := ctx.Wrap(c)
+
+	g.OK(c.Request.RequestURI, nil)
 }
 
 // 删除
 func Delete(c *gin.Context) {
-	fmt.Println(c.Request.RequestURI)
+	g := ctx.Wrap(c)
+
+	g.OK(c.Request.RequestURI, nil)
 }
 
 // 详情
-
 func Detail(c *gin.Context) {
-	fmt.Println(c.Request.RequestURI)
+	g := ctx.Wrap(c)
+
+	g.OK(c.Request.RequestURI, nil)
 }

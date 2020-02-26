@@ -7,7 +7,7 @@ import (
 	"github.com/angenalZZZ/Go/go-gin-api/server/route/middleware/exception"
 	"github.com/angenalZZZ/Go/go-gin-api/server/route/middleware/jaeger"
 	"github.com/angenalZZZ/Go/go-gin-api/server/route/middleware/logger"
-	"github.com/angenalZZZ/Go/go-gin-api/server/util/response"
+	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,13 +18,11 @@ func SetupRouter(engine *gin.Engine) {
 
 	//404
 	engine.NoRoute(func(c *gin.Context) {
-		utilGin := response.Gin{Ctx: c}
-		utilGin.Response(404, "请求方法不存在", nil)
+		c.AbortWithStatus(404)
 	})
 
 	engine.GET("/ping", func(c *gin.Context) {
-		utilGin := response.Gin{Ctx: c}
-		utilGin.Response(1, "pong", nil)
+		ctx.Wrap(c).OK("pong", nil)
 	})
 
 	// 测试链路追踪

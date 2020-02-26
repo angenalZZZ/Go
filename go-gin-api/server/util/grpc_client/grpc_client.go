@@ -7,7 +7,7 @@ import (
 	"github.com/angenalZZZ/Go/go-gin-api/server/util/grpc_log"
 	"github.com/angenalZZZ/Go/go-gin-api/server/util/jaeger_trace"
 	"github.com/gin-gonic/gin"
-	grpc_middeware "github.com/grpc-ecosystem/go-grpc-middleware"
+	middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/opentracing/opentracing-go"
 	"google.golang.org/grpc"
 	"time"
@@ -48,7 +48,7 @@ func createGrpcConn(serviceAddress string, c *gin.Context) *grpc.ClientConn {
 			grpc.WithInsecure(),
 			grpc.WithBlock(),
 			grpc.WithUnaryInterceptor(
-				grpc_middeware.ChainUnaryClient(
+				middleware.ChainUnaryClient(
 					jaeger_trace.ClientInterceptor(tracer.(opentracing.Tracer), parentSpanContext.(opentracing.SpanContext)),
 					grpc_log.ClientInterceptor(),
 				),
@@ -61,7 +61,7 @@ func createGrpcConn(serviceAddress string, c *gin.Context) *grpc.ClientConn {
 			grpc.WithInsecure(),
 			grpc.WithBlock(),
 			grpc.WithUnaryInterceptor(
-				grpc_middeware.ChainUnaryClient(
+				middleware.ChainUnaryClient(
 					grpc_log.ClientInterceptor(),
 				),
 			),
