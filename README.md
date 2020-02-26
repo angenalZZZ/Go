@@ -667,6 +667,7 @@ go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst
    > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
    > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
 go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
+go get github.com/urfave/cli/v2            # 超级简易的命令行工具开发库 *13k
 
 go get github.com/cayleygraph/go-client    # 图数据库 Client API  *13k
 go get github.com/cayleygraph/cayley       # 图数据库(推荐) Driven & RESTful API & LevelDB Stores
@@ -726,7 +727,10 @@ go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
 go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
 go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
 go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
-go get github.com/go-swagger/go-swagger/cmd/swagger # 后端API文档生成器 > swagger generate spec --scan-models -o docs/spec.json
+go get github.com/go-swagger/go-swagger/cmd/swagger # 接口文档 swagger generate spec --scan-models -o docs/spec.json
+go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
+go get github.com/swaggo/http-swagger      # 自动生成API文档的net/http中间件 swagger 2.0
+
 
 # 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
