@@ -658,18 +658,19 @@ go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
 git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
-go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go # gorm migrate
- > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates
+go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate
+ > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板.
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
  > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
- > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
-go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
-go get github.com/Shelnutt2/db2struct/cmd/db2struct
- > db2struct -v -t login_log --struct LoginLog --package dto -H localhost --mysql_port=3306 --target=文件名
-   -d gocron -u cron -p HGJ766GR767FKJU0 --guregu --gorm #-d数据库--guregu空值类型--gorm数据库orm
+ > xorm reverse mssql "server=localhost;user id=sa;password=<password>;database=AppAuth" \
+   %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
+go get github.com/Shelnutt2/db2struct/cmd/db2struct # 命令行工具 db2struct -h  [DbFirst]生成*.go for gorm migrate
+ > db2struct -v -t login_log --struct LoginLog --package dto --target=文件名.go -H localhost --mysql_port=3306 \
+   -d gocron -u cron -p <password> --gorm --guregu  # -d数据库 -u账号 -p密码 --gorm数据库orm --guregu空值类型
+go get github.com/mattatcha/scaneo         # 命令行工具 scaneo -h 把数据表行转换为输出类和列表结构
 go get github.com/urfave/cli/v2            # 超级简易的命令行工具开发库 *13k
 
 go get github.com/cayleygraph/go-client    # 图数据库 Client API  *13k
@@ -854,12 +855,13 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
  $ curl --cacert root.crt https://localhost:8443/hi #7.验证CA,使用HTTP.TLS向服务器发出经过身份验证的加密curl请求
  $ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
 go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
-go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
 go get github.com/shazow/ssh-chat          # 自定义 SSH server 用于替代 shell  *3.6k
 go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
-go get github.com/google/gousb             # 用于访问USB设备的低级别接口
+go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
+go get github.com/variadico/noti           # 进程监控并触发通知 Go 命令行应用程序
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
+go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
 go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
