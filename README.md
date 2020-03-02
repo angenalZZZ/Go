@@ -702,6 +702,7 @@ go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
 go get github.com/volatiletech/authboss    # 授权访问-认证服务(强力推荐)*2k  CSRF,Throttle,Auth(Password|OAuth2|2fa[totp.sms]),Regist,Lock,Expire等
+go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k (推荐)
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
 go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
