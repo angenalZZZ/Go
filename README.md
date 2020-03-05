@@ -385,6 +385,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
   > go get github.com/stretchr/testify         # 通用的接口测试 *10k (强力推荐) | assert,http,mock,require,suite
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
+  > go get github.com/loadimpact/k6            # 现代化测试,集成前后端测试 (推荐) *6k  https://k6.io
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
   # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
@@ -521,6 +522,7 @@ go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/Knetic/govaluate         # 表达式引擎:Eval表达式:Functions:Accessors
 go get github.com/cheekybits/genny         # 泛型语言支持 golang.org/doc/faq#generics
+go get github.com/fatih/structs            # 数据结构反射 structs.New(struct1).Map,Names,Values,Tag("json"),Field("Name").Set("v")
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
@@ -778,6 +780,7 @@ go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
+go get github.com/esimov/pigo/cmd/pigo     # 人脸检测工具库 > pigo -in input.jpg -out out.jpg -cf cascade/facefinder
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
