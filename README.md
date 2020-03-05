@@ -706,10 +706,11 @@ go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
 go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
-go get go.uber.org/dig                     # 依赖注入 Uber/dig (推荐) 官网 pkg.go.dev/go.uber.org/dig
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (强力推荐)*3k 代码生成工具(编译时注入)
+go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
 go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read\Write
-go get golang.org/x/time                   # 速率限制-调用Limiter接口方法 import golang.org/x/time/rate
+go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
 go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐)breaker.CircuitBreaker  www.sony.net
 go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
