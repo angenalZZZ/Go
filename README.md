@@ -780,6 +780,7 @@ go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
+go get github.com/lionsoul2014/ip2region   # IP地址定位库\毫秒级查询  *7.5k _城市Id|国家|区域|省份|城市|ISP_ github.com/cjinle/ip2regionserver
 go get github.com/esimov/pigo/cmd/pigo     # 人脸检测工具库 > pigo -in input.jpg -out out.jpg -cf cascade/facefinder
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
