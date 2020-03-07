@@ -478,13 +478,12 @@ someSlice []int      -> map[int]bool
 
 ~~~
 go get -d github.com/golang/example/hello  # hello
-go get -d github.com/golang/playground     # playground  #本地教程# > tour  #在线教程# tour.go-zh.org
-go get -d github.com/shen100/golang123     # 适合初学者
-go get -d github.com/go-training/training  # 适合初学者培训
-go get -d github.com/insionng/zenpress     # 适合学习 cms system
-go get -u github.com/ponzu-cms/ponzu/...   # 用户友好、可扩展的CMS和管理后台(SSL+Push+BoltDB)
+go get -d github.com/golang/playground     # playground   #本地教程#
+go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
+go get -d github.com/go-training/training  # 适合初学者
+go get -d github.com/jakewright/tutorials  # Go Concurrency, Docker ... ...
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
-go get -d github.com/jakewright/tutorials  # Docker And Go Concurrency
+go get -u github.com/ponzu-cms/ponzu/...   # 用户友好可扩展的CMS管理后台(SSL+Push+BoltDB)
 go get -d github.com/muesli/cache2go       # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
 go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
@@ -493,16 +492,14 @@ go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
-git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io
 -------------------------------------------------------------------------------------------------
 
-go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
+go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122) *3.6k
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
-go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法:1毫秒2^12=4096条:1秒409万
-go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐)  www.sony.net
-go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成uuid、检查uuid等
-go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122)
-go get github.com/kjk/betterguid           # guid generator, 20 chars
+go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
+go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法(1毫秒2^12=4096条,1秒409万条)
+go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐) | www.sony.net
+go get github.com/google/uuid              # 基于 RFC4122和DCE1.1 生成并检查uuid 用于身份验证和安全 *1.7k
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
