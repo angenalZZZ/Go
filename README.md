@@ -95,8 +95,11 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
     # go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
     # -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
-    # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -race 启用数据竞赛检测; -v 编译时显示包名;
+    # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -race 开启竞态条件的检测; -v 编译时显示包名;
     # -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
+    # -tags 编译约束:注释 // +build darwin linux windows      -work 打印编译时生成的临时目录; -compiler gc或gccgo;
+    # -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
+    # -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离 ; -asmflags 编译汇编语言时的行为，如-D、-I、-S等。
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
@@ -385,6 +388,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/smartystreets/goconvey   # 优雅的单元测试 *5k (推荐) | Convey("test1",t,func(){So(v1,ShouldEqual,v2)})
   > go get github.com/stretchr/testify         # 通用的接口测试 *10k (强力推荐) | assert,http,mock,require,suite
   > go get github.com/appleboy/gofight/...     # API测试框架 beego,Gin.依赖上面的框架 github.com/stretchr/testify
+  > go get github.com/loadimpact/k6            # 现代化测试,集成前后端测试 (推荐) *6k  https://k6.io
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
   # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
@@ -474,13 +478,12 @@ someSlice []int      -> map[int]bool
 
 ~~~
 go get -d github.com/golang/example/hello  # hello
-go get -d github.com/golang/playground     # playground  #本地教程# > tour  #在线教程# tour.go-zh.org
-go get -d github.com/shen100/golang123     # 适合初学者
-go get -d github.com/go-training/training  # 适合初学者培训
-go get -d github.com/insionng/zenpress     # 适合学习 cms system
-go get -u github.com/ponzu-cms/ponzu/...   # 用户友好、可扩展的CMS和管理后台(SSL+Push+BoltDB)
+go get -d github.com/golang/playground     # playground   #本地教程#
+go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
+go get -d github.com/go-training/training  # 适合初学者
+go get -d github.com/jakewright/tutorials  # Go Concurrency, Docker ... ...
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
-go get -d github.com/jakewright/tutorials  # Docker And Go Concurrency
+go get -u github.com/ponzu-cms/ponzu/...   # 用户友好可扩展的CMS管理后台(SSL+Push+BoltDB)
 go get -d github.com/muesli/cache2go       # 缓存库，代码量少，适合学习，锁、goroutines等
 go get -d github.com/phachon/gis           # 图片上传，下载，存储，裁剪等
 go get -d github.com/phachon/mm-wiki       # 轻量级的企业知识分享、文档管理、团队协同
@@ -489,16 +492,14 @@ go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
-git clone --depth=1 https://github.com/adonovan/gopl.io.git %GOPATH%/src/github.com/adonovan/gopl.io
 -------------------------------------------------------------------------------------------------
 
-go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
+go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122) *3.6k
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
-go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法:1毫秒2^12=4096条:1秒409万
-go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐)  www.sony.net
-go get github.com/google/uuid              # 基于RFC4122和DCE1.1身份验证和安全服务，生成uuid、检查uuid等
-go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122)
-go get github.com/kjk/betterguid           # guid generator, 20 chars
+go get github.com/teris-io/shortid         # super short, fully unique 9~10 chars(推荐) *0.5k -URL friendly
+go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowflake算法(1毫秒2^12=4096条,1秒409万条)
+go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐) | www.sony.net
+go get github.com/google/uuid              # 基于 RFC4122和DCE1.1 生成并检查uuid 用于身份验证和安全 *1.7k
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
 go get github.com/henrylee2cn/goutil       # Common and useful utils
 go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
@@ -521,6 +522,7 @@ go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/Knetic/govaluate         # 表达式引擎:Eval表达式:Functions:Accessors
 go get github.com/cheekybits/genny         # 泛型语言支持 golang.org/doc/faq#generics
+go get github.com/fatih/structs            # 数据结构反射 structs.New(struct1).Map,Names,Values,Tag("json"),Field("Name").Set("v")
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
@@ -658,15 +660,19 @@ go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
 git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
-go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go # gorm migrate
-   > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates
-   > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
-   > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
+go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate
+ > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板.
+ > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
+ > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
-   > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
-   > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
-   > xorm reverse mssql "server=localhost;user id=sa;password=HGJ766GR767FKJU0;database=AppAuth" %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
-go get github.com/variadico/scaneo         # 命令行工具 scaneo -h  [DbFirst]生成 models/*.go
+ > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
+ > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
+ > xorm reverse mssql "server=localhost;user id=sa;password=<password>;database=AppAuth" \
+   %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
+go get github.com/Shelnutt2/db2struct/cmd/db2struct # 命令行工具 db2struct -h  [DbFirst]生成*.go for gorm migrate
+ > db2struct -v -t login_log --struct LoginLog --package dto --target=文件名.go -H localhost --mysql_port=3306 \
+   -d gocron -u cron -p <password> --gorm --guregu  # -d数据库 -u账号 -p密码 --gorm数据库orm --guregu空值类型
+go get github.com/mattatcha/scaneo         # 命令行工具 scaneo -h 把数据表行转换为输出类和列表结构
 go get github.com/urfave/cli/v2            # 超级简易的命令行工具开发库 *13k
 
 go get github.com/cayleygraph/go-client    # 图数据库 Client API  *13k
@@ -696,14 +702,17 @@ go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
-go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  (ACL, RBAC, ABAC) casbin.org
-go get github.com/volatiletech/authboss    # 授权访问-认证服务(强力推荐)*2k  CSRF,Throttle,Auth(Password|OAuth2|2fa[totp.sms]),Regist,Lock,Expire等
+go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  访问控制模型(ACL, RBAC, ABAC) casbin.org
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐)*2k  CSRF,Throttle,Auth(Password|OAuth2|2fa[totp.sms]),Regist,Lock,Expire等
+go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k (推荐)
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
 go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (强力推荐)*3k 代码生成工具(编译时注入)
+go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
 go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read\Write
-go get golang.org/x/time                   # 速率限制-调用Limiter接口方法 import golang.org/x/time/rate
+go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
 go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐)breaker.CircuitBreaker  www.sony.net
 go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
@@ -771,6 +780,8 @@ go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
+go get github.com/lionsoul2014/ip2region   # IP地址定位库\毫秒级查询  *7.5k _城市Id|国家|区域|省份|城市|ISP_ github.com/cjinle/ip2regionserver
+go get github.com/esimov/pigo/cmd/pigo     # 人脸检测工具库 > pigo -in input.jpg -out out.jpg -cf cascade/facefinder
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
 go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
@@ -851,12 +862,13 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
  $ curl --cacert root.crt https://localhost:8443/hi #7.验证CA,使用HTTP.TLS向服务器发出经过身份验证的加密curl请求
  $ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
 go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
-go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
 go get github.com/shazow/ssh-chat          # 自定义 SSH server 用于替代 shell  *3.6k
 go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
-go get github.com/google/gousb             # 用于访问USB设备的低级别接口
+go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
+go get github.com/variadico/noti           # 进程监控并触发通知 Go 命令行应用程序
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
+go get github.com/google/gousb             # 用于访问USB设备的低级别接口
 go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
 go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
