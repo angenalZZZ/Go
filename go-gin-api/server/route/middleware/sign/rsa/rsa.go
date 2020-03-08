@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
 	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/gin-gonic/gin"
-	"github.com/xinliangnote/go-util/rsa"
-	timeUtil "github.com/xinliangnote/go-util/time"
+	"io/ioutil"
 	"net/url"
 	"sort"
 	"strconv"
@@ -15,7 +15,12 @@ import (
 	"time"
 )
 
-var AppSecret string
+var privateKeyDecrypt *f.RSAPrivateKeyDecrypt
+
+func init() {
+	privateKeyPemBytes, _ := ioutil.ReadFile(config.AppRsaPrivateFile)
+	privateKeyDecrypt = f.NewRSAPrivateKeyDecrypt(privateKeyPemBytes)
+}
 
 // RSA 非对称加密
 func SetUp() gin.HandlerFunc {
@@ -51,25 +56,26 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 	ts := strings.Join(c.Request.Form["ts"], "")
 
 	// 验证来源
+	appSecret := ""
 	value, ok := config.ApiAuthConfig[ak]
 	if ok {
-		AppSecret = value["rsa"]
+		appSecret = value["rsa"]
 	} else {
 		return nil, errors.New("ak Error")
 	}
 
 	if debug == "1" {
-		currentUnix := timeUtil.GetCurrentUnix()
+		currentUnix := time.Now().Unix()
 		req.Set("ts", strconv.FormatInt(currentUnix, 10))
 
-		sn, err := createSign(req)
+		sn, err := createSign(req, appSecret)
 		if err != nil {
 			return nil, errors.New("sn Exception")
 		}
 
 		res := map[string]string{
 			"ts": strconv.FormatInt(currentUnix, 10),
-			"sn": sn,
+			"sn": string(sn),
 		}
 		return res, nil
 	}
@@ -87,19 +93,21 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 		return nil, errors.New("sn Error")
 	}
 
-	decryptStr, decryptErr := rsa.PrivateDecrypt(sn, config.AppRsaPrivateFile)
+	decryptStr, decryptErr := privateKeyDecrypt.DecryptPKCS1v15([]byte(sn))
 	if decryptErr != nil {
 		return nil, errors.New(decryptErr.Error())
 	}
-	if decryptStr != createEncryptStr(req) {
+	if string(decryptStr) != createEncryptStr(req) {
 		return nil, errors.New("sn Error")
 	}
 	return nil, nil
 }
 
 // 创建签名
-func createSign(params url.Values) (string, error) {
-	return rsa.PublicEncrypt(createEncryptStr(params), AppSecret)
+func createSign(params url.Values, appSecret string) ([]byte, error) {
+	publicKeyPemBytes, _ := ioutil.ReadFile(appSecret)
+	publicKeyEncrypt := f.NewRSAPublicKeyEncrypt(publicKeyPemBytes)
+	return publicKeyEncrypt.EncryptPKCS1v15([]byte(createEncryptStr(params)))
 }
 
 func createEncryptStr(params url.Values) string {

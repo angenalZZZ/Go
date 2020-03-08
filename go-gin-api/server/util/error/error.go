@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
 	"github.com/angenalZZZ/Go/go-gin-api/server/route/middleware/exception"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/angenalZZZ/gofunc/log"
 	"github.com/angenalZZZ/gofunc/log/lager"
-	"github.com/xinliangnote/go-util/mail"
-	timeUtil "github.com/xinliangnote/go-util/time"
 	"runtime/debug"
 	"strings"
+	"time"
 )
 
 type errorString struct {
@@ -56,7 +56,7 @@ func alarm(level string, str string) {
 	subject := fmt.Sprintf("【系统告警】%s 项目出错了！", conf.AppName)
 
 	body := strings.ReplaceAll(exception.MailTemplate, "{ErrorMsg}", fmt.Sprintf("%s", str))
-	body = strings.ReplaceAll(body, "{RequestTime}", timeUtil.GetCurrentDate())
+	body = strings.ReplaceAll(body, "{RequestTime}", time.Now().Format("2006/01/02 15:04:05"))
 	body = strings.ReplaceAll(body, "{RequestURL}", "--")
 	body = strings.ReplaceAll(body, "{RequestUA}", "--")
 	body = strings.ReplaceAll(body, "{RequestIP}", "--")
@@ -64,16 +64,20 @@ func alarm(level string, str string) {
 
 	if level == "MAIL" {
 		// 执行发邮件
-		options := &mail.Options{
-			MailHost: conf.NotifyUser.Smtp.Host,
-			MailPort: conf.NotifyUser.Smtp.Port,
-			MailUser: conf.NotifyUser.Smtp.User,
-			MailPass: conf.NotifyUser.Smtp.Pass,
-			MailTo:   conf.NotifyUser.ErrorNotifyUser,
-			Subject:  subject,
-			Body:     body,
+		options := &f.MailOptions{
+			MailSMTP: f.MailSMTP{
+				Port: conf.NotifyUser.Smtp.Port,
+				Host: conf.NotifyUser.Smtp.Host,
+				User: conf.NotifyUser.Smtp.User,
+				Pass: conf.NotifyUser.Smtp.Pass,
+			},
+			MailMessage: f.MailMessage{
+				Recipient: []string{conf.NotifyUser.ErrorNotifyUser},
+				Subject:   subject,
+				Body:      body,
+			},
 		}
-		_ = mail.Send(options)
+		_ = f.MailSend(options)
 
 	} else if level == "SMS" {
 		// 执行发短信

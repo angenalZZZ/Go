@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
 	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/gin-gonic/gin"
-	"github.com/xinliangnote/go-util/md5"
-	timeUtil "github.com/xinliangnote/go-util/time"
 	"net/url"
 	"sort"
 	"strconv"
@@ -59,7 +58,7 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 	}
 
 	if debug == "1" {
-		currentUnix := timeUtil.GetCurrentUnix()
+		currentUnix := time.Now().Unix()
 		req.Set("ts", strconv.FormatInt(currentUnix, 10))
 		res := map[string]string{
 			"ts": strconv.FormatInt(currentUnix, 10),
@@ -87,7 +86,7 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 // 创建签名
 func createSign(params url.Values) string {
 	// 自定义 MD5 组合
-	return md5.MD5(AppSecret + createEncryptStr(params) + AppSecret)
+	return f.CryptoMD5(AppSecret + createEncryptStr(params) + AppSecret)
 }
 
 func createEncryptStr(params url.Values) string {

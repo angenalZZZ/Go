@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/model"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/angenalZZZ/gofunc/log"
 	"github.com/angenalZZZ/gofunc/log/lager"
 	"github.com/gin-gonic/gin"
-	jsonUtil "github.com/xinliangnote/go-util/json"
-	"github.com/xinliangnote/go-util/time"
+	"time"
 )
 
 type bodyLogWriter struct {
@@ -38,7 +38,7 @@ func SetUp() gin.HandlerFunc {
 		c.Writer = bodyLogWriter
 
 		// 开始时间
-		startTime := time.GetCurrentMilliUnix()
+		startTime := time.Now().UnixNano() / 1e6
 
 		// 处理请求
 		c.Next()
@@ -60,7 +60,7 @@ func SetUp() gin.HandlerFunc {
 		}
 
 		// 结束时间
-		endTime := time.GetCurrentMilliUnix()
+		endTime := time.Now().UnixNano() / 1e6
 
 		if c.Request.Method == "POST" {
 			_ = c.Request.ParseForm()
@@ -85,8 +85,8 @@ func SetUp() gin.HandlerFunc {
 
 		accessLogMap["cost_time"] = fmt.Sprintf("%vms", endTime-startTime)
 
-		accessLogJson, _ := jsonUtil.Encode(accessLogMap)
-		accessChannel <- accessLogJson
+		accessLogJson, _ := f.EncodeJson(accessLogMap)
+		accessChannel <- string(accessLogJson)
 	}
 }
 

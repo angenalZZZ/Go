@@ -5,17 +5,14 @@ import (
 	"fmt"
 	"github.com/angenalZZZ/Go/go-gin-api/server/config"
 	"github.com/angenalZZZ/Go/go-gin-api/server/util/ctx"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/gin-gonic/gin"
-	"github.com/xinliangnote/go-util/aes"
-	timeUtil "github.com/xinliangnote/go-util/time"
 	"net/url"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
 )
-
-var AppSecret string
 
 // AES 对称加密
 func SetUp() gin.HandlerFunc {
@@ -51,25 +48,26 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 	ts := strings.Join(c.Request.Form["ts"], "")
 
 	// 验证来源
+	appSecret := ""
 	value, ok := config.ApiAuthConfig[ak]
 	if ok {
-		AppSecret = value["aes"]
+		appSecret = value["aes"]
 	} else {
 		return nil, errors.New("ak Error")
 	}
 
 	if debug == "1" {
-		currentUnix := timeUtil.GetCurrentUnix()
+		currentUnix := time.Now().Unix()
 		req.Set("ts", strconv.FormatInt(currentUnix, 10))
 
-		sn, err := createSign(req)
+		sn, err := createSign(req, appSecret)
 		if err != nil {
 			return nil, errors.New("sn Exception")
 		}
 
 		res := map[string]string{
 			"ts": strconv.FormatInt(currentUnix, 10),
-			"sn": sn,
+			"sn": string(sn),
 		}
 		return res, nil
 	}
@@ -87,19 +85,19 @@ func verifySign(c *gin.Context) (map[string]string, error) {
 		return nil, errors.New("sn Error")
 	}
 
-	decryptStr, decryptErr := aes.Decrypt(sn, []byte(AppSecret), AppSecret)
+	decryptStr, decryptErr := f.CryptoAesCBCEncrypt([]byte(sn), []byte(appSecret), []byte(appSecret))
 	if decryptErr != nil {
 		return nil, errors.New(decryptErr.Error())
 	}
-	if decryptStr != createEncryptStr(req) {
+	if string(decryptStr) != createEncryptStr(req) {
 		return nil, errors.New("sn Error")
 	}
 	return nil, nil
 }
 
 // 创建签名
-func createSign(params url.Values) (string, error) {
-	return aes.Encrypt(createEncryptStr(params), []byte(AppSecret), AppSecret)
+func createSign(params url.Values, appSecret string) ([]byte, error) {
+	return f.CryptoAesCBCDecrypt([]byte(createEncryptStr(params)), []byte(appSecret), []byte(appSecret))
 }
 
 func createEncryptStr(params url.Values) string {

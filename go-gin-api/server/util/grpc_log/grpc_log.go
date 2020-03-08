@@ -3,11 +3,11 @@ package grpc_log
 import (
 	"context"
 	"fmt"
+	"github.com/angenalZZZ/gofunc/f"
 	"github.com/angenalZZZ/gofunc/log"
 	"github.com/angenalZZZ/gofunc/log/lager"
-	"github.com/xinliangnote/go-util/json"
-	"github.com/xinliangnote/go-util/time"
 	"google.golang.org/grpc"
+	"time"
 )
 
 var grpcChannel = make(chan string, 100)
@@ -21,12 +21,12 @@ func ClientInterceptor() grpc.UnaryClientInterceptor {
 		invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
 
 		// 开始时间
-		startTime := time.GetCurrentMilliUnix()
+		startTime := time.Now().UnixNano() / 1e6
 
 		err := invoker(ctx, method, req, reply, cc, opts...)
 
 		// 结束时间
-		endTime := time.GetCurrentMilliUnix()
+		endTime := time.Now().UnixNano() / 1e6
 
 		// 日志格式
 		grpcLogMap := make(map[string]interface{})
@@ -40,9 +40,9 @@ func ClientInterceptor() grpc.UnaryClientInterceptor {
 
 		grpcLogMap["cost_time"] = fmt.Sprintf("%vms", endTime-startTime)
 
-		grpcLogJson, _ := json.Encode(grpcLogMap)
+		grpcLogJson, _ := f.EncodeJson(grpcLogMap)
 
-		grpcChannel <- grpcLogJson
+		grpcChannel <- string(grpcLogJson)
 
 		return err
 	}
