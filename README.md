@@ -97,12 +97,16 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     # -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
     # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -race 开启竞态条件的检测; -v 编译时显示包名;
     # -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
-    # -tags 编译约束:注释 // +build darwin linux windows      -work 打印编译时生成的临时目录; -compiler gc或gccgo;
+    # -work 打印编译时生成的临时目录; -compiler gc或gccgo; -asmflags 编译汇编语言时的行为，如-D、-I、-S等;
     # -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
-    # -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离 ; -asmflags 编译汇编语言时的行为，如-D、-I、-S等。
+    # -tags按条件编译 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
+    # go build -tags [linux|darwin|386|amd64] # 文件代码参考如下;
+    // +build darwin linux freebsd windows android js
+    // +build 386 amd64 arm arm64 ppc64 wasm
+    [空行]
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* GoLand环境设置：Go Modules(vgo) √ Proxy
-    go env -w GOSUMDB="sum.golang.google.cn"    # ^1设置国内提供的验证服务 √ 默认 sum.golang.org
+    go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的验证服务 √ 默认 sum.golang.org
     go env -w GOSUMDB=off                       # ^2或者设置为关闭验证服务
     go env -w GOPRIVATE=*.gitlab.com,*.gitee.com # 限制私有库域名(其它不安全的私有库则无法下载)
 
@@ -122,11 +126,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     go tool dist list
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./api_linux_amd64 ./api
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
-    # <按条件编译> 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
-    go build -tags [linux|darwin|386|amd64]
-    // +build darwin linux freebsd windows android js
-    // +build 386 amd64 arm arm64 ppc64 wasm
-    [空行]
+    # go build -installsuffix cgo # 为了使当前的输出目录与默认的编译输出目录分离(可选参数)
 
 > 编译器命令
 ~~~bash
