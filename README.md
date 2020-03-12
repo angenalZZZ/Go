@@ -101,6 +101,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     # -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
     # -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离 ; -asmflags 编译汇编语言时的行为，如-D、-I、-S等。
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
+    go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* GoLand环境设置：Go Modules(vgo) √ Proxy
+    go env -w GOSUMDB="sum.golang.google.cn"    # ^1设置国内提供的验证服务 √ 默认 sum.golang.org
+    go env -w GOSUMDB=off                       # ^2或者设置为关闭验证服务
+    go env -w GOPRIVATE=*.gitlab.com,*.gitee.com # 限制私有库域名(其它不安全的私有库则无法下载)
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
