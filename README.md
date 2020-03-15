@@ -784,6 +784,9 @@ go get github.com/bilibili/sniper             # bilibili开源轻量级业务框
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
 go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
 
+# 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
+go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议http3
+
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
 go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
