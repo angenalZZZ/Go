@@ -358,6 +358,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 # 测试工具 >>
 # -------------------------------------------------------------------------------
   > go test -bench=. -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof
+  > go tool pprof --alloc_objects path.test.exe mem.prof # 分析内存对象分配;优化GC提升性能;
   > go test -bench=. -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof
   > go tool pprof path.test.exe cpu.prof    # 分析函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
    $ go tool pprof path.test cpu.prof > web # 分析函数调用(svg)图+> yum install graphviz.x86_64  www.graphviz.org
@@ -701,6 +702,10 @@ go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计�
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k   martini.codegangsta.io
 go get github.com/kataras/iris             # 最快WebSvr框架 *18k (推荐)
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
+go get github.com/valyala/fasthttp         # 最快Http框架10倍于net/http (强力推荐) *12k
+go get github.com/buaazp/fasthttprouter    # ~fasthttp高性能路由器#1
+go get github.com/vincentLiuxiang/lu       # ~fasthttp高性能中间件#2
+go get github.com/phachon/fasthttpsession  # ~fasthttp会话Session#3(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
