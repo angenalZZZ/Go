@@ -816,8 +816,8 @@ go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支�
 go get github.com/rsms/gotalk              # WebSocket Serve and Js Client Peer异步通信库 *1k
 
 go get github.com/dirkaholic/kyoo          # Unlimited job queue.Submit from http.handler
-go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐)
-go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储(推荐) & LevelDB Stores
+go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全(推荐) & FixedFIFO 2x faster than FIFO handlers
+go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储(推荐) & LevelDB Stores FIFO any data structure
 go get github.com/eapache/channels         # 通道：`Distribute分发`1In*Out,`Multiplex多路复用`*In1Out,`Pipe管道`1In1Out,`BatchingChannel批量通道`...
 go get github.com/robfig/cron              # 任务计划 a cron library *5.5k | 通用任务基础类库(强烈推荐)
 go get github.com/ouqiang/gocron           # 定时任务管理系统-Web界面 *2k | 用于替代Linux-crontab, 精确到秒
