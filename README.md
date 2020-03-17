@@ -87,9 +87,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     https://studygolang.com/dl/golang/go1.13.5.windows-amd64.msi
     set GOPATH=C:\Users\Administrator\go
     set GOROOT=D:\Program\Go
-    set GOTOOLS=%GOROOT%/pkg/tool  (可选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
-    set GO111MODULE=on             (可选项: 建议 GO111MODULE=auto )
-    set GOPROXY=https://goproxy.io (可选项: 建议 网络代理)
+    set GOTOOLS=%GOROOT%/pkg/tool       (选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
+    set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto )
+    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理)
+    set GOSUMDB=sum.golang.google.cn    (可选项)
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* GoLand环境设置：Go Modules(vgo) √ Proxy
@@ -104,9 +105,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     tar -zxf go1.13.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
     export GOPATH=~/go
     export GOROOT=/usr/local/go
-    export GOTOOLS=$GOROOT/pkg/tool   (可选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
-    export GO111MODULE=on             (可选项: 建议 GO111MODULE=auto )
-    export GOPROXY=https://goproxy.io (可选项: 建议 网络代理)
+    export GOTOOLS=$GOROOT/pkg/tool     (选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
+    export GO111MODULE=on               (选项: 建议 GO111MODULE=auto )
+    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理)
+    export GOSUMDB=sum.golang.google.cn (可选项)
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
 
@@ -146,9 +148,14 @@ set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o a
 # -work 打印编译时生成的临时目录; -compiler gc或gccgo; -asmflags 编译汇编语言时的行为，如-D、-I、-S等;
 # -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
 # -tags按条件编译 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
-# go build -tags [linux|darwin|386|amd64] # 文件代码参考如下
+# go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
 // +build darwin linux freebsd windows android js
 // +build 386 amd64 arm arm64 ppc64 wasm
+[空行]
+
+# go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
+//go:generate go get -u github.com/valyala/quicktemplate/qtc
+//go:generate qtc -dir=app/views
 [空行]
 ~~~
 
@@ -706,6 +713,7 @@ go get github.com/valyala/fasthttp         # 最快Http框架10倍于net/http (�
 go get github.com/buaazp/fasthttprouter    # ~fasthttp高性能路由器#1
 go get github.com/vincentLiuxiang/lu       # ~fasthttp高性能中间件#2
 go get github.com/phachon/fasthttpsession  # ~fasthttp会话Session#3(memory,memcache,redis,mysql,postgres,file,sqlite3)
+go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
@@ -1926,12 +1934,105 @@ fmt.Println( "My point:", p, "x coord=", p.X ) // print structs, ints, etc
 s := fmt.Sprintln( "My point:", p, "x coord=", p.X ) // print to string variable
 
 fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format
-s2 := fmt.Sprintf( "%d %f", 17, 17.0 ) // formatted print to string variable
+s1 := fmt.Sprintf( "%g - %G", 17.0250, 17.0250 ) // 17.025 - 17.0250 紧凑%g去除末尾零
+s2 := fmt.Sprintf( "%d - %f", 17, 17.0 ) // formatted print to string variable
 
 hellomsg := `
  "Hello" in Chinese is 你好 ('Ni Hao')
  "Hello" in Hindi is नमस्ते ('Namaste')
 ` // multi-line string literal, using back-tick at beginning and end
+
+// 类型检查
+var p api_models.IPoint = &api_models.Point{X: 1, Y: 2}
+var p2 = make([]api_models.Point, 2)
+
+// 命令行参数
+fmt.Printf("  命令行参数/摄氏温度: %s\n", temperature)
+
+// type assertion (*指针类型)
+if p0, ok := p.(*api_models.Point); ok {
+	fmt.Printf("  类型断言: %p  %p\n", &p, p0)
+}
+// interface{} 接受任意类型的变量, 不同动态类型的变量不可比较, 只能与nil比较
+var w io.Writer // zeroValue=nil, 接受实现接口: Write(p []byte) 类型的变量, 下面的动态值决定了接收者类型(*T)的不同
+fmt.Printf("  接口w io.Writer(type)：%T, (value)：%[1]v \n", w)
+w = os.Stdout
+fmt.Printf("  接口w os.Stdout(type)：%T, (value)：%[1]v \n", w)
+w = new(bytes.Buffer)
+fmt.Println("  接口w new(bytes.Buffer)(type)：", reflect.TypeOf(w), ", (value)：", w) // %T: reflect.TypeOf(w)
+
+//var v1 bool
+//var v2 byte   // uint8  [true 或 false]
+//var v3 rune   // uint8, uint16, uint32 [unicode 编码: 1, 2, 4 个字节]
+//var v4 int    // 32位
+//var v40 uint  // 64位
+//var v5 int8   // -128~127
+//var v50 uint8 // 0 ~ 255
+//var v6 int16
+//var v60 uint16
+//var v7 int32
+//var v70 uint32
+//var v8 int64
+//var v80 uint64
+//var v9 uintptr // 存储指针的 uint32 或 uint64
+//var f1 float32 // 小数位数精确到  7 位
+//var f2 float64 // 小数位数精确到 15 位
+//var c1 complex64
+//var c2 complex128
+//var s1 string  // readonly byte slice
+//var s2 stringS
+
+fmt.Println(` 格式化p：v +v T #v make(Slice::Point)`)
+fmt.Printf("  格式化p：%v %+v %T %#v [%d]Point\n", p, p, p, p, cap(p2))
+fmt.Printf("  格式化i：%c %8.1f %8.2f %8x\n", 65, 12.5, 12.509, 54349)
+
+// 斐波那契数列
+new(Fibonacci).FibonacciToDo(20, 2*time.Second, func(s []int) {
+	fmt.Printf("  斐波那契数列: %v", s)
+})
+
+// 检查字符串是文字字面值时才是 UTF8 文本
+var s1 = SS{"1", "2"}
+var s2 = make([]string, 2)
+var s3 = [...]string{"1", "2", "3", "4", "5"}
+var s4 = s3[1:4:5] // 切片: [low:high:max]
+
+fmt.Println(s1, s2, s3,
+	s4,      // "2", "3", "4"
+	len(s4), // 4 - 1 len: high-low
+	cap(s4), // 5 - 1 cap: max-low
+	//cap(s1) == cap(s2),
+	utf8.ValidString("ABC") == true,
+	utf8.ValidString("A\\xfeC") == true,
+	utf8.ValidString("A\xfeC") == false,
+	utf8.RuneCountInString("é") == 2, // 两个 rune 的组合
+	len("é") == 3, len("é") == len("\u0301"))
+
+// 类型检查 指针
+// array int
+a := [4]int{0, 1, 2, 3}
+a0 := unsafe.Pointer(&a[0])
+a3 := (*int)(unsafe.Pointer(uintptr(a0) + 3*unsafe.Sizeof(a[0]))) // 指针 偏移 Offset
+*(a3) = 4
+fmt.Println("  指针：array int: a =", a) // [0 1 2 4]
+
+// struct Person
+type Person struct {
+	name   string
+	age    int
+	gender byte
+}
+who := Person{"John Mono", 30, 0}
+// 指针 类似 C 语言的 void* 与其他语言的指针,相互转换的桥梁
+p := unsafe.Pointer(&who)
+name := (*string)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.name)))   // 指针 偏移 member: name
+age := (*int)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.age)))        // 指针 偏移 member: age
+gender := (*byte)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.gender))) // 指针 偏移 member: gender
+*name = "Alice"
+*age = 28
+*gender = 1
+fmt.Printf("  指针：struct Person: a = %v\n", who) // {Alice 28 1}
+
 ```
 
 ## Reflection
