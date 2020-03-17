@@ -151,12 +151,18 @@ set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o a
 # go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
 // +build darwin linux freebsd windows android js
 // +build 386 amd64 arm arm64 ppc64 wasm
+// +build cgo,!netgo                                                # _android.go
+// +build cgo,!netgo                                                # _windows.go
+// +build !android,cgo,!netgo                                       # _linux.go
+// +build cgo,!netgo                                                # _unix.go
+// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris # _unix.go
 [空行]
 
 # go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
 //go:generate go get -u github.com/valyala/quicktemplate/qtc
 //go:generate qtc -dir=app/views
 [空行]
+
 ~~~
 
 > 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
