@@ -1497,6 +1497,28 @@ rune // alias for int32 ~= a character (Unicode code point) - very Viking
 float32 float64
 
 complex64 complex128
+
+//var v1 bool
+//var v2 byte   // uint8 [true 或 false]
+//var v3 rune   // int32 [unicode字符编码: 1, 2, 3, 4 个字节] (中文一般占3个字节)
+//var v4 int    // 32位
+//var v40 uint  // 64位
+//var v5 int8   // -128~127
+//var v50 uint8 // 0 ~ 255
+//var v6 int16
+//var v60 uint16
+//var v7 int32
+//var v70 uint32
+//var v8 int64
+//var v80 uint64
+//var v9 uintptr // 存储指针的 uint32 或 uint64
+//var f1 float32 // 小数位数精确到  7 位
+//var f2 float64 // 小数位数精确到 15 位
+//var c1 complex64
+//var c2 complex128
+//var s1 string  // readonly byte slice
+//var s2 stringS
+
 ```
 
 ## Type Conversions
@@ -1768,6 +1790,31 @@ r := &Vertex{1, 2} // r is also a pointer to a Vertex
 // The type of a pointer to a Vertex is *Vertex
 
 var s *Vertex = new(Vertex) // new creates a pointer to a new struct instance
+
+// array int pointer
+a := [4]int{0, 1, 2, 3}
+a0 := unsafe.Pointer(&a[0])
+a3 := (*int)(unsafe.Pointer(uintptr(a0) + 3*unsafe.Sizeof(a[0]))) // 指针 偏移 Offset
+*(a3) = 4
+fmt.Println("  指针：array int: a =", a) // [0 1 2 4]
+
+// struct Person
+type Person struct {
+	name   string
+	age    int
+	gender byte
+}
+who := Person{"John Mono", 30, 0}
+// 指针 类似 C 语言的 void* 与其他语言的指针,相互转换的桥梁
+p := unsafe.Pointer(&who) // a pointer
+name := (*string)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.name)))   // 指针偏移 member: name
+age := (*int)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.age)))        // 指针偏移 member: age
+gender := (*byte)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.gender))) // 指针偏移 member: gender
+*name = "Alice"
+*age = 28
+*gender = 1
+fmt.Printf("  指针：struct Person: a = %v\n", who) // {Alice 28 1}
+
 ```
 
 ## Interfaces
@@ -1939,8 +1986,9 @@ p := struct { X, Y int }{ 17, 2 }
 fmt.Println( "My point:", p, "x coord=", p.X ) // print structs, ints, etc
 s := fmt.Sprintln( "My point:", p, "x coord=", p.X ) // print to string variable
 
+// Formatter接口-格式组成：% `特殊标记#+- ` `字符宽度uint` . `计算精度uint` `格式符号`
 fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format
-s1 := fmt.Sprintf( "%g - %G", 17.0250, 17.0250 ) // 17.025 - 17.0250 紧凑%g去除末尾零
+s1 := fmt.Sprintf( "%g - %.3G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认最小位计算精度
 s2 := fmt.Sprintf( "%d - %f", 17, 17.0 ) // formatted print to string variable
 
 hellomsg := `
@@ -1948,14 +1996,9 @@ hellomsg := `
  "Hello" in Hindi is नमस्ते ('Namaste')
 ` // multi-line string literal, using back-tick at beginning and end
 
-// 类型检查
+// type assertion 类型断言(*指针类型)
 var p api_models.IPoint = &api_models.Point{X: 1, Y: 2}
 var p2 = make([]api_models.Point, 2)
-
-// 命令行参数
-fmt.Printf("  命令行参数/摄氏温度: %s\n", temperature)
-
-// type assertion (*指针类型)
 if p0, ok := p.(*api_models.Point); ok {
 	fmt.Printf("  类型断言: %p  %p\n", &p, p0)
 }
@@ -1965,28 +2008,7 @@ fmt.Printf("  接口w io.Writer(type)：%T, (value)：%[1]v \n", w)
 w = os.Stdout
 fmt.Printf("  接口w os.Stdout(type)：%T, (value)：%[1]v \n", w)
 w = new(bytes.Buffer)
-fmt.Println("  接口w new(bytes.Buffer)(type)：", reflect.TypeOf(w), ", (value)：", w) // %T: reflect.TypeOf(w)
-
-//var v1 bool
-//var v2 byte   // uint8  [true 或 false]
-//var v3 rune   // uint8, uint16, uint32 [unicode 编码: 1, 2, 4 个字节]
-//var v4 int    // 32位
-//var v40 uint  // 64位
-//var v5 int8   // -128~127
-//var v50 uint8 // 0 ~ 255
-//var v6 int16
-//var v60 uint16
-//var v7 int32
-//var v70 uint32
-//var v8 int64
-//var v80 uint64
-//var v9 uintptr // 存储指针的 uint32 或 uint64
-//var f1 float32 // 小数位数精确到  7 位
-//var f2 float64 // 小数位数精确到 15 位
-//var c1 complex64
-//var c2 complex128
-//var s1 string  // readonly byte slice
-//var s2 stringS
+fmt.Println(" 接口w new(bytes.Buffer)(type)：", reflect.TypeOf(w), ", (value)：", w) // %T: reflect.TypeOf(w)
 
 fmt.Println(` 格式化p：v +v T #v make(Slice::Point)`)
 fmt.Printf("  格式化p：%v %+v %T %#v [%d]Point\n", p, p, p, p, cap(p2))
@@ -2013,31 +2035,6 @@ fmt.Println(s1, s2, s3,
 	utf8.ValidString("A\xfeC") == false,
 	utf8.RuneCountInString("é") == 2, // 两个 rune 的组合
 	len("é") == 3, len("é") == len("\u0301"))
-
-// 类型检查 指针
-// array int
-a := [4]int{0, 1, 2, 3}
-a0 := unsafe.Pointer(&a[0])
-a3 := (*int)(unsafe.Pointer(uintptr(a0) + 3*unsafe.Sizeof(a[0]))) // 指针 偏移 Offset
-*(a3) = 4
-fmt.Println("  指针：array int: a =", a) // [0 1 2 4]
-
-// struct Person
-type Person struct {
-	name   string
-	age    int
-	gender byte
-}
-who := Person{"John Mono", 30, 0}
-// 指针 类似 C 语言的 void* 与其他语言的指针,相互转换的桥梁
-p := unsafe.Pointer(&who)
-name := (*string)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.name)))   // 指针 偏移 member: name
-age := (*int)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.age)))        // 指针 偏移 member: age
-gender := (*byte)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.gender))) // 指针 偏移 member: gender
-*name = "Alice"
-*age = 28
-*gender = 1
-fmt.Printf("  指针：struct Person: a = %v\n", who) // {Alice 28 1}
 
 ```
 
