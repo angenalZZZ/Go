@@ -1987,8 +1987,9 @@ fmt.Println( "My point:", p, "x coord=", p.X ) // print structs, ints, etc
 s := fmt.Sprintln( "My point:", p, "x coord=", p.X ) // print to string variable
 
 // Formatter接口-格式组成：% `特殊标记#+- ` `字符宽度uint` . `计算精度uint` `格式符号`
-fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format
-s1 := fmt.Sprintf( "%g - %.3G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认最小位计算精度
+fmt.Printf("%c %U %U %q %+q", 65, 'a', '中', 65, "中国") // A U+0061 U+4E2D 'A' "\u4e2d\u56fd"
+fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format: f,e,E,g,G 四舍五入
+s1 := fmt.Sprintf( "%g - %5.5G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认以最小位计算精度
 s2 := fmt.Sprintf( "%d - %f", 17, 17.0 ) // formatted print to string variable
 
 hellomsg := `
