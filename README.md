@@ -933,25 +933,29 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 
 ----
 
-#### 云平台|公众平台|在线支付
+## 云平台|公众平台|在线支付
+
+#### 亚马逊 AWS 
+ - www.amazonaws.cn/tools
+
+#### 谷歌云 Google Cloud Platform 
+ - cloud.google.com/go 
+ - github.com/GoogleCloudPlatform
+~~~go
+go get -u github.com/google/go-cloud       # 云计算
+go get -u cloud.google.com/go/storage      # 在 Cloud Storage 中存储和归档数据
+go get -u cloud.google.com/go/bigquery     # 使用 Google BigQuery 执行数据分析
+go get -u cloud.google.com/go/pubsub       # 使用 Pub/Sub 设置完全托管的事件驱动型消息传递系统
+go get -u cloud.google.com/go/translate    # 使用 Translation API 翻译不同语言的文本
+go get -u cloud.google.com/go/vision/apiv1 # 使用 Vision API 分析图片
 ~~~
-# 云计算、云数据库、点播、直播...
-# ------------------------------------------------------------------------------------
-# 亚马逊 AWS | www.amazonaws.cn/tools
 
-# 谷歌云 Google Cloud Platform | cloud.google.com/go | github.com/GoogleCloudPlatform
-go get -u github.com/google/go-cloud      # 云计算
-go get -u cloud.google.com/go/storage     # 在 Cloud Storage 中存储和归档数据
-go get -u cloud.google.com/go/bigquery    # 使用 Google BigQuery 执行数据分析
-go get -u cloud.google.com/go/pubsub      # 使用 Pub/Sub 设置完全托管的事件驱动型消息传递系统
-go get -u cloud.google.com/go/translate   # 使用 Translation API 翻译不同语言的文本
-go get -u cloud.google.com/go/vision/apiv1# 使用 Vision API 分析图片
-
-# 阿里云 | api.aliyun.com | developer.aliyun.com/sdk
-# 云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
-# 视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
+#### 阿里云 | api.aliyun.com | developer.aliyun.com/sdk
+	云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
+	视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
+~~~go
 # 阿里云 SDK
-go get -u github.com/aliyun/alibaba-cloud-sdk-go
+go get -u github.com/aliyun/alibaba-cloud-sdk-go      # cloud sdk+samples
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk  # cloud sdk
 # 存储服务
 go get github.com/aliyun/aliyun-oss-go-sdk
@@ -1116,44 +1120,166 @@ go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ahas_openapi
 # 容器镜像服务
 go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cr
 
-
-# 腾讯云 | console.cloud.tencent.com/api/explorer
-go get -u github.com/tencentcloud/tencentcloud-sdk-go
-# 云服务器 黑石物理服务器 云硬盘 容器服务 容器实例服务 弹性伸缩 无服务器云函数 批量计算
-# 负载均衡 私有网络 专线接入 云数据库 MySQL 云数据库 Redis 云数据库 MongoDB 数据传输服务 DTS 云数据库 MariaDB
-# 分布式数据库 DCDB	云数据库 SQL'Server 云数据库 PostgreSQL 内容分发网络 主机安全 Web漏洞扫描 应用安全 云点播
-# 云直播 智能语音服务 机器翻译 智能钛机器学习 催收机器人 智聆口语评测 腾讯优评 Elasticsearch'Service
-# 物联网通信 TBaaS 云监控 迁移服务平台 电子合同服务 计费相关 渠道合作伙伴 人脸核身'云智慧眼
-# 威胁情报云查 样本智能分析平台 数学作业批改 人脸融合 人脸识别 数字版权管理
-
-
-# 七牛云 | developer.qiniu.com/sdk
-go get -u github.com/qiniu/api.v7 # 对象存储
-
-# CDN.内容分发网络
-# 又拍云 | www.upyun.com
-
-# 实时通信云
-# 野狗 | www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
-
-# 应用数据、开放数据API
-# 聚合数据 | www.juhe.cn
-
-# 微信公众平台SDK
-go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、微信支付 github.com/chanxuehong/wechat 
-# https://github.com/sidbusy/weixinmp
-# https://github.com/arstd/weixin
-# https://github.com/wizjin/weixin
-# https://github.com/hoperong/RabbitGo
-# https://github.com/Cheney-Su/go_weixin
-# https://github.com/i11cn/go_weixin
-# 微信支付SDK
-# https://github.com/imzjy/wxpay
-# 微信支付／支付宝支付
-# https://github.com/philchia/gopay
-# 微信公众平台/微信企业号/微信商户平台/微信支付
-# https://github.com/philsong/wechat2
 ~~~
+
+##### 腾讯云 
+ - console.cloud.tencent.com/api/explorer
+~~~go
+go get -u github.com/tencentcloud/tencentcloud-sdk-go
+~~~
+| 包名 | 产品中文名 |
+|------------|------|
+| aai | 智能语音服务 |
+| ame | 正版曲库直通车 |
+| as | 弹性伸缩 |
+| asr | 语音识别 |
+| batch | 批量计算 |
+| billing | 计费相关 |
+| bizlive | 商业直播 |
+| bm | 黑石物理服务器 |
+| bmeip | 黑石弹性公网IP |
+| bmlb | 黑石负载均衡 |
+| bmvpc | 黑石私有网络 |
+| bri | 业务风险情报 |
+| cam | 访问管理 |
+| captcha | 验证码 |
+| cat | 云拨测 |
+| cbs | 云硬盘 |
+| cdb | 云数据库 MySQL |
+| cdn | 内容分发网络 |
+| cds | 数盾 |
+| cfs | 文件存储 |
+| chdfs | 云 HDFS |
+| cim | 已废弃 |
+| cis | 容器实例服务 |
+| ckafka | 消息队列 Ckafka |
+| clb | 负载均衡 |
+| cloudaudit | 云审计 |
+| cloudhsm | 数据加密服务 |
+| cme | 腾讯云剪 |
+| cmq | 消息队列 CMQ |
+| cms | 内容安全 |
+| cpdp | 企业收付平台 |
+| cr | 金融联络机器人 |
+| cvm | 云服务器 |
+| cws | 漏洞扫描服务 |
+| dayu | 大禹网络安全 |
+| dbbrain | 数据库智能管家 |
+| dc | 专线接入 |
+| dcdb | 分布式数据库 TDSQL |
+| domain | 域名注册 |
+| drm | 数字版权管理 |
+| ds | 电子合同服务 |
+| dts | 数据传输服务 DTS |
+| ecc | 英语作文批改 |
+| ecdn | 全站加速网络 |
+| ecm | 边缘计算模块 |
+| emr | 弹性 MapReduce |
+| es | Elasticsearch服务 |
+| facefusion | 人脸融合 |
+| faceid | 人脸核身（云智慧眼） |
+| fmu | 人脸试妆 |
+| ft | 人像变换 |
+| gaap | 全球应用加速 |
+| gme | 游戏多媒体引擎 |
+| gs | 云游戏解决方案 |
+| gse | 游戏服务器引擎 |
+| habo | 样本智能分析平台 |
+| hcm | 数学作业批改 |
+| iai | 人脸识别 |
+| ic | 物联卡 |
+| iot | 加速物联网套件 |
+| iotcloud | 物联网通信 |
+| iotexplorer | 物联网开发平台 |
+| iottid | 物联网设备身份认证TID |
+| iotvideo | 物联网智能视频服务 |
+| kms | 密钥管理系统 |
+| live | 直播 |
+| mariadb | 云数据库 MariaDB |
+| memcached | 云数据库 Memcached |
+| mongodb | 云数据库 MongoDB |
+| monitor | 云监控 |
+| mps | 视频处理 |
+| ms | 应用安全 |
+| msp | 迁移服务平台 |
+| mvj | 营销价值判断 |
+| nlp | 腾讯知文自然语言处理 |
+| npp | 号码保护 |
+| ocr | 文字识别 |
+| organization | 企业组织 |
+| partners | 渠道合作伙伴 |
+| postgres | 云数据库 PostgreSQL |
+| redis | 云数据库 Redis |
+| scf | 云函数 |
+| smpn | 营销号码安全 |
+| sms | 短信 |
+| soe | 智聆口语评测 |
+| solar | 智汇零售 |
+| sqlserver | 云数据库 SQL Server |
+| ssl | 证书 |
+| ssm | 凭据管理服务 |
+| sts | 安全凭证服务 |
+| tag | 标签 |
+| tav | 文件检测 |
+| tbaas | TBaaS |
+| tbm | 腾讯优评 |
+| tbp | 腾讯智能对话平台 |
+| tcaplusdb | 游戏数据库 TcaplusDB |
+| tcb | 云开发 |
+| tci | 腾讯智学课堂分析 |
+| tcr | 容器镜像服务 |
+| tia | 智能钛机器学习 |
+| ticm | 智能鉴黄 |
+| tics | 威胁情报云查 |
+| tiems | 智能钛机器学习 |
+| tiia | 图像分析 |
+| tione | 智能钛机器学习平台 |
+| tiw | 互动白板 |
+| tke | 容器服务 |
+| tkgdq | 腾讯知识图谱数据查询 |
+| tmt | 机器翻译 |
+| trtc | 实时音视频 |
+| tsf | 腾讯分布式服务框架 |
+| tts | 语音合成 |
+| vod | 点播 |
+| vpc | 私有网络 |
+| wss | SSL证书管理服务 |
+| youmall | 腾讯优Mall |
+| yunjing | 主机安全 |
+| yunsou | 云搜 |
+
+#### 微信公众平台SDK
+~~~go
+go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、微信支付 github.com/chanxuehong/wechat 
+~~~
+ - https://github.com/sidbusy/weixinmp
+ - https://github.com/arstd/weixin
+ - https://github.com/wizjin/weixin
+ - https://github.com/hoperong/RabbitGo
+ - https://github.com/Cheney-Su/go_weixin
+ - https://github.com/i11cn/go_weixin
+ - 微信支付SDK
+ - https://github.com/imzjy/wxpay
+ - 微信支付／支付宝支付
+ - https://github.com/philchia/gopay
+ - 微信公众平台/微信企业号/微信商户平台/微信支付
+ - https://github.com/philsong/wechat2
+
+#### 七牛云 | developer.qiniu.com/sdk
+~~~go
+go get -u github.com/qiniu/api.v7 # 对象存储
+~~~
+
+#### CDN.内容分发网络
+ - 又拍云 www.upyun.com
+
+#### 实时通信云
+ - 野狗 www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
+
+#### 应用数据、开放数据API
+ - 聚合数据 www.juhe.cn
+
+----
 
 #### Google开源
 
