@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
+ > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -936,11 +936,11 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 ## 云平台|公众平台|在线支付
 
 #### 亚马逊 AWS 
- - www.amazonaws.cn/tools
+ - https://www.amazonaws.cn/tools
 
 #### 谷歌云 Google Cloud Platform 
- - cloud.google.com/go 
- - github.com/GoogleCloudPlatform
+ - https://cloud.google.com/go 
+ - https://github.com/GoogleCloudPlatform
 ~~~go
 go get -u github.com/google/go-cloud       # 云计算
 go get -u cloud.google.com/go/storage      # 在 Cloud Storage 中存储和归档数据
@@ -950,7 +950,9 @@ go get -u cloud.google.com/go/translate    # 使用 Translation API 翻译不同
 go get -u cloud.google.com/go/vision/apiv1 # 使用 Vision API 分析图片
 ~~~
 
-#### 阿里云 | api.aliyun.com | developer.aliyun.com/sdk
+#### 阿里云 
+ - https://api.aliyun.com 
+ - https://developer.aliyun.com/sdk
 	云服务器 ECS、对象存储 OSS、阿里云关系型数据库、云数据库MongoDB版、CDN、VPC、
 	视频点播、音视频通信、媒体转码、负载均衡、云监控、容器服务、邮件推送、弹性伸缩、移动推送、日志服务、交易与账单管理
 ~~~go
@@ -1119,11 +1121,10 @@ go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/arms4finance
 go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ahas_openapi
 # 容器镜像服务
 go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cr
-
 ~~~
 
 ##### 腾讯云 
- - console.cloud.tencent.com/api/explorer
+ - https://console.cloud.tencent.com/api/explorer
 ~~~go
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
 ~~~
@@ -1258,14 +1259,12 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
  - https://github.com/hoperong/RabbitGo
  - https://github.com/Cheney-Su/go_weixin
  - https://github.com/i11cn/go_weixin
- - 微信支付SDK
- - https://github.com/imzjy/wxpay
- - 微信支付／支付宝支付
- - https://github.com/philchia/gopay
- - 微信公众平台/微信企业号/微信商户平台/微信支付
- - https://github.com/philsong/wechat2
+ - 微信支付SDK https://github.com/imzjy/wxpay
+ - 微信支付／支付宝支付 https://github.com/philchia/gopay
+ - 微信公众平台/微信企业号/微信商户平台/微信支付 https://github.com/philsong/wechat2
 
-#### 七牛云 | developer.qiniu.com/sdk
+#### 七牛云 
+ - https://developer.qiniu.com/sdk
 ~~~go
 go get -u github.com/qiniu/api.v7 # 对象存储
 ~~~
@@ -1274,7 +1273,7 @@ go get -u github.com/qiniu/api.v7 # 对象存储
  - 又拍云 www.upyun.com
 
 #### 实时通信云
- - 野狗 www.wilddog.com 实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
+ - 野狗 www.wilddog.com <br>实时通信引擎（Sync），它帮助企业快速实现三大功能：基础实时通信、实时数据分发和实时数据持久化。
 
 #### 应用数据、开放数据API
  - 聚合数据 www.juhe.cn
