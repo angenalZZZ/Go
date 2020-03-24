@@ -681,6 +681,7 @@ go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
 git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
+go get github.com/xo/usql                  # 命令行工具 usql oracle,mssql,postgres,influxDB,mysql,tidb,vitess,redis..
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate
  > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板.
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
