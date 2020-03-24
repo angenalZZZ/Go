@@ -685,6 +685,12 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
  > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板.
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
+ > xo pgsql://user:pass@host/dbname -N -M -B -T AuthorResultDto -o models << ENDSQL
+	SELECT a.name::varchar AS name, b.type::integer AS my_type
+	FROM authors a INNER JOIN authortypes b ON a.id = b.author_id
+	WHERE a.id = %%authorID int%% LIMIT %%limit int%%
+	ENDSQL
+ //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 使用 go generate
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
  > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
