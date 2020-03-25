@@ -197,7 +197,7 @@ go get github.com/go-delve/delve/cmd/dlv  #debug: github.com/go-delve/delve/blob
 #### [编译](https://go.wuhaolin.cn/advanced-go-programming-book/ch2-cgo/ch2-10-link.html)
 
 > 编译器命令
-~~~bash
+~~~go
 go command [arguments]    // go 命令 [参数]
 go build                  // 编译包和依赖包
 go clean                  // 移除对象和缓存文件
@@ -241,17 +241,15 @@ set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o a
 // +build cgo,!netgo                                                # _unix.go
 // +build aix darwin dragonfly freebsd linux netbsd openbsd solaris # _unix.go
 [空行]
-
 # go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
 //go:generate go get -u github.com/valyala/quicktemplate/qtc
 //go:generate qtc -dir=app/views
 [空行]
-
 ~~~
 
 > 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
 
-~~~shell
+~~~docker
 > docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
 # 1. pull build tools: Glide, gdm, go-test-teamcity
 docker pull jetbrainsinfra/golang:1.11.5
@@ -271,7 +269,7 @@ docker exec -it golang1115 bash
 
 
 #### 管理|构建
-~~~bash
+~~~go
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
@@ -347,7 +345,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 ~~~
 
 #### 测试
-~~~bash
+~~~go
 # -------------------------------------------------------------------------------
 # 测试命令 >>
 # -------------------------------------------------------------------------------
@@ -455,7 +453,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
  * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
  * [Go tooling essentials](https://rakyll.org/go-tool-flags/) 、 [go-torch](https://www.cnblogs.com/li-peng/p/9391543.html)
  * [Profiling、Tracing、Debugging、Runtime statistics and events](https://cyningsun.github.io/07-21-2019/go-diagnostics-cn.html)
-~~~
+~~~go
 # ------------------------------------------------------------------------------------
 # 程序代码排查`go tool pprof`的优化：
 # ------------------------------------------------------------------------------------
@@ -500,7 +498,7 @@ someSlice []int      -> map[int]bool
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
-~~~
+~~~go
 go get -d github.com/golang/example/hello  # hello
 go get -d github.com/golang/playground     # playground   #本地教程#
 go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
@@ -949,7 +947,6 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
-
 ~~~
 
 ----
@@ -1367,7 +1364,7 @@ astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
     * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
-~~~bash
+~~~go
 # [QT跨平台应用框架] Qt binding package
 go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
 go get github.com/lxn/win                  # Windows API wrapper package
@@ -1386,7 +1383,7 @@ go get github.com/google/gapid             # Windows UI App : Graphics API Debug
  * Web 框架
     * [基于 Gin 构建企业级 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
     * [基于 Gin 一步一步搭建Go的Web服务器](https://www.hulunhao.com/go/go-web-backend-starter/)
-~~~
+~~~bash
 # 开发
 cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
 git clone --depth=1 https://github.com/lexkong/apiserver_demos apiserver        # 项目源码-复制^demo至-工作目录
