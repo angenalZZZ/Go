@@ -171,7 +171,6 @@ git clone --depth=1 https://github.com/golang/tour.git %GOPATH%/src/golang.org/x
 git clone --depth=1 https://github.com/googleapis/google-cloud-go.git %GOPATH%/src/cloud.google.com/go # 谷歌云
 
 # 开发工具 VSCode✨  github.com/Microsoft/vscode-go
-# 分享Go工具链✨  pan.baidu.com/s/13tfSyd2OeSXU4lNaUfMHpA 提取码: 41jq
 git clone --depth=1 https://github.com/golang/tools.git %GOPATH%/src/golang.org/x/tools
 go get github.com/ramya-rao-a/go-outline
 go get github.com/acroca/go-symbols
@@ -190,8 +189,9 @@ go get github.com/josharian/impl
 go get github.com/haya14busa/goplay/cmd/goplay
 go get github.com/uudashr/gopkgs/cmd/gopkgs
 go get github.com/davidrjenni/reftools/cmd/fillstruct
-go get github.com/alecthomas/gometalinter  && gometalinter --install
-go get github.com/go-delve/delve/cmd/dlv  #debug: github.com/go-delve/delve/blob/master/Documentation/installation/README.md
+go get github.com/go-delve/delve/cmd/dlv
+go get github.com/alecthomas/gometalinter  &&  gometalinter --install
+# debug: github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
 
 #### [编译](https://go.wuhaolin.cn/advanced-go-programming-book/ch2-cgo/ch2-10-link.html)
@@ -235,16 +235,17 @@ set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o a
 # go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
 // +build darwin linux freebsd windows android js
 // +build 386 amd64 arm arm64 ppc64 wasm
-// +build cgo,!netgo                                                # _android.go
-// +build cgo,!netgo                                                # _windows.go
-// +build !android,cgo,!netgo                                       # _linux.go
-// +build cgo,!netgo                                                # _unix.go
-// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris # _unix.go
+// +build cgo,!netgo                                                //*_android.go
+// +build cgo,!netgo                                                //*_windows.go
+// +build !android,cgo,!netgo                                       //*_linux.go
+// +build cgo,!netgo                                                //*_unix.go
+// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris //*_unix.go
 [空行]
 # go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
 //go:generate go get -u github.com/valyala/quicktemplate/qtc
 //go:generate qtc -dir=app/views
 [空行]
+> go generate & go build -ldflags "-s -w"
 ~~~
 
 > 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
