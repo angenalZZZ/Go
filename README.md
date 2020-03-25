@@ -551,9 +551,10 @@ go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/Th
 go get github.com/cenkalti/backoff         # 指数退避算法backoff.v4,用于降低程序执行速率,如:最大尝试重连数等
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
-go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐)> xxhgo ; xxhsum -h ;C语言github.com/Cyan4973/xxHash
+go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐)> xxhsum -h ; xxhgo ;C语言github.com/Cyan4973/xxHash
 go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐)> murmur32 123456 ; murmur64 123456
-go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4> lz4go ; lz4 -h ;C语言 github.com/Cyan4973/lz4
+go get github.com/bkaradzic/go-lz4         # 无损压缩算法LZ4> lz4 -h ; lz4go ;C语言 github.com/Cyan4973/lz4
+go get github.com/pierrec/lz4              # 无损压缩算法LZ4> lz4c -h ; lz4c [compress,uncompress] [<file name> ...]
 go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar)> arc archive|unarchive|extract|ls|compress|decompress
 go get github.com/hpcloud/tail/...         # 从不断更新的文件读取.惠普.开源(推荐) log rotation tool: www.hpe.com
 go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
@@ -734,10 +735,11 @@ go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(�
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
-go get github.com/graph-gophers/graphql-go # GraphQL api server      *3k
-go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k   github.com/golang/oauth2
-go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*5k  访问控制模型(ACL, RBAC, ABAC) casbin.org
-go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐)*2k  CSRF,Throttle,Auth(Password|OAuth2|2fa[totp.sms]),Regist,Lock,Expire等
+go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
+go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
+go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k  github.com/golang/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*6k 访问控制模型(ACL, RBAC, ABAC) casbin.org
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *2k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
 go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k (推荐)
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
