@@ -863,6 +863,7 @@ go get github.com/Shopify/sarama           # 消息系统Kafka客户端(推荐) 
 go get github.com/travisjeffery/jocko      # 消息系统Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
+go get github.com/mholt/timeliner/cmd/timeliner # 时序存储: 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
 go get github.com/prometheus/prometheus    # 监控系统和时序数据库Prometheus    *30k
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
