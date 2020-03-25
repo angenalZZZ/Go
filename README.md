@@ -692,8 +692,8 @@ go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允
 git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
 go get github.com/xo/usql                  # 命令行工具 usql oracle,mssql,postgres,influxDB,mysql,tidb,vitess,redis..
-go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate
- > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板.
+go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate */
+ > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板 */
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo pgsql://user:pass@host/db -o models --ignore-fields created_at modified_at # 忽略字段
@@ -703,8 +703,8 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
 	WHERE a.id = %%authorID int%% LIMIT %%limit int%%
 	ENDSQL
  //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 在build前使用命令 go generate
-go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go
- > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates
+go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go   */
+ > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates    */
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
  > xorm reverse mssql "server=localhost;user id=sa;password=<password>;database=AppAuth" \
    %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
