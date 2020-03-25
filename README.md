@@ -528,7 +528,6 @@ go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/huandu/xstrings          # String functions to their friends in other languages
 go get github.com/bradfitz/iter            # Range [0,n) | for i:=range iter.N(1e9) `内存分配`testing.AllocsPerRun()
 go get gopkg.in/pipe.v2                    # io.Pipeline | github.com/go-pipe/pipe
-go get golang.org/x/crypto/acme/autocert   # tls usage | github.com/go-ego/autotls
 go get golang.org/x/sync/errgroup          # sync.group扩展 g:=new(errgroup.Group);g.Go(func(){});e:=g.Wait() godoc.org/golang.org/x/sync/errgroup
 go get github.com/rafaeldias/async         # 超级好用+异步高并发处理(推荐)
 go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请求限制goroutines(推荐) *1.5k
@@ -583,27 +582,36 @@ go get github.com/ungerik/pkgreflect       # 生成包反射时使用pkgreflect.
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
-go get github.com/go-ego/gpy               # 汉语拼音转换工具
+go get github.com/go-ego/gpy               # 汉语拼音转换工具(推荐)
 go get github.com/levigross/grequests      # HTTP client Requests(推荐)
 go get gopkg.in/h2non/gentleman.v2         # HTTP client library
 go get github.com/sethgrid/pester          # HTTP client calls with retries, backoff, and concurrency.
 go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
-go get -d github.com/upspin/upspin         # 构建安全统一和全局命名、共享文件和数据的框架：一个排序的全局名称系统 *5k | git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
+go get github.com/upspin/upspin            # 构建安全统一和全局命名、共享文件和数据的框架：全局名称系统 *5k
+# git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
 
-go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                  *25k
-go get github.com/tidwall/evio             # 超快的事件网络IO{http,redis..}-server   *4k
-go get github.com/panjf2000/gnet           # 高性能-轻量级-非阻塞的事件驱动网络框架  *1.7k
+go get golang.org/x/crypto/acme/autocert   # tls usage  github.com/go-ego/autotls
+go get github.com/caddyserver/certmagic    # tls auto  certmagic.HTTPS([]string{"example.com"}, mux) *3k
+go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
+# [申请Let's Encrypt永久免费SSL证书]  www.jianshu.com/p/3ae2f024c291
+# Let’s Encrypt 免费证书 https://go-acme.github.io/lego/usage/cli/examples/
+# Let’s Encrypt 免费证书/自动化脚本 https://github.com/srvrco/getssl
+# Let’s Encrypt 免费证书/自动化工具 https://certbot.eff.org
+# Let’s Encrypt 自动续期证书参考 https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au
+# openssl 证书管理参考 https://www.openssl.org/docs/manmaster/man1/
 go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
-go get github.com/perlin-network/noise     # P2P网络堆栈-高性能分散式应用程序框架    *1.4k
 go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
 go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
-go get github.com/cloudflare/cfssl/cmd/... # SSL证书 usage play.etcd.io/install#TLS  *4k
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统                *3k
-go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
+go get github.com/perlin-network/noise     # 网络库模块p2p-高性能分散式应用程序框架 *1.4k
 go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库
 go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享
 go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
 go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
+go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
+go get github.com/tidwall/evio             # 超快的事件网络IO{http,redis..}-server  *4k
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统              *3k
+go get github.com/panjf2000/gnet           # 高性能-轻量级-非阻塞的事件驱动网络框架   *2k
+go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                 *25k
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
@@ -902,6 +910,8 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
  $ curl --cacert root.crt https://localhost:8443/hi #7.验证CA,使用HTTP.TLS向服务器发出经过身份验证的加密curl请求
  $ step certificate inspect https://www.baidu.com # 查看网站证书Certificate
 go get github.com/smallstep/autocert       # 自动化证书管理 for Docker kubernetes ^1.9
+go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert > https://localhost
+go get github.com/cloudflare/cfssl/cmd/... # 证书工具 *4k  >  play.etcd.io/install#TLS
 go get github.com/shazow/ssh-chat          # 自定义 SSH server 用于替代 shell  *3.6k
 go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
@@ -915,9 +925,6 @@ go get github.com/google/godepq            # 用于查询程序依赖 > godepq -
 go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
 go get github.com/go-task/task             # 一个任务运行/构建工具，旨在比 GNU Make 更简单易用 *2k
 go get github.com/drakkan/sftpgo           # 全功能和高度可配置SFTP服务器
-go get github.com/FiloSottile/mkcert       # 证书管理工具 *18k  > mkcert > https://localhost
-# [申请Let's Encrypt永久免费SSL证书]         www.jianshu.com/p/3ae2f024c291
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
 go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
