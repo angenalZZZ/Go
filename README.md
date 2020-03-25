@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
+ > [*搭建开发环境*](#-搭建开发环境) ；[*编译*](#-编译) ；[*管理.构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -112,79 +112,6 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
 
-> 编译器命令
-~~~bash
-go command [arguments]    // go 命令 [参数]
-go build                  // 编译包和依赖包
-go clean                  // 移除对象和缓存文件
-go doc                    // 显示包的文档
-go env                    // 打印go的环境变量信息
-go bug                    // 报告bug
-go fix                    // 更新包使用新的api
-go fmt                    // 格式规范化代码
-go generate               // 通过处理资源生成go文件
-go get                    // 下载并安装包及其依赖
-go install                // 编译和安装包及其依赖
-go list                   // 列出所有包
-go run                    // 编译和运行go程序
-go test                   // 测试
-go tool                   // 运行给定的go工具
-go version                // 显示go当前版本
-go vet                    // 发现代码中可能的错误
-
-# <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
-go tool dist list
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./api_linux_amd64 ./api
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
-
-# go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
-set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
-
-# go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
-# -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
-# -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -v 编译时显示包名;
-# -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离; -race 开启竞态条件的检测;
-# -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
-# -work 打印编译时生成的临时目录; -compiler gc或gccgo; -asmflags 编译汇编语言时的行为，如-D、-I、-S等;
-# -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
-# -tags按条件编译 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
-# go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
-// +build darwin linux freebsd windows android js
-// +build 386 amd64 arm arm64 ppc64 wasm
-// +build cgo,!netgo                                                # _android.go
-// +build cgo,!netgo                                                # _windows.go
-// +build !android,cgo,!netgo                                       # _linux.go
-// +build cgo,!netgo                                                # _unix.go
-// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris # _unix.go
-[空行]
-
-# go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
-//go:generate go get -u github.com/valyala/quicktemplate/qtc
-//go:generate qtc -dir=app/views
-[空行]
-
-~~~
-
-> 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
-
-~~~shell
-> docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
-# 1. pull build tools: Glide, gdm, go-test-teamcity
-docker pull jetbrainsinfra/golang:1.11.5
-docker pull golang:1.4.2-cross
-docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
-# 2. run docker container
-docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
-docker cp golang1115:/go/src/github.com %GOPATH%\src
-docker cp golang1115:/go/src/golang.org %GOPATH%\src
-docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
-# 3. go build
-docker exec -it golang1115 bash
-  $ cd apiserver & go build & ./apiserver                                                # build for linux
-  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
-    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
-~~~
-
 
 > 安装依赖包
 ~~~bash
@@ -266,6 +193,82 @@ go get github.com/davidrjenni/reftools/cmd/fillstruct
 go get github.com/alecthomas/gometalinter  && gometalinter --install
 go get github.com/go-delve/delve/cmd/dlv  #debug: github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
+
+#### [编译](https://go.wuhaolin.cn/advanced-go-programming-book/ch2-cgo/ch2-10-link.html)
+
+> 编译器命令
+~~~bash
+go command [arguments]    // go 命令 [参数]
+go build                  // 编译包和依赖包
+go clean                  // 移除对象和缓存文件
+go doc                    // 显示包的文档
+go env                    // 打印go的环境变量信息
+go bug                    // 报告bug
+go fix                    // 更新包使用新的api
+go fmt                    // 格式规范化代码
+go generate               // 通过处理资源生成go文件
+go get                    // 下载并安装包及其依赖
+go install                // 编译和安装包及其依赖
+go list                   // 列出所有包
+go run                    // 编译和运行go程序
+go test                   // 测试
+go tool                   // 运行给定的go工具
+go version                // 显示go当前版本
+go vet                    // 发现代码中可能的错误
+
+# <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
+go tool dist list
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./api_linux_amd64 ./api
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
+
+# go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
+set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+
+# go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
+# -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
+# -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -v 编译时显示包名;
+# -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离; -race 开启竞态条件的检测;
+# -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
+# -work 打印编译时生成的临时目录; -compiler gc或gccgo; -asmflags 编译汇编语言时的行为，如-D、-I、-S等;
+# -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
+# -tags按条件编译 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
+# go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
+// +build darwin linux freebsd windows android js
+// +build 386 amd64 arm arm64 ppc64 wasm
+// +build cgo,!netgo                                                # _android.go
+// +build cgo,!netgo                                                # _windows.go
+// +build !android,cgo,!netgo                                       # _linux.go
+// +build cgo,!netgo                                                # _unix.go
+// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris # _unix.go
+[空行]
+
+# go generate 通过处理资源生成go文件 #*.go文件代码参考如下 qtc -dir=> app/views/*.html
+//go:generate go get -u github.com/valyala/quicktemplate/qtc
+//go:generate qtc -dir=app/views
+[空行]
+
+~~~
+
+> 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
+
+~~~shell
+> docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
+# 1. pull build tools: Glide, gdm, go-test-teamcity
+docker pull jetbrainsinfra/golang:1.11.5
+docker pull golang:1.4.2-cross
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app -e GOOS=windows -e GOARCH=386 golang:1.11.5 go build -v
+# 2. run docker container
+docker run --name golang1115 -d jetbrainsinfra/golang:1.11.5 bash
+docker cp golang1115:/go/src/github.com %GOPATH%\src
+docker cp golang1115:/go/src/golang.org %GOPATH%\src
+docker run --name golang1115 -td -p 8080:8080 -v %GOPATH%\src:/go/src -w /go/src jetbrainsinfra/golang:1.11.5
+# 3. go build
+docker exec -it golang1115 bash
+  $ cd apiserver & go build & ./apiserver                                                # build for linux
+  $ for GOOS in linux windows; do GOOS=$GOOS go build -v -o apiserver-$GOOS-amd64; done; # if GOARCH="amd64"
+    mv apiserver-windows-amd64 apiserver-windows-amd64.exe  # windows文件重命名           # for linux&windows
+~~~
+
 
 #### 管理|构建
 ~~~bash
