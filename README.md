@@ -734,11 +734,12 @@ go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计�
 go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k   martini.codegangsta.io
 go get github.com/kataras/iris             # 最快WebSvr框架 *18k (推荐)
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
-go get github.com/valyala/fasthttp         # 最快Http框架10倍于net/http (强力推荐) *12k
+go get github.com/valyala/fasthttp         # 最快Http框架10倍于net/http (推荐) *12k
 go get github.com/buaazp/fasthttprouter    # ~fasthttp高性能路由器#1
 go get github.com/vincentLiuxiang/lu       # ~fasthttp高性能中间件#2
 go get github.com/phachon/fasthttpsession  # ~fasthttp会话Session#3(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
+go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expressjs的Web框架 *3.5k (强力推荐)Routing+Middleware+WebSocket+TranslatedLanguages..
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
