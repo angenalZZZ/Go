@@ -1414,49 +1414,47 @@ cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应
 
 # 语法速查表
 
-1. [Basic Syntax](#basic-syntax)
-2. [Operators](#operators)
+1. 在线练习
+    * [英文教程](http://tour.golang.org)
+    * [中文教程](https://tour.go-zh.org)
+2. [运算](#operators)
     * [Arithmetic](#arithmetic)
     * [Comparison](#comparison)
     * [Logical](#logical)
     * [Other](#other)
-3. [Declarations](#declarations)
-4. [Functions](#functions)
+3. [变量](#declarations)
+4. [函数](#functions)
     * [Functions as values and closures](#functions-as-values-and-closures)
     * [Variadic Functions](#variadic-functions)
-5. [Built-in Types](#built-in-types)
-6. [Type Conversions](#type-conversions)
-7. [Packages](#packages)
-8. [Control structures](#control-structures)
+5. [基础类型](#built-in-types)
+6. [转换类型](#type-conversions)
+7. [包](#packages)
+8. [逻辑控制](#control-structures)
     * [If](#if)
     * [Loops](#loops)
     * [Switch](#switch)
-9. [Arrays, Slices, Ranges](#arrays-slices-ranges)
+9. [数组、切片、范围](#arrays-slices-ranges)
     * [Arrays](#arrays)
     * [Slices](#slices)
     * [Operations on Arrays and Slices](#operations-on-arrays-and-slices)
-10. [Maps](#maps)
-11. [Structs](#structs)
-12. [Pointers](#pointers)
-13. [Interfaces](#interfaces)
-14. [Embedding](#embedding)
-15. [Errors](#errors)
-16. [Concurrency](#concurrency)
+10. [字典](#maps)
+11. [结构、类型](#structs)
+12. [指针](#pointers)
+13. [接口](#interfaces)
+14. [继承](#embedding)
+15. [错误、异常](#errors)
+16. [并发、多线程、通信](#concurrency)
     * [Goroutines](#goroutines)
     * [Channels](#channels)
     * [Channel Axioms](#channel-axioms)
-17. [Printing](#printing)
-18. [Reflection](#reflection)
+17. [输入输出、格式转换](#printing)
+18. [反射类型](#reflection)
     * [Type Switch](#type-switch)
     * [Examples](https://github.com/a8m/reflect-examples)
-19. [Snippets](#snippets)
+19. [代码片段、简单实例](#snippets)
     * [Http-Server](#http-server)
     * [string、utf8,utf16、slice...](#stringutf8utf16slice)
-
 ----
-
-# Basic Syntax
-  * http://tour.golang.org
 
 ## Hello World
 File `hello.go`:
@@ -1958,7 +1956,6 @@ gender := (*byte)(unsafe.Pointer(uintptr(p) + unsafe.Offsetof(who.gender))) // �
 *age = 28
 *gender = 1
 fmt.Printf("  指针：struct Person: a = %v\n", who) // {Alice 28 1}
-
 ```
 
 ## Interfaces
@@ -2134,7 +2131,7 @@ s := fmt.Sprintln( "My point:", p, "x coord=", p.X ) // print to string variable
 fmt.Printf("%c %U %U %q %+q", 65, 'a', '中', 65, "中国") // A U+0061 U+4E2D 'A' "\u4e2d\u56fd"
 fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format: f,e,E,g,G 四舍五入
 s1 := fmt.Sprintf( "%g - %5.5G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认以最小位计算精度
-s2 := fmt.Sprintf( "%d - %f", 17, 17.0 ) // 17 - 17.000000 默认以6位小数位计算精度
+s2 := fmt.Sprintf( "%d - %f", 17, 17.000001 ) // 17 - 17.000001 默认以6位小数位计算精度
 
 hellomsg := `
  "Hello" in Chinese is 你好 ('Ni Hao')
