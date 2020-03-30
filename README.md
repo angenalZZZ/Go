@@ -777,12 +777,13 @@ go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authenti
 go get github.com/dpapathanasiou/go-recaptcha # Google验证码|申请(推荐) www.google.com/recaptcha/admin/create
 go get github.com/dchest/captcha           # 验证码|图片|声音(推荐)
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
+go get github.com/fogleman/gg              # 图像处理库渲染2D图形Drawing,Text,Color,Line,Gradients,Transform,Clip,Stack
 go get github.com/anthonynsimon/bild       # 图像处理库 adjust,blend,blur,channel,effect,histogram,imgio,noise,segment
-go get github.com/emersion/go-imap/...     # 邮箱服务 IMAP library for clients and servers
-go get github.com/sdwolfe32/trumail/...    # 邮箱验证 clients
-go get github.com/matcornic/hermes/v2      # HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
-go get github.com/fagongzi/gateway         # 基于HTTP协议的restful的API网关, 可以作为统一的API接入层
-go get github.com/wanghongfei/gogate       # 高性能Spring Cloud网关, 路由配置热更新、负载均衡、灰度、服务粒度的流量控制、服务粒度的流量统计
+go get github.com/emersion/go-imap/...     # 邮箱服务器 IMAP library for clients and servers
+go get github.com/sdwolfe32/trumail/...    # 邮件验证 go clients
+go get github.com/matcornic/hermes/v2      # 邮件验证 HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
+go get github.com/fagongzi/gateway         # API网关,基于HTTP协议的restful网关,可以作为统一的API接入层
+go get github.com/wanghongfei/gogate       # 高性能Spring-Cloud网关, 路由配置热更新-负载均衡-灰度-服务粒度流量控制-流量统计
 go get github.com/go-swagger/go-swagger/cmd/swagger #API文档 swagger generate spec --scan-models -o docs/swagger.json
 go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间件 swagger 2.0
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
