@@ -84,31 +84,30 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.13.5.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.13.9.windows-amd64.msi
     set GOPATH=C:\Users\Administrator\go
     set GOROOT=D:\Program\Go
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto )
     set GOPROXY=https://goproxy.io      (选项: 建议 网络代理)
-    set GOSUMDB=sum.golang.google.cn    (可选项)
+    set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* GoLand环境设置：Go Modules(vgo) √ Proxy
-    go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的验证服务 √ 默认 sum.golang.org
+    go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的验证服务
     go env -w GOSUMDB=off                       # ^2或者设置为关闭验证服务
     go env -w GOPRIVATE=*.gitlab.com,*.gitee.com # 限制私有库域名(其它不安全的私有库则无法下载)
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
-    wget https://studygolang.com/dl/golang/go1.13.5.linux-amd64.tar.gz
-    GO_INSTALL_DIR=/usr/local # 默认安装目录: 可更改解压到的目录 (选项 tar -C)
-    tar -zxf go1.13.5.linux-amd64.tar.gz -C $GO_INSTALL_DIR
+    wget https://studygolang.com/dl/golang/go1.13.9.linux-amd64.tar.gz
+    tar -zxf go1.13.5.linux-amd64.tar.gz -C /usr/local
     export GOPATH=~/go
     export GOROOT=/usr/local/go
     export GOTOOLS=$GOROOT/pkg/tool     (选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto )
     export GOPROXY=https://goproxy.io   (选项: 建议 网络代理)
-    export GOSUMDB=sum.golang.google.cn (可选项)
+    export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
 
