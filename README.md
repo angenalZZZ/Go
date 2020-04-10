@@ -741,8 +741,6 @@ go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x fa
 go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expressjs的Web框架 *3.5k (强力推荐)Routing+Middleware+WebSocket+TranslatedLanguages..
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
-go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k   gohugo.io
-go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx   caddyserver.com
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
@@ -767,6 +765,12 @@ go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动服务 > supervisord -d -c website.conf
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
+go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
+go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k     gohugo.io
+go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
+go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
+go get github.com/elazarl/go-bindata-assetfs/... # 提供http服务> http.Handle("/", http.FileServer(assetFS()))
+go get github.com/yudai/gotty               # 终端扩展为Web网站服务  *12.3k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
@@ -837,8 +841,6 @@ go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text
 go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
 # Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
-go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
-go get github.com/yudai/gotty              # 终端扩展为Web网站服务 *12.3k
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *10.k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *14.k 将STDIN/STDOUT程序转换为WebSocket服务器
