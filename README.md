@@ -249,8 +249,8 @@ set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o a
 
 > 编译器(可选)docker [Golang + custom build tools](https://hub.docker.com/_/golang)
 
-~~~docker
-> docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
+~~~bash
+docker pull dockercore/golang-cross # 推荐docker: the MinGW compiler for windows, and an OSX SDK.
 # 1. pull build tools: Glide, gdm, go-test-teamcity
 docker pull jetbrainsinfra/golang:1.11.5
 docker pull golang:1.4.2-cross
@@ -269,7 +269,7 @@ docker exec -it golang1115 bash
 
 
 #### 管理|构建
-~~~go
+~~~bash
 # ------------------------------------------------------------------------------------
 #  谷歌开源的构建和测试工具，类似于Make、Maven、Gradle支持跨平台|语言|代码库|工具链 ✨ docs.bazel.build
 #   /构建规则: Bazel rules for building protocol buffers +/- gRPC ✨ github.com/stackb/rules_proto
@@ -345,7 +345,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 ~~~
 
 #### 测试
-~~~go
+~~~bash
 # -------------------------------------------------------------------------------
 # 测试命令 >>
 # -------------------------------------------------------------------------------
@@ -499,7 +499,7 @@ someSlice []int      -> map[int]bool
 
 #### ② [功能、框架、基础库、应用、工具](https://github.com/avelino/awesome-go)
 
-~~~go
+~~~bash
 go get -d github.com/golang/example/hello  # hello
 go get -d github.com/golang/playground     # playground   #本地教程#
 go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
