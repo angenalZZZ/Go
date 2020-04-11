@@ -623,7 +623,6 @@ go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
-go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
 go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
 go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
@@ -632,7 +631,7 @@ go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS..
-go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
+go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐)中文文档 learnku.com/docs/bigfile/1.0
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
 go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
@@ -764,7 +763,7 @@ go get github.com/ochinchina/supervisord   # 开机启动服务 > supervisord -d
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
-go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k     gohugo.io
+go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k    gohugo.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
 go get github.com/elazarl/go-bindata-assetfs/... # 提供http服务> http.Handle("/", http.FileServer(assetFS()))
@@ -789,6 +788,8 @@ go get github.com/go-swagger/go-swagger/cmd/swagger #API文档 swagger generate 
 go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间件 swagger 2.0
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
 go get github.com/fengbeihong/macaron-swagger # 自动生成API文档的macaron中间件 swagger 2.0
+
+go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密等
 
 # 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
 go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
