@@ -699,9 +699,9 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
 	FROM authors a INNER JOIN authortypes b ON a.id = b.author_id
 	WHERE a.id = %%authorID int%% LIMIT %%limit int%%
 	ENDSQL
- //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 在build前使用命令 go generate */
+ //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 在build前使用命令>> go generate
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go   */
- > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates    */
+ > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates                 */
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
  > xorm reverse mssql "server=localhost;user id=sa;password=<password>;database=AppAuth" \
    %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
