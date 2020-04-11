@@ -940,13 +940,12 @@ go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理
 go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
 go get -d github.com/github/hub # 轻松使用Github的命令行工具 *17k
 go get gitea.com/lunny/gps                 # 地图坐标系转换
-/** WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
+/* WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
  * 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
  *  GCJ02坐标系：即火星坐标系，是由中国国家测绘局制订的地理信息系统的坐标系统。由WGS84坐标系经加密后的坐标系。
  * 谷歌中国地图和搜搜中国地图采用的是GCJ02地理坐标系; BD09坐标系：即百度坐标系，GCJ02坐标系经加密后的坐标系;
  * 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
  */
-
 # 小米公司的互联网企业级监控系统 | book.open-falcon.org
 # 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
 ~~~
