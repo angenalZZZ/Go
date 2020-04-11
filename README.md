@@ -694,7 +694,7 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo pgsql://user:pass@host/db -o models --ignore-fields created_at modified_at # 忽略字段
- > xo pgsql://user:pass@host/db -N -M -B -T AuthorResultDto -o models /* << ENDSQL
+ > xo pgsql://user:pass@host/db -N -M -B -T AuthorResultDto -o models /* ENDSQL
 	SELECT a.name::varchar AS name, b.type::integer AS my_type
 	FROM authors a INNER JOIN authortypes b ON a.id = b.author_id
 	WHERE a.id = %%authorID int%% LIMIT %%limit int%%
