@@ -610,10 +610,15 @@ go get github.com/xtaci/smux               # 多路复用-面向流的IO网络�
 go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
 go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
-go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..}  *4k
-go get github.com/panjf2000/gnet           # 高性能轻量级非阻塞事件驱动网络框架       *2k
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统              *3k
-go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                 *25k
+go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..} *4k
+go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻量级网络框架             *2k
+go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*3k 
+> docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
+go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
+go get github.com/rjeczalik/notify         # 文件系统事件通知库
+
+go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *25k
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
@@ -628,11 +633,6 @@ go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文�
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS..
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
-go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
-go get github.com/rjeczalik/notify         # 文件系统事件通知库
-# 数据狗-云监控 www.datadoghq.com (Modern monitoring & analytics)
-go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k 
-> docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
 go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
@@ -874,6 +874,7 @@ go get github.com/Shopify/sarama           # 消息系统Kafka客户端(推荐) 
 go get github.com/travisjeffery/jocko      # 消息系统Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
+# 数据狗 datadog 云监控  www.datadoghq.com  # Modern monitoring & analytics
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
