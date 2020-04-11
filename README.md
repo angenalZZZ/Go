@@ -626,11 +626,6 @@ go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: 
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
-go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *3k
-go get github.com/eko/gocache              # 缓存管理(推荐)Memory[Bigcache,Ristretto]+Memcache+Redis+[Chained,Metric]..
-go get github.com/coocood/freecache        # cache and high concurrent performance
-go get github.com/patrickmn/go-cache       # in-memory key:value store/cache (similar to Memcached)适用于单台应用程序
-go get github.com/VictoriaMetrics/fastcache
 go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS..
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
@@ -638,36 +633,37 @@ go get github.com/rjeczalik/notify         # 文件系统事件通知库
 # 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 
-go get github.com/go-redis/cache
-go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *6k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo/redis    # 内存数据库,集成原生的Redis-cli *6k
+go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
+go get github.com/gomodule/redigo           # 内存数据库,集成原生的Redis-cli *7k
 go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
-go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb | ssdb.io/zh_cn
-
-go get github.com/dgraph-io/badger/...     # 高性能 key/value 数据库,支持事务,(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
-go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展、分布式、低延迟和高吞吐量功能的分布式位图索引数据库 *10k
+go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb  ssdb.io/zh_cn
+go get github.com/go-redis/cache
+go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
+go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *4k
+go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
+go get github.com/dgraph-io/badger/...     # 高性能key/value数据库,支持事务(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
+go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展+分布式+低延迟+高吞吐量的'分布式位图索引数据库' *10k
 go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
 go get github.com/tidwall/buntdb           # 内存数据库 k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
-go get github.com/allegro/bigcache         # 高可用千兆级数据的高效 key/value 缓存 *4k
-go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *18k | www.cockroachlabs.com/docs/stable
-go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k | github.com/uber/h3
-go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k | docker run -p 9851:9851 tile38/tile38
-go get github.com/pingcap/tidb             # 支持包括传统 RDBMS 和 NoSQL 的特性 *18k | pingcap.com/docs-cn
-go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库InfluxDB *19k | github.com/influxdata/influxdb
-go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB2.x客户端 | v2.docs.influxdata.com/v2.0/get-started
-go get github.com/pilosa/pilosa            # Pilosa分布式位图索引+实时计算+大数据+列式存储 *16k | kuanshijiao.com/2017/06/12/pilosa1
-go get github.com/pilosa/go-pilosa         # Pilosa分布式位图索引-客户端 | www.pilosa.com/docs/latest/installation/#docker
-go get github.com/pilosa/pdk               # Pilosa开发套件+用例示例
+go get github.com/cockroachdb/cockroach    # 云数据存储系统，支持地理位置、事务等 *18k  www.cockroachlabs.com/docs/stable
+go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
+go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
+go get github.com/pingcap/tidb             # 支持包括传统 RDBMS 和 NoSQL 的特性 *18k  pingcap.com/docs-cn
+go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库InfluxDB *19k github.com/influxdata/influxdb
+go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB 2.x客户端 v2.docs.influxdata.com/v2.0/get-started
+go get github.com/prometheus/prometheus    # 时序数据库Prometheus +系统监控 (强力推荐)  *30k  https://prometheus.io
+go get github.com/pilosa/pilosa            # Pilosa分布式位图索引+实时计算+大数据+列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
+go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
-go get github.com/astaxie/beego/orm        # 数据库orm    *20k support mysql,postgres,sqlite3...
-go get github.com/jinzhu/gorm              # 数据库gorm   *12k | gorm.io/docs
+go get github.com/astaxie/beego/orm        # 数据库orm    *20k  support mysql,postgres,sqlite3...
+go get github.com/jinzhu/gorm              # 数据库gorm   *12k  gorm.io/docs
 git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql client and driver     *8k   github.com/siddontang/go-mysql
@@ -746,19 +742,19 @@ go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
-go get golang.org/x/oauth2                 # OAuth 2.0 认证授权       *2k  github.com/golang/oauth2
+go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
 go get github.com/casbin/casbin            # 授权访问-认证服务(强力推荐)*6k 访问控制模型(ACL, RBAC, ABAC) casbin.org
 go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *2k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
 go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k (推荐)
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
 go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
 go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
-go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (强力推荐)*3k 代码生成工具(编译时注入)
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*3k 代码生成工具(编译时注入)
 go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
-go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read\Write
+go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read+Write
 go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
-go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐)breaker.CircuitBreaker  www.sony.net
+go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐) breaker.CircuitBreaker www.sony.net
 go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
@@ -771,7 +767,7 @@ go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(�
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
 go get github.com/elazarl/go-bindata-assetfs/... # 提供http服务> http.Handle("/", http.FileServer(assetFS()))
-go get github.com/yudai/gotty               # 终端扩展为Web网站服务  *12.3k
+go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *12k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
@@ -793,18 +789,19 @@ go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间�
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
 go get github.com/fengbeihong/macaron-swagger # 自动生成API文档的macaron中间件 swagger 2.0
 
-# 微服务(分布式RPC框架)rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
-go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
-# 谷歌开源gRPC  grpc.io/docs/quickstart/go & 'HTTP/2'传输更快 http2.golang.org
+# 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
+go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
+
+# 谷歌开源gRPC grpc.io/docs/quickstart/go  # HTTP/2 传输更快 http2.golang.org
  # 1.安装: protoc、genproto; <protoc>插件: protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强插件)
- > github.com/google/protobuf/releases     # 先下载protobuf-command > protoc.exe, protoc
+ > github.com/google/protobuf/releases    # 先下载protobuf-command > protoc.exe, protoc
  > git clone --depth=1 https://github.com/grpc/grpc-go.git %GOPATH%/src/google.golang.org/grpc
  > git clone --depth=1 https://github.com/google/go-genproto %GOPATH%/src/google.golang.org/genproto
  > go get github.com/golang/{text,net}                                       # 安装protoc的依赖 ↓
  > go get github.com/golang/protobuf/{proto,protoc-gen-go}                   # 安装插件protoc-gen-go ↓
    $ protoc --go_out=plugins=grpc:. *.proto                                  # 使用segmentfault.com/a/1190000009277748
  > go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,protoc-gen-gofast} # 推荐gofast性能高于protoc-gen-go ↓
-   $ protoc --gogo_out=plugins=grpc:. *.proto  ||  protoc --gofast_out=plugins=grpc:. *.proto  (使用gofast插件)
+   $ protoc --gogo_out=plugins=grpc:. *.proto || protoc --gofast_out=plugins=grpc:. *.proto  (使用gofast插件)
    # ⚡ gRPC-Gateway (gRPC to JSON proxy: 接口用例) + swagger + validators ↓
    > git clone --depth=1 https://github.com/gogo/grpc-example.git && set GO111MODULE=on && go build -mod=vendor && grpc-example.exe
   $ prototool help                         # 增强版protoc优步推荐 github.com/uber/prototool <ubuntu>
@@ -823,9 +820,8 @@ go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|�
 go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
 go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
 go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
-
-# 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
-go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议http3
+# 分布式RPC框架rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
+go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
@@ -877,8 +873,6 @@ go get github.com/Shopify/sarama           # 消息系统Kafka客户端(推荐) 
 go get github.com/travisjeffery/jocko      # 消息系统Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
-go get github.com/mholt/timeliner/cmd/timeliner # 时序存储: 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
-go get github.com/prometheus/prometheus    # 监控系统和时序数据库Prometheus    *30k
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
