@@ -374,6 +374,7 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -bench=. -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof
   > go tool pprof --alloc_objects path.test.exe mem.prof # 分析内存对象分配;优化GC提升性能;
   > go test -bench=. -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof
+  $ GOMAXPROCS=4 go test ./path -bench='Set|Get' -benchtime=10s # 性能测试: CPU=4;time=10s;
   > go tool pprof path.test.exe cpu.prof    # 分析函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
    $ go tool pprof path.test cpu.prof > web # 分析函数调用(svg)图+> yum install graphviz.x86_64  www.graphviz.org
    $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan 
