@@ -592,9 +592,9 @@ go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
 go get github.com/upspin/upspin            # 构建安全统一和全局命名、共享文件和数据的框架：全局名称系统 *5k
 # git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
 
+go get github.com/caddyserver/certmagic    # tls auto (推荐)*3k  certmagic.HTTPS([]string{"example.com"}, mux)
 go get golang.org/x/crypto/acme/autocert   # tls usage  github.com/go-ego/autotls
-go get github.com/caddyserver/certmagic    # tls auto  certmagic.HTTPS([]string{"example.com"}, mux) *3k
-go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME library, DNS providers manager.
+go get github.com/go-acme/lego/cmd/lego    # tls Let's Encrypt client and ACME library, DNS providers manager
 # [申请Let's Encrypt永久免费SSL证书]  www.jianshu.com/p/3ae2f024c291
 # Let’s Encrypt 免费证书 https://go-acme.github.io/lego/usage/cli/examples/
 # Let’s Encrypt 免费证书/自动化脚本 https://github.com/srvrco/getssl
@@ -602,24 +602,24 @@ go get github.com/go-acme/lego/cmd/lego    # Let's Encrypt client and ACME libra
 # Let’s Encrypt 自动续期证书参考 https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au
 # openssl 证书管理参考 https://www.openssl.org/docs/manmaster/man1/
 go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
-go get github.com/libp2p/go-libp2p         # 网络库模块p2p-serves
-go get github.com/libp2p/go-libp2p-examples# 网络库模块p2p-examples
-go get github.com/perlin-network/noise     # 网络库模块p2p-高性能分散式应用程序框架 *1.4k
+go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves
+go get github.com/libp2p/go-libp2p-examples # 网络库模块p2p-examples
+go get github.com/perlin-network/noise      # 网络库模块p2p-高性能分散式应用程序框架 *1.4k
 go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库
 go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享
 go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
 go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
 go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
-go get github.com/tidwall/evio             # 超快的事件网络IO{http,redis..}-server  *4k
+go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..}  *4k
+go get github.com/panjf2000/gnet           # 高性能轻量级非阻塞事件驱动网络框架       *2k
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统              *3k
-go get github.com/panjf2000/gnet           # 高性能-轻量级-非阻塞的事件驱动网络框架   *2k
 go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议                 *25k
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
-# client: http://play.etcd.io              # 数据中心 etcd | 下载 github.com/etcd-io/etcd/releases
-go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf | 基于Gossip的Membership,P2P对等网络\去中心 | www.serf.io
+# client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
+go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
 go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密
-go get github.com/xordataexchange/crypt/bin/crypt 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
+go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
 go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
@@ -630,13 +630,14 @@ go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且�
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) 中文文档 learnku.com/docs/bigfile/1.0
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
-# 数据狗 - 云监控 (Modern monitoring & analytics)  https://www.datadoghq.com
-go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
+# 数据狗-云监控 www.datadoghq.com (Modern monitoring & analytics)
+go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB) *3k 
+> docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo           # 内存数据库,集成原生的Redis-cli *7k
-go get github.com/sent-hil/bitesized        # Redis位图计数> 统计分析、实时计算
-go get github.com/yannh/redis-dump-go       # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
+go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
+go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
+go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb  ssdb.io/zh_cn
 go get github.com/go-redis/cache
@@ -659,8 +660,8 @@ go get github.com/pilosa/pilosa            # Pilosa分布式位图索引+实时�
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
-go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
+go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *20k  support mysql,postgres,sqlite3...
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k  gorm.io/docs
