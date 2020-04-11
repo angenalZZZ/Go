@@ -664,7 +664,7 @@ go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 
 go get github.com/astaxie/beego/orm        # 数据库orm    *20k  support mysql,postgres,sqlite3...
 go get github.com/jinzhu/gorm              # 数据库gorm   *12k  gorm.io/docs
-git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
+ > git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql client and driver     *8k   github.com/siddontang/go-mysql
 go get github.com/lib/pq                   # Postgres client and driver  *5k   github.com/prest/prest
@@ -686,11 +686,11 @@ go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,
 go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射.
 go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
-git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
+ > git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
 go get github.com/gchaincl/dotsql          # 帮助你将 sql 文件保存至某个地方并轻松使用sql
 go get github.com/xo/usql                  # 命令行工具 usql oracle,mssql,postgres,influxDB,mysql,tidb,vitess,redis..
 go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst]生成 models/*.xo.go for gorm migrate */
- > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板 */
+ > cp %GOPATH%/src/github.com/xo/xo/templates/* ./templates  # 复制模板,修改模板 */ /*
  > xo mysql://root:123456@127.0.0.1:3306/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo mssql://sa:123456@localhost:1433/AppAuth?parseTime=true -o ./models [--template-path templates]
  > xo pgsql://user:pass@host/db -o models --ignore-fields created_at modified_at # 忽略字段
@@ -699,7 +699,7 @@ go get github.com/xo/xo                    # 命令行工具 xo --help  [DbFirst
 	FROM authors a INNER JOIN authortypes b ON a.id = b.author_id
 	WHERE a.id = %%authorID int%% LIMIT %%limit int%%
 	ENDSQL
- //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 在build前使用命令 go generate
+ //go:generate xo pgsql://user:pass@host/db -o models --template-path templates # 在build前使用命令 go generate */
 go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst]生成 models/*.go   */
  > cp %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm/* ./templates    */
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
