@@ -735,7 +735,8 @@ go get github.com/buaazp/fasthttprouter    # ~fasthttp高性能路由器#1
 go get github.com/vincentLiuxiang/lu       # ~fasthttp高性能中间件#2
 go get github.com/phachon/fasthttpsession  # ~fasthttp会话Session#3(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
-go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expressjs的Web框架 *3.5k (强力推荐)Routing+Middleware+WebSocket+TranslatedLanguages..
+# 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
+go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expressjs的Web框架 *3.5k (强力推荐)Rout+Mw+Ws+Trans
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
@@ -879,6 +880,7 @@ go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
+# 小米公司的互联网企业级监控系统   book.open-falcon.org
 
 # 物联网IoT、物理计算Drones、机器人Robotics
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
@@ -936,18 +938,14 @@ go get github.com/grafana/grafana          # 漂亮的监测系统|指标分析|
 go get github.com/rsc/goversion            # 扫描目录中Go可执行文件的版本信息 > goversion /usr/bin
 go get github.com/yinqiwen/gscan           # 扫描可用HTTPsIP、修复Hosts、可用GoogleIP; 可用于代理工具GSnova,GoAgent
 go get github.com/BurntSushi/wingo/wingo-cmd # 一个功能齐全的窗口管理器 > wingo-cmd
-# 源代码版本管理 git version manage
-go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k
+go get -d github.com/gogs/gogs  # 一款极易搭建的自助Git服务  *30k  源代码版本管理 git version manage
 go get -d github.com/github/hub # 轻松使用Github的命令行工具 *17k
 go get gitea.com/lunny/gps                 # 地图坐标系转换
-/* WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
- * 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
- *  GCJ02坐标系：即火星坐标系，是由中国国家测绘局制订的地理信息系统的坐标系统。由WGS84坐标系经加密后的坐标系。
- * 谷歌中国地图和搜搜中国地图采用的是GCJ02地理坐标系; BD09坐标系：即百度坐标系，GCJ02坐标系经加密后的坐标系;
- * 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
- */
-# 小米公司的互联网企业级监控系统 | book.open-falcon.org
-# 各大 Go 模板引擎的对比及压力测试 | github.com/SlinSo/goTemplateBenchmark
+# WGS84坐标系：即地球坐标系，国际上通用的坐标系。设备一般包含GPS芯片或者北斗芯片获取的经纬度为WGS84地理坐标系,
+# 谷歌地图采用的是WGS84地理坐标系（中国范围除外）;
+# GCJ02坐标系：即火星坐标系，是由中国国家测绘局制订的地理信息系统的坐标系统。由WGS84坐标系经加密后的坐标系。
+# 谷歌中国地图和搜搜中国地图采用的是GCJ02地理坐标系; BD09坐标系：即百度坐标系，GCJ02坐标系经加密后的坐标系;
+# 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
 ~~~
 
 ----
