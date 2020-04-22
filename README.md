@@ -2140,29 +2140,16 @@ fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format: 
 s1 := fmt.Sprintf( "%g - %5.5G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认以最小位计算精度
 s2 := fmt.Sprintf( "%d - %f", 17, 17.000001 ) // 17 - 17.000001 默认以6位小数位计算精度
 
-	// 输出可打印字符
-	fmt.Printf("03.%8c\n", 65)    // %c=Unicode字符
-	fmt.Printf("04.%8x\n", 65)    // %x=16进制
-	fmt.Printf("05.%#8o\n", 65)   // %x=8进制
-	fmt.Printf("06.%#8x\n", 65)   // %x=16进制 补0双字节
-	fmt.Printf("07.%08U\n", 'A')  // %U=Unicode
-	fmt.Printf("08.%08x\n", 'A')  // %x=Hex 补0对齐字符
-	fmt.Printf("09.%#U\n", '国')   // Unicode编码
-	fmt.Printf("10.% 0x\n", "祖国") // 16进制 补空格
-	fmt.Printf("11.%+q\n", "祖国")  // Ascii编码
-
-	// Output:
-	// 01.usr.Username: 0R0VMR1DWV35XWH\Administrator
-	// 02.usr.HomeDir: C:\Users\Administrator
-	// 03.       A
-	// 04.      41
-	// 05.    0101
-	// 06.    0x41
-	// 07.  U+0041
-	// 08.00000041
-	// 09.U+56FD '国'
-	// 10.e7 a5 96 e5 9b bd
-	// 11."\u7956\u56fd"
+// 输出可打印字符
+fmt.Printf("03.%8c\n", 65)    // %c=Unicode字符     // 03.       A
+fmt.Printf("04.%8x\n", 65)    // %x=16进制          // 04.      41
+fmt.Printf("05.%#8o\n", 65)   // %x=8进制           // 05.    0101
+fmt.Printf("06.%#8x\n", 65)   // %x=16进制 补0双字节 // 06.    0x41
+fmt.Printf("07.%08U\n", 'A')  // %U=Unicode         // 07.  U+0041
+fmt.Printf("08.%08x\n", 'A')  // %x=Hex 补0对齐字符  // 08.00000041
+fmt.Printf("09.%#U\n", '国')   // Unicode编码       // 09.U+56FD '国'
+fmt.Printf("10.% 0x\n", "祖国") // 16进制 补空格    // 10.e7 a5 96 e5 9b bd
+fmt.Printf("11.%+q\n", "祖国")  // Ascii编码       // 11."\u7956\u56fd"
 
 hellomsg := `
  "Hello" in Chinese is 你好 ('Ni Hao')
