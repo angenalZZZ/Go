@@ -6,7 +6,7 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
- > [*搭建开发环境*](#-搭建开发环境) + [*编译*](#编译) + [*管理构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
+ > [*搭建开发环境*](#-搭建开发环境) + [*编译*](#编译) + [*管理构建*](#管理构建) + [*测试*](#测试) + [*性能优化*](#性能优化) ；[*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) <br> [语法速查表](#语法速查表)，[Print](#printing)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br> [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
  * 集成工具 [JetBrains/GoLand](https://www.7down.com/search.php?word=JetBrains+GoLand&s=3944206720423274504&nsid=0)（[^搭建开发环境$](#-搭建开发环境)）、[liteide](http://liteide.org/cn/)
@@ -2139,6 +2139,30 @@ fmt.Printf("%c %U %U %q %+q", 65, 'a', '中', 65, "中国") // A U+0061 U+4E2D '
 fmt.Printf("%d hex:%x bin:%b fp:%f sci:%e",17,17,17,17.0,17.0) // c-ish format: f,e,E,g,G 四舍五入
 s1 := fmt.Sprintf( "%g - %5.5G", 17.02500, 17.02502 ) // 17.025 - 17.025 紧凑%g去除尾零;默认以最小位计算精度
 s2 := fmt.Sprintf( "%d - %f", 17, 17.000001 ) // 17 - 17.000001 默认以6位小数位计算精度
+
+	// 输出可打印字符
+	fmt.Printf("03.%8c\n", 65)    // %c=Unicode字符
+	fmt.Printf("04.%8x\n", 65)    // %x=16进制
+	fmt.Printf("05.%#8o\n", 65)   // %x=8进制
+	fmt.Printf("06.%#8x\n", 65)   // %x=16进制 补0双字节
+	fmt.Printf("07.%08U\n", 'A')  // %U=Unicode
+	fmt.Printf("08.%08x\n", 'A')  // %x=Hex 补0对齐字符
+	fmt.Printf("09.%#U\n", '国')   // Unicode编码
+	fmt.Printf("10.% 0x\n", "祖国") // 16进制 补空格
+	fmt.Printf("11.%+q\n", "祖国")  // Ascii编码
+
+	// Output:
+	// 01.usr.Username: 0R0VMR1DWV35XWH\Administrator
+	// 02.usr.HomeDir: C:\Users\Administrator
+	// 03.       A
+	// 04.      41
+	// 05.    0101
+	// 06.    0x41
+	// 07.  U+0041
+	// 08.00000041
+	// 09.U+56FD '国'
+	// 10.e7 a5 96 e5 9b bd
+	// 11."\u7956\u56fd"
 
 hellomsg := `
  "Hello" in Chinese is 你好 ('Ni Hao')
