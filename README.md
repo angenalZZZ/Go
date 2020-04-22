@@ -368,6 +368,15 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go test -v -cover -race ./path                 # 检测代码覆盖率(testing使用到的代码行比例)
   > go test -v -cover -race -test.bench=. -test.benchmem # 性能测试-test.bench简写-bench; mem性能测试
   > go test -bench=.* -cpu=2 -benchmem -benchtime=1s #`压测`基准测试(b *testing.B)在函数循环体指定b.N
+
+  # example_test.go
+  > go test -v -run ^ExampleTest$ github.com/a/go/f_test
+  > go test -v -run ^ExampleTest$ -coverprofile %TEMP%/test.out -c -coverpkg=./f -covermode=atomic github.com/a/go/f
+  > go test -v -run ^ExampleTest$ -cpuprofile %TEMP%/test.out -c github.com/a/go/f
+  > go test -v -run ^ExampleTest$ -memprofile %TEMP%/test.out -c github.com/a/go/f
+  > go test -v -run ^ExampleTest$ -blockprofile %TEMP%/test.out -c github.com/a/go/f
+  > go test -v -run ^ExampleTest$ -mutexprofile %TEMP%/test.out -c github.com/a/go/f
+
 # -------------------------------------------------------------------------------
 # 测试工具 >>
 # -------------------------------------------------------------------------------
