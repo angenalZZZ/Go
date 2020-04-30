@@ -1359,35 +1359,39 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  * [Electron](https://github.com/asticode/go-astilectron)
     * Install astilectron-bundler & Play Demos
 ~~~bash
-# Download : astilectron & electron***
- - https://github.com/asticode/astilectron/releases > %GOPATH%/bin/astibundler/astilectron-0.32.0.zip
- - https://github.com/electron/electron/releases/tag/v4.0.1 > electron-windows-amd64-4.0.1.zip
+# Download : go-astilectron powered by electron
+ > cd %GOPATH%/bin/astibundler/cache/
+ - https://github.com/asticode/astilectron/releases > astilectron-0.36.0.zip
+ - https://github.com/electron/electron/releases > electron-windows-amd64-7.1.10.zip
+ > xcopy /isy %GOPATH%/bin/astibundler/cache/* %TEMP%/astibundler/cache
+ $ cp -r %GOPATH%/bin/astibundler/cache/* %TEMP%/astibundler/cache
 # Install : astilectron-bundler
-go get -u github.com/asticode/go-astilectron-bundler/...
-go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
-# Demo 1 : video tools
-go get github.com/asticode/go-astivid/...
-cd %GOPATH%/src/github.com/asticode/go-astivid
-cp -r %GOPATH%/bin/astibundler/* C:/Users/ADMINI~1/AppData/Local/Temp/astibundler/cache
-rm -f bind*.go                # delete file before bundle
-astilectron-bundler -v        # help: astilectron-bundler -h
+ go get -u github.com/asticode/go-astilectron-bundler/...
+ go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
+# Demo : video tool
+ go get github.com/asticode/go-astivid/...
+ cd %GOPATH%/src/github.com/asticode/go-astivid
+ rm -f bind*.go                # delete file before bundle
+ astilectron-bundler -v        # help: astilectron-bundler -h
 ~~~
  * [QT](https://github.com/therecipe/qt)
     * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
 ~~~go
-# [QT跨平台应用框架] Qt binding package
-go get -u -v github.com/therecipe/qt/cmd/... && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
-go get github.com/lxn/win                  # Windows API wrapper package
-go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
-go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
+# Install
+ go get -u -v github.com/therecipe/qt/cmd/... \
+   && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
+# Demo : github.com/therecipe/qt/wiki/Getting-Started
+ qtdeploy build windows .      # After entering the working directory
 ~~~
- * [flutter](https://github.com/go-flutter-desktop/go-flutter)
- * [fyne.io material-design-GUI](https://fyne.io/develop/)
- * [lxn/walk Windows-GUI](https://github.com/lxn/walk)、[参考video-srt-windows](https://github.com/wxbool/video-srt-windows)
+ * [lxn/walk Windows-GUI](https://github.com/lxn/walk)、[windows-api-wrapper](github.com/lxn/win)
+    * [video-srt-windows](https://github.com/wxbool/video-srt-windows)
+    * [HTMLayout-bindings](https://github.com/Archs/htmlayout)
+ * [fyne.io material-GUI](https://fyne.io/develop/)
+ * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
  * [google-andlabs-GUI](https://github.com/andlabs/ui)
- * [zserge/lorca modern HTML5](https://github.com/zserge/lorca)
- * [Webview WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
- * [WebAssembly](https://github.com/murlokswarm/app)
+ * [webassembly](https://github.com/murlokswarm/app)
+ * [zserge/webview WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
+ * [zserge/lorca modern HTML5 - Small app size +Requires Chrome/Chromium >= 70 installed](https://github.com/zserge/lorca)
 
 ----
 
