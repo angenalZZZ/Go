@@ -578,6 +578,7 @@ go get github.com/niubaoshu/gotiny         # 效率非常的高，是golang自�
 go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入输出                       *1k
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
+go get github.com/buger/jsonparser         # json解码 10x than encoding/json                  *3k
 go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
 go get github.com/PuerkitoBio/goquery      # 解析HTML像jQuery那样操作DOM                       *7k
 go get github.com/rs/zerolog/log           # 日志记录-性能最高-(强力推荐) *3k
@@ -1380,10 +1381,13 @@ go get github.com/lxn/win                  # Windows API wrapper package
 go get github.com/lxn/walk                 # Windows UI Application Library Kit *3k
 go get github.com/google/gapid             # Windows UI App : Graphics API Debugger
 ~~~
- * [Webview](https://github.com/zserge/webview)
+ * [flutter](https://github.com/go-flutter-desktop/go-flutter)
+ * [fyne.io material-design-GUI](https://fyne.io/develop/)
+ * [lxn/walk Windows-GUI](https://github.com/lxn/walk)、[参考video-srt-windows](https://github.com/wxbool/video-srt-windows)
+ * [google-andlabs-GUI](https://github.com/andlabs/ui)
+ * [zserge/lorca modern HTML5](https://github.com/zserge/lorca)
+ * [Webview WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
  * [WebAssembly](https://github.com/murlokswarm/app)
- * [go-flutter-desktop](https://github.com/go-flutter-desktop/go-flutter)
- * [go-material-design-GUI](https://fyne.io/develop/)、[google-andlabs-GUI](https://github.com/andlabs/ui)
 
 ----
 
