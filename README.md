@@ -1383,7 +1383,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 # Demo : github.com/therecipe/qt/wiki/Getting-Started
  qtdeploy build windows .      # After entering the working directory
 ~~~
- * [zserge/lorca modern *HTML5 - Small app size +Requires Chrome/Chromium >= 70 installed](https://github.com/zserge/lorca)
+ * [zserge/lorca *HTML5 +Small appSize +Requires installed Chrome/Chromium>=70](https://github.com/zserge/lorca)
  * [zserge/webview *WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
  * [govcl LCL *GUI](https://z-kit.cc)、[wiki - LCL components](https://wiki.freepascal.org/LCL_Components/zh_CN)
  * [lxn/walk *Windows-GUI](https://github.com/lxn/walk)、[windows-api-wrapper](github.com/lxn/win)
