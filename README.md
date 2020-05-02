@@ -1383,15 +1383,17 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 # Demo : github.com/therecipe/qt/wiki/Getting-Started
  qtdeploy build windows .      # After entering the working directory
 ~~~
- * [lxn/walk Windows-GUI](https://github.com/lxn/walk)、[windows-api-wrapper](github.com/lxn/win)
+ * [zserge/lorca modern *HTML5 - Small app size +Requires Chrome/Chromium >= 70 installed](https://github.com/zserge/lorca)
+ * [zserge/webview *WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
+ * [govcl LCL *GUI](https://z-kit.cc)、[wiki - LCL components](https://wiki.freepascal.org/LCL_Components/zh_CN)
+ * [lxn/walk *Windows-GUI](https://github.com/lxn/walk)、[windows-api-wrapper](github.com/lxn/win)
     * [video-srt-windows](https://github.com/wxbool/video-srt-windows)
     * [HTMLayout-bindings](https://github.com/Archs/htmlayout)
- * [fyne.io material-GUI](https://fyne.io/develop/)
- * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
+    * [ui/winmanifest](https://github.com/andlabs/ui/tree/master/winmanifest)
  * [google-andlabs-GUI](https://github.com/andlabs/ui)
- * [webassembly](https://github.com/murlokswarm/app)
- * [zserge/webview WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
- * [zserge/lorca modern HTML5 - Small app size +Requires Chrome/Chromium >= 70 installed](https://github.com/zserge/lorca)
+ * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
+ * [fyne.io material-GUI](https://fyne.io/develop/)
+ * [webassembly app](https://github.com/murlokswarm/app)
 
 ----
 
