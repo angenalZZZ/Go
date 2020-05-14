@@ -641,8 +641,9 @@ go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: 
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
-go get github.com/chrislusf/seaweedfs/weed # 一个用于小文件的简单且高度可扩展的分布式文件系统，可集成其他云服务，如AWS..
-go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐)中文文档 learnku.com/docs/bigfile/1.0
+go get github.com/chrislusf/seaweedfs/weed # 提供小文件的简单且高度可扩展的分布式文件管理系统，可集成其他云服务，如AWS..
+go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) learnku.com/docs/bigfile/1.0
+go get github.com/filebrowser/filebrowser/v2 # 提供用户文件管理系统(推荐) > filebrowser -p 2128 -r B:/go/filebrowser/srv
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
 go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
