@@ -85,7 +85,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
     https://studygolang.com/dl/golang/go1.13.9.windows-amd64.msi
-    set GOPATH=C:\Users\Administrator\go
+    set GOPATH=A:\go
     set GOROOT=D:\Program\Go
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto )
@@ -101,8 +101,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
     wget https://studygolang.com/dl/golang/go1.13.9.linux-amd64.tar.gz
-    tar -zxf go1.13.5.linux-amd64.tar.gz -C /usr/local
-    export GOPATH=~/go
+    tar -zxf go1.13.9.linux-amd64.tar.gz -C /usr/local
+    export GOPATH=/a/go
     export GOROOT=/usr/local/go
     export GOTOOLS=$GOROOT/pkg/tool     (选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto )
