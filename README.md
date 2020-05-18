@@ -1377,7 +1377,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 ~~~
  * [QT](https://github.com/therecipe/qt)
     * 百度网盘客户端Qt5+websocket+p2p+eventbus - https://github.com/peterq/pan-light
-~~~go
+~~~bash
 # Install
  go get -u -v github.com/therecipe/qt/cmd/... \
    && for /f %v in ('go env GOPATH') do %v\bin\qtsetup test && %v\bin\qtsetup
@@ -1385,6 +1385,11 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  qtdeploy build windows .      # After entering the working directory
 ~~~
  * [gotk3 + Glade GUI designer](https://github.com/gotk3/gotk3)、[install windows](https://www.gtk.org/docs/installations/windows/)
+ * [blink](https://github.com/raintean/blink)、[blink-demo](https://github.com/raintean/blink-demo)、[use miniblink](https://github.com/weolar/miniblink49)
+ ~~~bash
+ # blink-demo 按条件编译 cgo enabled, build tags for web debug tool
+  go build -tags bdebug -ldflags="-s -w -H windowsgui" -o dist/blink-demo.exe blink-demo/cmd/main
+ ~~~
  * [zserge/lorca *HTML5 +Small appSize +Requires installed Chrome/Chromium>=70](https://github.com/zserge/lorca)
  * [zserge/webview *WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
  * [govcl LCL *GUI](https://z-kit.cc)、[wiki - LCL components](https://wiki.freepascal.org/LCL_Components/zh_CN)
