@@ -219,11 +219,11 @@ go vet                    // 发现代码中可能的错误
 
 # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
 go tool dist list
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./api_linux_amd64 ./api
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w -extldflags "-static"' -o ./api_linux_amd64 ./api
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
-set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w" -o api_linux_amd64 ./api
+set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w -extldflags '-static'" -o api_linux_amd64 ./api
 
 # go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
 # -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
