@@ -1389,9 +1389,9 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 ~~~
  * [gotk3 + Glade GUI designer](https://github.com/gotk3/gotk3)、[install windows-gtk](https://www.gtk.org/docs/installations/windows/)
 ~~~bash
-# Install Windows10/Linux(WSL) & golang & gtk (libgtk-3.22.30, libcairo-1.15.10, libglib-2.56.4)
- sudo apt-get update  # 更新软件源 镜像下载-提高速度 (推荐-阿里源ubuntu) mirrors.aliyun.com
- sudo apt-get install libgtk-3-dev libcairo2-dev libglib2.0-dev libwebkit2gtk-3.0-dev --fix-missing
+# Install Windows10/Linux(WSL) & golang & gtk (libgtk-3.22.30, libcairo-1.15.10, libglib-2.56.4) & webkit
+ sudo apt-get update  # 更新软件源-镜像下载 (推荐-阿里源ubuntu) mirrors.aliyun.com
+ sudo apt-get install libgtk-3-dev libcairo2-dev libglib2.0-dev libwebkit2gtk-4.0-dev --fix-missing
 ~~~
  * [miniblink c++](https://github.com/weolar/miniblink49)、[miniblink c#](https://gitee.com/angenal/NetMiniblink)、[blink-demo](https://github.com/raintean/blink-demo)
  ~~~bash
