@@ -103,7 +103,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
     wget https://studygolang.com/dl/golang/go1.13.11.linux-amd64.tar.gz
-    tar -zxf go1.13.9.linux-amd64.tar.gz -C /usr/local
+    tar -zxf go1.13.11.linux-amd64.tar.gz -C /usr/local
     export GOPATH=/a/go
     export GOROOT=/usr/local/go
     export GOTOOLS=$GOROOT/pkg/tool     (选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
