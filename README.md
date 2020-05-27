@@ -1390,7 +1390,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  sudo apt-get update  # 更新软件源 镜像下载-提高速度 (推荐-阿里源ubuntu) mirrors.aliyun.com
  sudo apt install libgtk-3-dev libcairo2-dev libglib2.0-dev
 ~~~
- * [miniblink - c++](https://github.com/weolar/miniblink49)、[miniblink - c#](https://gitee.com/angenal/NetMiniblink)、[blink-demo - go](https://github.com/raintean/blink-demo)
+ * [miniblink c++](https://github.com/weolar/miniblink49)、[miniblink c#](https://gitee.com/angenal/NetMiniblink)、[blink-demo](https://github.com/raintean/blink-demo)
  ~~~bash
  # Install
   go get -u -v github.com/raintean/blink-demo
