@@ -839,8 +839,9 @@ go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
+go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
-go get github.com/MontFerret/ferret        # 声明式Web爬虫系统 *4k
+go get github.com/MontFerret/ferret        # 声明式Web爬虫系统  *4k
 go get github.com/tealeg/xlsx              # 读写Excel文件     *4k
 go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
