@@ -1384,10 +1384,14 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 # Demo : github.com/therecipe/qt/wiki/Getting-Started
  qtdeploy build windows .      # After entering the working directory
 ~~~
- * [gotk3 + Glade GUI designer](https://github.com/gotk3/gotk3)、[install windows](https://www.gtk.org/docs/installations/windows/)
- * [blink](https://github.com/raintean/blink)、[blink-demo](https://github.com/raintean/blink-demo)、[use miniblink](https://github.com/weolar/miniblink49)
+ * [gotk3 + Glade GUI designer](https://github.com/gotk3/gotk3)、[install windows-gtk](https://www.gtk.org/docs/installations/windows/)
+~~~bash
+~~~
+ * [miniblink - c++](https://github.com/weolar/miniblink49)、[miniblink - c#](https://gitee.com/angenal/NetMiniblink)、[blink-demo - go](https://github.com/raintean/blink-demo)
  ~~~bash
- # blink-demo 按条件编译 cgo enabled, build tags for web debug tool
+ # Install
+  go get -u -v github.com/raintean/blink-demo
+ # Demo : 按条件编译 cgo enabled, build tags for web debug tool
   go build -tags bdebug -ldflags="-s -w -H windowsgui" -o dist/blink-demo.exe blink-demo/cmd/main
  ~~~
  * [zserge/lorca *HTML5 +Small appSize +Requires installed Chrome/Chromium>=70](https://github.com/zserge/lorca)
