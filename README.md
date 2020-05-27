@@ -84,7 +84,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.13.9.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.13.11.windows-amd64.msi
     set GOPATH=A:\go
     set GOROOT=D:\Program\Go
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -98,9 +98,11 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     go env -w GOSUMDB=off                       # ^2或者设置为关闭验证服务
     go env -w GOPRIVATE=*.gitlab.com,*.gitee.com # 限制私有库域名(其它不安全的私有库则无法下载)
 
+> Linux - [Windows10/Linux(WSL) - 环境配置](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
+
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
-    wget https://studygolang.com/dl/golang/go1.13.9.linux-amd64.tar.gz
+    wget https://studygolang.com/dl/golang/go1.13.11.linux-amd64.tar.gz
     tar -zxf go1.13.9.linux-amd64.tar.gz -C /usr/local
     export GOPATH=/a/go
     export GOROOT=/usr/local/go
