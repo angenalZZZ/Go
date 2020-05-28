@@ -1399,7 +1399,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  go get github.com/sourcegraph/webloop/...
  static-reverse-proxy -target=http://example.com -http=:13000
 ~~~
- * [miniblink c++](https://github.com/weolar/miniblink49)、[miniblink c#](https://gitee.com/angenal/NetMiniblink)、[blink-demo](https://github.com/raintean/blink-demo)
+ * [miniblink c++](https://github.com/weolar/miniblink49)、[miniblink c#](https://gitee.com/angenal/NetMiniblink)、[gowebui](https://github.com/selfplan/gowebui)、[blink-demo](https://github.com/raintean/blink-demo)
  ~~~bash
  # Install
   go get -u -v github.com/raintean/blink-demo
