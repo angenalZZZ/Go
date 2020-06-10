@@ -383,14 +383,20 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 # -------------------------------------------------------------------------------
 # 测试工具 >>
 # -------------------------------------------------------------------------------
+  $ GOMAXPROCS=4 go test -bench='Set|Get' -benchtime=10s ./path # 性能测试: CPU=4; time=10s;
+   > go test -cpu=4 -benchtime=10s -benchmem -bench=^BenchmarkWriter1$ -run ^none$ ./path > 1.txt
+   > go test -cpu=4 -benchtime=10s -benchmem -bench=^BenchmarkWriter2$ -run ^none$ ./path > 2.txt
+   > benchstat -alpha 3 1.txt 2.txt  # golang.org/x/perf/cmd/benchstat
   > go test -bench=. -memprofile=mem.prof ./path  # 生成mem性能测试两个文件path.test.exe,mem.prof
-  > go tool pprof --alloc_objects path.test.exe mem.prof # 分析内存对象分配;优化GC提升性能;
   > go test -bench=. -cpuprofile=cpu.prof ./path  # 生成cpu性能测试两个文件path.test.exe,cpu.prof
-  $ GOMAXPROCS=4 go test ./path -bench='Set|Get' -benchtime=10s # 性能测试: CPU=4;time=10s;
-  > go tool pprof path.test.exe cpu.prof    # 分析函数调用(pprof)指令+> help,top,png生成图片;提前安装Graphviz
-   $ go tool pprof path.test cpu.prof > web # 分析函数调用(svg)图+> yum install graphviz.x86_64  www.graphviz.org
+  > go tool pprof --alloc_objects test.exe mem.prof #1.mem内存分析-对象分配;优化GC提升性能;
+  > go tool pprof -http=:3018 cpu.prof     #2.cpu执行时间-分析报告-UI网址  http://localhost:3018
+  > go tool pprof [path.test.exe] cpu.prof #3.cpu执行时间-分析报告-输出控制台(pprof)指令+> help,top,png...
+   $ (pprof) top10  #+flat%不包含內部函数执行时间; cum%包含內部函数执行时间;
+   $ (pprof) list <函数f>  #+(flat,cum)详细输出某个函数f內部执行每步操作消耗的时间;
+   $ (pprof) web  #+分析函数调用(svg)图+> yum install graphviz.x86_64  www.graphviz.org 提前安装Graphviz
    $ apt search graphviz ; sudo apt-get install graphviz/eoan ; sudo apt-get install graphviz-doc/eoan 
-   $ go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # 查看CPU性能火焰图 go-torch -h #out.svg
+  > go tool pprof -raw -seconds 30 http://localhost/debug/pprof/profile # 查看CPU性能火焰图 go-torch -h #out.svg
   > go test -coverprofile=c.out             # 生成代码覆盖率分析文件(标记出未测试到的代码行与代码比例)
   > go tool cover -func=c.out               # 分析代码覆盖率;检查哪些`函数`没测试或者没测试完全
   > go tool cover -html=c.out               # 分析代码覆盖率;查看网页格式html文件
@@ -426,16 +432,16 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > go get github.com/loadimpact/k6            # 现代化测试,集成前后端测试 (推荐) *6k  https://k6.io
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
-  # Web基准测试命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
-  $ wrk -t16 -c600 -d30s -T3s --latency <url>  # -t线程数 -c连接数 -d压测时间s --latency响应+n%延迟统计ms --timeout超时
-  $ wrk2 -t16 -c600 -d30s -R14400 --latency <url> # -R每秒请求的速率[次/秒] --latency[-L]响应延迟统计 --timeout[-T]超时
-  $ wrk2 -t16 -c600 -d30s -R14400 --u_latency <url>  # --u_latency[-U]打印未校正的延迟统计;生成报告"未校正延迟直方图"
-  # Web性能测试命令 github.com/codesenberg/bombardier    # 备注：-t线程数一般设置为CPU的2~4倍;
-  $ bombardier -n 10000 -c 600 -d 10s -m GET -t 3s --fasthttp -l <url> # -n请求数QPS -c连接数 -d压测时间s -l即--latencies
-  > go get github.com/tsliwowicz/go-wrk        # Web性能测试工具 *0.4k > go-wrk -help
-  $ go-wrk -M GET -c 600 -d 30 -no-ka <url>     # -c并发连接数 -d压测时间10s -T超时3s -no-ka即no-keep-alive
-  > go get github.com/goadapp/goad             # Web性能测试工具 *1.5k > goad -h
-  > go get github.com/uber/go-torch            # Web性能测试与CPU火焰图生成工具 *3.5k > go-torch -h
+  # Web压测命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
+  $ wrk -t16 -c600 -d10s -T3s --latency <url>  # -t线程数 -c连接数 -d压测时间s --latency响应+n%延迟统计ms --timeout超时
+  $ wrk -t16 -c100 -d10s -T3s --latency --script ./wrk-post.lua <url> # 备注：-t线程数一般设为CPU的2~4倍：16,32,64,128
+  $ wrk2 -t16 -c600 -d10s -R14400 --latency <url> # -R每秒请求的速率[次/秒] --latency[-L]响应延迟统计 --timeout[-T]超时
+  $ wrk2 -t16 -c600 -d10s -R14400 --u_latency <url>  # --u_latency[-U]打印未校正的延迟统计;生成报告"未校正延迟直方图"
+  # Web性能Golang压测命令  github.com/codesenberg/bombardier  github.com/tsliwowicz/go-wrk
+  $ bombardier -n 10000 -c 1000 -d 10s -t 3s -l --fasthttp -m GET <url> # -n请求QPS -c连接数 -d压测时间s -l即--latencies
+  $ go-wrk -c 1000 -d 10 -T 3 -no-ka -M GET <url> # -c并发连接数 -d压测时间10s -T超时3s -no-ka即no-keep-alive
+  > go get github.com/goadapp/goad             # 测试工具goad *1.5k > goad -h
+  > go get github.com/uber/go-torch            # 测试CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
 
 # 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性更好)
