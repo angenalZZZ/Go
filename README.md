@@ -865,11 +865,11 @@ go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unido
 # Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
 
-go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *10.k 一个快速，测试良好，广泛使用的WebSocket
-go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *14.k 将STDIN/STDOUT程序转换为WebSocket服务器
-go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.3k 提供Web管理及客户端App推送功能 gotify.net
-go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.1k 提供完整的WebSocket接口处理 socket.io/docs
-go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *2.7k 支持百万级连接数 github.com/socketio/socket.io
+go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *12k 一个快速，测试良好，广泛使用的WebSocket
+go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将STDIN/STDOUT程序转换为WebSocket服务器
+go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.8k 提供Web管理及客户端App推送功能 gotify.net
+go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.5k 提供完整的WebSocket接口处理 socket.io/docs
+go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *3.2k 支持百万级连接数 github.com/socketio/socket.io
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
