@@ -1,9 +1,10 @@
-# 开发效率工具汇总
+# 开发效率工具
+
 
 ## 一. 开发工具
 
 **1)sql2go**
-用于将 sql 语句转换为 golang 的 struct. 使用 ddl 语句即可。
+用于将 sql 语句转换为 golang 的 struct. 使用 ddl 语句即可。<br>
 例如对于创建表的语句: show create table xxx. 将输出的语句，直接粘贴进去就行。
 http://stming.cn/tool/sql2go.html
 
@@ -55,18 +56,16 @@ https://github.com/oxequa/realize
 自动生成测试用例工具
 https://github.com/cweill/gotests
 
-##  
 
 ## 二.调试工具
 
 **1)perf**
-代理工具，支持内存，cpu，堆栈查看，并支持火焰图.
-perf 工具和 go-torch 工具，快捷定位程序问题.
-https://github.com/uber-archive/go-torch
+代理工具，支持内存，cpu，堆栈查看，并支持火焰图. perf 工具和 go-torch 工具，快捷定位程序问题.<br>
+https://github.com/uber-archive/go-torch<br>
 https://github.com/google/gops
 
 **2)dlv 远程调试**
-基于 goland+dlv 可以实现远程调式的能力.
+基于 goland+dlv 可以实现远程调式的能力.<br>
 https://github.com/go-delve/delve
 提供了对 golang 原生的支持，相比 gdb 调试，简单太多。
 
@@ -75,7 +74,8 @@ goproxy 代理，支持多种协议，支持 ssh 穿透和 kcp 协议.
 https://github.com/snail007/goproxy
 
 **4)抓包工具**
-go-sniffer 工具，可扩展的抓包工具，可以开发自定义协议的工具包. 现在只支持了 http，mysql，redis，mongodb.
+go-sniffer 工具，可扩展的抓包工具，可以开发自定义协议的工具包. <br>
+现在只支持了 http，mysql，redis，mongodb.
 基于这个工具，我们开发了 qapp 协议的抓包。
 https://github.com/40t/go-sniffer
 
@@ -112,23 +112,21 @@ https://www.jianshu.com/p/39b476e808d8
 13)基于**procFile**进程管理工具. 相比 supervisor 更加简单。
 https://github.com/ddollar/foreman
 
-14)基于 http，https，websocket 的**调试代理工具**，配置功能丰富。在线教育的 nohost web 调试工具，基于此开发.
+14)基于 http，https，websocket 的**调试代理工具**，配置功能丰富。在线教育的 nohost web 调试工具，基于此开发.<br>
 https://github.com/avwo/whistle
 
 **15)分布式调度工具**
-https://github.com/shunfei/cronsun/blob/master/README_ZH.md
+https://github.com/shunfei/cronsun/blob/master/README_ZH.md <br>
 https://github.com/ouqiang/gocron
 
 **16)自动化运维平台 Gaia**
 https://github.com/gaia-pipeline/gaia
 
-##  
 
 ## 三. 网络工具
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/j3gficicyOvatzJibnFP6EXDYRTOzL8ZgT4oXh17qR8vTl5uHKrXtFcp45GS6VyRXMJw4vnSQ3mDibKxL7ficGrPshw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-##  
 
 ## 四. 常用网站
 
@@ -152,23 +150,22 @@ Guid: https://www.guidgen.com/
 
 常用工具: http://www.ofmonkey.com/
 
-##  
 
 ## 五. golang 常用库
 
 **日志**
-https://github.com/Sirupsen/logrus
+https://github.com/Sirupsen/logrus <br>
 https://github.com/uber-go/zap
 
 **配置**
-兼容 json，toml，yaml，hcl 等格式的日志库.
+兼容 json，toml，yaml，hcl 等格式的日志库.<br>
 https://github.com/spf13/viper
 
 **存储**
-mysql: https://github.com/go-xorm/xorm
-es: https://github.com/elastic/elasticsearch
-redis: https://github.com/gomodule/redigo
-mongo: https://github.com/mongodb/mongo-go-driver
+mysql: https://github.com/go-xorm/xorm <br>
+es: https://github.com/elastic/elasticsearch <br>
+redis: https://github.com/gomodule/redigo <br>
+mongo: https://github.com/mongodb/mongo-go-driver <br>
 kafka: https://github.com/Shopify/sarama
 
 **数据结构**
@@ -178,38 +175,37 @@ https://github.com/emirpasic/gods
 https://github.com/spf13/cobra
 
 **框架**
-https://github.com/grpc/grpc-go
+https://github.com/grpc/grpc-go <br>
 https://github.com/gin-gonic/gin
 
 **并发**
-https://github.com/Jeffail/tunny
-https://github.com/benmanns/goworker
-现在我们框架在用的，虽然 star 不多，但是确实好用，当然还可以更好用.
+https://github.com/Jeffail/tunny <br>
+https://github.com/benmanns/goworker <br>
 https://github.com/rafaeldias/async
 
 **工具**
-定义了实用的判定类，以及针对结构体的校验逻辑，避免业务侧写复杂的代码.
-https://github.com/asaskevich/govalidator
+定义了实用的判定类，以及针对结构体的校验逻辑，避免业务侧写复杂的代码.<br>
+https://github.com/asaskevich/govalidator <br>
 https://github.com/bytedance/go-tagexpr
 
 protobuf 文件动态解析的接口，可以实现反射相关的能力。
 https://github.com/jhump/protoreflect
 
 **表达式引擎工具**
-https://github.com/Knetic/govaluate
+https://github.com/Knetic/govaluate <br>
 https://github.com/google/cel-go
 
 **字符串处理**
 https://github.com/huandu/xstrings
 
 **ratelimit 工具**
-https://github.com/uber-go/ratelimit
-https://blog.csdn.net/chenchongg/article/details/85342086
+https://github.com/uber-go/ratelimit <br>
+https://blog.csdn.net/chenchongg/article/details/85342086 <br>
 https://github.com/juju/ratelimit
 
 **golang 熔断的库**
-熔断除了考虑频率限制，还要考虑 qps，出错率等其他东西.
-https://github.com/afex/hystrix-go
+熔断除了考虑频率限制，还要考虑 qps，出错率等其他东西.<br>
+https://github.com/afex/hystrix-go <br>
 https://github.com/sony/gobreaker
 
 **表格**
