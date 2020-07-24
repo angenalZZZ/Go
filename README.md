@@ -340,11 +340,16 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > govendor update|remove    # 从$GOPATH更新包|移除包依赖vendor目录
   > govendor fetch|sync       # 获取远程vendor.json包[govendor get]
 
-# 构建
+# 内建工具:构建
   > go fmt ./... && gofmt -s -w . && go vet ./... && go get ./... && go test ./... && \
   > golint ./... && gocyclo -avg -over 15 . && errcheck ./...
   > GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w"
   > gowatch                   # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
+
+# 第三方工具:构建 +配置yaml文件/tasks
+go get -u github.com/go-task/task/cmd/task   # 推荐使用 *2.5k
+go get github.com/tdewolff/minify/cmd/minify # 压缩文件 minifiers for web formats
+go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功能比 go-bindata 更完善
 ~~~
 
 #### 测试
