@@ -766,6 +766,7 @@ go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expre
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
+go get github.com/henrylee2cn/faygo        # 快速简洁的Web框架，可用于开发高性能web应用程序 *1.5k (推荐)结构定义/自动绑定/验证请求参数/在线API文档
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
