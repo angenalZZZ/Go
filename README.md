@@ -350,6 +350,13 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
 go get -u github.com/go-task/task/cmd/task   # 推荐使用 *2.5k
 go get github.com/tdewolff/minify/cmd/minify # 压缩文件 minifiers for web formats
 go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功能比 go-bindata 更完善
+
+# 自动化工具`CI/CD`
+  # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
+  $ wget https://github.com/goreleaser/goreleaser/releases/download/v0.111.0/goreleaser_Linux_x86_64.tar.gz
+  $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/ # rm -f goreleaser *.md
+  $ goreleaser help release
+
 ~~~
 
 #### 测试
@@ -455,12 +462,6 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
   > go get github.com/go-stack/stack # 包堆栈实现了用于捕获、操作和格式化调用堆栈的实用程序。它提供了比包运行时更简单的API
 
-# 自动化工具`CI`
-  # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
-  $ wget https://github.com/goreleaser/goreleaser/releases/download/v0.111.0/goreleaser_Linux_x86_64.tar.gz
-  $ tar zxf goreleaser_Linux_x86_64.tar.gz && sudo cp goreleaser /usr/local/bin/
-  $ rm -f goreleaser && rm -f *.md
-  $ goreleaser help release
 ~~~
 
 #### 性能优化
