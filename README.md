@@ -477,7 +477,7 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
  * [Writing and Optimizing Go code](https://github.com/dgryski/go-perfbook/blob/master/performance.md)
  * [Go tooling essentials](https://rakyll.org/go-tool-flags/) 、 [go-torch](https://www.cnblogs.com/li-peng/p/9391543.html)
  * [Profiling、Tracing、Debugging、Runtime statistics and events](https://cyningsun.github.io/07-21-2019/go-diagnostics-cn.html)
-~~~go
+~~~bash
 # ------------------------------------------------------------------------------------
 # 程序代码排查`go tool pprof`的优化：
 # ------------------------------------------------------------------------------------
