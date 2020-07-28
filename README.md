@@ -412,23 +412,7 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   > go test -coverprofile=c.out             # 生成代码覆盖率分析文件(标记出未测试到的代码行与代码比例)
   > go tool cover -func=c.out               # 分析代码覆盖率;检查哪些`函数`没测试或者没测试完全
   > go tool cover -html=c.out               # 分析代码覆盖率;查看网页格式html文件
-# -------------------------------------------------------------------------------
-# 代码质量 >>
-# -------------------------------------------------------------------------------
-  > go help vet                                    # 执行代码静态检查(语法检查)
-  > go tool vet help                               # 查看工具vet支持哪些检查?
-  > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
-  > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
-  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./... 
-  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
-   # 推荐[1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
-  > revive -h                                    #1.1代码质量检测工具 go get github.com/mgechev/revive
-  > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
-  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
-     && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
-  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  #扫描GraphQL代码质量 gocritic check -help
-  > go get github.com/fortytw2/leaktest         # 检测goroutine内存泄漏问题:leaktest.Check()CheckTimeout()CheckContext()
-  
+
   # 测试HTTP负载，内置HTTP服务与请求速率，包含命令行实用工具和库 > go get github.com/tsenart/vegeta
   > vegeta [global flags] <command> [command flags]
   
@@ -445,7 +429,8 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
 
-  # Web压测工具 jmeter.apache.org 参考文档 github.com/langpf1/jmeter
+  # Web压测工具 jmeter.apache.org [教程] github.com/aliesbelik/awesome-jmeter [中文] github.com/langpf1/jmeter
+  
   # Web压测命令 github.com/wg/wrk *20k         # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
   $ wrk -t16 -c600 -d10s -T3s --latency <url>  # -t线程数 -c连接数 -d压测时间s --latency响应+n%延迟统计ms --timeout超时
   $ wrk -t16 -c100 -d10s -T3s --latency --script ./wrk-post.lua <url> # 备注：-t线程数一般设为CPU的2~4倍：16,32,64,128
@@ -457,6 +442,23 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   > go get github.com/goadapp/goad             # 测试工具goad *1.5k > goad -h
   > go get github.com/uber/go-torch            # 测试CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
+
+# -------------------------------------------------------------------------------
+# 代码质量 >>
+# -------------------------------------------------------------------------------
+  > go help vet                                    # 执行代码静态检查(语法检查)
+  > go tool vet help                               # 查看工具vet支持哪些检查?
+  > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
+  > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
+  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./... 
+  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
+   # 推荐[1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
+  > revive -h                                    #1.1代码质量检测工具 go get github.com/mgechev/revive
+  > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
+  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
+     && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
+  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  #扫描GraphQL代码质量 gocritic check -help
+  > go get github.com/fortytw2/leaktest         # 检测goroutine内存泄漏问题:leaktest.Check()CheckTimeout()CheckContext()
 
 # 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性更好)
   > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
