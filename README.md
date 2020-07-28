@@ -444,12 +444,14 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   > go get github.com/loadimpact/k6            # 现代化测试,集成前后端测试 (推荐) *6k  https://k6.io
   > go get github.com/astaxie/bat              # 接口调试增强curl *2k | testing, debugging, interacting servers
   > go get github.com/asciimoo/wuzz            # 用于http请求 | 交互式命令行工具 | 增强curl
-  # Web压测命令 github.com/wg/wrk *20k      # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
+
+  # Web压测工具 jmeter.apache.org 参考文档 github.com/langpf1/jmeter
+  # Web压测命令 github.com/wg/wrk *20k         # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
   $ wrk -t16 -c600 -d10s -T3s --latency <url>  # -t线程数 -c连接数 -d压测时间s --latency响应+n%延迟统计ms --timeout超时
   $ wrk -t16 -c100 -d10s -T3s --latency --script ./wrk-post.lua <url> # 备注：-t线程数一般设为CPU的2~4倍：16,32,64,128
   $ wrk2 -t16 -c600 -d10s -R14400 --latency <url> # -R每秒请求的速率[次/秒] --latency[-L]响应延迟统计 --timeout[-T]超时
   $ wrk2 -t16 -c600 -d10s -R14400 --u_latency <url>  # --u_latency[-U]打印未校正的延迟统计;生成报告"未校正延迟直方图"
-  # Web性能Golang压测命令  github.com/codesenberg/bombardier  github.com/tsliwowicz/go-wrk
+  # Web压测命令 github.com/codesenberg/bombardier  github.com/tsliwowicz/go-wrk
   $ bombardier -n 10000 -c 1000 -d 10s -t 3s -l --fasthttp -m GET <url> # -n请求QPS -c连接数 -d压测时间s -l即--latencies
   $ go-wrk -c 1000 -d 10 -T 3 -no-ka -M GET <url> # -c并发连接数 -d压测时间10s -T超时3s -no-ka即no-keep-alive
   > go get github.com/goadapp/goad             # 测试工具goad *1.5k > goad -h
