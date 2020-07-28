@@ -877,10 +877,13 @@ go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将ST
 go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.8k 提供Web管理及客户端App推送功能 gotify.net
 go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.5k 提供完整的WebSocket接口处理 socket.io/docs
 go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *3.2k 支持百万级连接数 github.com/socketio/socket.io
+
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
 # https://github.com/oikomi/FishChatServer2 消息服务与聊天功能，支持容器部署 (Kubernetes + Docker)
-go get github.com/rsms/gotalk              # WebSocket Serve and Js Client Peer异步通信库 *1k
+
+go get github.com/tinode/chat              # Tinode即时消息服务(提供gRPC,WebSocket;存储MySQL,MongoDB) *5k 类似|WhatsApp|Telegram
+go get github.com/go-telegram-bot-api/telegram-bot-api # 实现Telegram-Bot-API加密聊天服务器 *2k
 
 go get github.com/matryer/vice             # Channels：horizontal scale (powered by message queues) *1k
 go get github.com/eapache/channels         # Channels：`Distribute分发`1In*Out,`Multiplex多路复用`,`Pipe通道`,`BatchingChannel批量`...
