@@ -92,6 +92,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOPROXY=https://goproxy.io      (选项: 建议 网络代理)
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
+    set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 Go's官方 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* GoLand环境设置：Go Modules(vgo) √ Proxy
     go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的验证服务
@@ -111,6 +112,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export GOPROXY=https://goproxy.io   (选项: 建议 网络代理)
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+    export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
 
 
