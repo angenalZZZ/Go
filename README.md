@@ -689,12 +689,15 @@ go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓�
 go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
 go get github.com/dgraph-io/badger/...     # 高性能key/value数据库,支持事务(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
 go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展+分布式+低延迟+高吞吐量的'分布式位图索引数据库' *10k
-go get github.com/boltdb/bolt/...          # 高性能 key/value 数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
+go get github.com/boltdb/bolt/...          # 高性能key/value数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
 go get github.com/tidwall/buntdb           # 内存数据库 k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
 go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
 go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
 go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset. *3k backend-store:LevelDB,RocksDB,RAM.
+# CGO_CFLAGS="-I/path/to/rocksdb/include" \ # 脸书开源RocksDB(推荐) v5.16+  github.com/facebook/rocksdb
+# CGO_LDFLAGS="-L/path/to/rocksdb -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \ # 系统环境变量
+go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB 一种用于闪存和RAM存储的持久键值存储系统
 go get github.com/cockroachdb/cockroach    # 云数据存储系统-支持地理位置、事务等 *18k www.cockroachlabs.com/docs/stable
 go get github.com/pingcap/tidb             # 支持包括传统 RDBMS 和 NoSQL 的特性 *18k  pingcap.com/docs-cn
 go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库InfluxDB *19k github.com/influxdata/influxdb
