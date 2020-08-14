@@ -438,7 +438,13 @@ go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功
   $ wrk -t16 -c100 -d10s -T3s --latency --script ./wrk-post.lua <url> # 备注：-t线程数一般设为CPU的2~4倍：16,32,64,128
   $ wrk2 -t16 -c600 -d10s -R14400 --latency <url> # -R每秒请求的速率[次/秒] --latency[-L]响应延迟统计 --timeout[-T]超时
   $ wrk2 -t16 -c600 -d10s -R14400 --u_latency <url>  # --u_latency[-U]打印未校正的延迟统计;生成报告"未校正延迟直方图"
-  # Web压测命令 github.com/rakyll/hey   *9k     # 常用工具hey可替代ApacheBench(ab) (推荐)
+  # Web压测命令 github.com/rakyll/hey   *9k     # 测试工具hey支持HTTP2 完全可替代ApacheBench(ab) (强力推荐) 
+  > hey [-c concurrency=50] [-n requests=200] [-q Rate-limit(QPS)] [-cpus 4] [-z Duration=10s] \
+    [-m {GET,POST,DELETE,PUT,HEAD,OPTIONS}] [-H HTTP-Header="Accept: text/html"]=[-A "text/html"] \
+    [-a Basic-Auth=username:password] [-x HTTP-Proxy=host:port] [-h2 Enable-HTTP/2] \
+    [-disable-compression] [-disable-keepalive] [-disable-redirects] [-host HTTP-Host-header] \
+    [-T ContentType="application/json"] \ # defaults="text/html"; "application/x-www-form-urlencoded"
+    [-d DATA] [-D file] [-o Output-Type="csv"] <url>
   # Web压测命令 github.com/codesenberg/bombardier *2k 
   $ bombardier -n 10000 -c 1000 -d 10s -t 3s -l --fasthttp -m GET <url> # -n请求QPS -c连接数 -d压测时间s -l即--latencies
   # Web压测命令 github.com/tsliwowicz/go-wrk *1k 
