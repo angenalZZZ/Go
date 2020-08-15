@@ -780,23 +780,25 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 # Web开发推荐如下：Router|Api框架 + MVC框架
 go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *10k (很多Web框架都是基于它进行二次开发)
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *36k: Gin(推荐) Star最高的Web框架 gin-gonic.com/zh-cn
-go get github.com/astaxie/beego            # 后端WebSvr框架 *23k: API、Web、MVC 高度解耦的框架  beego.me/docs
-# 基础模块：cache,config,context,httplibs,logs,orm,session,toolbox,plugins..项目管理工具bee  github.com/beego/bee
+go get github.com/astaxie/beego            # 后端WebSvr框架 *23k: API、Web、MVC 高度解耦的框架 beego.me/docs 项目管理工具 github.com/beego/bee
 go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架+依赖注入(强力推荐) go-macaron.com/zh-cn
-go get github.com/go-martini/martini       # 强大中间件和模块化设计的web框架 *11k   martini.codegangsta.io
 go get github.com/kataras/iris             # 最快WebSvr框架 *18k (推荐)
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
-go get github.com/valyala/fasthttp         # 最快Http框架10倍于net/http (推荐) *12k
-go get github.com/buaazp/fasthttprouter    # ~fasthttp高性能路由器#1
-go get github.com/vincentLiuxiang/lu       # ~fasthttp高性能中间件#2
-go get github.com/phachon/fasthttpsession  # ~fasthttp会话Session#3(memory,memcache,redis,mysql,postgres,file,sqlite3)
+go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *13k
+go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
+go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
+go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
 # 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
 go get github.com/gofiber/fiber            # Fiber基于🚀fasthttp 类似Expressjs的Web框架 *3.5k (强力推荐)Rout+Mw+Ws+Trans
 go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *3.6k
 go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
 go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
-go get github.com/henrylee2cn/faygo        # 快速简洁的Web框架，可用于开发高性能web应用程序 *1.5k (推荐)结构定义/自动绑定/验证请求参数/在线API文档
+# 基础模块：缓存,日志,队列,数组,集合,容器,定时器,命令行,内存锁,对象池,配置&资源管理,数据校验&编码,定时任务,数据库ORM,TCP/UDP,进程管理&通信等
+# Web开发核心组件：Router,Cookie,Session,Middleware,服务注册,模板引擎等，支持热重启,热更新,域名绑定,TLS/HTTPS,Rewrite等。
+# GF(Go Frame) 类似于PHP的Laravel, Java的SpringBoot, Python的Django 
+go get github.com/gogf/gf                  # GF(Go Frame) 一款模块化,高性能,生产级开发框架 *3.6k (强力推荐)
+go get github.com/henrylee2cn/faygo        # 快速简洁的Web框架，可用于开发高性能web应用程序 *1.5k (推荐)结构定义/自动绑定/验证参数/在线API文档
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
@@ -886,7 +888,7 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" gith
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
-go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *5k
+go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *6k
 go get github.com/MontFerret/ferret        # 声明式Web爬虫系统  *4k
 go get github.com/tealeg/xlsx              # 读写Excel文件     *4k
 go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
