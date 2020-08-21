@@ -690,6 +690,7 @@ go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redi
 go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
+go get github.com/golang/groupcache        # 内存数据库,谷歌groupcache推荐,可用于替代memcache,实现了lru和一致性哈希
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb  ssdb.io/zh_cn
 go get github.com/go-redis/cache
 go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
