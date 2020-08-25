@@ -896,6 +896,7 @@ go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
 go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
+go get github.com/mdp/qrterminal/v3        # 二维码生成器$命令行> qrterminal https://github.com/mdp/qrterminal
 go get github.com/lionsoul2014/ip2region   # IP地址定位库\毫秒级查询  *7.5k _城市Id|国家|区域|省份|城市|ISP_ github.com/cjinle/ip2regionserver
 go get github.com/esimov/pigo/cmd/pigo     # 人脸检测工具库 > pigo -in input.jpg -out out.jpg -cf cascade/facefinder
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
@@ -987,10 +988,11 @@ go get github.com/shazow/ssh-chat          # 自定义 SSH server 用于替代 s
 go get github.com/elves/elvish             # <shell for unix>可编程：数组、字典、传递对象的增强型管道、闭包、模块机制、类型检查
 go get github.com/mattn/sudo               # sudo for windows > sudo cmd /c dir ; sudo notepad c:\windows\system32\drivers\etc\hosts
 go get github.com/vbauerster/mpb/...       # 在终端为 Go 命令行应用程序显示进度条
+go get github.com/rivo/tview               # 在终端使用丰富的交互式小部件  *4.5k
 go get github.com/variadico/noti           # 进程监控并触发通知 Go 命令行应用程序
 go get github.com/google/gops              # 用于列出并诊断Go应用程序进程
 go get github.com/google/gousb             # 用于访问USB设备的低级别接口
-go get github.com/google/pprof             # 用于可视化和分析性能和数据的工具
+go get github.com/skratchdot/open-golang   # 用默认应用程序打开指定网址、文件、目录
 go get github.com/google/mtail             # 用于从应用程序日志中提取白盒监视数据，以便收集到时间序列数据库中
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
 go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
