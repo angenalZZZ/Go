@@ -1459,6 +1459,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  # Demo : 按条件编译 cgo enabled, build tags for web debug tool
   go build -tags bdebug -ldflags="-s -w -H windowsgui" -o dist/blink-demo.exe blink-demo/cmd/main
  ~~~
+ * [Sciter Go bindings *Embeddable HTML/CSS/script](https://github.com/sciter-sdk/go-sciter)、[Sciter *Official website](https://sciter.com)
  * [zserge/lorca *HTML5 +Small appSize +Requires installed Chrome/Chromium>=70](https://github.com/zserge/lorca)
  * [zserge/webview *WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
  * [govcl LCL *GUI](https://z-kit.cc)、[wiki - LCL components](https://wiki.freepascal.org/LCL_Components/zh_CN)
