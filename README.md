@@ -1453,13 +1453,22 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  static-reverse-proxy -target=http://example.com -http=:13000
 ~~~
  * [miniblink c++](https://github.com/weolar/miniblink49)、[miniblink c#](https://gitee.com/angenal/NetMiniblink)、[gowebui](https://github.com/selfplan/gowebui)、[blink-demo](https://github.com/raintean/blink-demo)
- ~~~bash
+~~~bash
  # Install
   go get -u -v github.com/raintean/blink-demo
  # Demo : 按条件编译 cgo enabled, build tags for web debug tool
   go build -tags bdebug -ldflags="-s -w -H windowsgui" -o dist/blink-demo.exe blink-demo/cmd/main
- ~~~
+~~~
  * [Sciter Go bindings *Embeddable HTML/CSS/script](https://github.com/sciter-sdk/go-sciter)、[Sciter *Official website](https://sciter.com)
+~~~bash
+ # Download sciter-sdk: https://sciter.com/sdk/sciter-sdk.zip
+ # Windows copy: \sciter-sdk\bin.win\x64\sciter.dll to c:\windows\system32
+ # Setup GCC envrionmnet for CGO(mingw64-gcc): http://sourceforge.net/projects/mingw-w64
+ # Install
+  go get -x github.com/sciter-sdk/go-sciter
+ # Demo : 按条件编译 cgo enabled: CGO_ENABLED=1
+  go build -ldflags="-s -w -H windowsgui" -o dist/examples-simple.exe github.com/sciter-sdk/go-sciter/examples/simple
+~~~
  * [zserge/lorca *HTML5 +Small appSize +Requires installed Chrome/Chromium>=70](https://github.com/zserge/lorca)
  * [zserge/webview *WebKit(Gtk/Cocoa) and Edge(Windows)](https://github.com/zserge/webview)
  * [govcl LCL *GUI](https://z-kit.cc)、[wiki - LCL components](https://wiki.freepascal.org/LCL_Components/zh_CN)
