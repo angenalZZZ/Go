@@ -763,7 +763,8 @@ go get github.com/go-xorm/cmd/xorm         # 命令行工具 xorm help  [DbFirst
  > xorm reverse mysql root:123456@tcp(127.0.0.1:3306)/AppAuth?charset=utf8 ./templates ./models [^表名前缀]
  > xorm reverse mssql "server=localhost;user id=sa;password=<password>;database=AppAuth" \
    %GOPATH%/src/github.com/go-xorm/cmd/xorm/templates/goxorm ./models [^表名前缀]
-go get github.com/Shelnutt2/db2struct/cmd/db2struct # 命令行工具 db2struct -h  [DbFirst]生成*.go for gorm migrate
+go get github.com/xxjwxc/gormt             # 命令行工具 gormt  [DbFirst]生成*.go mysql gorm migrate
+go get github.com/Shelnutt2/db2struct/cmd/db2struct # 命令行工具 db2struct -h  [DbFirst]生成*.go mysql gorm migrate
  > db2struct -v -t login_log --struct LoginLog --package dto --target=文件名.go -H localhost --mysql_port=3306 \
    -d gocron -u cron -p <password> --gorm --guregu  # -d数据库 -u账号 -p密码 --gorm数据库orm --guregu空值类型
 go get github.com/mattatcha/scaneo         # 命令行工具 scaneo -h 把数据表行转换为输出类和列表结构
