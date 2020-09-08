@@ -348,10 +348,10 @@ go get -u github.com/kardianos/govendor # 推荐使用 *4k
   > GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-s -w"
   > gowatch                   # 热编译工具，提升开发效率 go get github.com/silenceper/gowatch
 
-# 第三方工具:构建 +配置yaml文件/tasks
-go get -u github.com/go-task/task/cmd/task   # 推荐使用 *2.5k
-go get github.com/tdewolff/minify/cmd/minify # 压缩文件 minifiers for web formats
-go get github.com/UnnoTed/fileb0x            # 打包文件 嵌入exe文件; 功能比 go-bindata 更完善
+# 第三方工具:构建
+go get -u github.com/go-task/task/cmd/task   # 推荐使用 *2.8k  # 构建任务tasks+配置文件yaml
+go get github.com/tdewolff/minify/cmd/minify # 压缩文件 *2.3k  # 最小化Web相关文件资源
+go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe文件; 功能比 go-bindata 更完善
 
 # 自动化工具`CI/CD`
   # 构建+发布到Github | goreleaser.com | github.com/goreleaser/goreleaser
