@@ -217,26 +217,26 @@ go run                    // 编译和运行go程序
 go test                   // 测试
 go tool                   // 运行给定的go工具
 go version                // 显示go当前版本
-go vet                    // 发现代码中可能的错误
+go vet                    // 发现代码中可能的错误(如语法检查、代码格式等)
 
 # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
 go tool dist list
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w -extldflags "-static"' -o ./api_linux_amd64 ./api
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w -extldflags "-static"' -o ./api_linux ./api
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
 
 # go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
 set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w -extldflags '-static'" ./api
 
 # go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
-# -ldflags "-s -w" 去掉编译符号+调试信息(杜绝gdb调试)+缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
+# -ldflags "-s -w" 去掉(编译符号+调试信息\杜绝gdb调试)缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
 # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -v 编译时显示包名; -o 指定输出的文件名;
 # -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离; -race 开启竞态条件的检测;
 # -gcflags 添加gcc依赖的扩展参数; -n 打印编译时用到的所有命令,但不执行编译; -x 打印编译时用到的所有命令;
 # -work 打印编译时生成的临时目录; -compiler gc或gccgo; -asmflags 编译汇编语言时的行为，如-D、-I、-S等;
 # -buildmode default或shared或静态链接库*.a或动态链接库*.so或可执行文件*.exe ; -pkgdir 编译器只从该目录加载代码;
-# -tags按条件编译 1.通过代码注释的形式(在包声明之前&空行隔开); 2.通过文件名后缀(比如:*_linux_amd64.go)
+# -tags按条件编译[1.通过代码注释(在`包声明`之前&空行隔开) 2.通过文件名后缀,比如:*_linux_amd64.go]
 # -tags netgo -ldflags '-s -w -extldflags "-static"' # 指定条件编译[netgo]
-# go build -tags [linux|darwin|386|amd64] #*.go文件代码参考如下
+# go build -tags [linux|darwin|386|amd64]            # 代码文件*.go参考如下
 // +build darwin linux freebsd windows android js
 // +build 386 amd64 arm arm64 ppc64 wasm
 // +build cgo,!netgo                                                //*_android.go
