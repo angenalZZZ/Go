@@ -679,9 +679,10 @@ go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring:
 go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
 go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
 go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
-go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式
+go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *5k
+go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
-go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统  *1k
+go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
 go get github.com/chrislusf/seaweedfs/weed # 提供小文件的简单且高度可扩展的分布式文件管理系统，可集成其他云服务，如AWS..
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) learnku.com/docs/bigfile/1.0
 go get github.com/filebrowser/filebrowser/v2 # 提供用户文件管理系统(推荐) > filebrowser -p 2128 -r B:/go/filebrowser/srv
