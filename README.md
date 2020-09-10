@@ -952,12 +952,13 @@ go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop   
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
 # 小米公司的互联网企业级监控系统   book.open-falcon.org
 
-# 物联网IoT、物理计算Drones、机器人Robotics
-go get -d -u gobot.io/x/gobot/...          # 物联网IoT开源框架 *5k | github.com/hybridgroup/gobot
+# 物联网IoT、物理计算Drones、机器人Robotics、游戏服务器等
 # github.com/LiteOS/LiteOS                 # 华为LiteOS是华为面向物联网领域开发的一个基于实时内核的轻量级操作系统
-go get -d github.com/emqx/emqx             # 百万级分布式开源物联网-消息服务平台 *4k | www.emqtt.com
-go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *2.5k | ARM设备<设备间网络通讯> | 证券软件<内部RPC>
-go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *1.5k
+go get -d -u gobot.io/x/gobot/...          # 物联网IoT消息服务开源框架 *6.7k | github.com/hybridgroup/gobot
+go get -d -u github.com/emqx/emqx          # 物联网IoT分布式消息服务平台 *6.6k | www.emqtt.com
+go get -u -v github.com/aceld/zinx         # 游戏服务器TCP *2.7k | 轻量级TCP并发服务器框架|开源中国GVP最有价值开源项目
+go get -u -v github.com/davyxu/cellnet     # 游戏服务器RPC *3.3k | ARM<设备间网络通讯>|证券软件<内部RPC>组件化|高扩展|高性能网关
+go get -u -v github.com/liangdas/mqant     # 游戏服务器RPC *2.1k | 高性能的分布式微服务框架
 git clone --depth=1 https://github.com/EasyDarwin/EasyDarwin.git %GOPATH%/src/github.com/EasyDarwin/EasyDarwin # RTSP流媒体服务
 go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
