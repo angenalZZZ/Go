@@ -889,6 +889,7 @@ go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高
 go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
 # 分布式RPC框架rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
+go get -u -v -insecure github.com/henrylee2cn/erpc/v6  # eRPC一个高效可扩展且易于使用的RPC框架(推荐) *2.1k
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
