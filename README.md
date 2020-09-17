@@ -703,6 +703,7 @@ go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展+分布式
 go get github.com/boltdb/bolt/...          # 高性能key/value数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
 go get github.com/tidwall/buntdb           # 内存数据库 k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
+go get github.com/alash3al/redix           # 具有redis协议的实时持久k/v-数据库(badgerdb,boltdb,leveldb) *1k 
 go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
 go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
 go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset. *3k backend-store:LevelDB,RocksDB,RAM.
