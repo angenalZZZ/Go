@@ -791,6 +791,7 @@ go get github.com/kataras/iris             # 最快WebSvr框架 *18k (推荐)
 go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *13k
 go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
 go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
+go get github.com/kataras/go-sessions/v3   # #3~fasthttp会话Session(BadgerDB) *1k (推荐)
 go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
 # 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
