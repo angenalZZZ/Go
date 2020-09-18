@@ -698,12 +698,12 @@ go get github.com/go-redis/cache
 go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
 go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *4k
 go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
-go get github.com/dgraph-io/badger/...     # 高性能key/value数据库,支持事务(强力推荐)LSM+tree,ACID,Stream,KV+version,SSDs
-go get github.com/dgraph-io/dgraph/dgraph  # 高性能,具有可扩展+分布式+低延迟+高吞吐量的'分布式位图索引数据库' *10k
-go get github.com/boltdb/bolt/...          # 高性能key/value数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
-go get github.com/tidwall/buntdb           # 内存数据库 k/v-store, persists-to-disk, index, geospatial等功能
+go get github.com/dgraph-io/badger/...     # 高性能k/v数据库,支持事务BadgerDB(强力推荐)LSM+tree,ACID,Stream,KV+ver,SSD
+go get github.com/dgraph-io/dgraph/dgraph  # 高性能可扩展+分布式+低延迟+高吞吐量的(分布式位图索引数据库) *10k
+go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
+go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
-go get github.com/alash3al/redix           # 具有redis协议的实时持久k/v-数据库(badgerdb,boltdb,leveldb) *1k 
+go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
 go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
 go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
 go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset. *3k backend-store:LevelDB,RocksDB,RAM.
@@ -935,7 +935,8 @@ go get github.com/gocraft/work             # do work of redis-queue *1k | github
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
 go get github.com/gocelery/gocelery        # 分布式任务队列管理系统 *1k client/server | www.celeryproject.org
-go get github.com/RichardKnop/machinery/v1 # 分布式消息队列+异步任务(强烈推荐) *3.5k
+go get github.com/emitter-io/emitter       # 分布式可扩展的发布订阅消息平台(推荐) *2.5k
+go get github.com/RichardKnop/machinery/v1 # 分布式消息队列+异步任务平台(强烈推荐) *3.5k
 go get github.com/benmanns/goworker        # 10万级并行的后台任务系统-基于Redis的workers(推荐) *2.3k
 go get github.com/streadway/amqp           # RabbitMQ tutorials *3k | www.rabbitmq.com | github.com/rabbitmq/rabbitmq-tutorials
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff + zookeeper 实现的多种持久化方案的mq框架
