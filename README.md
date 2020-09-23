@@ -929,16 +929,17 @@ go get github.com/eapache/channels         # Channels：`Distribute分发`1In*Ou
 go get github.com/dirkaholic/kyoo          # Unlimited job queue.Submit from http.handler by channels
 go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全 FixedFIFO 2x faster than FIFO handler
 go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储 LevelDB Stores FIFO any data structure
-go get github.com/robfig/cron              # 任务计划 a cron library *5.5k | 通用任务基础类库(强烈推荐)
-go get github.com/ouqiang/gocron           # 定时任务管理系统-Web界面 *2k | 用于替代Linux-crontab, 精确到秒
-go get github.com/gocraft/work             # do work of redis-queue *1k | github.com/gocraft/work#run-the-web-ui
+go get github.com/takama/daemon            # 系统服务 daemon service *1.5k install|remove|start|stop|status
+go get github.com/robfig/cron              # 任务计划 a cron library *6.8k | 通用任务基础类库(强烈推荐)
+go get github.com/ouqiang/gocron           # 定时任务管理系统-Web界面 *2.9k | 用于替代Linux-crontab, 精确到秒
+go get github.com/gocraft/work             # do work of redis-queue *1.5k | github.com/gocraft/work#run-the-web-ui
 go get github.com/lisijie/webcron          # 定时任务Web管理器 (基于beego框架) *1k
 go get github.com/shunfei/cronsun          # 分布式容错任务管理系统 *1.5k
-go get github.com/gocelery/gocelery        # 分布式任务队列管理系统 *1k client/server | www.celeryproject.org
+go get github.com/gocelery/gocelery        # 分布式任务队列管理系统 *1.5k client/server | www.celeryproject.org
 go get github.com/emitter-io/emitter       # 分布式可扩展的发布订阅消息平台(推荐) *2.5k
 go get github.com/RichardKnop/machinery/v1 # 分布式消息队列+异步任务平台(强烈推荐) *3.5k
 go get github.com/benmanns/goworker        # 10万级并行的后台任务系统-基于Redis的workers(推荐) *2.3k
-go get github.com/streadway/amqp           # RabbitMQ tutorials *3k | www.rabbitmq.com | github.com/rabbitmq/rabbitmq-tutorials
+go get github.com/streadway/amqp           # RabbitMQ tutorials *3.5k | github.com/rabbitmq/rabbitmq-tutorials
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff + zookeeper 实现的多种持久化方案的mq框架
 
 go get github.com/nats-io/nats-server      # 消息中间件nats服务端(强烈推荐) *7k |性能最高(200kQps)两倍于(Kafla&Redis会切断慢用户)
