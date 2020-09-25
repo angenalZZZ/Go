@@ -942,12 +942,12 @@ go get github.com/benmanns/goworker        # 10万级并行的后台任务系统
 go get github.com/streadway/amqp           # RabbitMQ tutorials *3.5k | github.com/rabbitmq/rabbitmq-tutorials
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff + zookeeper 实现的多种持久化方案的mq框架
 
-go get github.com/nats-io/nats-server      # 消息中间件nats服务端(强烈推荐) *7k |性能最高(200kQps)两倍于(Kafla&Redis会切断慢用户)
-go get github.com/nats-io/nats.go          # 消息中间件nats客户端 | docs.nats.io/developing-with-nats/tutorials
-go get github.com/nsqio/nsq                # 实时分布式消息平台nsq(推荐) *15k | nsqlookupd & nsqd & nsqadmin
-go get github.com/youzan/nsq               # 有赞科技的nsq重塑 | www.bilibili.com/video/av29142217
+go get github.com/nats-io/nats-server      # 消息中间件nats服务端(强烈推荐) *8k 高性能200kQps几倍于(Kafla,Redis会切断慢用户)
+go get github.com/nats-io/nats.go          # 消息中间件nats客户端(参考) *3k docs.nats.io/developing-with-nats/tutorials
+go get github.com/nsqio/nsq                # 实时分布式消息平台nsq(推荐) *15k : nsqlookupd & nsqd & nsqadmin
+go get github.com/youzan/nsq               # 有赞科技的nsq重塑(参考) www.bilibili.com/video/av29142217
+go get github.com/travisjeffery/jocko      # 消息中间件Kafka原生Go实现  *3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/Shopify/sarama           # 消息中间件Kafka客户端(推荐) *5k : github.com/bsm/sarama-cluster [集群客户端]
-go get github.com/travisjeffery/jocko      # 消息中间件Kafka原生实现Serve*3k : producing/consuming[生产/消费] cluster[zk集群]
 go get github.com/appleboy/gorush          # 消息中间件gorush服务(推荐)  *4k : api, notification queue, multiple workers
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
