@@ -825,8 +825,8 @@ go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
-go get github.com/ochinchina/supervisord   # 开机启动服务 $ supervisord -d -c website.conf (run applications as linux daemons)
-go get github.com/takama/daemon            # 系统服务安装库 (install self as daemon on windows/linux)
+go get github.com/ochinchina/supervisord   # 开机启动服务-后台守护进程 *1.7k $ supervisord -d -c website.conf (linux)
+go get github.com/takama/daemon            # 系统服务安装-后台守护进程 *1.5k (windows+linux)
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
