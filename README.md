@@ -825,7 +825,8 @@ go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
-go get github.com/ochinchina/supervisord   # 开机启动服务 > supervisord -d -c website.conf
+go get github.com/ochinchina/supervisord   # 开机启动服务 $ supervisord -d -c website.conf (run applications as linux daemons)
+go get github.com/takama/daemon            # 系统服务安装库 (install self as daemon on windows/linux)
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
@@ -880,7 +881,11 @@ go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低�
  > go run ./greeter_server/main.go ; go run ./greeter_client/main.go                       #2.2启动服务&客户端
 go get github.com/grpc-ecosystem/grpc-gateway/... # 谷歌开源网关(gRPC to JSON proxy: 读取protobuf,生成反向代理)
 go get github.com/grpc-ecosystem/go-grpc-middleware #auth,logrus,prometheus⚡,opentracing,validator...
-go get github.com/TykTechnologies/tyk  # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit...
+go get github.com/grpc-ecosystem/go-grpc-prometheus
+go get google.golang.org/genproto
+go get google.golang.org/grpc
+go get google.golang.org/protobuf
+go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit...
 go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *22k istio.io | www.grpc.io
 go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *17k gokit.io (强力推荐)
 go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *12k (强力推荐)
@@ -892,6 +897,7 @@ go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，
 # 分布式RPC框架rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 go get -u -v -insecure github.com/henrylee2cn/erpc/v6  # eRPC一个高效可扩展且易于使用的RPC框架(推荐) *2.1k
+go get github.com/gorilla/rpc              # A golang foundation for RPC over HTTP services.
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
@@ -911,7 +917,7 @@ go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unido
 # Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
 
-go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *12k 一个快速，测试良好，广泛使用的WebSocket
+go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *13k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将STDIN/STDOUT程序转换为WebSocket服务器
 go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.8k 提供Web管理及客户端App推送功能 gotify.net
 go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.5k 提供完整的WebSocket接口处理 socket.io/docs
