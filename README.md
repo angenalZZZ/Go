@@ -676,9 +676,9 @@ go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
 go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS | www.min.io  docs.min.io/cn
-go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 | docs.min.io/cn/minio-client-quickstart-guide.html
-go get -d github.com/minio/minio           # 云存储|配置服务端, 运行: hidec /w minio.exe server d:\docker\app\minio\data
+go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS|golang客户端 www.min.io
+go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 docs.min.io/cn
+go get -d github.com/minio/minio           # 云存储|配置服务端, 安装 min.io/download
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *5k
 go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
