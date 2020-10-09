@@ -667,6 +667,7 @@ go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻�
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*3k 
 > docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
+go get github.com/dreadl0ck/netcap         # 网络流量监控与分析工具 *1k https://netcap.io
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 
