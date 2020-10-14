@@ -584,7 +584,9 @@ go get github.com/BurntSushi/locker        # l := locker.NewLocker(); l.Lock(str
 go get github.com/rafaeldias/async         # 超级好用+异步高并发处理(推荐)
 go get github.com/Jeffail/tunny            # 工作线程池+Api并行处理请求限制goroutines(推荐) *1.5k
 go get gopkg.in/go-playground/pool.v3      # 工作线程池+高效对象池(推荐) github.com/go-playground/pool
-go get gopkg.in/go-playground/validator.v9 # 数据结构扩展验证功能(强力推荐) github.com/go-playground/validator
+go get gopkg.in/go-playground/validator.v9 # 数据结构扩展验证功能(强力推荐) github.com/go-playground/validator/v10
+go get github.com/spf13/cast               # 数据类型安全的转换(推荐) *1k
+go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密等
 go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
 go get github.com/bytedance/go-tagexpr     # 数据校验，参数Binding:{ B string `tagexpr:"len($)>1 && regexp('^\\w*$')"` }
 go get github.com/xeipuuv/gojsonschema     # 数据校验，json schema 自定义错误校验       *1k
@@ -857,7 +859,6 @@ go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间�
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
 go get github.com/fengbeihong/macaron-swagger # 自动生成API文档的macaron中间件 swagger 2.0
 
-go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOML,YAML,HCL)热加载;远程配置;缓存;加密等
 
 # 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
 go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
