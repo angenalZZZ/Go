@@ -903,18 +903,20 @@ go get github.com/gorilla/rpc              # A golang foundation for RPC over HT
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
 go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *6k
-go get github.com/MontFerret/ferret        # 声明式Web爬虫系统  *4k
-go get github.com/tealeg/xlsx              # 读写Excel文件     *4k
+go get github.com/MontFerret/ferret        # 声明式爬虫系统  *4k
+go get github.com/unidoc/unioffice         # 读写Office文档 *2k
+go get github.com/tealeg/xlsx              # 读写Excel文件  *4k
 go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
-go get github.com/davyxu/tabtoy            # 高性能便捷电子表格导出器   *1k
+go get github.com/davyxu/tabtoy            # 高性能电子表格导出器Go&C#  *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
 go get github.com/mdp/qrterminal/v3        # 二维码生成器$命令行> qrterminal https://github.com/mdp/qrterminal
 go get github.com/lionsoul2014/ip2region   # IP地址定位库\毫秒级查询  *7.5k _城市Id|国家|区域|省份|城市|ISP_ github.com/cjinle/ip2regionserver
 go get github.com/esimov/pigo/cmd/pigo     # 人脸检测工具库 > pigo -in input.jpg -out out.jpg -cf cascade/facefinder
 go get github.com/go-echarts/go-echarts/... # 数据可视化图表库:25+图表:400+地图 go-echarts.github.io/go-echarts
-go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *2.8k | 支持text,drawing,images
-go get github.com/unidoc/unipdf/...        # 创建和处理PDF文件 *1k  unidoc.io
+go get github.com/jung-kurt/gofpdf         # 创建PDF文件  *3.6k | 支持text,drawing,images
+go get github.com/pdfcpu/pdfcpu            # 创建PDF文件  *1.7k | 支持text,drawing,images
+go get github.com/unidoc/unipdf/...        # 创建PDF文件  *1.0k | unidoc.io
 # Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
 
