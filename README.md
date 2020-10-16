@@ -99,7 +99,9 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     go env -w GOSUMDB=off                       # ^2或者设置为关闭验证服务
     go env -w GOPRIVATE=*.gitlab.com,*.gitee.com # 限制私有库域名(其它不安全的私有库则无法下载)
 
-> Linux - [Windows10/Linux(WSL) - 环境配置](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
+> - 开发时，可以使用[ngrok](https://ngrok.com)工具映射出来的公网地址，方便调试。
+
+> - Linux - [Windows10/Linux(WSL) - 环境配置](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root 或 /home)
 
