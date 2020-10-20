@@ -568,6 +568,8 @@ go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
 -------------------------------------------------------------------------------------------------
 
+go get github.com/gopherjs/gopherjs        # Go to JavaScript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
+
 go get github.com/yuin/gopher-lua          # Lua5.1 VM and compiler 运行*.lua *3.8k | github.com/yuin/gopher-lua/cmd/glua
 go get github.com/Shopify/go-lua           # Lua5.2 VM and compiler 运行*.lua *1.9k | github.com/Shopify/lua-tests
 go get github.com/Azure/golua              # Lua5.3 VM and compiler 运行*.lua *1.8k | opensource.microsoft.com/projects
@@ -929,9 +931,9 @@ go get github.com/unidoc/unipdf/...        # 创建PDF文件  *1.0k | unidoc.io
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *13k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将STDIN/STDOUT程序转换为WebSocket服务器
-go get github.com/gotify/server            # WebSocket Serve(推荐3) *4.8k 提供Web管理及客户端App推送功能 gotify.net
-go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.5k 提供完整的WebSocket接口处理 socket.io/docs
-go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *3.2k 支持百万级连接数 github.com/socketio/socket.io
+go get github.com/gotify/server            # WebSocket Serve(推荐3) *5.1k 提供Web管理及客户端App推送功能 gotify.net
+go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.7k 提供完整的WebSocket接口处理 socket.io/docs
+go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *3.4k 支持百万级连接数 github.com/socketio/socket.io
 
 # 聊天室 git clone --depth=1 https://github.com/GoBelieveIO/im_service.git && cd im_service && dep ensure && mkdir bin && make install
 # 高并发 go get github.com/xiaojiaqi/10billionhongbaos  # 抢购系统：单机支持QPS达6万，可以满足100亿红包的压力测试
