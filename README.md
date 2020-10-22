@@ -454,30 +454,34 @@ go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe�
   > go get github.com/goadapp/goad             # 测试工具goad *1.5k > goad -h
   > go get github.com/uber/go-torch            # 测试CPU火焰图生成工具 *3.5k > go-torch -h
   > go get github.com/smallnest/go-web-framework-benchmark # Web性能测试工具 > gowebbenchmark -help
+~~~
 
-# -------------------------------------------------------------------------------
-# 代码质量 >>
-# -------------------------------------------------------------------------------
+#### 代码质量
+~~~bash
   > go help vet                                    # 执行代码静态检查(语法检查)
   > go tool vet help                               # 查看工具vet支持哪些检查?
   > go list ./...|grep -v vendor|xargs go vet -v   # 检查时,排除目录vendor?
   > go tool vet -shadow main.go                    # 检查变量覆盖? 请提前安装 'shadow' analyzer tool
-  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./... 
-  > go errcheck|golint|unused|varcheck             # 其它的代码检测工具 go-linters
-   # 推荐[1.结合github平台进行自动化的审查 https://golangci.com 2.本地src审查工具golangci-lint & gocritic]
-  > revive -h                                    #1.1代码质量检测工具 go get github.com/mgechev/revive
-  > golangci-lint run | golangci-lint run ./... #2.1代码运行与审查工具 github.com/golangci/golangci-lint
-  > go get -v github.com/go-lintpack/lintpack/... && go get -v github.com/go-critic/go-critic/... #2.2审查工具
-     && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
-  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  #扫描GraphQL代码质量 gocritic check -help
-  > go get github.com/fortytw2/leaktest         # 检测goroutine内存泄漏问题:leaktest.Check()CheckTimeout()CheckContext()
+  > go get github.com/securego/gosec/cmd/gosec/... # 代码质量与安全分析工具> gosec -fmt=json -out=1.json ./...
 
-# 测试代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性更好)
-  > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
-  > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
+  > go golint|errcheck|unused|varcheck...          # 其它的代码检测工具 go-linters ...
+  > golint ./... && errcheck ./...                 # 代码规范及错误检测
+  > gocyclo -avg -over 5 .                         # 代码层级深度检测{{一般平均不超过5层}}
+
+  # 推荐[ 1.结合github平台进行自动化的审查 https://golangci.com  2.本地代码审查工具 golangci-lint & gocritic ]
+  > revive -h                                      #1.1代码通过质量检测 go get github.com/mgechev/revive
+  > golangci-lint run | golangci-lint run ./...    #2.1代码通过质量审查 go get github.com/golangci/golangci-lint
+  > go get github.com/go-lintpack/lintpack/...     #2.2其它代码质量工具 gocritic扫描GraphQL代码质量
+     && go get -v github.com/go-critic/go-critic/... 
+     && lintpack build -o gocritic -linter.version='v0.3.4' -linter.name='gocritic' github.com/go-critic/go-critic/checkers
+  > gocritic check-project %gopath%/src/github.com/graphql-go/graphql/  #> gocritic check -help
+  > go get github.com/fortytw2/leaktest          #2.3检测goroutine内存泄漏问题:leaktest.Check()CheckTimeout()CheckContext()
   > go get github.com/google/go-cmp  # 一个强大和安全的`Equal`替代方案(reflect.DeepEqual仅用于比较两个值在语义上是否相等)
   > go get github.com/go-stack/stack # 包堆栈实现了用于捕获、操作和格式化调用堆栈的实用程序。它提供了比包运行时更简单的API
 
+# 代码书写`Testing Coding` (go语言推荐`表格数据驱动`代码写法;比传统写法:可读性更强+可维护性更好)
+  > go get github.com/k0kubun/pp     # 彩色漂亮的打印输出
+  > go get github.com/davecgh/go-spew/spew # 为数据结构实现了一个深度漂亮的打印输出，以帮助调试。
 ~~~
 
 #### 性能优化
