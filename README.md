@@ -85,15 +85,15 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)<br>  - [GoLand配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
-    https://studygolang.com/dl/golang/go1.13.11.windows-amd64.msi
-    set GOPATH=A:\go
-    set GOROOT=D:\Program\Go
-    set GOTOOLS=%GOROOT%/pkg/tool       (选项: GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
-    set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto )
-    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理)
+    https://studygolang.com/dl/golang/go1.14.10.windows-amd64.msi
+    set GOROOT=D:\Program\Go            (安装目录)
+    set GOPATH=A:\go                    (开发环境-不同项目在编译时,该环境变量可以不同)
+    set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
+    set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto)
+    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理e.g.https://goproxy.cn)
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
-    set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH%
-    set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 Go's官方 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
+    set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
+    set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH% #环境变量%PATH%
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
     go env -w GOPRIVATE=*.gitlab.com,*.gitee.com,git.mycompany.com # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
@@ -102,17 +102,17 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
-    wget https://studygolang.com/dl/golang/go1.13.11.linux-amd64.tar.gz
-    tar -zxf go1.13.11.linux-amd64.tar.gz -C /usr/local
-    export GOPATH=/a/go
-    export GOROOT=/usr/local/go
-    export GOTOOLS=$GOROOT/pkg/tool     (选项: GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
-    export GO111MODULE=on               (选项: 建议 GO111MODULE=auto )
-    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理)
+    wget https://studygolang.com/dl/golang/go1.14.10.linux-amd64.tar.gz
+    tar -zxf go1.14.10.linux-amd64.tar.gz -C /usr/local
+    export GOROOT=/usr/local/go         (安装目录)
+    export GOPATH=/a/go                 (开发环境-GO111后可忽略该变量-建议启用GO111MODULE=on)
+    export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
+    export GO111MODULE=on               (选项: 建议 GO111MODULE=auto)
+    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理e.g.https://goproxy.cn)
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
-    export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
-    sudo vi /etc/profile   # 添加以上export变量到profile文件结尾,然后启用配置文件 source /etc/profile
+    export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
+    sudo vi /etc/profile   # (可选) 添加以上export变量至profile文件结尾,然后启用配置 # source /etc/profile
 
 
 > 安装依赖包
@@ -219,14 +219,12 @@ go version                // 显示go当前版本
 go vet                    // 发现代码中可能的错误(如语法检查、代码格式等)
 
 # <跨平台编译> 查看支持的操作系统和对应平台: https://github.com/fatedier/frp/blob/master/README_zh.md
-go tool dist list
+go tool dist list  # 交叉编译时,暂不支持cgo方式,需设置CGO_ENABLED=0 (禁用后兼容性更好)
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w -extldflags "-static"' -o ./api_linux ./api
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./api_windows_amd64.exe ./api
+CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -ldflags "-H windowsgui" -o demo.exe ./cmd/desktop/demo.go
 
-# go build 环境：CGO_ENABLED=1;GO_ENV=development # CGO_ENABLED=0禁用后兼容性更好;GO_ENV(dev>test>prod)
-set CGO_ENABLED=0 set GOOS=linux set GOARCH=amd64 go build -ldflags "-s -w -extldflags '-static'" ./api
-
-# go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义tags
+# go build 参数：-i -ldflags "-s -w -H windowsgui -X importpath.varname=value" # 参数ldflags表示自定义编译
 # -ldflags "-s -w" 去掉(编译符号+调试信息\杜绝gdb调试)缩小exe; -H 让exe运行时隐藏cmd窗口; -X 编译前传值实现改代码
 # -i 安装依赖于目标的包 -a 强制重新编译; -p 4 开启并发编译cpu=4; -v 编译时显示包名; -o 指定输出的文件名;
 # -installsuffix cgo 为了使当前的输出目录与默认的编译输出目录分离; -race 开启竞态条件的检测;
