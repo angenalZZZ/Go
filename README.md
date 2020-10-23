@@ -83,7 +83,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     开发工具> goland激活→→ idea.lanyus.com
     开发测试> 可使用[`ngrok`](https://ngrok.com)工具映射出来的公网地址，方便进行公网调试。
 
-> Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
+> Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator) - [GoLand配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
     https://studygolang.com/dl/golang/go1.13.11.windows-amd64.msi
     set GOPATH=A:\go
