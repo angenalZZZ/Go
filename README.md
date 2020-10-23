@@ -87,7 +87,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     https://studygolang.com/dl/golang/go1.14.10.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
-    set GOPATH=A:\go                    (开发环境-不同项目在编译时,该环境变量可以不同)
+    set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto)
     set GOPROXY=https://goproxy.io      (选项: 建议 网络代理e.g.https://goproxy.cn)
@@ -105,22 +105,21 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     wget https://studygolang.com/dl/golang/go1.14.10.linux-amd64.tar.gz
     tar -zxf go1.14.10.linux-amd64.tar.gz -C /usr/local
     export GOROOT=/usr/local/go         (安装目录)
-    export GOPATH=/a/go                 (开发环境-GO111后可忽略该变量-建议启用GO111MODULE=on)
+    export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto)
     export GOPROXY=https://goproxy.io   (选项: 建议 网络代理e.g.https://goproxy.cn)
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
-    sudo vi /etc/profile   # (可选) 添加以上export变量至profile文件结尾,然后启用配置 # source /etc/profile
+    sudo vi /etc/profile   # 可添加以上export变量至profile文件结尾,然后启用配置 # source /etc/profile
 
 
 > 安装依赖包
 ~~~bash
 # 代理设置 (解决网络问题) HTTP_PROXY, HTTPS_PROXY, NO_PROXY - defines HTTP proxy environment variables
-> set http_proxy=http://127.0.0.1:5005     (临时有效) [设置环境变量linux $ export -> vim /etc/profile]
-> set https_proxy=http://127.0.0.1:5005    (临时有效)
-> set ftp_proxy=http://127.0.0.1:5005      (临时有效)
+> set http_proxy=http://127.0.0.1:7890    # (临时有效) [设置环境变量# export -> vim /etc/profile]
+> set https_proxy=http://127.0.0.1:7890   # (临时有效) set ftp_proxy=http://127.0.0.1:7890
 # 代理推荐
 > $env:GOPROXY=https://goproxy.io         ## Windows PowerShell
 $ export GOPROXY=https://goproxy.io       ## Linux Profile ~ GO111MODULE=on
