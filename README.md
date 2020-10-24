@@ -78,12 +78,10 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 #### ① [搭建开发环境](https://goframe.org/prepare/install)
     环境配置> go env
     安装版本> go version
-    帮助文档> godoc -http=:6060 -index  ↑↑查看本地文档; 在线文档→→ golang.org/doc
+    帮助文档> godoc -http=:6060 -index <<-查看本地文档; 在线文档→→ golang.org/doc
              :go^1.13需安装godoc: set GO111MODULE=on ; go get golang.org/x/tools/cmd/godoc
-    开发工具> goland激活→→ idea.lanyus.com
-    开发测试> ngrok https://ngrok.com 可映射出来公网地址，方便进行公网调试。
 
-> Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)<br>  - [GoLand配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
+> Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
     https://studygolang.com/dl/golang/go1.14.10.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
@@ -94,11 +92,6 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH% #环境变量%PATH%
-    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
-    go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
-    go env -w GOPRIVATE=*.gitlab.com,*.gitee.com,git.mycompany.com # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
-    go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
-    go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
@@ -114,8 +107,17 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
     sudo vi /etc/profile   # 可添加以上export变量至profile文件结尾,然后启用配置 # source /etc/profile
 
+> 安装开发工具 GoLand 破解→→ idea.lanyus.com 获取激活码; 或者→→ www.jb51.net 搜索 JetbrainsCrack <br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
-> 安装依赖包
+    # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
+    go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
+    go env -w GOPRIVATE=*.gitlab.com,*.gitee.com,git.mycompany.com # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
+    go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
+    go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
+
+> 搭建公网测试 ngrok 注册→→ ngrok.com 免费获取域名→→ f714ea843e2b.ngrok.io 下载工具→转发流量→进行公网调试。
+
+> 安装开发依赖包
 ~~~bash
 # 代理设置 (解决网络问题) HTTP_PROXY, HTTPS_PROXY, NO_PROXY - defines HTTP proxy environment variables
 > set http_proxy=http://127.0.0.1:7890    # (临时有效) [设置环境变量# export -> vim /etc/profile]
