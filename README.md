@@ -603,6 +603,7 @@ go get github.com/spf13/viper && go get github.com/spf13/pflag # 配置(JSON,TOM
 go get github.com/asaskevich/govalidator   # 字符串、数字、切片和自定义结构的验证器(推荐) *4k
 go get github.com/bytedance/go-tagexpr     # 数据校验，参数Binding:{ B string `tagexpr:"len($)>1 && regexp('^\\w*$')"` }
 go get github.com/xeipuuv/gojsonschema     # 数据校验，json schema 自定义错误校验       *1k
+go get github.com/dlclark/regexp2          # 正则表达式，兼容 .NET System.Text.RegularExpressions.Regex
 go get github.com/chrislusf/glow/...       # 大数据计算+分布式集群，像Hadoop-MapReduce,Spark,Flink,Storm  *2.5k
 go get github.com/chrislusf/gleam/...      # 快速高并发可扩展分布式计算(推荐)MapReduce,dag,pipe,k8s,Read>HDFS&Kafka
 go get github.com/reactivex/rxgo           # 响应式编程库rxgo
