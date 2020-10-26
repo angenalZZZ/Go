@@ -569,7 +569,11 @@ go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
 -------------------------------------------------------------------------------------------------
 
-go get github.com/gopherjs/gopherjs        # Go to JavaScript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
+go get github.com/gopherjs/gopherjs        # Go to javascript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
+go get github.com/dop251/goja              # Run ES5(ECMAScript5.1),Babel,Typescript,some-ES6  *1.8k (推荐)
+go get github.com/owenthereal/godzilla     # Run ES6(ES2015) javascript source code runtime    *1.4k
+
+go get github.com/google/grumpy            # Run Python source code transcompiler and runtime  *10k  (推荐)
 
 go get github.com/yuin/gopher-lua          # Lua5.1 VM and compiler 运行*.lua *3.8k | github.com/yuin/gopher-lua/cmd/glua
 go get github.com/Shopify/go-lua           # Lua5.2 VM and compiler 运行*.lua *1.9k | github.com/Shopify/lua-tests
