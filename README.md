@@ -78,7 +78,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 #### ① [搭建开发环境](https://goframe.org/prepare/install)
     环境配置> go env
     安装版本> go version
-    帮助文档> godoc -http=:6060 -index <<-查看本地文档; 在线文档→→ golang.org/doc
+    帮助文档> godoc -http=:6060 -index <<-查看本地文档; 在线文档→→ golang.org/doc →→ pkg.go.dev
              :go^1.13需安装godoc: set GO111MODULE=on ; go get golang.org/x/tools/cmd/godoc
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
