@@ -370,6 +370,8 @@ go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe�
   > go test -v -count=1 [package-name]             # 测试指定的包(默认目录path=. 默认次数count=1 -v打印详情)
   > go test -run=^$  -parallel=20 ./path           # 单元测试(t *testing.T) -run=查找TestXxx -parallel=并行数
   > go test -test.list=^Benchmark ./path           # 只打印匹配的测试函数
+  > go test -v -cpu=2 -race -short ./path
+  > go test -v -cpu=1,2,4 ./path
   # t.Log   t.Logf   # 正常信息 -> 类似HTTP状态码^200
   # t.Error t.Errorf # 测试失败信息，测试程序`报告`的错误信息 -> 类似HTTP状态码^400
   # t.Fatal t.Fatalf # 致命错误信息，测试程序`退出`的异常信息 -> 类似HTTP状态码^500
