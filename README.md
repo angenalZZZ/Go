@@ -741,28 +741,29 @@ go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存�
 go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 
-go get github.com/astaxie/beego/orm        # 数据库orm    *20k  support mysql,postgres,sqlite3...
-go get github.com/jinzhu/gorm              # 数据库gorm   *12k  gorm.io/docs
+# SQLDrivers: https://github.com/golang/go/wiki/SQLDrivers
+go get gorm.io/gorm                        # 数据库orm    *21k  gorm.io/docs  V1: github.com/jinzhu/gorm
+go get github.com/astaxie/beego/orm        # 数据库orm    *25k  support mysql,postgres,sqlite3...
  > git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
-go get github.com/go-sql-driver/mysql      # Mysql client and driver     *8k   github.com/siddontang/go-mysql
-go get github.com/lib/pq                   # Postgres client and driver  *5k   github.com/prest/prest
-go get github.com/jackc/pgx                # Postgres client and toolkit *2k
-go get github.com/go-pg/pg/v9              # Postgres client and ORM     *3k
-go get github.com/sosedoff/pgweb           # Postgres client and WebUI   *6k
+go get github.com/go-sql-driver/mysql      # Mysql client and driver    *10k   github.com/siddontang/go-mysql
+go get github.com/lib/pq                   # Postgres client and driver  *6k   github.com/prest/prest
+go get github.com/jackc/pgx                # Postgres client and toolkit *3k
+go get github.com/go-pg/pg/v9              # Postgres client and ORM     *4k
+go get github.com/sosedoff/pgweb           # Postgres client and WebUI   *7k
 go get github.com/denisenkom/go-mssqldb    # MsSql client and driver     *1k
-go get gopkg.in/mgo.v2                     # MongoDB 驱动:集群,并发,一致性,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
+go get gopkg.in/mgo.v2                     # MongoDB:Cluster,Concurrent,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
 go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
-go get github.com/mattn/go-sqlite3         # SQLite client and driver    *3k
-go get github.com/jmoiron/sqlx             # 数据库sql library  *6k  (extensions go's standard database/sql)
+go get github.com/mattn/go-sqlite3         # SQLite client and driver    *4k
+go get github.com/jmoiron/sqlx             # 数据库sql extensions        *9k  (extensions go's standard database/sql)
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
   go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
-go get github.com/go-xorm/xorm             # 数据库xorm   *5k  support mysql,postgres,tidb,sqlite3,mssql,oracle
+go get github.com/go-xorm/xorm             # 数据库xorm  *6k  (support mysql,postgres,tidb,sqlite3,mssql,oracle)
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,类ibatis配置等
-                                             # ^xorm增强版*文档 https://www.kancloud.cn/xormplus/xorm/167077
-go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射.
+                                             # ^xorm增强版*文档 www.kancloud.cn/xormplus/xorm/167077
+go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射
 go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
  > git clone --depth=1 https://github.com/go-gormigrate/gormigrate.git %GOPATH%/src/gopkg.in/gormigrate.v1 && go get gopkg.in/gormigrate.v1 
