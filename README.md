@@ -1514,7 +1514,8 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
  * [fyne.io material-GUI](https://fyne.io/develop/)
  * [webassembly app](https://github.com/murlokswarm/app)
- * 其它功能
+ * 其它功能如下
+
 | 功能 | 开源库 |
 | --- | --- |
 | 播放声音 | <https://github.com/faiface/beep> |
