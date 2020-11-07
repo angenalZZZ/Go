@@ -1514,6 +1514,15 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
  * [fyne.io material-GUI](https://fyne.io/develop/)
  * [webassembly app](https://github.com/murlokswarm/app)
+ * 其它功能
+| 功能 | 开源库 |
+| --- | --- |
+| 播放声音 | <https://github.com/faiface/beep> |
+| 生成图标文件 | <https://github.com/akavel/rsrc> |
+| 创建系统托盘 | <https://github.com/getlantern/systray> |
+| 打开浏览器链接 | <https://github.com/skratchdot/open-golang> |
+| 创建Windows快捷方式 | <https://github.com/go-ole/go-ole> |
+
 
 ----
 
