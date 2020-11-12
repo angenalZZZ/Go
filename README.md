@@ -646,10 +646,11 @@ go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插
 go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
 go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
 
-go get github.com/abice/go-enum            # 代码生成枚举类型的功能
-go get github.com/clipperhouse/gen         # 代码生成类似泛型的功能 *1k  clipperhouse.com/gen/overview
+go get github.com/ahmetb/go-linq           # 使用LINQ功能(推荐)*2k From(slice).Where(predicate).Select(selector).Union(data)
+go get github.com/wesovilabs/koazee        # 流式(链式操作)不可变+延迟加载(slice)-(强力推荐) *1k
+go get github.com/abice/go-enum            # 代码生成`枚举类型`的功能 *1k
+go get github.com/clipperhouse/gen         # 代码生成`类似泛型`的功能 *1k  clipperhouse.com/gen/overview
 go get github.com/rjeczalik/interfaces/cmd/interfacer # 生成接口代码使用
-go get github.com/ahmetb/go-linq           # 推荐使用.NET_LINQ功能*1.8k From(slice).Where(predicate).Select(selector).Union(data)
 go get github.com/ungerik/pkgreflect       # 生成包反射时使用pkgreflect.go
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
