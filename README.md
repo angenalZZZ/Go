@@ -723,19 +723,21 @@ go get github.com/dgraph-io/dgraph/dgraph  # 高性能可扩展+分布式+低延
 go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
 go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
+
+go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐) *34k  https://prometheus.io
+go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等 *18k https://pingcap.com/docs-cn
+go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等 *18k www.cockroachlabs.com/docs/stable
+go get github.com/influxdata/influxdb1-client/v2 # 时序数据库InfluxDB,支持分布式事件等 *19k github.com/influxdata/influxdb
+go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB客户端 v2.docs.influxdata.com/v2.0/get-started
+go get github.com/pilosa/pilosa            # 分布式位图索引Pilosa+实时计算大数据列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
+
 go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
 go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
 go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
-go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset. *3k backend-store:LevelDB,RocksDB,RAM.
+go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4k backend-store:LevelDB,RocksDB,RAM.
 # CGO_CFLAGS="-I/path/to/rocksdb/include" \ # 脸书开源RocksDB(推荐) v5.16+  github.com/facebook/rocksdb
 # CGO_LDFLAGS="-L/path/to/rocksdb -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \ # 系统环境变量
 go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB 一种用于闪存和RAM存储的持久键值存储系统
-go get github.com/cockroachdb/cockroach    # 云数据存储系统-支持地理位置、事务等 *18k www.cockroachlabs.com/docs/stable
-go get github.com/pingcap/tidb             # 支持包括传统 RDBMS 和 NoSQL 的特性 *18k  pingcap.com/docs-cn
-go get github.com/influxdata/influxdb1-client/v2 # 分布式、事件、实时的可扩展时序数据库InfluxDB *19k github.com/influxdata/influxdb
-go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB 2.x客户端 v2.docs.influxdata.com/v2.0/get-started
-go get github.com/prometheus/prometheus    # 时序数据库Prometheus +系统监控 (强力推荐)  *30k  https://prometheus.io
-go get github.com/pilosa/pilosa            # Pilosa分布式位图索引+实时计算+大数据+列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
 go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
 go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
@@ -756,14 +758,16 @@ go get github.com/denisenkom/go-mssqldb    # MsSql client and driver     *1k
 go get gopkg.in/mgo.v2                     # MongoDB:Cluster,Concurrent,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
 go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
 go get github.com/mattn/go-sqlite3         # SQLite client and driver    *4k
-go get github.com/jmoiron/sqlx             # 数据库sql extensions        *9k  (extensions go's standard database/sql)
+# SQL-ORM开源SDK
+go get github.com/jmoiron/sqlx             # 数据库orm sql扩展 (强力推荐) *9k (extensions go's standard database/sql)
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
   go get github.com/albert-widi/sqlt         # sqlx & sqlt 支持数据库主从数据源，读写分离
-go get github.com/go-xorm/xorm             # 数据库xorm  *6k  (support mysql,postgres,tidb,sqlite3,mssql,oracle)
+go get github.com/go-xorm/xorm             # 数据库orm  *6k  (support mysql,postgres,tidb,sqlite3,mssql,oracle)
   go get github.com/go-xorm/builder          # ^xorm SQL Builder 增强-拼接sql
   go get github.com/xormplus/xorm            # ^xorm增强版*$ 支持sql模板,动态sql,嵌套事务,类ibatis配置等
                                              # ^xorm增强版*文档 www.kancloud.cn/xormplus/xorm/167077
+go get github.com/upper/db                 # 数据库orm *2.4k (support PostgreSQL,MySQL,MSSQL,CockroachDB,MongoDB,QL,SQLite)
 go get github.com/didi/gendry              # 滴滴开源 SQL Builder 增强-拼接sql、连接池管理、结构映射
 go get github.com/golang-migrate/migrate   # 数据库 schema 迁移工具 *3k
 go get github.com/rubenv/sql-migrate/...   # 数据库 schema 迁移工具，允许使用 go-bindata 将迁移嵌入到应用程序中 *1k
