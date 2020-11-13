@@ -718,47 +718,49 @@ go get github.com/go-redis/cache
 go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
 go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *4k
 go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
-go get github.com/dgraph-io/badger/...     # 高性能k/v数据库,支持事务BadgerDB(强力推荐)LSM+tree,ACID,Stream,KV+ver,SSD
-go get github.com/dgraph-io/dgraph/dgraph  # 高性能可扩展+分布式+低延迟+高吞吐量的(分布式位图索引数据库) *10k
-go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *10k | 性能低于badger
+
+go get github.com/dgraph-io/badger/...     # 高性能k/v数据库,支持事务BadgerDB(强力推荐) *8k (LSM+tree,ACID,Stream,KV+ver,SSD)
+go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *11k (性能低于badger)
 go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等功能
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
+go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
+go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB用于闪存和RAM存储的持久键值存储系统
+go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
+go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
+go get github.com/couchbase/go-couchbase   # Couchbase 客户端
 
 go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐) *34k  https://prometheus.io
-go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等 *18k https://pingcap.com/docs-cn
-go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等 *18k www.cockroachlabs.com/docs/stable
-go get github.com/influxdata/influxdb1-client/v2 # 时序数据库InfluxDB,支持分布式事件等 *19k github.com/influxdata/influxdb
+go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等 *26k https://pingcap.com/docs-cn
+go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等 *19k www.cockroachlabs.com/docs/stable
+go get github.com/influxdata/influxdb      # 时序数据库InfluxDB,支持实时+分布式+事件等 *20k github.com/influxdata/influxdb
 go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB客户端 v2.docs.influxdata.com/v2.0/get-started
-go get github.com/pilosa/pilosa            # 分布式位图索引Pilosa+实时计算大数据列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
+go get github.com/dgraph-io/dgraph/dgraph  # 分布式位图索引数据库,高性能+分布式+低延迟+高吞吐量 *15k
+go get github.com/pilosa/pilosa            # 分布式位图索引数据库,实时计算+大数据+列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
 
-go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
+go get github.com/vitessio/vitess          # 数据库集群系统,用于MySQL的水平缩放(强力推荐) *11k
+
 go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
 go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
 go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4k backend-store:LevelDB,RocksDB,RAM.
 # CGO_CFLAGS="-I/path/to/rocksdb/include" \ # 脸书开源RocksDB(推荐) v5.16+  github.com/facebook/rocksdb
 # CGO_LDFLAGS="-L/path/to/rocksdb -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \ # 系统环境变量
-go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB 一种用于闪存和RAM存储的持久键值存储系统
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
-go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
-go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
-go get github.com/couchbase/go-couchbase   # Couchbase 客户端
-go get github.com/bradfitz/gomemcache/memcache # memcache 客户端库
 
 # SQLDrivers: https://github.com/golang/go/wiki/SQLDrivers
-go get gorm.io/gorm                        # 数据库orm    *21k  gorm.io/docs  V1: github.com/jinzhu/gorm
-go get github.com/astaxie/beego/orm        # 数据库orm    *25k  support mysql,postgres,sqlite3...
- > git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
-go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/go-sql-driver/mysql      # Mysql client and driver    *10k   github.com/siddontang/go-mysql
+go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
+go get github.com/denisenkom/go-mssqldb    # MSsql client and driver     *1k
+go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
+go get gopkg.in/mgo.v2                     # MongoDB:Cluster,Concurrent,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
 go get github.com/lib/pq                   # Postgres client and driver  *6k   github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres client and toolkit *3k
 go get github.com/go-pg/pg/v9              # Postgres client and ORM     *4k
 go get github.com/sosedoff/pgweb           # Postgres client and WebUI   *7k
-go get github.com/denisenkom/go-mssqldb    # MsSql client and driver     *1k
-go get gopkg.in/mgo.v2                     # MongoDB:Cluster,Concurrent,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
-go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
 go get github.com/mattn/go-sqlite3         # SQLite client and driver    *4k
-# SQL-ORM开源SDK
+go get github.com/astaxie/beego/orm        # 数据库orm    *25k  support mysql,postgres,sqlite3...
+go get gorm.io/gorm                        # 数据库orm    *21k  gorm.io/docs  V1: github.com/jinzhu/gorm
+ > git clone --depth=1 https://github.com/rana/ora.git %GOPATH%/src/gopkg.in/rana/ora.v4 && go get gopkg.in/rana/ora.v4
+
 go get github.com/jmoiron/sqlx             # 数据库orm sql扩展 (强力推荐) *9k (extensions go's standard database/sql)
   go get github.com/heetch/sqalx             # sqlx & sqalx 支持嵌套的事务
   go get github.com/twiglab/sqlt             # sqlx & sqlt 模板拼接sql和java的数据库访问工具MyBatis的sql配置
