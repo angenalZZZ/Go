@@ -395,6 +395,31 @@ go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe�
   > go test -v -run ^ExampleTest$ -blockprofile %TEMP%/test.out -c github.com/a/go/f
   > go test -v -run ^ExampleTest$ -mutexprofile %TEMP%/test.out -c github.com/a/go/f
 
+  # available arguments
+  -test.bench regexp          # 只运行与regexp匹配的基准测试
+  -test.benchmem              # 打印基准测试的内存分配情况
+  -test.benchtime d           # 在持续时间d内运行每个基准测试（默认1s）
+  -test.blockprofile file     # 将goroutine阻塞基准文件写入文件
+  -test.blockprofilerate rate # 设置阻塞基准文件速率（请参阅runtime.SetBlockProfileRate)（默认值1）
+  -test.count n               # 运行测试，基准测试n次（默认为1）
+  -test.coverprofile file     # 将覆盖率基准测试文件写入文件
+  -test.cpu list              # 要运行每个测试的cpu计数的逗号分隔列表
+  -test.cpuprofile file       # 将cpu分配基准文件写入文件
+  -test.failfast              # 第一次测试失败后不要开始新的测试
+  -test.list regexp           # 列出与regexp匹配的测试、示例和基准测试，然后退出
+  -test.memprofile file       # 将内存分配基准文件写入文件
+  -test.memprofilerate rate   # 设置内存分配基准分析速率（请参阅运行时.MemProfileRate)
+  -test.mutexprofile string   # 执行后，将互斥争用基准文件写入命名文件
+  -test.mutexprofilefraction int # 如果>=0，调用runtime.SetMutexProfileFraction（默认值1）
+  -test.outputdir dir         # 将基准文件写入目录
+  -test.parallel n            # 最多并行运行n个测试（默认4个）
+  -test.run regexp            # 只运行与regexp匹配的测试和示例
+  -test.short                 # 运行较小的测试套件以节省时间
+  -test.testlogfile file      # 将测试操作日志写入文件（仅供cmd/go使用）
+  -test.timeout d             # 持续时间d后的紧急测试二进制（默认为0，禁用超时）
+  -test.trace file            # 将执行跟踪写入文件
+  -test.v                     # 打印输出
+
 # -------------------------------------------------------------------------------
 # 测试工具 >>
 # -------------------------------------------------------------------------------
