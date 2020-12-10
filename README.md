@@ -822,7 +822,9 @@ go get github.com/Shelnutt2/db2struct/cmd/db2struct # 命令行工具 db2struct 
  > db2struct -v -t login_log --struct LoginLog --package dto --target=文件名.go -H localhost --mysql_port=3306 \
    -d gocron -u cron -p <password> --gorm --guregu  # -d数据库 -u账号 -p密码 --gorm数据库orm --guregu空值类型
 go get github.com/mattatcha/scaneo         # 命令行工具 scaneo -h 把数据表行转换为输出类和列表结构
+
 go get github.com/urfave/cli/v2            # 超级简易的命令行工具开发库 *13k
+go get github.com/k1LoW/tbls               # 超强的数据库说明文档生成器 *1k (可生成Markdown,Excel,YAML,JSON,Image等)
 
 go get github.com/cayleygraph/go-client    # 图数据库 Client API  *13k
 go get github.com/cayleygraph/cayley       # 图数据库(推荐) Driven & RESTful API & LevelDB Stores
@@ -958,7 +960,7 @@ go get github.com/MontFerret/ferret        # 声明式爬虫系统  *4k
 go get github.com/unidoc/unioffice         # 读写Office文档 *2k
 go get github.com/tealeg/xlsx              # 读写Excel文件  *4k
 go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k  https://sheetjs.com/demos/table.html
-go get github.com/davyxu/tabtoy            # 高性能电子表格导出器Go&C#  *1k
+go get github.com/davyxu/tabtoy            # 高性能表格数据导出器(推荐) *1k  (支持JSON/Golang/C#/Java/Lua/二进制源)
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
 go get github.com/mdp/qrterminal/v3        # 二维码生成器$命令行> qrterminal https://github.com/mdp/qrterminal
