@@ -957,7 +957,7 @@ go get github.com/henrylee2cn/pholcus      # 重量级爬虫Pholcus(幽灵蛛) *
 go get github.com/MontFerret/ferret        # 声明式爬虫系统  *4k
 go get github.com/unidoc/unioffice         # 读写Office文档 *2k
 go get github.com/tealeg/xlsx              # 读写Excel文件  *4k
-go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k
+go get github.com/360EntSecGroup-Skylar/excelize # 读写Excel文件(推荐) *5k  https://sheetjs.com/demos/table.html
 go get github.com/davyxu/tabtoy            # 高性能电子表格导出器Go&C#  *1k
 go get github.com/claudiodangelis/qr-filetransfer # 二维码识别|qr转换  *3k
 go get github.com/skip2/go-qrcode/...      # 二维码生成器 > qrcode     *1k
