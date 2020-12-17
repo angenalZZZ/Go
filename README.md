@@ -728,9 +728,6 @@ go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一
 go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
-go get github.com/chrislusf/seaweedfs/weed # 提供小文件的简单且高度可扩展的分布式文件管理系统，可集成其他云服务，如AWS..
-go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) learnku.com/docs/bigfile/1.0
-go get github.com/filebrowser/filebrowser/v2 # 提供用户文件管理系统(推荐) > filebrowser -p 2128 -r B:/go/filebrowser/srv
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
 go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
@@ -889,6 +886,11 @@ go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(�
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
 go get github.com/elazarl/go-bindata-assetfs/... # 提供http服务> http.Handle("/", http.FileServer(assetFS()))
+go get github.com/codeskyblue/gohttpserver # 静态文件服务器(推荐) *1k Auth,Upload,QRCode,zipDownload,indexPage
+go get github.com/radovskyb/watcher        # 监视文件目录变更,文件过滤,自定义事件过滤(推荐) *1k
+go get github.com/chrislusf/seaweedfs/weed # 提供小文件的简单且高度可扩展的分布式文件管理系统，可集成其他云服务，如AWS..
+go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) learnku.com/docs/bigfile/1.0
+go get github.com/filebrowser/filebrowser/v2 # 提供用户文件管理系统(推荐) > filebrowser -p 2128 -r B:/go/filebrowser/srv
 go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *12k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
