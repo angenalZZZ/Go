@@ -716,6 +716,8 @@ go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 
 go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *25k
+# Hyperledger Fabric 一个开源的企业级许可分布式账本技术平台 hyperledger-fabric.readthedocs.io/zh_CN/latest
+go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算协议及应用) github.com/Shitaibin/homomorphic-encryption-examples
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
