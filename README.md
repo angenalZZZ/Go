@@ -1003,7 +1003,8 @@ go get github.com/shunfei/cronsun          # 定时任务分布式容错系统  
 go get github.com/gocraft/work             # 定时任务管理(redis-queue) *1.5k | 依赖redis (英文界面)
 go get github.com/lisijie/webcron          # 定时任务管理系统Web(beego) *1k | 依赖MySQL (中文界面)
 go get github.com/gocelery/gocelery        # 分布式任务队列管理系统 *1.5k client/server | www.celeryproject.org
-go get github.com/emitter-io/emitter       # 分布式可扩展的发布订阅消息平台(推荐) *2.5k
+go get github.com/olebedev/emitter         # 轻量级的基于通道的发布订阅模式 *1k
+go get github.com/emitter-io/emitter       # 分布式可扩展的发布订阅消息平台(推荐) *2.7k
 go get github.com/RichardKnop/machinery/v1 # 分布式消息队列+异步任务平台(强烈推荐) *3.5k
 go get github.com/benmanns/goworker        # 10万级并行的后台任务系统-基于Redis的workers(推荐) *2.3k
 go get github.com/streadway/amqp           # RabbitMQ tutorials *3.5k | github.com/rabbitmq/rabbitmq-tutorials
