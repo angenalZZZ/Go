@@ -1009,6 +1009,7 @@ go get github.com/emitter-io/emitter       # 分布式可扩展的发布订阅�
 go get github.com/RichardKnop/machinery/v2 # 分布式消息队列+异步任务平台(强烈推荐) *4.8k
 go get github.com/streadway/amqp           # RabbitMQ tutorials *3.5k | github.com/rabbitmq/rabbitmq-tutorials
 go get github.com/blackbeans/kiteq         # KiteQ 是一个基于 go + protobuff + zookeeper 实现的多种持久化方案的mq框架
+go get github.com/RussellLuo/timingwheel   # 高并发时间轮(推荐) *1k | Timer,Scheduler,DelayQueue
 
 go get github.com/nats-io/nats-server      # 消息中间件nats服务端(强烈推荐) *8k 高性能200kQps几倍于(Kafla,Redis会切断慢用户)
 go get github.com/nats-io/nats.go          # 消息中间件nats客户端(参考) *3k docs.nats.io/developing-with-nats/tutorials
