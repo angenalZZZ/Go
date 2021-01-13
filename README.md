@@ -600,13 +600,15 @@ go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
 -------------------------------------------------------------------------------------------------
 
 go get github.com/gopherjs/gopherjs        # Go to javascript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
-go get github.com/dop251/goja              # Run ES5(ECMAScript5.1),Babel,Typescript,some-ES6  *1.8k (推荐)
+go get github.com/dop251/goja              # Run ES5(ECMAScript5.1),Babel,Typescript,some-ES6  *1.9k (推荐)
 go get github.com/owenthereal/godzilla     # Run ES6(ES2015) javascript source code runtime    *1.4k
+go get github.com/rogchap/v8go             # Execute JavaScript from Go
+go get github.com/ry/v8worker2             # golang binding to V8
 
 go get github.com/google/grumpy            # Run Python source code transcompiler and runtime  *10k  (推荐)
 
-go get github.com/yuin/gopher-lua          # Lua5.1 VM and compiler 运行*.lua *3.8k | github.com/yuin/gopher-lua/cmd/glua
-go get github.com/Shopify/go-lua           # Lua5.2 VM and compiler 运行*.lua *1.9k | github.com/Shopify/lua-tests
+go get github.com/yuin/gopher-lua          # Lua5.1 VM and compiler 运行*.lua *3.9k | github.com/yuin/gopher-lua/cmd/glua
+go get github.com/Shopify/go-lua           # Lua5.2 VM and compiler 运行*.lua *2.0k | github.com/Shopify/lua-tests
 go get github.com/Azure/golua              # Lua5.3 VM and compiler 运行*.lua *1.8k | opensource.microsoft.com/projects
 
 go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122) *3.6k
@@ -616,7 +618,7 @@ go get github.com/bwmarrin/snowflake       # 分布式id生成器:Twitter-snowfl
 go get github.com/sony/sonyflake           # 分布式id生成器:Twitter-snowflake扩展(推荐) | www.sony.net
 go get github.com/google/uuid              # 基于 RFC4122和DCE1.1 生成并检查uuid 用于身份验证和安全 *1.7k
 go get github.com/juju/utils               # Utility functions: arch,cache,cert,debug,deque,exec,file,hash,kv,os,parallel,proxy,ssh,tar,zip...
-go get github.com/henrylee2cn/goutil       # Common and useful utils
+go get github.com/henrylee2cn/goutil       # Useful and Common utils
 go get github.com/shirou/gopsutil          # Utils(CPU, Memory, Disks, etc)
 go get github.com/appleboy/com             # Random、Array、File、Convert
 go get github.com/huandu/xstrings          # String functions to their friends in other languages
@@ -641,6 +643,7 @@ go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/Knetic/govaluate         # 表达式引擎:Eval表达式:Functions:Accessors
 go get github.com/cheekybits/genny         # 泛型语言支持 golang.org/doc/faq#generics
 go get github.com/fatih/structs            # 数据结构反射 structs.New(struct1).Map,Names,Values,Tag("json"),Field("Name").Set("v")
+go get github.com/itsmontoya/linkedlist    # 数据结构 linkedlist(推荐)
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
@@ -919,7 +922,7 @@ go get github.com/go-swagger/go-swagger/cmd/swagger #API文档 swagger generate 
 go get github.com/swaggo/http-swagger      # 自动生成API文档的http中间件 swagger 2.0
 go get github.com/swaggo/gin-swagger       # 自动生成API文档的Gin中间件 swagger 2.0
 go get github.com/fengbeihong/macaron-swagger # 自动生成API文档的macaron中间件 swagger 2.0
-
+go get github.com/Shpota/goxygen           # 生成前端项目CLI ( Angular, React or Vue )
 
 # 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
 go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
@@ -984,7 +987,7 @@ go get github.com/unidoc/unipdf/...        # 创建PDF文件  *1.0k | unidoc.io
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *13k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将STDIN/STDOUT程序转换为WebSocket服务器
-go get github.com/gotify/server            # WebSocket Serve(推荐3) *5.1k 提供Web管理及客户端App推送功能 gotify.net
+go get github.com/gotify/server            # WebSocket Serve(推荐3) *5.2k 提供Web管理及客户端App推送功能 gotify.net
 go get github.com/googollee/go-socket.io   # WebSocket Serve(推荐4) *3.7k 提供完整的WebSocket接口处理 socket.io/docs
 go get github.com/gobwas/ws                # WebSocket Serve(推荐5) *3.4k 支持百万级连接数 github.com/socketio/socket.io
 
