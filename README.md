@@ -688,7 +688,10 @@ go get github.com/ungerik/pkgreflect       # 生成包反射时使用pkgreflect.
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
+
+go get github.com/toolgood/ToolGood.Words  # 敏感词(非法词/脏字)检测过滤 *2k (繁体转简体,全角转半角,汉字转拼音,模糊搜索)
 go get github.com/go-ego/gpy               # 汉语拼音转换工具(推荐)
+
 go get github.com/levigross/grequests      # HTTP client Requests(推荐)
 go get gopkg.in/h2non/gentleman.v2         # HTTP client library
 go get github.com/sethgrid/pester          # HTTP client calls with retries, backoff, and concurrency.
