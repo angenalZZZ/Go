@@ -647,7 +647,9 @@ go get github.com/itsmontoya/linkedlist    # 数据结构 linkedlist(推荐)
 go get github.com/google/btree             # 数据结构 B-Trees
 go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
 go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
+
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
+go get github.com/halfrost/LeetCode-Go     # 科学计算LeetCode题解,图论,数论,几何,排序算法等     *15k
 go get github.com/cenkalti/backoff         # 指数退避算法backoff.v4,用于降低程序执行速率,如:最大尝试重连数等
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络分析等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
