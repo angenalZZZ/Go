@@ -86,7 +86,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.14.10.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.15.8.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -98,7 +98,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
-    wget https://studygolang.com/dl/golang/go1.14.10.linux-amd64.tar.gz
+    wget https://studygolang.com/dl/golang/go1.15.8.linux-amd64.tar.gz
     tar -zxf go1.14.10.linux-amd64.tar.gz -C /usr/local
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
@@ -610,6 +610,7 @@ go get github.com/google/grumpy            # Run Python source code transcompile
 go get github.com/yuin/gopher-lua          # Lua5.1 VM and compiler 运行*.lua *3.9k | github.com/yuin/gopher-lua/cmd/glua
 go get github.com/Shopify/go-lua           # Lua5.2 VM and compiler 运行*.lua *2.0k | github.com/Shopify/lua-tests
 go get github.com/Azure/golua              # Lua5.3 VM and compiler 运行*.lua *1.8k | opensource.microsoft.com/projects
+-------------------------------------------------------------------------------------------------
 
 go get github.com/satori/go.uuid           # uuid generator, 支持5种版本(基于RFC4122) *3.6k
 go get github.com/rs/xid                   # uuid shortuuid Snowflake MongoID xid(推荐) *1.5k -xid 20 chars
@@ -642,16 +643,12 @@ go get github.com/reactivex/rxgo           # 响应式编程库rxgo
 go get github.com/google/go-intervals/...  # 时间范围内执行操作
 go get github.com/Knetic/govaluate         # 表达式引擎:Eval表达式:Functions:Accessors
 go get github.com/cheekybits/genny         # 泛型语言支持 golang.org/doc/faq#generics
-go get github.com/fatih/structs            # 数据结构反射 structs.New(struct1).Map,Names,Values,Tag("json"),Field("Name").Set("v")
-go get github.com/itsmontoya/linkedlist    # 数据结构 linkedlist(推荐)
-go get github.com/google/btree             # 数据结构 B-Trees
-go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
-go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
+-------------------------------------------------------------------------------------------------
 
 go get github.com/TheAlgorithms/Go         # 各种算法的实现 github.com/TheAlgorithms/Python   *31k
-go get github.com/halfrost/LeetCode-Go     # 科学计算LeetCode题解,图论,数论,几何,排序算法等     *15k
-go get github.com/cenkalti/backoff         # 指数退避算法backoff.v4,用于降低程序执行速率,如:最大尝试重连数等
+go get github.com/halfrost/LeetCode-Go     # 各种算法的实现LeetCode题解,图论,数论,几何,排序算法 *15k
 go get gonum.org/v1/gonum/...              # 各种算数运行(强力推荐)*3.2k矩阵,线性代数统计,概率分析和抽样,分区&集成&优化,网络分析等
+go get github.com/cenkalti/backoff         # 指数退避算法,用于降低程序执行速率,如最大尝试重连数等
 go get github.com/skelterjohn/go.matrix    # 线性代数统计库(推荐)
 go get github.com/OneOfOne/xxhash          # 超快的非对称加密哈希算法(推荐)> xxhsum -h ; xxhgo ;C语言github.com/Cyan4973/xxHash
 go get github.com/spaolacci/murmur3        # 超快的哈希分布均匀的算法(推荐)> murmur32 123456 ; murmur64 123456
@@ -660,6 +657,11 @@ go get github.com/pierrec/lz4              # 无损压缩算法LZ4> lz4c -h ; lz
 go get github.com/mholt/archiver/cmd/arc   # 压缩/解压文件(zip,tar,rar)> arc archive|unarchive|extract|ls|compress|decompress
 go get github.com/hpcloud/tail/...         # 从不断更新的文件读取.惠普.开源(推荐) log rotation tool: www.hpe.com
 go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
+go get github.com/fatih/structs            # 数据结构反射 structs.New(struct1).Map,Names,Values,Tag("json"),Field("Name").Set("v")
+go get github.com/itsmontoya/linkedlist    # 数据结构 linkedlist(推荐)
+go get github.com/google/btree             # 数据结构 B-Trees
+go get github.com/google/trillian          # 数据结构 Merkle tree, Verifiable Data Structures *2k
+go get github.com/emirpasic/gods           # 数据结构(强力推荐)*7.2k Containers,Sets,Lists,Stacks,Maps,Trees,Comps,Iters…
 # 编码/解码:性能比拼: https://github.com/alecthomas/go_serialization_benchmarks
 go get github.com/vipally/binary           # binary编码/解码 data和[]byte的互转(encoding/gob,encoding/binary)
 go get github.com/linkedin/goavro          # Avro编码/解码 avro.apache.org
@@ -743,6 +745,7 @@ go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一
 go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
 go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
+-------------------------------------------------------------------------------------------------
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
 go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
@@ -847,7 +850,11 @@ go get github.com/olivere/elastic          # Elasticsearch 6.0客户端 *4k
 go get github.com/Qihoo360/poseidon        # 360开源|百亿级日志分布式搜索引擎&Hadoop *1.5k
 go get github.com/DarthSim/imgproxy        # Fast image server: docker pull darthsim/imgproxy
 go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker & nginx
+~~~
 
+#### ② [Web框架](https://github.com/avelino/awesome-go)
+
+~~~bash
 # Web开发推荐如下：Router|Api框架 + MVC框架
 go get github.com/gin-gonic/gin            # 后端WebSvr框架 *46k: Gin(强力推荐) Star最高的Web框架 gin-gonic.com/zh-cn
 go get github.com/beego/beego/v2           # 后端WebSvr框架 *26k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
@@ -969,6 +976,7 @@ go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 go get -u -v -insecure github.com/henrylee2cn/erpc/v6  # eRPC一个高效可扩展且易于使用的RPC框架(推荐) *2.1k
 go get github.com/gorilla/rpc              # A golang foundation for RPC over HTTP services.
+-------------------------------------------------------------------------------------------------
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
 go get github.com/crawlab-team/crawlab     # 分布式爬虫管理平台 *6k  安装 https://crawlab.cn
@@ -989,6 +997,7 @@ go get github.com/pdfcpu/pdfcpu            # 创建PDF文件  *1.7k | 支持text
 go get github.com/unidoc/unipdf/...        # 创建PDF文件  *1.0k | unidoc.io
 # Gotenberg is a Docker-powered stateless API for converting HTML, Markdown and Office documents to PDF.
 # https://thecodingmachine.github.io/gotenberg/#url.basic.c_url
+-------------------------------------------------------------------------------------------------
 
 go get github.com/gorilla/websocket        # WebSocket Serve(推荐1) *13k 一个快速，测试良好，广泛使用的WebSocket
 go get github.com/joewalnes/websocketd     # Websocket Serve(推荐2) *15k 将STDIN/STDOUT程序转换为WebSocket服务器
@@ -1009,6 +1018,7 @@ go get github.com/dirkaholic/kyoo          # Unlimited job queue.Submit from htt
 go get github.com/enriquebris/goconcurrentqueue # 高并发-队列-线程安全 FixedFIFO 2x faster than FIFO handler
 go get github.com/beeker1121/goque         # 高性能-堆栈-队列-数据存储 LevelDB Stores FIFO any data structure
 go get github.com/takama/daemon            # 系统服务-守护进程 daemon *1.5k |install|remove|start|stop|status
+-------------------------------------------------------------------------------------------------
 
 go get github.com/robfig/cron              # 任务计划 a cron library  *7k | 通用任务基础类库(强烈推荐)
 go get github.com/ouqiang/gocron           # 定时任务管理系统Web       *3k | 用于替代Linux-crontab (推荐)
