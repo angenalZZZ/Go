@@ -7,8 +7,8 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
  > [*搭建开发环境*](#-搭建开发环境) + [*编译*](#编译) + [*管理构建*](#管理构建) + [*测试*](#测试) + [*代码质量*](#代码质量) + [*性能优化*](#性能优化) <br>
- [*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) ；[*✨开发效率工具*](Development-Efficiency-Tools.md) <br>
- [语法速查表](#语法速查表)，[Print](#printing)；[*开源web框架*](#-开源的-web-框架)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br>
+ [*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) + [✨推荐web框架](#-web框架)；[*✨开发效率工具*](Development-Efficiency-Tools.md) <br>
+ [语法速查表](#语法速查表)，[Print](#printing)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[*github开源排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br>
  [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
@@ -1590,25 +1590,6 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
 | 打开浏览器链接 | <https://github.com/skratchdot/open-golang> |
 | 创建Windows快捷方式 | <https://github.com/go-ole/go-ole> |
 
-
-----
-
-#### ③ [开源的 Web 框架](https://github.com/avelino/awesome-go#web-frameworks)
-
- * Web 框架
-    * [基于 Gin 构建企业级 RESTful API 服务](https://juejin.im/book/5b0778756fb9a07aa632301e)
-    * [基于 Gin 一步一步搭建Go的Web服务器](https://www.hulunhao.com/go/go-web-backend-starter/)
-~~~bash
-# 开发
-cd %GOPATH%/src                                                                 # 项目框架 Gin Web Framework
-git clone --depth=1 https://github.com/lexkong/apiserver_demos apiserver        # 项目源码-复制^demo至-工作目录
-git clone --depth=1 https://github.com/lexkong/vendor                           # 项目依赖-govendor
-go get github.com/StackExchange/wmi                                             # 项目依赖-缺失的包
-# 构建
-cd %GOPATH%/src/apiserver && go fmt -w . && go tool vet . && go build -v -o [应用名] [目录默认.]
-# 运行
-%GOPATH%/src/apiserver/apiserver.exe
-~~~
 
 ----
 
