@@ -98,8 +98,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
-    wget https://studygolang.com/dl/golang/go1.15.8.linux-amd64.tar.gz
-    tar -zxf go1.14.10.linux-amd64.tar.gz -C /usr/local
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.15.8.linux-amd64.tar.gz
+    tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
@@ -108,7 +108,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
-    sudo vi /etc/profile   # 可添加以上export变量至profile文件结尾,然后启用配置 # source /etc/profile
+    sudo vi /etc/profile.d/go-profile.sh   # 可添加以上export变量至-profile.sh 然后启用配置 # source /etc/profile
 
 > [安装开发工具 GoLand](https://www.jetbrains.com/go/download/other.html) 破解→→ idea.lanyus.com 获取激活码; 或者→→ www.jb51.net 搜索 JetbrainsCrack <br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
