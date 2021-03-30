@@ -1046,9 +1046,14 @@ go get github.com/appleboy/gorush          # 消息中间件gorush服务(推荐)
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
 # 数据狗 datadog 云监控  www.datadoghq.com  # Modern monitoring & analytics
+go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
+go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
+go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式]
+> ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
+> ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
 # 小米公司的互联网企业级监控系统   book.open-falcon.org
 
 # 物联网IoT、物理计算Drones、机器人Robotics、游戏服务器等
@@ -1071,8 +1076,6 @@ go get github.com/martinlindhe/gohash/...  # 编码解码> coder --help ; 推荐
  > echo2 123456|hasher md5 -n --no-colors  # echo2解决各系统的换行问题(个人编译,用于替换echo)
  > echo2 hello |coder -e base64+hex > echo2 614756736247383d|coder -d hex+base64 > cat file.b64|coder -d base64
  > echo2 123456|hasher md5 [-e base64] [-n --no-colors] > hasher -i file.txt sha1 --bsd #加密文件&输出BSD格式化结果
-go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
-go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态数据加密(DARE)格式]
  $ wget https://github.com/smallstep/cli/releases/download/v0.11.0/step-cli_0.11.0_amd64.deb
  $ wget https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_amd64.deb
  $ sudo dpkg -i step-cli_0.11.0_amd64      # 自动化证书管理cli: X.509,TLS;OAuth OIDC|OTP;JSONWebEncrypt;JWT...
