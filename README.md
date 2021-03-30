@@ -739,8 +739,9 @@ go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算�
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
 go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
 go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS|golang客户端 www.min.io
-go get -d github.com/minio/mc              # 云存储|配置客户端, 指南 docs.min.io/cn
-go get -d github.com/minio/minio           # 云存储|配置服务端, 安装 min.io/download
+go get github.com/minio/mc                 # 云存储|配置客户端, 指南 docs.min.io/cn
+go get github.com/minio/minio              # 云存储|配置服务端, 安装 min.io/download
+go get github.com/minio/minio-go/v7        # 云存储|开发客户端(minio-go)
 go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *5k
 go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
 go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
@@ -1071,6 +1072,7 @@ go get github.com/martinlindhe/gohash/...  # 编码解码> coder --help ; 推荐
  > echo2 hello |coder -e base64+hex > echo2 614756736247383d|coder -d hex+base64 > cat file.b64|coder -d base64
  > echo2 123456|hasher md5 [-e base64] [-n --no-colors] > hasher -i file.txt sha1 --bsd #加密文件&输出BSD格式化结果
 go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
+go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态数据加密(DARE)格式]
  $ wget https://github.com/smallstep/cli/releases/download/v0.11.0/step-cli_0.11.0_amd64.deb
  $ wget https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_amd64.deb
  $ sudo dpkg -i step-cli_0.11.0_amd64      # 自动化证书管理cli: X.509,TLS;OAuth OIDC|OTP;JSONWebEncrypt;JWT...
