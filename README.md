@@ -730,10 +730,6 @@ go get github.com/dreadl0ck/netcap         # 网络流量监控与分析工具 *
 go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
 go get github.com/rjeczalik/notify         # 文件系统事件通知库
 
-go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *25k
-# Hyperledger Fabric 一个开源的企业级许可分布式账本技术平台 hyperledger-fabric.readthedocs.io/zh_CN/latest
-go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算协议及应用) github.com/Shitaibin/homomorphic-encryption-examples
-
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
@@ -1050,13 +1046,24 @@ go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推�
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
-go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
-go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式]
-> ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
-> ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
 # 小米公司的互联网企业级监控系统   book.open-falcon.org
 
+# ------------------------------------------------------------------------------------
+# 区块链 - 比特币 bitcoin.org - 以太坊 ethereum.org - Filecoin 巴比特|基于IPFS星际文件系统 https://ipfs.io
+# ------------------------------------------------------------------------------------
+go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *25
+# Hyperledger Fabric 一个开源的企业级许可分布式账本技术平台 hyperledger-fabric.readthedocs.io/zh_CN/latest
+go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算协议及应用) github.com/Shitaibin/homomorphic-encryption-examples
+go get go.mozilla.org/sops/v3              # 加密解密> AWS-KMS,GCP-KMS,Azure-Key-Vault,age,PGP),工具支持YAML,JSON.. *7k
+go get filippo.io/age                      # 加密解密> ncrypt -h 文件加密(推荐) *5.7k  github.com/FiloSottile/age
+go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
+go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式](推荐)
+> ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
+> ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
+
+# ------------------------------------------------------------------------------------
 # 物联网IoT、物理计算Drones、机器人Robotics、游戏服务器等
+# ------------------------------------------------------------------------------------
 # github.com/LiteOS/LiteOS                 # 华为LiteOS是华为面向物联网领域开发的一个基于实时内核的轻量级操作系统
 go get -d -u gobot.io/x/gobot/...          # 物联网IoT消息服务开源框架 *6.7k | github.com/hybridgroup/gobot
 go get -d -u github.com/emqx/emqx          # 物联网IoT分布式消息服务平台 *6.6k | www.emqtt.com
@@ -1068,6 +1075,7 @@ go get github.com/iikira/BaiduPCS-Go       # 百度网盘命令行客户端
 go get github.com/inconshreveable/go-update # 自动更新应用程序
 go get -d https://github.com/restic/restic  # 数据备份工具 | restic.readthedocs.io
 cd %GOPATH%/src/github.com/restic/restic && go run -mod=vendor build.go --goos windows --goarch amd64
+
 # ------------------------------------------------------------------------------------
 # 部署-维护
 # ------------------------------------------------------------------------------------
