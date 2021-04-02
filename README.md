@@ -184,15 +184,15 @@ go get github.com/cweill/gotests/gotests # (%GOPATH%\bin\gotests.exe)
 go get github.com/fatih/gomodifytags # (%GOPATH%\bin\gomodifytags.exe)
 go get github.com/josharian/impl # (%GOPATH%\bin\impl.exe)
 go get github.com/haya14busa/goplay/cmd/goplay # (%GOPATH%\bin\goplay.exe)
-go get github.com/go-delve/delve/cmd/dlv # (%GOPATH%\bin\dlv.exe)
+go get github.com/go-delve/delve/cmd/dlv # (%GOPATH%\bin\dlv.exe) # debugger
 go get honnef.co/go/tools/cmd/staticcheck # (%GOPATH%\bin\staticcheck.exe)
 go get golang.org/x/tools/gopls # (%GOPATH%\bin\gopls.exe)
 go get golang.org/x/tools/cmd/godoc
 go get golang.org/x/tools/cmd/goimports
 go get golang.org/x/tools/cmd/gorename
-go get golang.org/x/tools/cmd/guru         # 可选
-go get golang.org/x/lint/golint            # 检查代码规范
-go get github.com/golangci/golangci-lint   # 检查代码质量
+go get golang.org/x/tools/cmd/guru                         # 可选
+go get golang.org/x/lint/golint                            # 检查代码规范
+go get github.com/golangci/golangci-lint/cmd/golangci-lint # 检查代码质量
 go get github.com/alecthomas/gometalinter && gometalinter --install
 go get github.com/acroca/go-symbols
 go get github.com/mdempsky/gocode
@@ -200,7 +200,6 @@ go get github.com/rogpeppe/godef
 go get github.com/zmb3/gogetdoc
 go get github.com/davidrjenni/reftools/cmd/fillstruct
 go get sourcegraph.com/sqs/goreturns
-# debug: github.com/go-delve/delve/blob/master/Documentation/installation/README.md
 ~~~
 
 #### [编译](https://go.wuhaolin.cn/advanced-go-programming-book/ch2-cgo/ch2-10-link.html)
