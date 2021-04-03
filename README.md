@@ -712,6 +712,7 @@ go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e
 go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式](推荐)
 > ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
 > ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
+go get github.com/hashicorp/vault          # 动态加密|密钥存储|凭证续约|吊销 *20k (推荐) www.vaultproject.io
 go get github.com/toolgood/ToolGood.Words  # 敏感词(非法词/脏字)检测过滤 *2k (繁体转简体,全角转半角,汉字转拼音,模糊搜索)
 go get github.com/go-ego/gpy               # 汉语拼音转换工具(推荐)
 
@@ -907,13 +908,21 @@ go get golang.org/x/time                   # 速率限制-调用Limiter接口 im
 go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐) breaker.CircuitBreaker www.sony.net
 go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
 go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
+
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
 go get github.com/ochinchina/supervisord   # 开机启动服务-后台守护进程 *1.7k $ supervisord -d -c website.conf (linux)
 go get github.com/takama/daemon            # 系统服务安装-后台守护进程 *1.5k (windows+linux)
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
-go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
+
+go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k (配置apache+nginx) caddyserver.com
+go get github.com/inconshreveable/ngrok    # 反向代理工具，快捷开放内网端口供外部使用 *20k https://ngrok.com
+go get github.com/gaia-pipeline/gaia       # 自动化运维Web平台Pipe任务  *4k
+go get github.com/oxequa/realize           # 自动化任务,开发流程改进工具 *4k
+go get github.com/cweill/gotests           # 自动化测试,自动生成用例工具 *3k
+go get github.com/silenceper/gowatch       # 热编译工具,加速开发效率工具
+
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *51k    gohugo.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
