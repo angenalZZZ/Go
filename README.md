@@ -902,15 +902,17 @@ go get github.com/takama/daemon            # 系统服务安装-后台守护进�
 go get github.com/sourcegraph/checkup/cmd/checkup # 分布式站点健康检查工具 > checkup --help
 go get github.com/hunterlong/statping      # 使用漂亮的图形、分析和插件，监控您的网站和应用程序 *2k
 go get github.com/mholt/caddy/caddy        # 全栈Web服务平台 *21k  配置apache+nginx  caddyserver.com
-go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *37k    gohugo.io
+go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *51k    gohugo.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
 go get github.com/go-bindata/go-bindata/...  # 将静态资源文件嵌入到Go二进制文件中，提供访问> Asset(), AssetFile()
 go get github.com/elazarl/go-bindata-assetfs/... # 提供http服务> http.Handle("/", http.FileServer(assetFS()))
+go get github.com/spf13/afero              # sftpfs,tarfs,zipfs,httpFs,regexpFs,MemMapFs(推荐) *4k (go1.16 abstraction io/fs.FS)
+go get github.com/drakkan/sftpgo           # 全功能和高度可配置SFTP服务器 *3k
 go get github.com/codeskyblue/gohttpserver # 静态文件服务器(推荐) *1k Auth,Upload,QRCode,zipDownload,indexPage
-go get github.com/radovskyb/watcher        # 监视文件目录变更,文件过滤,自定义事件过滤(推荐) *1k
 go get github.com/chrislusf/seaweedfs/weed # 提供小文件的简单且高度可扩展的分布式文件管理系统，可集成其他云服务，如AWS..
 go get github.com/bigfile/bigfile/artisan  # 提供http-api,rpc,ftp客户端文件管理(推荐) learnku.com/docs/bigfile/1.0
 go get github.com/filebrowser/filebrowser/v2 # 提供用户文件管理系统(推荐) > filebrowser -p 2128 -r B:/go/filebrowser/srv
+go get github.com/radovskyb/watcher        # 监视文件目录变更,文件过滤,自定义事件过滤(推荐) *1k
 go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *12k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
@@ -1113,7 +1115,6 @@ go get github.com/google/mtail             # 用于从应用程序日志中提�
 go get github.com/google/godepq            # 用于查询程序依赖 > godepq -from github.com/google/pprof
 go get github.com/google/ko/cmd/ko         # 用于构建和部署应用程序到Kubernetes的工具
 go get github.com/go-task/task             # 一个任务运行/构建工具，旨在比 GNU Make 更简单易用 *2k
-go get github.com/drakkan/sftpgo           # 全功能和高度可配置SFTP服务器
 go get github.com/google/git-appraise/git-appraise # 用于Git版本管理的分布式代码审核
 go get github.com/google/easypki/cmd/easypki # CA证书申请工具 | API: go get gopkg.in/google/easypki.v1
 go get go.universe.tf/tcpproxy/cmd/tlsrouter # TLS代理根据握手的SNI（服务器名称指示）将连接路由到后端。它不携带加密密钥，无法解码其代理的流量
