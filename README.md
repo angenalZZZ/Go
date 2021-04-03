@@ -677,13 +677,8 @@ go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] g
 go get github.com/200sc/bebop              # 快速高效、跨平台的序列化格式(推荐).NET,TypeScript,Go. github.com/RainwayApp/bebop
 go get github.com/andyleap/gencode         # 快速高效、通过代码生成编码/解码(推荐)、字节数小于GOB,JSON,MessagePack.
 go get github.com/mitchellh/mapstructure   # map解码+to[struct] from JSON, Gob, etc.          *4k
-go get github.com/PuerkitoBio/goquery      # 解析HTML像jQuery那样操作DOM                       *7k
-go get github.com/rs/zerolog/log           # 日志记录-性能最高-(强力推荐) *3k
-go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
-go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插件 *13.4k
-go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
-go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
 
+go get github.com/PuerkitoBio/goquery      # 解析HTML像jQuery那样操作DOM                       *7k
 go get github.com/ahmetb/go-linq           # 使用LINQ功能(推荐)*2k From(slice).Where(predicate).Select(selector).Union(data)
 go get github.com/wesovilabs/koazee        # 流式(链式操作)不可变+延迟加载(slice)-(强力推荐) *1k
 go get github.com/abice/go-enum            # 代码生成`枚举类型`的功能 *1k
@@ -694,8 +689,11 @@ go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(�
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
 
-go get github.com/toolgood/ToolGood.Words  # 敏感词(非法词/脏字)检测过滤 *2k (繁体转简体,全角转半角,汉字转拼音,模糊搜索)
-go get github.com/go-ego/gpy               # 汉语拼音转换工具(推荐)
+go get github.com/rs/zerolog/log           # 日志记录-性能最高-(强力推荐) *3k
+go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
+go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插件 *13.4k
+go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
+go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
 
 go get github.com/levigross/grequests      # HTTP client Requests(推荐)
 go get gopkg.in/h2non/gentleman.v2         # HTTP client library
@@ -704,6 +702,20 @@ go get github.com/haxpax/gosms             # 发短信 SMS gateway *1.2k
 go get github.com/upspin/upspin            # 构建安全统一和全局命名、共享文件和数据的框架：全局名称系统 *5k
 # git clone https://upspin.googlesource.com/upspin %GOPATH%\src\upspin.io
 
+# ------------------------------------------------------------------------------------
+# 敏感信息、加密解密、密钥管理、证书管理
+# ------------------------------------------------------------------------------------
+go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算协议及应用) github.com/Shitaibin/homomorphic-encryption-examples
+go get go.mozilla.org/sops/v3              # 加密解密> AWS-KMS,GCP-KMS,Azure-Key-Vault,age,PGP),工具支持YAML,JSON.. *7k
+go get filippo.io/age                      # 加密解密> ncrypt -h 文件加密(推荐) *5.7k  github.com/FiloSottile/age
+go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
+go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式](推荐)
+> ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
+> ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
+go get github.com/toolgood/ToolGood.Words  # 敏感词(非法词/脏字)检测过滤 *2k (繁体转简体,全角转半角,汉字转拼音,模糊搜索)
+go get github.com/go-ego/gpy               # 汉语拼音转换工具(推荐)
+
+# 免费证书、证书管理、自动化工具
 go get github.com/caddyserver/certmagic    # tls auto (推荐)*3k  certmagic.HTTPS([]string{"example.com"}, mux)
 go get golang.org/x/crypto/acme/autocert   # tls usage  github.com/go-ego/autotls
 go get github.com/go-acme/lego/cmd/lego    # tls Let's Encrypt client and ACME library, DNS providers manager
@@ -713,6 +725,8 @@ go get github.com/go-acme/lego/cmd/lego    # tls Let's Encrypt client and ACME l
 # Let’s Encrypt 免费证书/自动化工具 https://certbot.eff.org
 # Let’s Encrypt 自动续期证书参考 https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au
 # openssl 证书管理参考 https://www.openssl.org/docs/manmaster/man1/
+
+# 网络协议、网络库、事件总线
 go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
 go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves
 go get github.com/libp2p/go-libp2p-examples # 网络库模块p2p-examples
@@ -727,9 +741,7 @@ go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻�
 go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*3k 
 > docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
 go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
-go get github.com/dreadl0ck/netcap         # 网络流量监控与分析工具 *1k https://netcap.io
-go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
-go get github.com/rjeczalik/notify         # 文件系统事件通知库
+-------------------------------------------------------------------------------------------------
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
@@ -1044,11 +1056,16 @@ go get github.com/Shopify/sarama           # 消息中间件Kafka客户端(推�
 go get github.com/appleboy/gorush          # 消息中间件gorush服务(推荐)  *4k : api, notification queue, multiple workers
 go get github.com/mattermost/mattermost-server #通讯 *15k 为您带来跨PC和移动设备的消息+文件分享，提供归档+搜索功能+前端React
 
+# ------------------------------------------------------------------------------------
 # 数据狗 datadog 云监控  www.datadoghq.com  # Modern monitoring & analytics
+# ------------------------------------------------------------------------------------
 go get github.com/DataDog/zstd             # 实时数据压缩方法(强力推荐) DataDog: Facebook/Zstd: Fast-Stream-API
 go get github.com/open-falcon/falcon-plus  # 一个企业级的监控系统服务&前端     *5.5k
 go get github.com/cjbassi/gotop            # 监控系统命令行工具gotop          *6.6k
 go get github.com/armon/go-metrics         # 性能和运行时指标:导出到外部指标系统 *1k
+go get github.com/dreadl0ck/netcap         # 网络流量监控与分析工具 *1k https://netcap.io
+go get github.com/fsnotify/fsnotify        # 文件系统监控 # go get golang.org/x/sys/...
+go get github.com/rjeczalik/notify         # 文件系统事件通知库
 # 小米公司的互联网企业级监控系统   book.open-falcon.org
 
 # ------------------------------------------------------------------------------------
@@ -1056,13 +1073,6 @@ go get github.com/armon/go-metrics         # 性能和运行时指标:导出到�
 # ------------------------------------------------------------------------------------
 go get github.com/ethereum/go-ethereum     # 以太坊-区块链-网络协议  *25
 # Hyperledger Fabric 一个开源的企业级许可分布式账本技术平台 hyperledger-fabric.readthedocs.io/zh_CN/latest
-go get github.com/ldsec/lattigo            # 同态加密库(安全多方计算协议及应用) github.com/Shitaibin/homomorphic-encryption-examples
-go get go.mozilla.org/sops/v3              # 加密解密> AWS-KMS,GCP-KMS,Azure-Key-Vault,age,PGP),工具支持YAML,JSON.. *7k
-go get filippo.io/age                      # 加密解密> ncrypt -h 文件加密(推荐) *5.7k  github.com/FiloSottile/age
-go get github.com/hidevopsio/crypto        # 加密解密> crypto rsa -h [rsa -e -s hello][rsa -d -s ***][-k:rsa.key]
-go get github.com/minio/sio/cmd/ncrypt     # 加密解密> ncrypt -h [静态文件加密(DARE)格式](推荐)
-> ncrypt -cipher C20P1305 -p 123456 1.txt > 1-encrypted.txt    # 加密文件
-> ncrypt -cipher C20P1305 -p 123456 -d 1-encrypted.txt > 1.txt # 解密文件
 
 # ------------------------------------------------------------------------------------
 # 物联网IoT、物理计算Drones、机器人Robotics、游戏服务器等
