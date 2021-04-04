@@ -90,8 +90,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
-    set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto)
-    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理e.g.https://goproxy.cn)
+    set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto) > go env -w GO111MODULE=on
+    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理) > go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH% #环境变量%PATH%
@@ -103,8 +103,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
-    export GO111MODULE=on               (选项: 建议 GO111MODULE=auto)
-    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理e.g.https://goproxy.cn)
+    export GO111MODULE=on               (选项: 建议 GO111MODULE=auto) $ go env -w GO111MODULE=on
+    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理) $ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
