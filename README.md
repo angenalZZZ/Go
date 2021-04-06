@@ -690,12 +690,13 @@ go get github.com/ungerik/pkgreflect       # 生成包反射时使用pkgreflect.
 go get github.com/alecthomas/participle    # 超简单的Lexer解析器Parser(推荐使用,Lexer性能高于`反射`) *1.5k
 go get github.com/blynn/nex                # 好用的Lexer解析器工具，生成go代码&YACC/Bison&正则表达式: nex -r -s lc.nex
 go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的Parser生成器，读取、处理、执行或翻译文本或二进制文件 | www.antlr.org
-
-go get github.com/rs/zerolog/log           # 日志记录-性能最高-(强力推荐) *3k
-go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
-go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插件 *13.4k
 go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
 go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
+
+go get github.com/mintance/nginx-clickhouse #nginx日志解析和搬运ClickHouse数据库(性能是MySQL的1千倍)
+go get github.com/rs/zerolog/log           # 日志记录-性能最高(强力推荐) *3k
+go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
+go get github.com/sirupsen/logrus          # 日志跟踪-功能最多-扩展插件 *13.4k
 
 go get github.com/levigross/grequests      # HTTP client Requests(推荐)
 go get gopkg.in/h2non/gentleman.v2         # HTTP client library
@@ -800,15 +801,19 @@ go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,l
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
 
 # SQLDrivers: https://github.com/golang/go/wiki/SQLDrivers
+# MySQL::使用最广泛的开源的关系型数据库  https://dev.mysql.com/downloads
 go get github.com/go-sql-driver/mysql      # Mysql client and driver    *10k   github.com/siddontang/go-mysql
 go get github.com/mattn/go-oci8            # Oracle env: instantclient & MinGW-w64-gcc & pkgconfig/oci8.pc
 go get github.com/denisenkom/go-mssqldb    # MSsql client and driver     *1k
 go get github.com/globalsign/mgo           # MongoDB^4 client and driver *2k
 go get gopkg.in/mgo.v2                     # MongoDB:Cluster,Concurrent,Auth,GridFS *2k github.com/go-mgo/mgo labix.org/mgo
+# PostgreSQL::功能最强大的开源的数据库  https://www.postgresql.org  http://www.postgres.cn/v2/download
 go get github.com/lib/pq                   # Postgres client and driver  *6k   github.com/prest/prest
 go get github.com/jackc/pgx                # Postgres client and toolkit *3k
 go get github.com/go-pg/pg/v9              # Postgres client and ORM     *4k
 go get github.com/sosedoff/pgweb           # Postgres client and WebUI   *7k
+# ClickHouse::面向列的开源数据库,性能是MySQL的1千倍 https://clickhouse.tech/docs/zh/interfaces/third-party/client-libraries
+go get github.com/ClickHouse/clickhouse-go # ClickHouse client driver    *2k
 go get github.com/mattn/go-sqlite3         # SQLite client and driver    *4k
 go get github.com/astaxie/beego/orm        # 数据库orm    *25k  support mysql,postgres,sqlite3...
 go get gorm.io/gorm                        # 数据库orm    *21k  gorm.io/docs  V1: github.com/jinzhu/gorm
