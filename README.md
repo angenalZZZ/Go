@@ -693,6 +693,7 @@ go get github.com/antlr/antlr4/runtime/Go/antlr # 语言识别工具，强大的
 go get github.com/pkg/errors               # 错误处理库pkg/errors (推荐) *5k
 go get github.com/juju/errors              # 错误描述而不丢失原始错误信息(推荐) *1k
 
+go get github.com/fluent/fluent-bit-go     # 日志解析和搬运工具(推荐) *3k  docs.fluentbit.io/manual/installation/windows
 go get github.com/mintance/nginx-clickhouse #nginx日志解析和搬运ClickHouse数据库(性能是MySQL的1千倍)
 go get github.com/rs/zerolog/log           # 日志记录-性能最高(强力推荐) *3k
 go get github.com/uber-go/zap              # 日志记录-Uber开源-扩展插件 *8.5k
