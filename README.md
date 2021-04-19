@@ -902,6 +902,7 @@ go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
+# 统一安全管理平台 4A(Authentication,Authorization,Account,Audit) 关键一环✅ladon&casbin两个Authorization库 github.com/ory/ladon
 go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *9k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
 go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *3k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
 go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐)Open Policy Agent[模型ACL&Audit]官网 www.openpolicyagent.org/docs
