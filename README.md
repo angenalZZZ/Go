@@ -903,9 +903,10 @@ go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
 # 统一安全管理平台 4A(Authentication,Authorization,Account,Audit) 关键一环✅ladon&casbin两个Authorization库 github.com/ory/ladon
+go get github.com/open-policy-agent/opa    # 策略引擎OPA(强力推荐) Open Policy Agent[CNCF:Google,微软,Styra] www.openpolicyagent.org/docs
+go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐) 基于策略引擎OPA实现
 go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *9k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
 go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *3k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
-go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐)Open Policy Agent[策略引擎OPA]官网 www.openpolicyagent.org/docs
 go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
 go get github.com/furkansenharputlu/f-license # 许可证密钥验证系统, client+server license key generate and verification
