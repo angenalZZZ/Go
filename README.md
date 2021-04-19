@@ -902,13 +902,11 @@ go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
-go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *6k 访问控制模型(ACL, RBAC, ABAC) casbin.org
-go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *2k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
-go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐)Open Policy Agent...官网 www.openpolicyagent.org/docs
+go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *9k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *3k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
+go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐)Open Policy Agent[模型ACL&Audit]官网 www.openpolicyagent.org/docs
 go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k
-go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google,Github...
-go get github.com/ory/fosite/...           # 访问控制-认证服务易扩展 *1k (OAuth2.0, OpenID Connect...官网 www.ory.sh
-go get github.com/qor/auth                 # 模块化身份验证系统, 易于集成和二次开发(推荐) *1k
+go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
 go get github.com/furkansenharputlu/f-license # 许可证密钥验证系统, client+server license key generate and verification
 go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*3k 代码生成工具(编译时注入)
 go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
