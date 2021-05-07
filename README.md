@@ -7,8 +7,8 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
  > [官方中文文档](https://studygolang.com/pkgdoc)、[官方推荐项目](https://github.com/golang/go/wiki/Projects)、[Go资料收集](https://github.com/ty4z2008/Qix/blob/master/golang.md)、[*Go语言圣经*](https://docs.hacknode.org/gopl-zh)、[*✨Go高级编程*](https://chai2010.cn/advanced-go-programming-book)
  
  > [*搭建开发环境*](#-搭建开发环境) + [*编译*](#编译) + [*管理构建*](#管理构建) + [*测试*](#测试) + [*代码质量*](#代码质量) + [*性能优化*](#性能优化) <br>
- [*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) + [✨推荐web框架](#-web框架)；[*✨开发效率工具*](Development-Efficiency-Tools.md) <br>
- [语法速查表](#语法速查表)，[Print](#printing)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[golang-repo大全](https://golangrepo.com/search?catalogid=0&q=omigo-crack-slide-captcha-go-images-tools) ；[*github排名*](https://github.com/topics/go) ；[*查询第三方库*](https://libs.garden/go) <br>
+ [*✨推荐功能.框架.基础库.应用.工具*](#-功能框架基础库应用工具) + [✨推荐web框架](#-web框架)；[*✨开发效率工具*](Development-Efficiency-Tools.md)；[*查询第三方库*](https://libs.garden/go) <br>
+ [语法速查表](#语法速查表)，[Print](#printing)；[*google开源*](#Google开源) ；[awesome-go大全](https://github.com/avelino/awesome-go) ；[golang-repo大全](https://golangrepo.com/search?catalogid=0&q=omigo-crack-slide-captcha-go-images-tools) ；[*github排名*](https://github.com/topics/go) <br>
  [*✨云平台.公众平台.在线支付*](#云平台公众平台在线支付) ；[*GUI-HTML/JS/CSS*](#gui---htmljscss) - [*WebAssembly*](#webassembly) - [*WebRTC*](#webrtc) 
 
  * 常用于服务器编程，网络编程，分布式系统，内存数据库，云平台... [freecodecamp.org](https://guide.freecodecamp.org/go)
