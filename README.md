@@ -956,6 +956,7 @@ go get github.com/dchest/captcha           # 验证码|图片|声音(推荐)
 go get github.com/mojocn/base64Captcha     # 验证码|展示 | captcha.mojotv.cn
 go get github.com/fogleman/gg              # 图像处理库渲染2D图形Drawing,Text,Color,Line,Gradients,Transform,Clip,Stack
 go get github.com/anthonynsimon/bild       # 图像处理库 adjust,blend,blur,channel,effect,histogram,imgio,noise,segment
+go get gocv.io/x/gocv                      # 开源跨平台的图像视觉算法库 OpenCV *4k (支持硬件 Nvidia-GPUs, Intel OpenVINO)
 go get github.com/emersion/go-imap/...     # 邮箱服务器 IMAP library for clients and servers
 go get github.com/sdwolfe32/trumail/...    # 邮件验证 go clients
 go get github.com/matcornic/hermes/v2      # 邮件验证 HTML e-mails, like: npm i mailgen  github.com/eladnava/mailgen
