@@ -1624,6 +1624,7 @@ GOOS=js GOARCH=wasm go build -o demo.wasm  # WebAssembly demo
  * [google-andlabs-GUI](https://github.com/andlabs/ui)
  * [google-flutter](https://github.com/go-flutter-desktop/go-flutter)
  * [fyne.io material-GUI](https://fyne.io/develop/)
+ * [portable apps with Go and Next.js](https://github.com/dstotijn/golang-nextjs-portable)
  * [webassembly app](https://github.com/murlokswarm/app)
  * 其它功能如下
 
