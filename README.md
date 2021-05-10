@@ -112,7 +112,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
     sudo vi /etc/profile.d/go-profile.sh   # 可添加以上export变量至-profile.sh 然后启用配置 # source /etc/profile
 
-> [安装开发工具 GoLand `官网`](https://www.jetbrains.com/go/download/other.html) [破解→`board4all`](https://www.board4all.biz/threads/jetbrains-goland-2021-1-x64.848258/)→ idea.lanyus.com 获取激活码, 或者[无限重置试用期](https://zhile.io/); 或者→ [www.jb51.net](http://zhannei.baidu.com/cse/site?q=Jetbrains&cc=jb51.net&ie=gbk) [www.gopojie.net](https://www.gopojie.net/app/pc-app/office-app/jetbrains)<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
+> [安装开发工具 GoLand `(官网)`](https://www.jetbrains.com/go/download/other.html) [破解`board4all`](https://www.board4all.biz/search/158242/?q=GoLand&o=date)→ idea.lanyus.com 获取激活码, 或[无限重置试用期](https://zhile.io/); 或者→[www.jb51.net](http://zhannei.baidu.com/cse/site?q=Jetbrains&cc=jb51.net&ie=gbk) →[www.gopojie.net](https://www.gopojie.net/app/pc-app/office-app/jetbrains)<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
