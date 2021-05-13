@@ -764,7 +764,8 @@ go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分
 -------------------------------------------------------------------------------------------------
 
 go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli *7k
+go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli    *7k
+go get -d github.com/griddb/go_client      # 内存时序数据库,NoSql数据库GridDB  *2k
 go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
 go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
 go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
