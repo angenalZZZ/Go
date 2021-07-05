@@ -948,6 +948,7 @@ go get github.com/radovskyb/watcher        # 监视文件目录变更,文件过�
 go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *12k
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
+go get github.com/dvsekhvalnov/jose2go     # JWT JSON Web Token implementation, jose-jwt for .net
 go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
 go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
