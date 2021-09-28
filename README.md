@@ -465,6 +465,12 @@ go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe�
 
   # Web压测工具 jmeter.apache.org [教程] github.com/aliesbelik/awesome-jmeter [中文] github.com/langpf1/jmeter
   
+  # Web压测工具 带有Web界面的 HTTP Benchmark
+  > go get github.com/six-ddc/plow  # 命令：plow --help
+  > plow http://127.0.0.1:8080/ -c 100 -n 10000
+  > plow http://127.0.0.1:8080/ -c 20 -n 10000 -d 10s
+  > plow https://httpbin.org/post -c 100 -d 1m -m POST --body @file.json -T 'application/json'
+  
   # Web压测命令 github.com/wg/wrk *20k         # +辅助生成图表 sudo apt-get -y install gnuplot --fix-missing
   $ wrk -t16 -c600 -d10s -T3s --latency <url>  # -t线程数 -c连接数 -d压测时间s --latency响应+n%延迟统计ms --timeout超时
   $ wrk -t16 -c100 -d10s -T3s --latency --script ./wrk-post.lua <url> # 备注：-t线程数一般设为CPU的2~4倍：16,32,64,128
