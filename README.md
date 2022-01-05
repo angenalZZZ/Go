@@ -493,6 +493,7 @@ go get github.com/UnnoTed/fileb0x            # 打包资源 *1k    # 嵌入exe�
 ~~~
 
 #### 代码质量
+* [Go project code quality report cards](https://goreportcard.com)
 ~~~bash
   > go help vet                                    # 执行代码静态检查(语法检查)
   > go tool vet help                               # 查看工具vet支持哪些检查?
