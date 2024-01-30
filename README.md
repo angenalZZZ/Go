@@ -88,6 +88,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     https://studygolang.com/dl/golang/go1.19.12.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.20.13.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.21.6.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -101,6 +102,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.12.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.13.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.21.6.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
