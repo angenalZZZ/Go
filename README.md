@@ -88,7 +88,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     https://studygolang.com/dl/golang/go1.19.12.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.20.13.windows-amd64.msi
-    https://studygolang.com/dl/golang/go1.21.6.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.21.9.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.22.2.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -598,7 +599,7 @@ go get -d github.com/golang/example/hello  # hello
 go get -d github.com/golang/playground     # playground   #本地教程#
 go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
 go get -d github.com/go-training/training  # 适合初学者
-go get -d github.com/mmcgrana/gobyexample  # 适合初学者
+go get -d github.com/mmcgrana/gobyexample  # 适合初学者(官方推荐)
 go get -d github.com/jakewright/tutorials  # Go Concurrency, Docker ... ...
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
 go get -u github.com/ponzu-cms/ponzu/...   # 用户友好可扩展的CMS管理后台(SSL+Push+BoltDB)
