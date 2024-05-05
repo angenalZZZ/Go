@@ -86,8 +86,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.19.12.windows-amd64.msi
-    https://studygolang.com/dl/golang/go1.20.13.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.19.13.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.20.14.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.21.9.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.22.2.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
