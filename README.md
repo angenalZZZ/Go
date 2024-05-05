@@ -101,9 +101,8 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
-    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.12.linux-amd64.tar.gz
-    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.13.linux-amd64.tar.gz
-    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.21.6.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.13.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.14.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
