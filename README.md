@@ -610,6 +610,7 @@ go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
+go get -d github.com/sigrdrifa/go-htmx-websockets-example # 学习实时系统监控*WebSocket
 -------------------------------------------------------------------------------------------------
 
 go get github.com/gopherjs/gopherjs        # Go to javascript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
