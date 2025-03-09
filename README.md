@@ -744,20 +744,20 @@ go get github.com/go-acme/lego/cmd/lego    # tls Let's Encrypt client and ACME l
 # openssl 证书管理参考 https://www.openssl.org/docs/manmaster/man1/
 
 # 网络协议、网络库、事件总线
-go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
-go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves
+go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *5k
+go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves  *6k
 go get github.com/libp2p/go-libp2p-examples # 网络库模块p2p-examples
-go get github.com/perlin-network/noise      # 网络库模块p2p-高性能分散式应用程序框架 *1.4k
-go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库
-go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享
-go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
-go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
-go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
-go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..} *4k
-go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻量级网络框架             *2k
-go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*3k 
+go get github.com/perlin-network/noise      # 网络库模块p2p-高性能分散式应用程序框架 *2k
+go get github.com/xtaci/kcp-go             # 安全可靠UDP网络库和FEC，百万级客户端连接的网络库 *4k
+go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC  *14k
+go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻量级网络框架            *10k
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统         *6k
+go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库 *1k
+go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享 *1k
+go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *2k
+go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..} *6k
+go get github.com/nuclio/nuclio            # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*5k
 > docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 -------------------------------------------------------------------------------------------------
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
