@@ -118,7 +118,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
-    go env -w GOPRIVATE=golang.org,gopkg.in,gitee.com,gitlab.com ******* # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
+    go env -w GOPRIVATE=golang.org,gopkg.in,gitee.com,gitlab.com ******* # √ 2:私有库(域名白名单)用于关闭下载验证服务
     go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
     go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
 
