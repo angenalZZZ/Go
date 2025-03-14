@@ -88,8 +88,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     https://studygolang.com/dl/golang/go1.19.13.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.20.14.windows-amd64.msi
-    https://studygolang.com/dl/golang/go1.21.9.windows-amd64.msi
-    https://studygolang.com/dl/golang/go1.22.2.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.22.12.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -103,12 +102,13 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.13.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.14.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.22.12.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto) $ go env -w GO111MODULE=on
-    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理) $ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+    export GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
