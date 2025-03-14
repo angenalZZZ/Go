@@ -93,7 +93,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto) > go env -w GO111MODULE=on
-    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理) > go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+    set GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH% #环境变量%PATH%
@@ -118,7 +118,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
-    go env -w GOPRIVATE=*.gitlab.com,*.gitee.com,git.mycompany.com # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
+    go env -w GOPRIVATE=golang.org,gopkg.in,gitee.com,gitlab.com ******* # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
     go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
     go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
 
