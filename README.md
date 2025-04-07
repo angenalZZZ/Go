@@ -78,7 +78,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     
 ----
 
-#### ① [搭建开发环境](https://goframe.org/prepare/install)
+#### ① [搭建开发环境](https://goframe.org/)
     环境配置> go env
     安装版本> go version
     帮助文档> godoc -http=:6060 -index <<-查看本地文档; 在线文档→→ golang.org/doc →→ pkg.go.dev
@@ -86,29 +86,31 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
 > Windows - src: %GOPATH%\src - 配置 set: cd %USERPROFILE% (C:\Users\Administrator)
 
-    https://studygolang.com/dl/golang/go1.15.8.windows-amd64.msi
-    https://studygolang.com/dl/golang/go1.16.3.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.19.13.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.20.14.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.22.12.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
     set GOCACHE=D:\Users\Administrator\AppData\Local\go-build (缓存目录)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto) > go env -w GO111MODULE=on
-    set GOPROXY=https://goproxy.io      (选项: 建议 网络代理) > go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+    set GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
     set ZONEINFO=A:\go\bin\zoneinfo.zip (可选) 设置时区 github.com/golang/go/raw/master/lib/time/zoneinfo.zip
     set PATH=%GOROOT%\bin;%GOPATH%\bin;%PATH% #环境变量%PATH%
 
 > Linux - src: $GOPATH/src - 配置 export: cd $HOME (/root或/home/-)<br>  - [Windows10/Linux(WSL) - 环境配置参考](https://github.com/angenalZZZ/doc/blob/master/sh/02-bashrc_WSL.sh)
 
-    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.15.8.linux-amd64.tar.gz
-    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.16.3.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.13.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.14.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.22.12.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
     export GOCACHE=$GOROOT/go-build     (缓存目录)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto) $ go env -w GO111MODULE=on
-    export GOPROXY=https://goproxy.io   (选项: 建议 网络代理) $ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+    export GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
@@ -118,7 +120,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
 
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
     go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
-    go env -w GOPRIVATE=*.gitlab.com,*.gitee.com,git.mycompany.com # √ 2:私有库(域名白名单)用于限制内网开发;其它域名下则无法下载
+    go env -w GOPRIVATE=golang.org,gopkg.in,gitee.com,gitlab.com ******* # √ 2:私有库(域名白名单)用于关闭下载验证服务
     go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
     go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
 
@@ -598,6 +600,7 @@ go get -d github.com/golang/example/hello  # hello
 go get -d github.com/golang/playground     # playground   #本地教程#
 go get -d github.com/shen100/golang123     # 适合初学者    #在线教程# > tour tour.go-zh.org
 go get -d github.com/go-training/training  # 适合初学者
+go get -d github.com/mmcgrana/gobyexample  # 适合初学者(官方推荐)
 go get -d github.com/jakewright/tutorials  # Go Concurrency, Docker ... ...
 go get -d github.com/polaris1119/The-Golang-Standard-Library-by-Example # 标准库例子
 go get -u github.com/ponzu-cms/ponzu/...   # 用户友好可扩展的CMS管理后台(SSL+Push+BoltDB)
@@ -609,6 +612,7 @@ go get -d github.com/Unknwon/the-way-to-go_ZH_CN # 中文入门教程 *2.7k  关
 go get -d github.com/Yesterday17/bili-archive-frontend # 前端实现*bili-bili
 go get -d github.com/detectiveHLH/go-backend-starter   # 后端实现*gin, gorm
 go get -d github.com/etcd-io/etcd/etcdserver           # 深度学习*grpc
+go get -d github.com/sigrdrifa/go-htmx-websockets-example # 学习实时系统监控*WebSocket
 -------------------------------------------------------------------------------------------------
 
 go get github.com/gopherjs/gopherjs        # Go to javascript compiler, run Go code in browser *9.7k | gopherjs.github.io/playground
@@ -684,7 +688,7 @@ go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入�
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/buger/jsonparser         # json解码 10x than encoding/json                  *3k
-go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
+go get github.com/tidwall/gjson            # json路径(推荐)+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
 go get github.com/200sc/bebop              # 快速高效、跨平台的序列化格式(推荐).NET,TypeScript,Go. github.com/RainwayApp/bebop
 go get github.com/andyleap/gencode         # 快速高效、通过代码生成编码/解码(推荐)、字节数小于GOB,JSON,MessagePack.
 go get github.com/mitchellh/mapstructure   # map解码+to[struct] from JSON, Gob, etc.          *4k
@@ -742,72 +746,67 @@ go get github.com/go-acme/lego/cmd/lego    # tls Let's Encrypt client and ACME l
 # openssl 证书管理参考 https://www.openssl.org/docs/manmaster/man1/
 
 # 网络协议、网络库、事件总线
-go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *2k
-go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves
+go get github.com/shadowsocks/go-shadowsocks2 # shadowsocks/SOCKS5网络协议、SIP003 plugins *5k
+go get github.com/libp2p/go-libp2p          # 网络库模块p2p-serves  *6k
 go get github.com/libp2p/go-libp2p-examples # 网络库模块p2p-examples
-go get github.com/perlin-network/noise      # 网络库模块p2p-高性能分散式应用程序框架 *1.4k
-go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库
-go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享
-go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC *11.5k
-go get github.com/xtaci/kcp-go             # 安全可靠-UDP网络库和FEC，百万级客户端连接的网络库kcptun *2.5k
-go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *1k
-go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..} *4k
-go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻量级网络框架             *2k
-go get github.com/nuclio/nuclio-sdk-go     # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*3k 
+go get github.com/perlin-network/noise      # 网络库模块p2p-高性能分散式应用程序框架 *2k
+go get github.com/xtaci/kcp-go             # 安全可靠UDP网络库和FEC，百万级客户端连接的网络库 *4k
+go get github.com/xtaci/kcptun             # 基于KCP的稳定和安全隧道，具有N:M多路复用和FEC  *14k
+go get github.com/panjf2000/gnet           # 高性能事件驱动非阻塞轻量级网络框架            *10k
+go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统         *6k
+go get github.com/xtaci/gaio               # 精心设计-高并发可扩展的异步IO网络库 *1k
+go get github.com/xtaci/smux               # 多路复用-面向流的IO网络库-令牌桶+Session数据共享 *1k
+go get github.com/asaskevich/EventBus      # 异步的事件总线Subscribe/Publish/Wait/Callback *2k
+go get github.com/tidwall/evio             # 超快的事件驱动网络框架IO*server{http,redis..} *6k
+go get github.com/nuclio/nuclio            # 高性能事件微服务和数据处理平台(结合MQ,Kafka,DB)*5k
 > docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp quay.io/nuclio/dashboard:stable-amd64
-go get github.com/muesli/beehive           # 灵活的事件/代理/自动化系统  *3k
 -------------------------------------------------------------------------------------------------
 
 # https://github.com/etcd-io               # 分布式可靠键值存储，适用于分布式系统中最关键的数据；提供分享配置和服务发现
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
 go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS|golang客户端 www.min.io
-go get github.com/minio/mc                 # 云存储|配置客户端, 指南 docs.min.io/cn
-go get github.com/minio/minio              # 云存储|配置服务端, 安装 min.io/download
-go get github.com/minio/minio-go/v7        # 云存储|开发客户端(minio-go)
-go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *5k
-go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
-go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
-go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
+go get github.com/minio/mc                 # 云存储|配置客户端, 指南 docs.min.io/cn    *3k
+go get github.com/minio/minio              # 云存储|配置服务端, 安装 min.io/download   *51k
+go get github.com/minio/minio-go/v7        # 云存储|分布式存储SDK|网盘|OSS|go客户端  www.min.io
+go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *6k
+go get github.com/rclone/rclone            # 云存储的Sync: 用于各种文件存储服务的同步   *50k
+go get github.com/schollz/croc/v10         # 轻松安全地在两台计算机之间传输文件数据     *30k
 -------------------------------------------------------------------------------------------------
 
-go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli    *7k
-go get -d github.com/griddb/go_client      # 内存时序数据库,NoSql数据库GridDB  *2k
-go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
-go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
-go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
-go get github.com/golang/groupcache        # 内存数据库,谷歌groupcache推荐,可用于替代memcache,实现了lru和一致性哈希
+go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *20k (推荐使用,性能高于redigo)
+go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli    *10k
+go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐        *6k
+go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *8k
+go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于bigcache,freecache](强力推荐)+时序数据库VictoriaMetrics *2k
+go get github.com/golang/groupcache        # 内存数据库,谷歌groupcache推荐,可用于替代memcache,实现了lru和一致性哈希    *13k
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb  ssdb.io/zh_cn
-go get github.com/go-redis/cache
-go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
-go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *4k
-go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
+go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric) *2k
+go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
+go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
 
-go get github.com/dgraph-io/badger/...     # 高性能k/v数据库,支持事务BadgerDB(强力推荐) *8k (LSM+tree,ACID,Stream,KV+ver,SSD)
-go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *11k (性能低于badger)
-go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等功能
+go get github.com/dgraph-io/badger/v4      # 高性能k/v数据库,支持事务BadgerDB(强力推荐) *14k (LSM+tree,ACID,Stream,KV+ver,SSD)
+go get github.com/rosedblabs/rosedb/v2     # 基于 Bitcask 存储模型，轻量、快速、可靠的 KV 存储引擎(推荐) *4.8k (性能高于leveldb)
+go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶  *14k                (性能低于badger)
+go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等 *4.7k
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
-go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
-go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB用于闪存和RAM存储的持久键值存储系统
-go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
-go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
-go get github.com/couchbase/go-couchbase   # Couchbase 客户端
+go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存淘汰策略的缓存数据库 *2.7k
+go get github.com/tecbot/gorocksdb         # 高性能key/value数据库基于RocksDB用于闪存和RAM存储的持久键值存储系统 *1k
+go get github.com/codenotary/immudb        # 实现 SQL/Key-Value/Document 模型用于轻量级高性能不可变DB系统-基于badger(推荐) *8.7k
 
-go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐) *34k  https://prometheus.io
-go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等 *26k https://pingcap.com/docs-cn
-go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等 *19k www.cockroachlabs.com/docs/stable
-go get github.com/influxdata/influxdb      # 时序数据库InfluxDB,支持实时+分布式+事件等 *20k github.com/influxdata/influxdb
-go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB客户端 v2.docs.influxdata.com/v2.0/get-started
-go get github.com/dgraph-io/dgraph/dgraph  # 分布式位图索引数据库,高性能+分布式+低延迟+高吞吐量 *15k
-go get github.com/pilosa/pilosa            # 分布式位图索引数据库,实时计算+大数据+列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
+go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐)  *58k         prometheus.io
+go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等  *38k        docs.pingcap.com/zh
+go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等  *31k        www.cockroachlabs.com/docs/stable
+go get github.com/influxdata/influxdb      # 时序数据库InfluxDB,支持实时+分布式+事件等 *30k        github.com/influxdata/influxdb
+go get github.com/hypermodeinc/dgraph/v24  # 分布式位图索引数据库,高性能+分布式+低延迟+高吞吐量 *21k
+go get github.com/pilosa/pilosa            # 分布式位图索引数据库,实时计算+大数据+列式存储 *2.5k     kuanshijiao.com/2017/06/12/pilosa1
 
-go get github.com/vitessio/vitess          # 数据库集群系统,用于MySQL的水平缩放(强力推荐) *11k
+go get github.com/vitessio/vitess          # 数据库集群系统,用于MySQL的水平扩展缩放(强力推荐) *19k
 
-go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
-go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
-go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4k backend-store:LevelDB,RocksDB,RAM.
+go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *5.2k    github.com/uber/h3
+go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置围栏的数据库,如PostGIS *9.3k   docker run -p 9851:9851 tile38/tile38
+go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4.1k       backend-store:LevelDB,RocksDB,RAM.
+go get github.com/couchbase/go-couchbase    # 分布式NOSQL开发人员数据库平台 Couchbase 客户端  *1k
 # CGO_CFLAGS="-I/path/to/rocksdb/include" \ # 脸书开源RocksDB(推荐) v5.16+  github.com/facebook/rocksdb
 # CGO_LDFLAGS="-L/path/to/rocksdb -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \ # 系统环境变量
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
