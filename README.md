@@ -686,7 +686,7 @@ go get github.com/google/jsonapi           # 转换对象，HTTP请求的输入�
 go get github.com/google/go-querystring/query # 转换对象，URL参数                              *1k
 go get github.com/json-iterator/go         # json编码/解码的性能优化，替换原生(encoding/json)   *5k
 go get github.com/buger/jsonparser         # json解码 10x than encoding/json                  *3k
-go get github.com/tidwall/gjson            # json路径+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
+go get github.com/tidwall/gjson            # json路径(推荐)+过滤+to[array,map..] gjson.Valid(json)&&gjson.Get(json,"name.last").Exists()
 go get github.com/200sc/bebop              # 快速高效、跨平台的序列化格式(推荐).NET,TypeScript,Go. github.com/RainwayApp/bebop
 go get github.com/andyleap/gencode         # 快速高效、通过代码生成编码/解码(推荐)、字节数小于GOB,JSON,MessagePack.
 go get github.com/mitchellh/mapstructure   # map解码+to[struct] from JSON, Gob, etc.          *4k
@@ -764,52 +764,47 @@ go get github.com/nuclio/nuclio            # 高性能事件微服务和数据�
 # client: http://play.etcd.io              # 数据中心 etcd 下载 github.com/etcd-io/etcd/releases
 go get github.com/hashicorp/serf/cmd/serf  # 数据中心 serf 基于 Gossip Membership, P2P对等网络+去中心化 www.serf.io
 go get github.com/xordataexchange/crypt/bin/crypt # 加密存储 secret keyring: gpg(gpg4win)用于安全传输(类似rsa)
-go get github.com/minio/minio-go           # 云存储|分布式存储SDK|网盘|OSS|golang客户端 www.min.io
-go get github.com/minio/mc                 # 云存储|配置客户端, 指南 docs.min.io/cn
-go get github.com/minio/minio              # 云存储|配置服务端, 安装 min.io/download
-go get github.com/minio/minio-go/v7        # 云存储|开发客户端(minio-go)
-go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *5k
-go get github.com/schollz/croc             # 轻松安全地在两台计算机之间传输文件数据      *5k
-go get -d github.com/rclone/rclone         # 云存储的Sync: 用于各种文件存储服务的同步   *15k
-go get -d github.com/s3git/s3git           # 云存储的Git: 用于数据的分布式版本控制系统   *1k
+go get github.com/minio/mc                 # 云存储|配置客户端, 指南 docs.min.io/cn    *3k
+go get github.com/minio/minio              # 云存储|配置服务端, 安装 min.io/download   *51k
+go get github.com/minio/minio-go/v7        # 云存储|分布式存储SDK|网盘|OSS|go客户端  www.min.io
+go get github.com/perkeep/perkeep/cmd/...  # Camlistore 个人存储系统：一种存储、同步、共享、建模和备份内容的方式 *6k
+go get github.com/rclone/rclone            # 云存储的Sync: 用于各种文件存储服务的同步   *50k
+go get github.com/schollz/croc/v10         # 轻松安全地在两台计算机之间传输文件数据     *30k
 -------------------------------------------------------------------------------------------------
 
-go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *9k (推荐使用,性能高于redigo)
-go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli    *7k
-go get -d github.com/griddb/go_client      # 内存时序数据库,NoSql数据库GridDB  *2k
-go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
-go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
-go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐
-go get github.com/golang/groupcache        # 内存数据库,谷歌groupcache推荐,可用于替代memcache,实现了lru和一致性哈希
+go get github.com/go-redis/redis           # 内存数据库,类型安全的Redis-client *20k (推荐使用,性能高于redigo)
+go get github.com/gomodule/redigo          # 内存数据库,集成原生的Redis-cli    *10k
+go get github.com/syndtr/goleveldb/leveldb # 内存数据库,谷歌leveldb推荐        *6k
+go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *8k
+go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于bigcache,freecache](强力推荐)+时序数据库VictoriaMetrics *2k
+go get github.com/golang/groupcache        # 内存数据库,谷歌groupcache推荐,可用于替代memcache,实现了lru和一致性哈希    *13k
 go get github.com/seefan/gossdb/example    # 内存数据库,替代Redis的ssdb  ssdb.io/zh_cn
-go get github.com/go-redis/cache
-go get github.com/VictoriaMetrics/fastcache # 缓存库[性能高于BigCache,FreeCache](强力推荐)+时序数据库VictoriaMetrics
-go get github.com/allegro/bigcache         # 缓存库[GB级大数据高效缓存+超快的GC](推荐) *4k
-go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric)
+go get github.com/eko/gocache              # 缓存管理(推荐)memory[Bigcache,Ristretto]memcache,redis(Chained,Load,Metric) *2k
+go get github.com/yannh/redis-dump-go      # Redis导出导入> redis-dump-go -h ; redis-cli --pipe < backup.resp;redis-dump
+go get github.com/sent-hil/bitesized       # Redis位图计数> 统计分析、实时计算
 
-go get github.com/dgraph-io/badger/...     # 高性能k/v数据库,支持事务BadgerDB(强力推荐) *8k (LSM+tree,ACID,Stream,KV+ver,SSD)
-go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶 *11k (性能低于badger)
-go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等功能
+go get github.com/dgraph-io/badger/v4      # 高性能k/v数据库,支持事务BadgerDB(强力推荐) *14k (LSM+tree,ACID,Stream,KV+ver,SSD)
+go get github.com/rosedblabs/rosedb/v2     # 基于 Bitcask 存储模型，轻量、快速、可靠的 KV 存储引擎(推荐) *4.8k (性能高于leveldb)
+go get github.com/boltdb/bolt/...          # 高性能k/v数据库,支持事务,B+tree,ACID,分桶  *14k                (性能低于badger)
+go get github.com/tidwall/buntdb           # 内存数据库k/v-store, persists-to-disk, index, geospatial等 *4.7k
 go get github.com/tidwall/buntdb-benchmark # 性能测试 buntdb-benchmark -n 10000 -q # 单机-超越Redis
-go get github.com/codenotary/immudb        # 轻量级高性能不可变数据库系统-基于BadgerDB(推荐) *1.5k 
-go get github.com/tecbot/gorocksdb         # 高性能key/value数据库RocksDB用于闪存和RAM存储的持久键值存储系统
-go get github.com/melihmucuk/geocache      # 适用于地理位置处理, 基于应用程序的内存缓存 *1k
-go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存数据库 *1k
-go get github.com/couchbase/go-couchbase   # Couchbase 客户端
+go get github.com/bluele/gcache            # 支持LFU、LRU 和 ARC 的缓存淘汰策略的缓存数据库 *2.7k
+go get github.com/tecbot/gorocksdb         # 高性能key/value数据库基于RocksDB用于闪存和RAM存储的持久键值存储系统 *1k
+go get github.com/codenotary/immudb        # 实现 SQL/Key-Value/Document 模型用于轻量级高性能不可变DB系统-基于badger(推荐) *8.7k
 
-go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐) *34k  https://prometheus.io
-go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等 *26k https://pingcap.com/docs-cn
-go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等 *19k www.cockroachlabs.com/docs/stable
-go get github.com/influxdata/influxdb      # 时序数据库InfluxDB,支持实时+分布式+事件等 *20k github.com/influxdata/influxdb
-go get github.com/influxdata/influxdb-client-go # 时序数据库InfluxDB客户端 v2.docs.influxdata.com/v2.0/get-started
-go get github.com/dgraph-io/dgraph/dgraph  # 分布式位图索引数据库,高性能+分布式+低延迟+高吞吐量 *15k
-go get github.com/pilosa/pilosa            # 分布式位图索引数据库,实时计算+大数据+列式存储 *2k kuanshijiao.com/2017/06/12/pilosa1
+go get github.com/prometheus/prometheus    # 时序数据库Prometheus+系统监控 (强力推荐)  *58k         prometheus.io
+go get github.com/pingcap/tidb             # 分布式关系型数据库,包括RDBMS和NoSQL特性等  *38k        docs.pingcap.com/zh
+go get github.com/cockroachdb/cockroach    # 著名的开源NewSQL数据库,支持地理位置事务等  *31k        www.cockroachlabs.com/docs/stable
+go get github.com/influxdata/influxdb      # 时序数据库InfluxDB,支持实时+分布式+事件等 *30k        github.com/influxdata/influxdb
+go get github.com/hypermodeinc/dgraph/v24  # 分布式位图索引数据库,高性能+分布式+低延迟+高吞吐量 *21k
+go get github.com/pilosa/pilosa            # 分布式位图索引数据库,实时计算+大数据+列式存储 *2.5k     kuanshijiao.com/2017/06/12/pilosa1
 
-go get github.com/vitessio/vitess          # 数据库集群系统,用于MySQL的水平缩放(强力推荐) *11k
+go get github.com/vitessio/vitess          # 数据库集群系统,用于MySQL的水平扩展缩放(强力推荐) *19k
 
-go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *2k  github.com/uber/h3
-go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置数据库,如PostGIS *7k docker run -p 9851:9851 tile38/tile38
-go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4k backend-store:LevelDB,RocksDB,RAM.
+go get github.com/uber/h3-go               # Uber H3算法实现蜂窝六边形聚合,地理空间索引系统 *5.2k    github.com/uber/h3
+go get github.com/tidwall/tile38           # 具有空间索引和实时地理位置围栏的数据库,如PostGIS *9.3k   docker run -p 9851:9851 tile38/tile38
+go get github.com/ledisdb/ledisdb/cmd/ledis # 高性能NoSQL数据库,包括kv,list,hash,zset *4.1k       backend-store:LevelDB,RocksDB,RAM.
+go get github.com/couchbase/go-couchbase    # 分布式NOSQL开发人员数据库平台 Couchbase 客户端  *1k
 # CGO_CFLAGS="-I/path/to/rocksdb/include" \ # 脸书开源RocksDB(推荐) v5.16+  github.com/facebook/rocksdb
 # CGO_LDFLAGS="-L/path/to/rocksdb -lrocksdb -lstdc++ -lm -lz -lbz2 -lsnappy -llz4 -lzstd" \ # 系统环境变量
 go get github.com/mholt/timeliner/cmd/timeliner # 时序存储 1.定义结构timeliner.toml;2.添加账号;3.填充数据OAuth2API *2k
