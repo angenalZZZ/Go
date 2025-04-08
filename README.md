@@ -884,42 +884,38 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 
 ~~~bash
 # Web开发推荐如下：Router|Api框架 + MVC框架
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *46k: Gin(强力推荐) Star最高的Web框架 gin-gonic.com/zh-cn
-go get github.com/beego/beego/v2           # 后端WebSvr框架 *26k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
-go get github.com/kataras/iris             # 后端WebSvr框架 *20k (推荐)
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *82k (强力推荐) Star*最高的Web框架 gin-gonic.com/zh-cn
+go get github.com/gofiber/fiber/v2         # 后端WebSvr框架 *36k (强力推荐) Fiber*基于🚀fasthttp 类似Expressjs的Web框架 docs.fiber.org.cn
+go get github.com/beego/beego/v2           # 后端WebSvr框架 *32k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
+go get github.com/kataras/iris             # 后端WebSvr框架 *25k (推荐)
 # 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
-go get github.com/gofiber/fiber/v2         # Fiber*基于🚀fasthttp 类似Expressjs的Web框架 *12k (强力推荐)
 # 基础模块：缓存,日志,队列,数组,集合,容器,定时器,命令行,内存锁,对象池,配置&资源管理,数据校验&编码,定时任务,数据库ORM,TCP/UDP,进程管理&通信等
 # Web开发核心组件：Router,Cookie,Session,Middleware,服务注册,模板引擎等，支持热重启,热更新,域名绑定,TLS/HTTPS,Rewrite等。
 # GF(Go Frame) 类似PHP的Laravel, Java的SpringBoot, Python的Django +官网 goframe.org/display/gf +在线体验 demo.g-fast.cn
-go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 *5k (强力推荐)
+go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 (强力推荐) *12k
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux (强力推荐) *21k
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
-go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (推荐) *15k
+go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *22k
+go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) (很多Web框架都是基于它进行二次开发) *17k
 go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
 go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
 go get github.com/kataras/go-sessions/v3   # #3~fasthttp会话Session(BadgerDB) *1k (推荐)
 go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
-go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *12k (很多Web框架都是基于它进行二次开发)
-go get github.com/henrylee2cn/faygo        # 快速简洁的Web框架，可用于开发高性能web应用程序 *2k (推荐)结构定义/自动绑定/验证参数/在线API文档
-go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架+依赖注入(推荐) *3k go-macaron.com/zh-cn
-go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *4k
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
-go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
-go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
-go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
-go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
+go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *10k  GraphQL中文网™ graphql.org.cn
+go get github.com/graph-gophers/graphql-go # GraphQL api server     *5k
+go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *10k
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*14k 代码生成工具(编译时注入)
+go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐) *1k pkg.go.dev/go.uber.org/dig
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(推荐)  *18k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
 # 统一安全管理平台 4A(Authentication,Authorization,Account,Audit) 关键一环✅ladon&casbin两个Authorization库 github.com/ory/ladon
 go get github.com/open-policy-agent/opa    # 策略引擎OPA(强力推荐) Open Policy Agent[CNCF:Google,微软,Styra] www.openpolicyagent.org/docs
 go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐) 基于策略引擎OPA实现
-go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *9k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
-go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *3k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
-go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *4k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
+go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *2k
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
 go get github.com/furkansenharputlu/f-license # 许可证密钥验证系统, client+server license key generate and verification
-go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*3k 代码生成工具(编译时注入)
-go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
 go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read+Write
 go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
@@ -980,6 +976,7 @@ go get github.com/Shpota/goxygen           # 生成前端项目CLI ( Angular, Re
 # 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
 go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
 
+-------------------------------------------------------------------------------------------------
 # 谷歌开源gRPC grpc.io/docs/quickstart/go  # HTTP/2 传输更快 http2.golang.org
  # 1.安装: protoc、genproto; <protoc>插件: protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
  > github.com/google/protobuf/releases    # 先下载protobuf-command > protoc.exe & protoc
@@ -1004,19 +1001,23 @@ go get github.com/grpc-ecosystem/go-grpc-prometheus
 go get google.golang.org/genproto
 go get google.golang.org/grpc
 go get google.golang.org/protobuf
-go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit...
-go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *22k istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *17k gokit.io (强力推荐)
-go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *12k (强力推荐)
-go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架 *7k (推荐) thrift.apache.org > thrift -help
-go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 *9k
-go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
-go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
-go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s | istio.io | www.grpc.io  *37k
+
 # 分布式RPC框架rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 go get -u -v -insecure github.com/henrylee2cn/erpc/v6  # eRPC一个高效可扩展且易于使用的RPC框架(推荐) *2.1k
+go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力           *1k
 go get github.com/gorilla/rpc              # A golang foundation for RPC over HTTP services.
+
+-------------------------------------------------------------------------------------------------
+go get github.com/zeromicro/go-zero        # 微服务框架(强力推荐) go-zero.dev   *31k
+go get github.com/go-kit/kit/cmd/kitgen    # 微服务框架(阿里推荐) gokit.io      *27k
+go get github.com/micro/go-micro           # 分布式RPC微服务    go-micro.dev   *22k
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 go-kratos.dev  *24k
+go get github.com/TykTechnologies/tyk      # Tyk开源服务网关API,REST,GraphQL,TCP,gRPC    *10k
+go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架(推荐) *10k thrift.apache.org > thrift -help
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架,网关,容器化,服务治理 doc.tarsyun.com *3k 
+go get goa.design/goa/v3/...               # 高生产力的和集成开发的web框架+微服务工具链goa *4k
 -------------------------------------------------------------------------------------------------
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
