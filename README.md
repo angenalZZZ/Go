@@ -223,7 +223,7 @@ go generate               // 通过处理资源生成go文件
 go get                    // 下载并安装包及其依赖
 go install                // 编译和安装包及其依赖
 go list                   // 列出所有包
-go run                    // 编译和运行go程序
+go run                    // 编译和运行go程序，如增加变量作用域检测并运行: GOEXPERIMENT=loopvar go run main.go
 go test                   // 测试
 go tool                   // 运行给定的go工具
 go version                // 显示go当前版本
