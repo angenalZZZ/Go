@@ -1183,6 +1183,62 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 # 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
 ~~~
 
+
+
+#### ③③ Web框架优化
+
+[Gin](https://github.com/gin-gonic/gin)
+* 路由分组和一致性管理（解决：路由循环引用和注册冲突）
+~~~go
+admin = r.Group("/admin")
+{
+	admin.GET("/:id", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message":"admin with ID"})
+	})
+	admin.POST("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message":"create admin"})
+	})
+}
+~~~
+* 内存重用和对象池化（sync.Pool示例：重用JSON编码器和解码器）
+~~~go
+import (
+	"encoding/json"
+	"sync"
+)
+
+var jsonPool = sync.Pool{
+	New: func() interface{} {
+		return new(json.Encoder)
+	},
+}
+
+func handler(c *gin.Context) {
+	encoder = jsonPool.Get().(*json.Encoder)
+	encoder.Encode(map[string]string{"data":"create object"})
+	jsonPool.Put(encoder) // 将encoder对象放回对象池中，以便下次jsonPool.Get()重用
+})
+~~~
+* Gin中的内置重用（开发者需充分利用Gin内置的缓冲区重用和静态资源缓存等）
+* 请求和响应的性能优化
+~~~go
+// 数据库连接池优化 gorm.Config
+sqlDB, _ = db.DB()
+sqlDB.SetMaxOpenConns(100) // 最大连接数
+sqlDB.SetMaxIdleConns(20)  // 最大空闲连接数
+sqlDB.SetConnMaxLifetime(time.Hour) // 连接的最大生命周期
+// 精简中间件
+// JSON序列化优化
+// 限制请求体大小
+// 缓存优化
+// 异步处理（如文件上传、发送邮件、数据分析处理等）
+// 使用 pprof 分析性能瓶颈（net/http/pprof分析CPU使用率+内存分配+Goroutine执行情况）
+// 生成性能报告（利用 pprof 工具生成报告并可视化分析；在交互界面中，你可以用 top 查看热点函数或者用web生成的报告:需安装Graphviz）
+go tool pprof http://localhost:5000/debug/pprof/profile
+// 其它
+
+~~~
+
 ----
 
 ## 云平台|公众平台|在线支付
