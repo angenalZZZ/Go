@@ -911,6 +911,7 @@ go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
 go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
 go get github.com/kataras/go-sessions/v3   # #3~fasthttp会话Session(BadgerDB) *1k (推荐)
 go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
+go get github.com/urfave/negroni           # Http Middleware *7k (推荐) Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *10k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *5k
@@ -962,7 +963,6 @@ go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/dvsekhvalnov/jose2go     # JWT JSON Web Token implementation, jose-jwt for .net
-go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
 go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
 go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authentication  *2.5k
@@ -1227,6 +1227,7 @@ sqlDB, _ = db.DB()
 sqlDB.SetMaxOpenConns(100) // 最大连接数
 sqlDB.SetMaxIdleConns(20)  // 最大空闲连接数
 sqlDB.SetConnMaxLifetime(time.Hour) // 连接的最大生命周期
+
 // 精简中间件（减少全局中间件的数量，确保每个请求只经过必要的处理。 一些耗时的操作，如日志记录，可以异步进行）
 r.Use(func(c *gin.Context) {
     go func() {
@@ -1242,11 +1243,13 @@ func exampleHandler(c *gin.Context) {
     data := map[string]string{"message": "hello"}
     c.JSON(200, data) // 使用jsoniter进行序列化，默认的encoding/json相对低效
 }
+
 // 限制请求体大小
 r.Use(func(c *gin.Context) {
     c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10*1024*1024) // 限制为 10 MB 以减少内存消耗
     c.Next()
 })
+
 // 缓存优化
 var cache sync.Map // 使用 Go 内置的 sync.Map 或第三方库（如 Redis）进行缓存
 
@@ -1263,6 +1266,7 @@ func getCachedUser(id uint) (*User, error) {
     cache.Store(id, &user)
     return &user, nil
 }
+
 // 异步处理（如文件上传、发送邮件、数据分析处理等）
 r.POST("/upload", func(c *gin.Context) {
     go func() {
@@ -1272,6 +1276,7 @@ r.POST("/upload", func(c *gin.Context) {
     }()
     c.JSON(200, gin.H{"message": "Processing in background"})
 })
+
 // 限制异步任务的 Goroutine 数量，避免过度使用资源。
 import "golang.org/x/sync/semaphore"
 
@@ -1283,6 +1288,9 @@ func processTask() {
         // 执行任务
     }
 }
+~~~
+* 请求和响应的性能优化
+~~~go
 // 使用 pprof 分析性能瓶颈（net/http/pprof分析CPU使用率+内存分配+Goroutine执行情况）
 import _ "net/http/pprof"
 
@@ -1302,11 +1310,16 @@ gofunc() {
   })
   r.Run(":8080")
 }
+
 // 生成性能报告（利用 pprof 工具生成报告并可视化分析；在交互界面中，你可以用 top 查看热点函数或者用web生成的报告:需安装Graphviz）
 go tool pprof http://localhost:5000/debug/pprof/profile
-// 其它
 
 ~~~
+* 认证授权
+	* [`authz` ACL, RBAC, ABAC Authorization middlware](https://github.com/casbin/negroni-authz) based on [Casbin](https://github.com/casbin/casbin)
+ 	* [Casbin middleware for Fiber](https://docs.gofiber.io/contrib/casbin)
+
+
 
 ----
 
