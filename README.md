@@ -1316,7 +1316,7 @@ go tool pprof http://localhost:5000/debug/pprof/profile
 
 ~~~
 * 认证授权
-	* [`authz` ACL, RBAC, ABAC Authorization middlware](https://github.com/casbin/negroni-authz) based on [Casbin](https://github.com/casbin/casbin)
+	* [`authz`](https://github.com/casbin/negroni-authz) ACL, RBAC, ABAC Authorization [middlware](https://casbin.org/zh/docs/middlewares) based on [Casbin](https://github.com/casbin/casbin)
  	* [Casbin middleware for Fiber](https://docs.gofiber.io/contrib/casbin)
 
 
