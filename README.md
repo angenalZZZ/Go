@@ -100,6 +100,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     https://studygolang.com/dl/golang/go1.19.13.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.20.14.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.22.12.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.23.12.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -114,6 +115,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.13.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.14.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.22.12.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.23.12.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
@@ -124,6 +126,21 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
     sudo vi /etc/profile.d/go-profile.sh   # 可添加以上export变量至-profile.sh 然后启用配置 # source /etc/profile
+
+> [安装多个GO语言版本](https://go.dev/doc/manage-install) : go install command
+
+    go install golang.org/dl/go1.19.13@latest
+    go install golang.org/dl/go1.20.14@latest
+    go install golang.org/dl/go1.22.12@latest
+
+    go1.19.13 download
+    go1.20.14 download
+    go1.22.12 download
+
+    ::剪切C盘的sdk目录到D盘(减少系统盘空间)::
+    xcopy /e "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
+    rmdir /s /q "C:\Users\Administrator\sdk"
+    mklink /d "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
 
 > [安装开发工具 GoLand `(官网)`](https://www.jetbrains.com/go/download/other.html) [`board4all`破解](https://www.board4all.biz/search/158242/?q=GoLand&o=date)→ [idea.lanyus.com](http://idea.lanyus.com/) 获取激活码, 或[无限重置试用期](https://zhile.io/); 或者→[www.jb51.net](http://zhannei.baidu.com/cse/site?q=Jetbrains&cc=jb51.net&ie=gbk) →[www.gopojie.net](https://www.gopojie.net/app/pc-app/office-app/jetbrains)<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
