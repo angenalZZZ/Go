@@ -1,4 +1,4 @@
-# Go语言golang
+# [Go语言](https://go.dev)`golang`
 Go是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫，罗勃·派克及肯·汤普逊于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。
 
 `[✨程序设计]`    [帮助文档](https://github.com/angenalZZZ/doc)
@@ -21,7 +21,8 @@ Go是Google开发的一种静态强类型、编译型、并发型，并具有垃
 ~~~shell
 # 1.部署简单：编译成机器码(像C一样,不被反编译)复制给别人后，就能直接运行(参考跨平台编译)
 #   通过<linux>命令 ldd 查看可执行文件依赖的环境(库文件)
-$   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才能运行(已编译成机器码)
+$   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行文件(无依赖的动态库文件)
+#   Go语言不像其它语言 C, C++, Java, .NET等, 依赖系统环境库才能运行(golang已编译成机器码)
 # 2.静态编译语言(又像动态解释语言)，您不用再去关心变量是存在堆上还是栈的内存问题(编译器与运行时会帮您做到)
 # 3.自动回收机制GC(除了CGO中`C语言那部分`管理的之外的内存；另外，Go指针不能被`值类型`长期保持--与其它语言不同)
 # 4.语言层面支持高并发(goroutine是go适合高并发场景的重要原因)高性能goroutine池 go get github.com/panjf2000/ants/v2
@@ -61,6 +62,16 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     时间: ch := time.After(300 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
     更多: github.com/eapache/channels #Distribute分发1In*Out,Multiplex多路复用*In1Out,Pipe管道1In1Out,Batching*批量..
 
+ > 延迟函数运行`defer`
+
+    执行顺序: 后进先出;
+    执行规则: 函数有输入参数时，如果输入为函数调用则立即执行函数获取返回结果作为`defer`函数输入参数值;
+
+ > 闭包&指针∵变量作用域延迟`for range`
+
+    闭包函数: 循环IV变量应该作为闭包函数输入参数;
+    循环V指针: GO_1.22以前会出现循环V重用为最后一个值的指针,需把V重新赋值给新变量以改变V作用域;
+
  > 指针`pointer`
 
  ![](http://tensor-programming.com/wp-content/uploads/2016/11/Pointer.png)
@@ -89,6 +100,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     https://studygolang.com/dl/golang/go1.19.13.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.20.14.windows-amd64.msi
     https://studygolang.com/dl/golang/go1.22.12.windows-amd64.msi
+    https://studygolang.com/dl/golang/go1.23.12.windows-amd64.msi
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
@@ -104,6 +116,7 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.19.13.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.20.14.linux-amd64.tar.gz
     wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.22.12.linux-amd64.tar.gz
+    wget -O go.linux-amd64.tar.gz https://studygolang.com/dl/golang/go1.23.12.linux-amd64.tar.gz
     tar -zxf go.linux-amd64.tar.gz -C /usr/local  # 解压为安装目录 /usr/local/go
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
@@ -115,6 +128,21 @@ $   ldd hello # Go不像其它语言C|C++|Java|.Net|...依赖系统环境库才�
     export TZ='Asia/Shanghai' && sudo apt-get install tzdata (可选) 设置时区&更新时区
     export PATH=$GOROOT/bin:$GOPATH/bin:$PATH #环境变量$PATH
     sudo vi /etc/profile.d/go-profile.sh   # 可添加以上export变量至-profile.sh 然后启用配置 # source /etc/profile
+
+> [安装多个GO语言版本](https://go.dev/doc/manage-install) : go install command
+
+    go install golang.org/dl/go1.19.13@latest
+    go install golang.org/dl/go1.20.14@latest
+    go install golang.org/dl/go1.22.12@latest
+
+    go1.19.13 download
+    go1.20.14 download
+    go1.22.12 download
+
+    ::剪切C盘的sdk目录到D盘(减少系统盘空间)::
+    xcopy /e "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
+    rmdir /s /q "C:\Users\Administrator\sdk"
+    mklink /d "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
 
 > [安装开发工具 GoLand `(官网)`](https://www.jetbrains.com/go/download/other.html) [`board4all`破解](https://www.board4all.biz/search/158242/?q=GoLand&o=date)→ [idea.lanyus.com](http://idea.lanyus.com/) 获取激活码, 或[无限重置试用期](https://zhile.io/); 或者→[www.jb51.net](http://zhannei.baidu.com/cse/site?q=Jetbrains&cc=jb51.net&ie=gbk) →[www.gopojie.net](https://www.gopojie.net/app/pc-app/office-app/jetbrains)<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
@@ -224,7 +252,7 @@ go generate               // 通过处理资源生成go文件
 go get                    // 下载并安装包及其依赖
 go install                // 编译和安装包及其依赖
 go list                   // 列出所有包
-go run                    // 编译和运行go程序
+go run                    // 编译和运行go程序，如增加变量作用域检测并运行: GOEXPERIMENT=loopvar go run main.go
 go test                   // 测试
 go tool                   // 运行给定的go工具
 go version                // 显示go当前版本
@@ -885,42 +913,39 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 
 ~~~bash
 # Web开发推荐如下：Router|Api框架 + MVC框架
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *46k: Gin(强力推荐) Star最高的Web框架 gin-gonic.com/zh-cn
-go get github.com/beego/beego/v2           # 后端WebSvr框架 *26k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
-go get github.com/kataras/iris             # 后端WebSvr框架 *20k (推荐)
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *82k (强力推荐) Star*最高的Web框架 gin-gonic.com/zh-cn
+go get github.com/gofiber/fiber/v2         # 后端WebSvr框架 *36k (强力推荐) Fiber*基于🚀fasthttp 类似Expressjs的Web框架 docs.fiber.org.cn
+go get github.com/beego/beego/v2           # 后端WebSvr框架 *32k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
+go get github.com/kataras/iris             # 后端WebSvr框架 *25k (推荐)
 # 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
-go get github.com/gofiber/fiber/v2         # Fiber*基于🚀fasthttp 类似Expressjs的Web框架 *12k (强力推荐)
 # 基础模块：缓存,日志,队列,数组,集合,容器,定时器,命令行,内存锁,对象池,配置&资源管理,数据校验&编码,定时任务,数据库ORM,TCP/UDP,进程管理&通信等
 # Web开发核心组件：Router,Cookie,Session,Middleware,服务注册,模板引擎等，支持热重启,热更新,域名绑定,TLS/HTTPS,Rewrite等。
 # GF(Go Frame) 类似PHP的Laravel, Java的SpringBoot, Python的Django +官网 goframe.org/display/gf +在线体验 demo.g-fast.cn
-go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 *5k (强力推荐)
+go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 (强力推荐) *12k
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux (强力推荐) *21k
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
-go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (推荐) *15k
+go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *22k
+go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) (很多Web框架都是基于它进行二次开发) *17k
 go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
 go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
 go get github.com/kataras/go-sessions/v3   # #3~fasthttp会话Session(BadgerDB) *1k (推荐)
 go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
+go get github.com/urfave/negroni           # Http Middleware *7k (推荐) Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
-go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) *12k (很多Web框架都是基于它进行二次开发)
-go get github.com/henrylee2cn/faygo        # 快速简洁的Web框架，可用于开发高性能web应用程序 *2k (推荐)结构定义/自动绑定/验证参数/在线API文档
-go get gopkg.in/macaron.v1                 # 高生产力的和模块化设计的web框架+依赖注入(推荐) *3k go-macaron.com/zh-cn
-go get goa.design/goa/v3/cmd/goa           # 高生产力的和集成开发的web框架+微服务工具链goa *4k
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux *10k
-go get github.com/revel/cmd/revel          # 高生产率的全栈web框架 *11k > revel new -a my-app -r
-go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *5k  GraphQL中文网™ graphql.org.cn
-go get github.com/graph-gophers/graphql-go # GraphQL api server     *3k
-go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *4.2k
+go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *10k  GraphQL中文网™ graphql.org.cn
+go get github.com/graph-gophers/graphql-go # GraphQL api server     *5k
+go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *10k
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*14k 代码生成工具(编译时注入)
+go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐) *1k pkg.go.dev/go.uber.org/dig
 go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(推荐)  *18k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
 # 统一安全管理平台 4A(Authentication,Authorization,Account,Audit) 关键一环✅ladon&casbin两个Authorization库 github.com/ory/ladon
 go get github.com/open-policy-agent/opa    # 策略引擎OPA(强力推荐) Open Policy Agent[CNCF:Google,微软,Styra] www.openpolicyagent.org/docs
 go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐) 基于策略引擎OPA实现
-go get github.com/casbin/casbin            # 授权访问-认证服务(推荐) *9k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
-go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *3k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
-go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *1k
+go get github.com/volatiletech/authboss    # 授权访问-认证服务(推荐) *4k CSRF,Throttle,Auth(Pwd|OAuth2|2fa[totp.sms])
+go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&角色+角色&权限`多对多关系`+继承权限 *2k
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
 go get github.com/furkansenharputlu/f-license # 许可证密钥验证系统, client+server license key generate and verification
-go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*3k 代码生成工具(编译时注入)
-go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐)*1k pkg.go.dev/go.uber.org/dig
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
 go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read+Write
 go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
@@ -957,7 +982,6 @@ go get github.com/yudai/gotty               # 终端扩展为Web网站服务   *
 go get github.com/dgrijalva/jwt-go/cmd/jwt # JSON Web Tokens (JWT)   *6k
 go get github.com/appleboy/gin-jwt         # JWT Middleware for Gin  *1k
 go get github.com/dvsekhvalnov/jose2go     # JWT JSON Web Token implementation, jose-jwt for .net
-go get github.com/urfave/negroni           # Http Middleware: Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/thoas/stats              # Http Router Filter[计时] *1k
 go get github.com/gorilla/sessions         # session & cookie authentication            *1.5k
 go get github.com/kgretzky/evilginx2       # session & cookie, 2-factor authentication  *2.5k
@@ -981,6 +1005,7 @@ go get github.com/Shpota/goxygen           # 生成前端项目CLI ( Angular, Re
 # 高效传输协议QUIC='HTTP/3'(TCP+TLS+HTTP/2) # 体验 halfrost.com/quic_start
 go get github.com/lucas-clemente/quic-go   # QUIC是谷歌制定的基于UDP低时延的传输层协议 HTTP/3
 
+-------------------------------------------------------------------------------------------------
 # 谷歌开源gRPC grpc.io/docs/quickstart/go  # HTTP/2 传输更快 http2.golang.org
  # 1.安装: protoc、genproto; <protoc>插件: protoc-gen-go、protoc-gen-gogo、protoc-gen-gofast;prototool(增强protoc)
  > github.com/google/protobuf/releases    # 先下载protobuf-command > protoc.exe & protoc
@@ -1005,19 +1030,23 @@ go get github.com/grpc-ecosystem/go-grpc-prometheus
 go get google.golang.org/genproto
 go get google.golang.org/grpc
 go get google.golang.org/protobuf
-go get github.com/TykTechnologies/tyk      # Tyk开源|服务网关API:auth,grantKeyAccess&keyExpiry,ratelimit...
-go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s  *22k istio.io | www.grpc.io
-go get github.com/go-kit/kit/cmd/kitgen    # 阿里推荐|微服务构建框架gRPC *17k gokit.io (强力推荐)
-go get github.com/micro/go-micro           # 开源Micro分布式RPC微服务 *12k (强力推荐)
-go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架 *7k (推荐) thrift.apache.org > thrift -help
-go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 *9k
-go get github.com/bilibili/sniper             # bilibili开源轻量级业务框架,mvc+rpc业务工具库(推荐) *1k
-go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架 *2k 网关+容器化+服务治理(推荐)
-go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力
+go get github.com/istio/istio              # 谷歌开源|微服务集群管理k8s | istio.io | www.grpc.io  *37k
+
 # 分布式RPC框架rpcx，支持Zookepper、etcd、consul服务发现&路由 *3k books.studygolang.com/go-rpc-programming-guide
 go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping rudp utp" github.com/smallnest/rpcx/...
 go get -u -v -insecure github.com/henrylee2cn/erpc/v6  # eRPC一个高效可扩展且易于使用的RPC框架(推荐) *2.1k
+go get github.com/jhump/protoreflect       # protobuf文件动态解析接口，可以实现反射相关的能力           *1k
 go get github.com/gorilla/rpc              # A golang foundation for RPC over HTTP services.
+
+-------------------------------------------------------------------------------------------------
+go get github.com/zeromicro/go-zero        # 微服务框架(强力推荐) go-zero.dev   *31k
+go get github.com/go-kit/kit/cmd/kitgen    # 微服务框架(阿里推荐) gokit.io      *27k
+go get github.com/micro/go-micro           # 分布式RPC微服务    go-micro.dev   *22k
+go get github.com/bilibili/kratos/tool/kratos # bilibili开源微服务框架|包含大量微服务框架工具 go-kratos.dev  *24k
+go get github.com/TykTechnologies/tyk      # Tyk开源服务网关API,REST,GraphQL,TCP,gRPC    *10k
+go get github.com/apache/thrift/lib/go/thrift/... #滴滴推荐|Thrift协议的高性能RPC框架(推荐) *10k thrift.apache.org > thrift -help
+go get github.com/TarsCloud/TarsGo/tars    # 腾讯开源|基于Tars协议的高性能RPC框架,网关,容器化,服务治理 doc.tarsyun.com *3k 
+go get goa.design/goa/v3/...               # 高生产力的和集成开发的web框架+微服务工具链goa *4k
 -------------------------------------------------------------------------------------------------
 
 go get github.com/gocolly/colly/...        # 高性能Web采集利器 *7k
@@ -1172,6 +1201,144 @@ go get gitea.com/lunny/gps                 # 地图坐标系转换
 # 谷歌中国地图和搜搜中国地图采用的是GCJ02地理坐标系; BD09坐标系：即百度坐标系，GCJ02坐标系经加密后的坐标系;
 # 搜狗坐标系、图吧坐标系等，估计也是在GCJ02基础上加密而成的。
 ~~~
+
+
+
+#### ③ Web框架优化
+
+[Gin](https://github.com/gin-gonic/gin)
+* 路由分组和一致性管理（解决：路由循环引用和注册冲突）
+~~~go
+admin = r.Group("/admin")
+{
+	admin.GET("/:id", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message":"admin with ID", "user_id": c.Param("id")})
+	})
+	admin.POST("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message":"create admin"})
+	})
+}
+~~~
+* 内存重用和对象池化（sync.Pool示例：重用JSON编码器和解码器）
+~~~go
+import (
+	"encoding/json"
+	"sync"
+)
+
+var jsonPool = sync.Pool{
+	New: func() interface{} {
+		return new(json.Encoder)
+	},
+}
+
+func handler(c *gin.Context) {
+	encoder = jsonPool.Get().(*json.Encoder)
+	encoder.Encode(map[string]string{"data":"create object"})
+	jsonPool.Put(encoder) // 将encoder对象放回对象池中，以便下次jsonPool.Get()重用
+})
+~~~
+* Gin中的内置重用（开发者需充分利用Gin内置的缓冲区重用和静态资源缓存等）
+* 请求和响应的性能优化
+~~~go
+// 数据库连接池优化 gorm.Config
+sqlDB, _ = db.DB()
+sqlDB.SetMaxOpenConns(100) // 最大连接数
+sqlDB.SetMaxIdleConns(20)  // 最大空闲连接数
+sqlDB.SetConnMaxLifetime(time.Hour) // 连接的最大生命周期
+
+// 精简中间件（减少全局中间件的数量，确保每个请求只经过必要的处理。 一些耗时的操作，如日志记录，可以异步进行）
+r.Use(func(c *gin.Context) {
+    go func() {
+        log.Printf("Request from %s", c.ClientIP())
+    }()
+    c.Next()
+})
+// JSON序列化优化
+import jsoniter "github.com/json-iterator/go"
+
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
+func exampleHandler(c *gin.Context) {
+    data := map[string]string{"message": "hello"}
+    c.JSON(200, data) // 使用jsoniter进行序列化，默认的encoding/json相对低效
+}
+
+// 限制请求体大小
+r.Use(func(c *gin.Context) {
+    c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10*1024*1024) // 限制为 10 MB 以减少内存消耗
+    c.Next()
+})
+
+// 缓存优化
+var cache sync.Map // 使用 Go 内置的 sync.Map 或第三方库（如 Redis）进行缓存
+
+func getCachedUser(id uint) (*User, error) {
+    if data, ok := cache.Load(id); ok {
+        return data.(*User), nil
+    }
+
+    var user User
+    if err := db.First(&user, id).Error; err != nil {
+        return nil, err
+    }
+
+    cache.Store(id, &user)
+    return &user, nil
+}
+
+// 异步处理（如文件上传、发送邮件、数据分析处理等）
+r.POST("/upload", func(c *gin.Context) {
+    go func() {
+        // 耗时操作（例如存储文件）
+	// 将任务发送到队列，如 Kafka 或 RabbitMQ
+	queue.Publish(task)
+    }()
+    c.JSON(200, gin.H{"message": "Processing in background"})
+})
+
+// 限制异步任务的 Goroutine 数量，避免过度使用资源。
+import "golang.org/x/sync/semaphore"
+
+var sem = semaphore.NewWeighted(10) // 最大并发数为 10
+
+func processTask() {
+    if err := sem.Acquire(context.Background(), 1); err == nil {
+        defer sem.Release(1)
+        // 执行任务
+    }
+}
+~~~
+* 请求和响应的性能优化
+~~~go
+// 使用 pprof 分析性能瓶颈（net/http/pprof分析CPU使用率+内存分配+Goroutine执行情况）
+import _ "net/http/pprof"
+
+func main() {
+  r := gin.Default()
+
+gofunc() {
+    // 启动 Pprof 服务
+    // CPU 分析：http://localhost:5000/debug/pprof/profile
+    // 内存分配：http://localhost:5000/debug/pprof/heap
+    // Goroutine 状态：http://localhost:5000/debug/pprof/goroutine
+    http.ListenAndServe("localhost:5000", nil)
+  }()
+
+  r.GET("/", func(c *gin.Context) {
+    c.JSON(200, gin.H{"message": "hello"})
+  })
+  r.Run(":8080")
+}
+
+// 生成性能报告（利用 pprof 工具生成报告并可视化分析；在交互界面中，你可以用 top 查看热点函数或者用web生成的报告:需安装Graphviz）
+go tool pprof http://localhost:5000/debug/pprof/profile
+
+~~~
+* 认证授权
+	* [`authz`](https://github.com/casbin/negroni-authz) ACL, RBAC, ABAC Authorization [middlware](https://casbin.org/zh/docs/middlewares) based on [Casbin](https://github.com/casbin/casbin)
+ 	* [Casbin middleware for Fiber](https://docs.gofiber.io/contrib/casbin)
+
+
 
 ----
 
