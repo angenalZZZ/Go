@@ -86,7 +86,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
  > 包、模块(命名空间)`package`
 
     << 依赖`import` + 接口`interface` + 类型`type` + 函数`func` + 常量`Constants` + 变量`Variables` >>
-    
+
 ----
 
 #### ① [搭建开发环境](https://goframe.org/)
@@ -137,22 +137,22 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     go1.20.14 download
     go1.22.12 download
 
-    ::剪切C盘的sdk目录到D盘(减少系统盘空间)::
-    xcopy /e "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
+    ::迁移C盘的sdk目录到D盘(减少系统盘空间)::
+    XCOPY /E /H /I /K /O /X "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
     rmdir /s /q "C:\Users\Administrator\sdk"
     mklink /d "C:\Users\Administrator\sdk" "D:\Program\GoSdk"
 
-> [安装开发工具 GoLand `(官网)`](https://www.jetbrains.com/go/download/other.html) [`board4all`破解](https://www.board4all.biz/search/158242/?q=GoLand&o=date)→ [idea.lanyus.com](http://idea.lanyus.com/) 获取激活码, 或[无限重置试用期](https://zhile.io/); 或者→[www.jb51.net](http://zhannei.baidu.com/cse/site?q=Jetbrains&cc=jb51.net&ie=gbk) →[www.gopojie.net](https://www.gopojie.net/app/pc-app/office-app/jetbrains)<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
+> [安装开发工具 GoLand `(官网)`](https://www.jetbrains.com/go/download/other.html) [`board4all`破解](https://www.board4all.biz/search/158242/?q=GoLand&o=date)→ [idea.lanyus.com](http://idea.lanyus.com/) 获取激活码, 或[无限重置试用期](https://zhile.io);<br> - [配置Tools/File-Watchers导入`go fmt`,`goimports`,`golangci-lint`](https://github.com/angenalZZZ/doc/blob/master/config/goland_watchers.xml)
 
     # GoLand环境设置：GOROOT, GOPATH ( √ Use GOPATH √ Index entire GOPATH?  √ Enable Go Modules[vgo go版本^1.11])
-    go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy
-    go env -w GOPRIVATE=golang.org,gopkg.in,gitee.com,gitlab.com ******* # √ 2:私有库(域名白名单)用于关闭下载验证服务
+    go env -w GOPROXY=https://goproxy.io,direct # go^1.13.* +GoLand环境设置 √ 1:启用 Go Modules(vgo) Proxy(代理)
+    go env -w GOPRIVATE=gopkg.in,gitee.com,gitlab.com ******               √ 2:私有库(白名单)用于关闭下载验证服务
     go env -w GOSUMDB=sum.golang.google.cn      # ^1设置国内提供的下载验证服务
     go env -w GOSUMDB=off                       # ^2或者设置为关闭下载验证服务
 
 > 搭建公网测试 ngrok 注册→→ ngrok.com 免费获取域名→→ f714ea843e2b.ngrok.io 下载工具→转发流量→进行公网调试。
 
-> 安装开发依赖包
+> 安装开发工具依赖包
 ~~~bash
 # 代理设置 (解决网络问题) HTTP_PROXY, HTTPS_PROXY, NO_PROXY - defines HTTP proxy environment variables
 > set http_proxy=http://127.0.0.1:7890    # (临时有效) [设置环境变量# export -> vim /etc/profile]
@@ -183,11 +183,6 @@ $ export GOPROXY=http://127.0.0.1:3000
     GO111MODULE: on
     GOPROXY: http://127.0.0.1:3000
 
-# 下载模块
-go get -d         # 下载模块源码,不安装
-go get -u         # 更新模块源码
-go get -v         # 打印日志
-go get -insecure  # 解决安全下载问题,允许用http(非https)
 
 # 安装-全局依赖-镜像包 (解决网络问题)
 git clone --depth=1 https://github.com/golang/arch.git %GOPATH%/src/golang.org/x/arch     # 数据结构
@@ -326,6 +321,13 @@ git clone --depth=1 https://github.com/golang/vgo.git %GOPATH%/src/golang.org/x/
   #----------------------------------------------------------------------
   > go mod init [$MODULE_NAME]  # 1.默认生成go.mod文件，$MODULE_NAME默认github.com/$GITHUB_USER_NAME/$PROJECT_NAME
   > go mod init example.com/app # 1.指定生成go.mod文件，依赖golang.org/...需代理或在go.mod中replace替换为github镜像
+  # 下载依赖前，需要初始化项目
+  # go mod init gitee.com/golang/example/hello
+  # 下载依赖模块
+  > go get -d         			# 下载模块源码,不安装
+  > go get -u         			# 更新模块源码
+  > go get -v         			# 打印日志
+  > go get -insecure  			# 解决安全下载问题,允许用http(非https)
   > go get github.com/gin-gonic/gin # 安装项目依赖...生成go.sum文件用于锁定依赖版本，有点类似Nodejs的package-lock.json
   > code .                      # 2.开始编码...在 go module 下 go^1.11不再需要vendor目录(go~1.10.*)进行精确的版本管理
   #----------------------------------------------------------------------
