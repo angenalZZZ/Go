@@ -913,32 +913,30 @@ go get willnorris.com/go/imageproxy/...    # Caching image proxy server & docker
 
 ~~~bash
 # Web开发推荐如下：Router|Api框架 + MVC框架
-go get github.com/gin-gonic/gin            # 后端WebSvr框架 *82k (强力推荐) Star*最高的Web框架 gin-gonic.com/zh-cn
-go get github.com/gofiber/fiber/v2         # 后端WebSvr框架 *36k (强力推荐) Fiber*基于🚀fasthttp 类似Expressjs的Web框架 docs.fiber.org.cn
+go get github.com/gin-gonic/gin            # 后端WebSvr框架 *87k (强力推荐) Star*最高的Web框架 gin-gonic.com/zh-cn
+go get github.com/gofiber/fiber/v2         # 后端WebSvr框架 *39k (强力推荐) Fiber*基于🚀fasthttp 类似Expressjs的Web框架 docs.fiber.org.cn
 go get github.com/beego/beego/v2           # 后端WebSvr框架 *32k: API、Web、MVC 高度解耦框架 beego.me/docs 项目管理工具 github.com/beego/bee
-go get github.com/kataras/iris             # 后端WebSvr框架 *25k (推荐)
+go get github.com/kataras/iris             # 后端WebSvr框架 *26k (推荐)
+go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *23k
+go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) (很多Web框架基于它进行二次开发) *17k
+go get github.com/kataras/go-sessions/v3   #~fasthttp会话Session(BadgerDB) *1k (推荐)
+go get github.com/phachon/fasthttpsession  #~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
 # 各大 Go 模板引擎的对比及压力测试 github.com/SlinSo/goTemplateBenchmark
 # 基础模块：缓存,日志,队列,数组,集合,容器,定时器,命令行,内存锁,对象池,配置&资源管理,数据校验&编码,定时任务,数据库ORM,TCP/UDP,进程管理&通信等
 # Web开发核心组件：Router,Cookie,Session,Middleware,服务注册,模板引擎等，支持热重启,热更新,域名绑定,TLS/HTTPS,Rewrite等。
 # GF(Go Frame) 类似PHP的Laravel, Java的SpringBoot, Python的Django +官网 goframe.org/display/gf +在线体验 demo.g-fast.cn
-go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 (强力推荐) *12k
-go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux (强力推荐) *21k
+go get github.com/gogf/gf                  # GF(Go Frame)*一款模块化,高性能,生产级开发框架 (强力推荐) *13k
+go get github.com/gorilla/{mux,sessions,schema,csrf,handlers,websocket} # 后端Web框架与工具链mux (强力推荐) *22k
 # 入门程序：[iris+xorm]github.com/yz124/superstar [gorm+jwt]github.com/snowlyg/IrisApiProject [pg+angular]github.com/iris-contrib/parrot
-go get github.com/valyala/fasthttp         # 最快WebSvr框架 10倍于net/http (强力推荐) *22k
-go get github.com/julienschmidt/httprouter # 高性能Router框架(强力推荐) (很多Web框架都是基于它进行二次开发) *17k
-go get github.com/buaazp/fasthttprouter    # #1~fasthttp高性能路由器
-go get github.com/vincentLiuxiang/lu       # #2~fasthttp高性能中间件
-go get github.com/kataras/go-sessions/v3   # #3~fasthttp会话Session(BadgerDB) *1k (推荐)
-go get github.com/phachon/fasthttpsession  # #3~fasthttp会话Session(memory,memcache,redis,mysql,postgres,file,sqlite3)
-go get github.com/urfave/negroni           # Http Middleware *7k (推荐) Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
+go get github.com/urfave/negroni           # Http Middleware *8k (推荐) Recovery,Logger,Static,JWT,CORS,Data-binding,authz-Casbin..
 go get github.com/valyala/quicktemplate/qtc # ~Quicktemplate is more than 20x faster than html/template
 go get github.com/graphql-go/graphql       # Facebook开源API查询语言 *10k  GraphQL中文网™ graphql.org.cn
 go get github.com/graph-gophers/graphql-go # GraphQL api server     *5k
 go get github.com/99designs/gqlgen         # GraphQL server library, Codegen the model in gqlgen.yml *10k
-go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*14k 代码生成工具(编译时注入)
-go get go.uber.org/dig                     # 依赖注入 uber/dig (推荐) *1k pkg.go.dev/go.uber.org/dig
-go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *2k  github.com/golang/oauth2
-go get github.com/casbin/casbin            # 授权访问-认证服务(推荐)  *18k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
+go get github.com/google/wire/cmd/wire     # 依赖注入 google/wire (推荐)*15k 代码生成工具(编译时注入)
+go get github.com/uber-go/dig              # 依赖注入 uber/dig (推荐)*4k pkg.go.dev/go.uber.org/dig
+go get golang.org/x/oauth2                 # OAuth 2.0 认证授权      *6k github.com/golang/oauth2 | cs.opensource.google/go/x/oauth2
+go get github.com/casbin/casbin            # 授权访问-认证服务(推荐)  *19k 访问控制模型(ACL, RBAC, ABAC) 官网 casbin.org
 # 统一安全管理平台 4A(Authentication,Authorization,Account,Audit) 关键一环✅ladon&casbin两个Authorization库 github.com/ory/ladon
 go get github.com/open-policy-agent/opa    # 策略引擎OPA(强力推荐) Open Policy Agent[CNCF:Google,微软,Styra] www.openpolicyagent.org/docs
 go get github.com/go-training/opa-demo     # 基于角色的访问控制(RBAC)(推荐) 基于策略引擎OPA实现
@@ -947,11 +945,11 @@ go get github.com/mikespook/gorbac         # 基于角色的访问控制:身份&
 go get github.com/bitly/oauth2_proxy       # 反向代理-认证服务(推荐) *5k (OAuth2.0, OpenID Connect; Google, Github...
 go get github.com/furkansenharputlu/f-license # 许可证密钥验证系统, client+server license key generate and verification
 go get go.uber.org/ratelimit               # 速率限制 github.com/uber-go/ratelimit
-go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*1k 调用Bucket方法及限流Read+Write
+go get github.com/juju/ratelimit           # 速率限制-由高效的令牌桶实现(推荐)*3k 调用Bucket方法及限流Read+Write
 go get golang.org/x/time                   # 速率限制-调用Limiter接口 import golang.org/x/time/rate
 go get github.com/sony/gobreaker           # 熔断功能-断路器模式(推荐) breaker.CircuitBreaker www.sony.net
 go get github.com/afex/hystrix-go          # 熔断功能-频率限制qps
-go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *9.6k CNCF(推荐) github.com/jaegertracing/jaeger
+go get github.com/jaegertracing/jaeger-client-go # 分布式链路追踪系统 *22k CNCF(推荐) github.com/jaegertracing/jaeger
 
 go get github.com/fvbock/endless           # 站点零停机\重启
 go get github.com/codegangsta/gin          # 站点热启动 > gin -h
