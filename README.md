@@ -33,7 +33,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
 
     break      default       func     interface   select
     case       defer         go       map         struct
-    [chan](#channels)       else          goto     package     switch
+    chan       else          goto     package     switch
     const      fallthrough   if       range       type
     continue   for           import   return      var
 
@@ -52,7 +52,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
 
  > 通道[`chan`](#channels)
 
- ![](http://tensor-programming.com/wp-content/uploads/2016/11/go-channel.jpg)
+ [![](screenshots/chan-operation.jpg)](https://github.com/eapache/channels 'Distribute分发1In*Out, Multiplex多路复用*In1Out, Pipe管道1In1Out, Batching*批量')
 
     读写: ch := make(chan<- int) #只读; ch := make(<-chan int) #只写; make(chan<- chan int) #只读chanOfchan;
     同步: ch := make(chan struct{}) // unbuffered channel, goroutine blocks for IO #空结构,无内存开销,更高效;
@@ -60,7 +60,7 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     管道: ch1, ch2 := make(chan int), make(chan int) ; ch1 <- 1 ; ch2 <- 2 * <-ch1; result := <-ch2 ;
     选择: select: 常规模式(for轮循次数=chan实际数量); 反射模式(reflect.Select([]reflect.SelectCase)..);
     时间: ch := time.After(30 * time.Second) #过期chan; ch := time.Tick(1 * time.Second) #轮循chan;
-    [github.com/eapache/channels](https://github.com/eapache/channels) #Distribute分发1In*Out,Multiplex多路复用*In1Out,Pipe管道1In1Out,Batching*批量
+    github.com/eapache/channels #Distribute分发1In*Out, Multiplex多路复用*In1Out, Pipe管道1In1Out, Batching*批量
 
  > 延迟函数运行`defer`
 
@@ -104,7 +104,6 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     set GOROOT=D:\Program\Go            (安装目录)
     set GOPATH=A:\go                    (开发环境.不同项目在编译时,该环境变量可以不同)
     set GOTOOLS=%GOROOT%/pkg/tool       (选项: 建议 GOOS=windows, GOARCH=amd64, CGO_ENABLED=0)
-    set GOCACHE=D:\Users\Administrator\AppData\Local\go-build (缓存目录)
     set GO111MODULE=on                  (选项: 建议 GO111MODULE=auto) > go env -w GO111MODULE=on
     set GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     set GOSUMDB=sum.golang.google.cn    (可选) 默认 sum.golang.org
@@ -121,7 +120,6 @@ $   ldd $GOROOT/bin/gofmt # →→ not a dynamic executable 非动态可执行�
     export GOROOT=/usr/local/go         (安装目录)
     export GOPATH=/a/go                 (开发环境.GO111后可忽略该变量-建议启用GO111MODULE=on)
     export GOTOOLS=$GOROOT/pkg/tool     (选项: 建议 GOOS=linux, GOARCH=amd64, CGO_ENABLED=0)
-    export GOCACHE=$GOROOT/go-build     (缓存目录)
     export GO111MODULE=on               (选项: 建议 GO111MODULE=auto) $ go env -w GO111MODULE=on
     export GOPROXY=https://goproxy.cn,https://goproxy.io,direct (可选) 默认 GOPROXY=https://goproxy.io,direct
     export GOSUMDB=sum.golang.google.cn (可选) 默认 sum.golang.org
