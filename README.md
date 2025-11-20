@@ -1892,7 +1892,7 @@ func main() {
 |`+`|addition|
 |`-`|subtraction|
 |`*`|multiplication|
-|`/`|quotient|
+|`/`|division|
 |`%`|remainder|
 |`&`|bitwise and|
 |`\|`|bitwise or|
@@ -1934,6 +1934,11 @@ var foo, bar int = 42, 1302 // declare and init multiple vars at once
 var foo = 42 // type omitted, will be inferred
 foo := 42 // shorthand, only in func bodies, omit var keyword, type is always implicit
 const constant = "This is a constant"
+var f1 float = 3.15 // decimal literal style
+f1 = 12e15          // exponential literal style
+f1 = 13.16e12       // mixed literal style
+comp1 := complex(10, 11) // real()=10  imag()=11
+comp2 := 10 + 12i // real()=10  imag()=12
 
 // iota can be used for incrementing numbers, starting from 0
 const (
