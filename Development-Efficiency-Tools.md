@@ -71,7 +71,7 @@ go-sniffer 工具，可扩展的抓包工具，可以开发自定义协议的工
 现在只支持了 http，mysql，redis，mongodb. 基于这个工具，我们开发了 qapp 协议的抓包。 https://github.com/40t/go-sniffer
 
 **5)反向代理工具，快捷开放内网端口供外部使用。**
-ngrok 可以让内网服务外部调用  https://ngrok.com/  https://github.com/inconshreveable/ngrok
+ngrok 可以让内网服务外部调用 https://ngrok.com  https://github.com/inconshreveable/ngrok
 
 **6)配置化生成证书**
 从根证书，到业务侧证书一键生成.  https://github.com/cloudflare/cfssl
@@ -97,12 +97,10 @@ https://www.jianshu.com/p/39b476e808d8
 13)基于**procFile**进程管理工具. 相比 supervisor 更加简单。
 https://github.com/ddollar/foreman
 
-14)基于 http，https，websocket 的**调试代理工具**，配置功能丰富。在线教育的 nohost web 调试工具，基于此开发.<br>
-https://github.com/avwo/whistle
+14)基于 http，https，websocket 的**调试代理工具**，配置功能丰富。在线 nohost web 调试工具，基于此开发 https://github.com/avwo/whistle
 
 **15)分布式调度工具**
-https://github.com/shunfei/cronsun/blob/master/README_ZH.md <br>
-https://github.com/ouqiang/gocron
+https://github.com/shunfei/cronsun  https://github.com/ouqiang/gocron
 
 **16)自动化运维平台 Gaia**
 https://github.com/gaia-pipeline/gaia
@@ -137,12 +135,10 @@ Guid: https://www.guidgen.com/
 ## 五. golang 常用库
 
 **日志**
-https://github.com/Sirupsen/logrus <br>
-https://github.com/uber-go/zap
+https://github.com/Sirupsen/logrus  https://github.com/uber-go/zap
 
 **配置**
-兼容 json，toml，yaml，hcl 等格式的日志库.<br>
-https://github.com/spf13/viper
+兼容 json，toml，yaml，hcl 等格式的日志库  https://github.com/spf13/viper
 
 **存储**
 mysql: https://github.com/go-xorm/xorm <br>
@@ -175,8 +171,7 @@ protobuf 文件动态解析的接口，可以实现反射相关的能力。
 https://github.com/jhump/protoreflect
 
 **表达式引擎工具**
-https://github.com/Knetic/govaluate <br>
-https://github.com/google/cel-go
+https://github.com/Knetic/govaluate  https://github.com/google/cel-go
 
 **字符串处理**
 https://github.com/huandu/xstrings
