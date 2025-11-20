@@ -1530,7 +1530,13 @@ go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/ahas_openapi
 go get github.com/aliyun/alibaba-cloud-sdk-go/tree/master/services/cr
 ~~~
 
-##### 腾讯云 
+#### 七牛云 
+ - https://developer.qiniu.com/sdk
+~~~go
+go get -u github.com/qiniu/api.v7 # 对象存储
+~~~
+
+#### 腾讯云 
  - https://console.cloud.tencent.com/api/explorer
 ~~~go
 go get -u github.com/tencentcloud/tencentcloud-sdk-go
@@ -1669,12 +1675,6 @@ go get -u gopkg.in/chanxuehong/wechat.v2/... # 微信公众平台、企业号、
  - 微信支付SDK https://github.com/imzjy/wxpay
  - 微信支付／支付宝支付 https://github.com/philchia/gopay
  - 微信公众平台/微信企业号/微信商户平台/微信支付 https://github.com/philsong/wechat2
-
-#### 七牛云 
- - https://developer.qiniu.com/sdk
-~~~go
-go get -u github.com/qiniu/api.v7 # 对象存储
-~~~
 
 #### CDN.内容分发网络
  - 又拍云 www.upyun.com
