@@ -963,7 +963,7 @@ go get github.com/inconshreveable/ngrok    # 反向代理工具，快捷开放�
 go get github.com/gaia-pipeline/gaia       # 自动化运维Web平台Pipe任务  *4k
 go get github.com/oxequa/realize           # 自动化任务,开发流程改进工具 *4k
 go get github.com/cweill/gotests           # 自动化测试,自动生成用例工具 *3k
-go get github.com/silenceper/gowatch       # 热编译工具,加速开发效率工具
+go get github.com/silenceper/gowatch       # 热编译工具,加速开发效率工具 *1k
 
 go get github.com/gohugoio/hugo            # 超快的静态网站生成工具(强力推荐) *51k    gohugo.io
 go get github.com/rakyll/statik            # 将静态资源文件嵌入到Go二进制文件中，提供http服务> statik -src=/path/to
